@@ -7,7 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="splashBackgroundColor">#d9dbe2</color>
+    <color name="trackingColor">#FF6347</color> <!-- Tomato color, for example -->
+    <color name="changingColor">#4682B4</color>
 
     <color name="primaryColor">#009999</color>
     <color name="secondaryColor">#a9bcd0</color>
