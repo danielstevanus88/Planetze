@@ -21,23 +21,23 @@ public class LoginManager {
         return loginManager;
     }
 
-    public Task<AuthResult> login(String email, String password){
+    public static Task<AuthResult> login(String email, String password){
         return mAuth.signInWithEmailAndPassword(email, password);
     }
 
-    public Task<AuthResult> register(String email, String password){
+    public static Task<AuthResult> register(String email, String password){
         return mAuth.createUserWithEmailAndPassword(email, password);
     }
 
-    public Task<Void> resetPassword(String email){
+    public static Task<Void> resetPassword(String email){
         return mAuth.sendPasswordResetEmail(email);
     }
 
-    public void logout(){
+    public static void logout(){
         mAuth.signOut();
     }
 
-    public FirebaseUser getCurrentUser(){
+    public static FirebaseUser getCurrentUser(){
         return mAuth.getCurrentUser();
     }
 

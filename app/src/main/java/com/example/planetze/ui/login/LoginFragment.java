@@ -1,5 +1,6 @@
 package com.example.planetze.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import com.example.planetze.classes.LoginManager;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -31,6 +33,8 @@ public class LoginFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private IOnSelectionListener listener;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -71,13 +75,26 @@ public class LoginFragment extends Fragment {
         Button buttonLogin = view.findViewById(R.id.buttonLogin);
         EditText email = view.findViewById(R.id.editTextEmailLogin);
         EditText password = view.findViewById(R.id.editTextPasswordLogin);
-        
+
+        TextView backButton = view.findViewById(R.id.textButtonBack);
+        backButton.setOnClickListener(res -> {
+            getActivity().onBackPressed();
+        });
+
+
+
         // Login button click listener
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String emailText = email.getText().toString();
                 String passwordText = password.getText().toString();
+
+                if(emailText.isEmpty() || passwordText.isEmpty()){
+                    Toast.makeText(getActivity(), "Invalid email or password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 loginManager.login(emailText, passwordText).addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         // Redirect to main activity
@@ -91,8 +108,29 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        TextView buttonResetPassword = view.findViewById(R.id.textButtonResetPassword);
+
+        buttonResetPassword.setOnClickListener(res -> {
+            listener.onResetPasswordClick();
+        });
+
 
         // Inflate the layout for this fragment
         return view;
     }
+
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        listener = (IOnSelectionListener) context;
+
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        listener = null;
+    }
+
 }
