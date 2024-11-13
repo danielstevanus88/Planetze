@@ -1,6 +1,8 @@
 package com.example.planetze;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,9 +31,18 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+
+        try{
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+            NavigationUI.setupWithNavController(binding.navView, navController);
+
+
+
+        } catch(Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e("Error", e.getMessage());
+        }
+
     }
 
 }
