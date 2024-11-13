@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.planetze.MainActivity;
@@ -77,14 +78,21 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register, container, false);
+
         Button registerButton = view.findViewById(R.id.buttonRegister);
+
 
         EditText editName = view.findViewById(R.id.editTextNameRegister);
         EditText editEmail = view.findViewById(R.id.editTextEmailRegister);
         EditText editPassword = view.findViewById(R.id.editTextPasswordRegister);
         EditText editConfirmPassword = view.findViewById(R.id.editTextConfirmPasswordRegister);
 
-       
+
+        TextView backButton = view.findViewById(R.id.textButtonBack);
+        backButton.setOnClickListener(res -> {
+            getActivity().onBackPressed();
+        });
+
 
         registerButton.setOnClickListener(new View.OnClickListener() {
                 @Override

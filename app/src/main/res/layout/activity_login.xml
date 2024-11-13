@@ -9,29 +9,36 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
-        android:id="@+id/verticalOptions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="502dp"
-        tools:visibility="visible">
+        android:background="@drawable/planetze_login_background"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/fragmentContainer"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#ADD8DBE2"
+            android:backgroundTintMode="add"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        </FrameLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:paddingTop="100dp"
+                app:srcCompat="@drawable/planetze_logo" />
+
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp">
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import com.example.planetze.ui.login.IOnSelectionListener;
 import com.example.planetze.ui.login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
 import com.example.planetze.ui.login.RegisterFragment;
+import com.example.planetze.ui.login.ResetPasswordFragment;
 
 public class LoginActivity extends AppCompatActivity implements IOnSelectionListener {
 
@@ -60,10 +61,22 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     public void onRegisterOptionClick() {
         showFragment(new RegisterFragment());
     }
-    
+
+    @Override
+    public void onResetPasswordClick() { 
+        showFragment(new ResetPasswordFragment());
+    }
+
     @Override
     public void onBackPressed() {
-        showFragment(new LoginOptionFragment());
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        if (currentFragment instanceof LoginFragment || 
+            currentFragment instanceof RegisterFragment || 
+            currentFragment instanceof ResetPasswordFragment) {
+            showFragment(new LoginOptionFragment());
+        } else {
+            super.onBackPressed();
+        }
     }
 
 
