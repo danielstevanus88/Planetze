@@ -1,4 +1,4 @@
-package com.example.planetze.ui.login;
+package com.example.planetze.ui.login.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.ui.login.IOnSelectionListener;
 
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,13 +24,22 @@ import android.widget.Toast;
  * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements Contract.View{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    // MVP - Presenter
+    private Contract.Presenter presenter;
+
+    // Current View (This part is necessary as LoginFragment is a Fragment not a class)
+    // So that we can findViewById through the view methods.
+    private View view;
+
     private LoginManager loginManager;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -66,59 +76,58 @@ public class LoginFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        presenter = new LoginPresenter(LoginManager.getInstance(), this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-        Button buttonLogin = view.findViewById(R.id.buttonLogin);
-        EditText email = view.findViewById(R.id.editTextEmailLogin);
-        EditText password = view.findViewById(R.id.editTextPasswordLogin);
+        this.view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        Button buttonLogin = view.findViewById(R.id.buttonLogin);
         TextView backButton = view.findViewById(R.id.textButtonBack);
         backButton.setOnClickListener(res -> {
             getActivity().onBackPressed();
         });
 
-
-
         // Login button click listener
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailText = email.getText().toString();
-                String passwordText = password.getText().toString();
-
-                if(emailText.isEmpty() || passwordText.isEmpty()){
-                    Toast.makeText(getActivity(), "Invalid email or password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                loginManager.login(emailText, passwordText).addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        // Redirect to main activity
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        // Show error message
-                        Toast.makeText(getActivity(), "Invalid email or password", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+        buttonLogin.setOnClickListener(res -> {
+            presenter.login();
         });
 
         TextView buttonResetPassword = view.findViewById(R.id.textButtonResetPassword);
 
         buttonResetPassword.setOnClickListener(res -> {
-            listener.onResetPasswordClick();
+            listener.showResetPasswordForm();
         });
 
 
-        // Inflate the layout for this fragment
         return view;
     }
 
+    @Override
+    public String getEmail(){
+        EditText email = view.findViewById(R.id.editTextEmailLogin);
+        return email.getText().toString();
+    }
+    @Override
+    public String getPassword(){
+
+        EditText password = view.findViewById(R.id.editTextPasswordLogin);
+        return password.getText().toString();
+    }
+
+    @Override
+    public void showMessage(String message){
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginSuccess(){
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onAttach(Context context){
