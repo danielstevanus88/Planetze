@@ -1,4 +1,4 @@
-package com.example.planetze.ui.login;
+package com.example.planetze.ui.login.Register;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,6 @@ import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 /**

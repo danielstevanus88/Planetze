@@ -74,11 +74,11 @@ public class LoginOptionFragment extends Fragment {
         Button registerButton = view.findViewById(R.id.buttonRegisterOption);
 
         loginButton.setOnClickListener(v -> {
-            listener.onLoginOptionClick();
+            listener.showLoginForm();
         });
 
         registerButton.setOnClickListener(v -> {
-            listener.onRegisterOptionClick();
+            listener.showRegisterForm();
         });
 
         return view;

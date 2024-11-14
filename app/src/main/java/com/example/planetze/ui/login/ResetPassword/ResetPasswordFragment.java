@@ -1,4 +1,4 @@
-package com.example.planetze.ui.login;
+package com.example.planetze.ui.login.ResetPassword;
 
 import android.os.Bundle;
 
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
-import com.example.planetze.classes.UserDatabaseManager;
 
 /**
  * A simple {@link Fragment} subclass.

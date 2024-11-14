@@ -11,13 +11,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.classes.LoginManager;
-import com.example.planetze.classes.User;
-import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.ui.login.IOnSelectionListener;
-import com.example.planetze.ui.login.LoginFragment;
+import com.example.planetze.ui.login.Login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
-import com.example.planetze.ui.login.RegisterFragment;
-import com.example.planetze.ui.login.ResetPasswordFragment;
+import com.example.planetze.ui.login.Register.RegisterFragment;
+import com.example.planetze.ui.login.ResetPassword.ResetPasswordFragment;
 
 public class LoginActivity extends AppCompatActivity implements IOnSelectionListener {
 
@@ -53,17 +51,17 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     }
 
     @Override
-    public void onLoginOptionClick() {
+    public void showLoginForm() {
         showFragment(new LoginFragment());
     }
 
     @Override
-    public void onRegisterOptionClick() {
+    public void showRegisterForm() {
         showFragment(new RegisterFragment());
     }
 
     @Override
-    public void onResetPasswordClick() { 
+    public void showResetPasswordForm() {
         showFragment(new ResetPasswordFragment());
     }
 
