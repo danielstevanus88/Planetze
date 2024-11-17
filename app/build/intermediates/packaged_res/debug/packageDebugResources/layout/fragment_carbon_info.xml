@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.CarbonInfoFragment"
+    android:background="@color/splashBackgroundColor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Centered title text -->
+        <TextView
+            android:id="@+id/infotitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="Introduction to Carbon Footprint"
+            android:textSize="28sp" />
+
+        <!-- Text box for information about carbon footprint -->
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#1B1B1E"
+            android:text="Carbon footprint is the total amount of greenhouse gases, especially carbon dioxide (CO₂), emitted directly or indirectly by one's activities. These emissions contribute to climate change and are measured in tons of CO₂ equivalents.\n\n
+Why Carbon Footprints Matter:\n
+    - Climate Change: Greenhouse gases trap heat in the atmosphere, causing global warming, extreme weather events and also lead to environmental degradation such as rising sea levels, habitat loss.\n
+    - Health Impacts: Emissions from fossil fuels release pollutants harmful to health, causing respiratory and cardiovascular issues.\n
+    - Economic Strain: Climate-related disasters burden global economies, especially in regions less able to recover.\n
+    - Social Inequality: Vulnerable communities face the harshest impacts of climate change.\n\n
+    By making sustainable choices like using renewable energy, reducing waste, and supporting environmental policies, you can play a crucial role in combating climate change and creating a healthier, more sustainable future for everyone."
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:layout_marginBottom="35dp" />
+
+        <!-- Button to acknowledge and proceed -->
+        <Button
+            android:id="@+id/acknowledgeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#009999"
+            android:onClick="onAcknowledgeButtonClick"
+            android:text="Acknowledge and Continue" />
+    </LinearLayout>
+</FrameLayout>

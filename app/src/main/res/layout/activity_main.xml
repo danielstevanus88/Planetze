@@ -31,4 +31,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.planetze.ui.home.CarbonInfoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="201dp"
+        tools:layout_editor_absoluteY="312dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

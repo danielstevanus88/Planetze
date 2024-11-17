@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_notifications.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_notifications.xml"
+    },
+    {
+        "merged": "com.example.planetze.app-mergeDebugResources-52:/layout/activity_main.xml",
+        "source": "com.example.planetze.app-main-55:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_register.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "com.example.planetze.app-mergeDebugResources-52:/layout/activity_login.xml",
+        "source": "com.example.planetze.app-main-55:/layout/activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_carbon_info.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_carbon_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_login_option.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_login_option.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-mergeDebugResources-52:\\layout\\fragment_login.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.7\\com.example.planetze.app-main-55:\\layout\\fragment_login.xml"
+    }
+]
