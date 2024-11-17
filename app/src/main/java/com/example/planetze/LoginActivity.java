@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.ui.eco_tracker.CalendarActivity;
 import com.example.planetze.ui.login.IOnSelectionListener;
 import com.example.planetze.ui.login.Login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
 
         if (loginManager.getCurrentUser() != null) {
             // Redirect to main activity
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
         }
 

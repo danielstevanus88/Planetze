@@ -1,9 +1,13 @@
 package com.example.planetze.classes;
 
+import com.example.planetze.classes.EcoTracker.Activities;
+
 public class User {
     public String uid;
     public String name;
     public String email;
+
+    public Activities activities;
 
     public User(String uid, String name, String email){
         this.uid = uid;
