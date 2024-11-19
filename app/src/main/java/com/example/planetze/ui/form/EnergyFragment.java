@@ -4,6 +4,7 @@ import android.widget.Button;
 
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentEnergyBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,10 +44,10 @@ public class EnergyFragment extends BaseFormFragment<FragmentEnergyBinding> { //
         String[] options2 = {"", getString(R.string.bill1), getString(R.string.bill2), getString(R.string.bill3), getString(R.string.bill4), getString(R.string.bill5)};
         String[] options3 = {"", getString(R.string.primarily), getString(R.string.partially), getString(R.string.no)};
 
-        db.child("initial-data").child(uid).child("q14").setValue(Arrays.asList(options1).indexOf(q14));
-        db.child("initial-data").child(uid).child("q15").setValue(Arrays.asList(options2).indexOf(q15));
-        db.child("initial-data").child(uid).child("q16").setValue(Arrays.asList(options1).indexOf(q16));
-        db.child("initial-data").child(uid).child("q17").setValue(Arrays.asList(options3).indexOf(q17));
+        db.child("q14").setValue(Arrays.asList(options1).indexOf(q14));
+        db.child("q15").setValue(Arrays.asList(options2).indexOf(q15));
+        db.child("q16").setValue(Arrays.asList(options1).indexOf(q16));
+        db.child("q17").setValue(Arrays.asList(options3).indexOf(q17));
 
         loadFragment(new ConsumptionFragment());
     }

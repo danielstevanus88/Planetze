@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.annotation)
     implementation(libs.activity)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

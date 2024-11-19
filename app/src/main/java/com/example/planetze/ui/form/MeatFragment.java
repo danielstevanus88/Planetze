@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentMeatBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,10 +38,10 @@ public class MeatFragment extends BaseFormFragment<FragmentMeatBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.daily), getString(R.string.frequently), getString(R.string.occasionally), getString(R.string.never)};
 
-        db.child("initial-data").child(uid).child("q9a").setValue(Arrays.asList(options).indexOf(q9a));
-        db.child("initial-data").child(uid).child("q9b").setValue(Arrays.asList(options).indexOf(q9b));
-        db.child("initial-data").child(uid).child("q9c").setValue(Arrays.asList(options).indexOf(q9c));
-        db.child("initial-data").child(uid).child("q9d").setValue(Arrays.asList(options).indexOf(q9d));
+        db.child("q9a").setValue(Arrays.asList(options).indexOf(q9a));
+        db.child("q9b").setValue(Arrays.asList(options).indexOf(q9b));
+        db.child("q9c").setValue(Arrays.asList(options).indexOf(q9c));
+        db.child("q9d").setValue(Arrays.asList(options).indexOf(q9d));
 
         loadFragment(new WasteFragment());
     }

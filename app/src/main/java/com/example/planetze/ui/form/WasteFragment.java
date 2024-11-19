@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentWasteBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class WasteFragment extends BaseFormFragment<FragmentWasteBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.never), getString(R.string.rarely), getString(R.string.occasion), getString(R.string.frequent)};
 
-        db.child("initial-data").child(uid).child("q10").setValue(Arrays.asList(options).indexOf(q10));
+        db.child("q10").setValue(Arrays.asList(options).indexOf(q10));
 
         loadFragment(new HousingFragment());
     }

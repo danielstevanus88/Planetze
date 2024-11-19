@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentTransportationBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,11 +24,13 @@ public class TransportationFragment extends BaseFormFragment<FragmentTransportat
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.yes), getString(R.string.no)};
 
-        db.child("initial-data").child(uid).child("q1").setValue(Arrays.asList(options).indexOf(q1));
+        db.child("q1").setValue(Arrays.asList(options).indexOf(q1));
 
         if (q1.equals(options[1])) {
             loadFragment(new PersonalVehicleFragment());
         } else if (q1.equals(options[2])) {
+            db.child("q2").removeValue();
+            db.child("q3").removeValue();
             loadFragment(new PublicTransportFragment());
         }
     }

@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentFoodBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,11 +26,15 @@ public class FoodFragment extends BaseFormFragment<FragmentFoodBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.vegetarian), getString(R.string.vegan), getString(R.string.pescatarian), getString(R.string.meat_based)};
 
-        db.child("initial-data").child(uid).child("q8").setValue(Arrays.asList(options).indexOf(q8));
+        db.child("q8").setValue(Arrays.asList(options).indexOf(q8));
 
         if (q8.equals(getString(R.string.meat_based))) {
             loadFragment(new MeatFragment());
         } else {
+            db.child("q9a").removeValue();
+            db.child("q9b").removeValue();
+            db.child("q9c").removeValue();
+            db.child("q9d").removeValue();
             loadFragment(new WasteFragment());
         }
     }

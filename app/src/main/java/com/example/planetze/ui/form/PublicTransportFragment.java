@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentPublicTransportBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,8 +32,8 @@ public class PublicTransportFragment extends BaseFormFragment<FragmentPublicTran
         String[] options1 = {"", getString(R.string.never), getString(R.string.occasionally), getString(R.string.frequently), getString(R.string.always)};
         String[] options2 = {"", getString(R.string.time1), getString(R.string.time2), getString(R.string.time3), getString(R.string.time4), getString(R.string.time5)};
 
-        db.child("initial-data").child(uid).child("q4").setValue(Arrays.asList(options1).indexOf(q4));
-        db.child("initial-data").child(uid).child("q5").setValue(Arrays.asList(options2).indexOf(q5));
+        db.child("q4").setValue(Arrays.asList(options1).indexOf(q4));
+        db.child("q5").setValue(Arrays.asList(options2).indexOf(q5));
         loadFragment(new AirTravelFragment());
     }
 

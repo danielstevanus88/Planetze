@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentHousingBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,9 +36,9 @@ public class HousingFragment extends BaseFormFragment<FragmentHousingBinding> {
         String[] options2 = {"", getString(R.string._1), getString(R.string._2), getString(R.string._3_4), getString(R.string._5_or_more)};
         String[] options3 = {"", getString(R.string.under_1000_sq_ft), getString(R.string._1000_2000_sq_ft), getString(R.string.over_2000_sq_ft)};
 
-        db.child("initial-data").child(uid).child("q11").setValue(Arrays.asList(options1).indexOf(q11));
-        db.child("initial-data").child(uid).child("q12").setValue(Arrays.asList(options2).indexOf(q12));
-        db.child("initial-data").child(uid).child("q13").setValue(Arrays.asList(options3).indexOf(q13));
+        db.child("q11").setValue(Arrays.asList(options1).indexOf(q11));
+        db.child("q12").setValue(Arrays.asList(options2).indexOf(q12));
+        db.child("q13").setValue(Arrays.asList(options3).indexOf(q13));
         loadFragment(new EnergyFragment());
     }
 

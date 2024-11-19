@@ -9,7 +9,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.planetze.ui.form.TransportationFragment;
+import com.example.planetze.classes.GlobalAverages;
+import com.example.planetze.ui.form.CountryFragment;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -24,7 +25,8 @@ public class FormActivity extends AppCompatActivity {
             return insets;
         });
 
-        showFragment(new TransportationFragment());
+        GlobalAverages.initialize(this);
+        showFragment(new CountryFragment());
     }
 
     public void showFragment(Fragment fragment) {

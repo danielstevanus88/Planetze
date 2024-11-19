@@ -27,12 +27,15 @@ import java.util.List;
 public abstract class BaseFormFragment<VB extends ViewBinding> extends Fragment {
 
     protected VB binding;
-    protected DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     protected String uid = LoginManager.getInstance().getCurrentUser().getUid();
+    protected DatabaseReference db = FirebaseDatabase.getInstance().getReference("initial-data").child(uid);
 
     protected abstract void setupClickListeners();
+
     protected abstract void handleNextButtonClick();
+
     protected abstract void handleOptionButtonClick(Button clickedButton);
+
     protected abstract boolean isInputInvalid();
 
     @Nullable
@@ -71,17 +74,21 @@ public abstract class BaseFormFragment<VB extends ViewBinding> extends Fragment 
 
     protected void setButtons(List<Button> buttons, Button clicked) {
         for (Button button : buttons) {
-            button.setBackgroundResource(R.drawable.gray_button);
+            button.setBackgroundResource(R.drawable.unclicked_button);
             button.setTextColor(getResources().getColor(R.color.alternativeDarkColor));
         }
-        clicked.setBackgroundResource(R.drawable.blue_gradient);
+        clicked.setBackgroundResource(R.drawable.clicked_button);
         clicked.setTextColor(getResources().getColor(R.color.white));
+    }
+
+    protected void showMessage() {
+        Toast.makeText(getActivity(), "Please select an option", Toast.LENGTH_SHORT).show();
     }
 
     protected void handleButtonClick(View view) {
         if (view.getId() == R.id.next) {
             if (isInputInvalid()) {
-                Toast.makeText(getActivity(), "Please select an option", Toast.LENGTH_SHORT).show();
+                showMessage();
             } else {
                 handleNextButtonClick();
             }

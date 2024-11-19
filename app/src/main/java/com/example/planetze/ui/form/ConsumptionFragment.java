@@ -2,9 +2,11 @@ package com.example.planetze.ui.form;
 
 import android.content.Intent;
 import android.widget.Button;
+
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentConsumptionBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,10 +42,10 @@ public class ConsumptionFragment extends BaseFormFragment<FragmentConsumptionBin
         String[] options3 = {"", getString(R.string.none), getString(R.string._1), getString(R.string._2), getString(R.string._3_or_more)};
         String[] options4 = {"", getString(R.string.never), getString(R.string.occasion), getString(R.string.frequent), getString(R.string.always)};
 
-        db.child("initial-data").child(uid).child("q18").setValue(Arrays.asList(options1).indexOf(q18));
-        db.child("initial-data").child(uid).child("q19").setValue(Arrays.asList(options2).indexOf(q19));
-        db.child("initial-data").child(uid).child("q20").setValue(Arrays.asList(options3).indexOf(q20));
-        db.child("initial-data").child(uid).child("q21").setValue(Arrays.asList(options4).indexOf(q21));
+        db.child("q18").setValue(Arrays.asList(options1).indexOf(q18));
+        db.child("q19").setValue(Arrays.asList(options2).indexOf(q19));
+        db.child("q20").setValue(Arrays.asList(options3).indexOf(q20));
+        db.child("q21").setValue(Arrays.asList(options4).indexOf(q21));
 
         // TODO: Replace with actual activity
         Intent intent = new Intent(getActivity(), MainActivity.class);

@@ -1,8 +1,10 @@
 package com.example.planetze.ui.form;
 
 import android.widget.Button;
+
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentPersonalVehicleBinding;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,8 +34,8 @@ public class PersonalVehicleFragment extends BaseFormFragment<FragmentPersonalVe
         String[] options1 = {"", getString(R.string.gasoline), getString(R.string.diesel), getString(R.string.hybrid), getString(R.string.electric), getString(R.string.dunno)};
         String[] options2 = {"", getString(R.string.dist1), getString(R.string.dist2), getString(R.string.dist3), getString(R.string.dist4), getString(R.string.dist5), getString(R.string.dist6)};
 
-        db.child("initial-data").child(uid).child("q2").setValue(Arrays.asList(options1).indexOf(q2));
-        db.child("initial-data").child(uid).child("q3").setValue(Arrays.asList(options2).indexOf(q3));
+        db.child("q2").setValue(Arrays.asList(options1).indexOf(q2));
+        db.child("q3").setValue(Arrays.asList(options2).indexOf(q3));
         loadFragment(new PublicTransportFragment());
     }
 
