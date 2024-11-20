@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-51:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-4\\6abab9d4dfd0fbf6070b3b6af21f5f44\\transformed\\material-1.12.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\911286159e7a03ff5d5531deded5695c\\transformed\\material-1.12.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

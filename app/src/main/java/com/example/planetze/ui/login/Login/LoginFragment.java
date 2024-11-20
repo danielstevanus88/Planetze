@@ -140,6 +140,7 @@ public class LoginFragment extends Fragment implements Contract.View{
 
                         Intent intent = new Intent(getActivity(), FormActivity.class);
                         startActivity(intent);
+                        getActivity().finish();
                     } else {
                         Toast.makeText(getActivity(), "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
                     }

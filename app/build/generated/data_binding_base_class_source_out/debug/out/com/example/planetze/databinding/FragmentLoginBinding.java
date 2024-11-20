@@ -22,9 +22,6 @@ public final class FragmentLoginBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final FrameLayout LoginLayout;
-
-  @NonNull
   public final Button buttonLogin;
 
   @NonNull
@@ -34,16 +31,24 @@ public final class FragmentLoginBinding implements ViewBinding {
   public final EditText editTextPasswordLogin;
 
   @NonNull
+  public final TextView textButtonBack;
+
+  @NonNull
+  public final TextView textButtonResetPassword;
+
+  @NonNull
   public final TextView textLoginTitle;
 
-  private FragmentLoginBinding(@NonNull FrameLayout rootView, @NonNull FrameLayout LoginLayout,
-      @NonNull Button buttonLogin, @NonNull EditText editTextEmailLogin,
-      @NonNull EditText editTextPasswordLogin, @NonNull TextView textLoginTitle) {
+  private FragmentLoginBinding(@NonNull FrameLayout rootView, @NonNull Button buttonLogin,
+      @NonNull EditText editTextEmailLogin, @NonNull EditText editTextPasswordLogin,
+      @NonNull TextView textButtonBack, @NonNull TextView textButtonResetPassword,
+      @NonNull TextView textLoginTitle) {
     this.rootView = rootView;
-    this.LoginLayout = LoginLayout;
     this.buttonLogin = buttonLogin;
     this.editTextEmailLogin = editTextEmailLogin;
     this.editTextPasswordLogin = editTextPasswordLogin;
+    this.textButtonBack = textButtonBack;
+    this.textButtonResetPassword = textButtonResetPassword;
     this.textLoginTitle = textLoginTitle;
   }
 
@@ -74,8 +79,6 @@ public final class FragmentLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      FrameLayout LoginLayout = (FrameLayout) rootView;
-
       id = R.id.buttonLogin;
       Button buttonLogin = ViewBindings.findChildViewById(rootView, id);
       if (buttonLogin == null) {
@@ -94,14 +97,26 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textButtonBack;
+      TextView textButtonBack = ViewBindings.findChildViewById(rootView, id);
+      if (textButtonBack == null) {
+        break missingId;
+      }
+
+      id = R.id.textButtonResetPassword;
+      TextView textButtonResetPassword = ViewBindings.findChildViewById(rootView, id);
+      if (textButtonResetPassword == null) {
+        break missingId;
+      }
+
       id = R.id.textLoginTitle;
       TextView textLoginTitle = ViewBindings.findChildViewById(rootView, id);
       if (textLoginTitle == null) {
         break missingId;
       }
 
-      return new FragmentLoginBinding((FrameLayout) rootView, LoginLayout, buttonLogin,
-          editTextEmailLogin, editTextPasswordLogin, textLoginTitle);
+      return new FragmentLoginBinding((FrameLayout) rootView, buttonLogin, editTextEmailLogin,
+          editTextPasswordLogin, textButtonBack, textButtonResetPassword, textLoginTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

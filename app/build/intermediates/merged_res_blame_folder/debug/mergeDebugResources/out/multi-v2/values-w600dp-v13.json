@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-51:/values-w600dp-v13/values-w600dp-v13.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\Planetze\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
+                    "source": "D:\\Android\\Planetze\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

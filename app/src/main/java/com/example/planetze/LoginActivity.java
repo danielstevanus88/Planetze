@@ -47,10 +47,14 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
                     task -> {
                         if (task.isSuccessful()) {
                             DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
-                            loginManager.setCurrentUser(dataSnapshot.getValue(User.class));
+
+                            User currentUser = dataSnapshot.getValue(User.class);
+                            loginManager.setCurrentUser(currentUser);
 
                             Intent intent = new Intent(this, FormActivity.class);
                             startActivity(intent);
+                            finish();
+
                         } else {
                             Toast.makeText(this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
                         }
@@ -58,7 +62,9 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
             );
         }
         else {
+
             showFragment(new LoginOptionFragment());
+
         }
     }
 

@@ -1,21 +1,16 @@
 package com.example.planetze;
 
-import android.content.Intent;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-import android.view.View;
 
 import com.example.planetze.classes.LoginManager;
-import com.example.planetze.ui.home.CarbonInfoFragment;
-import com.example.planetze.ui.login.LoginFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -64,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 loginManager.logout();
+
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
                 finish();
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
