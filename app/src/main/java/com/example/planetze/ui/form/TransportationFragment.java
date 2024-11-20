@@ -24,15 +24,19 @@ public class TransportationFragment extends BaseFormFragment<FragmentTransportat
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.yes), getString(R.string.no)};
 
-        db.child("q1").setValue(Arrays.asList(options).indexOf(q1));
+        currentUser.addQuestionnaireAnswer("q1", Arrays.asList(options).indexOf(q1));
 
         if (q1.equals(options[1])) {
             loadFragment(new PersonalVehicleFragment());
         } else if (q1.equals(options[2])) {
-            db.child("q2").removeValue();
-            db.child("q3").removeValue();
+            currentUser.removeQuestionnaireAnswer("q2");
+            currentUser.removeQuestionnaireAnswer("q3");
             loadFragment(new PublicTransportFragment());
         }
+
+
+        databaseManager.add(currentUser);
+
     }
 
     @Override

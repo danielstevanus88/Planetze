@@ -44,11 +44,11 @@ public class EnergyFragment extends BaseFormFragment<FragmentEnergyBinding> { //
         String[] options2 = {"", getString(R.string.bill1), getString(R.string.bill2), getString(R.string.bill3), getString(R.string.bill4), getString(R.string.bill5)};
         String[] options3 = {"", getString(R.string.primarily), getString(R.string.partially), getString(R.string.no)};
 
-        db.child("q14").setValue(Arrays.asList(options1).indexOf(q14));
-        db.child("q15").setValue(Arrays.asList(options2).indexOf(q15));
-        db.child("q16").setValue(Arrays.asList(options1).indexOf(q16));
-        db.child("q17").setValue(Arrays.asList(options3).indexOf(q17));
-
+        currentUser.addQuestionnaireAnswer("q14",Arrays.asList(options1).indexOf(q14));
+        currentUser.addQuestionnaireAnswer("q15",Arrays.asList(options2).indexOf(q15));
+        currentUser.addQuestionnaireAnswer("q16",Arrays.asList(options1).indexOf(q16));
+        currentUser.addQuestionnaireAnswer("q17",Arrays.asList(options3).indexOf(q17));
+        databaseManager.add(currentUser);
         loadFragment(new ConsumptionFragment());
     }
 

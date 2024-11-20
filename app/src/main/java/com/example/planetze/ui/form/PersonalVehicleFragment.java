@@ -34,8 +34,11 @@ public class PersonalVehicleFragment extends BaseFormFragment<FragmentPersonalVe
         String[] options1 = {"", getString(R.string.gasoline), getString(R.string.diesel), getString(R.string.hybrid), getString(R.string.electric), getString(R.string.dunno)};
         String[] options2 = {"", getString(R.string.dist1), getString(R.string.dist2), getString(R.string.dist3), getString(R.string.dist4), getString(R.string.dist5), getString(R.string.dist6)};
 
-        db.child("q2").setValue(Arrays.asList(options1).indexOf(q2));
-        db.child("q3").setValue(Arrays.asList(options2).indexOf(q3));
+
+        currentUser.addQuestionnaireAnswer("q2",Arrays.asList(options1).indexOf(q2));
+        currentUser.addQuestionnaireAnswer("q3",Arrays.asList(options2).indexOf(q3));
+
+        databaseManager.add(currentUser);
         loadFragment(new PublicTransportFragment());
     }
 

@@ -14,7 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewbinding.ViewBinding;
 
 import com.example.planetze.R;
+import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
+import com.example.planetze.classes.UserDatabaseManager;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,8 +32,11 @@ public abstract class BaseFormFragment<VB extends ViewBinding> extends Fragment 
 
     protected VB binding;
     protected String uid = LoginManager.getInstance().getCurrentUser().getUid();
-    protected DatabaseReference db = FirebaseDatabase.getInstance().getReference("initial-data").child(uid);
 
+
+    protected DatabaseManager databaseManager = UserDatabaseManager.getInstance();
+    protected LoginManager loginManager = LoginManager.getInstance();
+    protected DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("initial-data");
     protected abstract void setupClickListeners();
 
     protected abstract void handleNextButtonClick();
@@ -38,12 +45,14 @@ public abstract class BaseFormFragment<VB extends ViewBinding> extends Fragment 
 
     protected abstract boolean isInputInvalid();
 
+    protected User currentUser;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = inflateBinding(inflater, container);
         View view = binding.getRoot();
         setupClickListeners();
+        currentUser = LoginManager.getCurrentUser();
         return view;
     }
 

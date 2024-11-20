@@ -26,17 +26,19 @@ public class FoodFragment extends BaseFormFragment<FragmentFoodBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.vegetarian), getString(R.string.vegan), getString(R.string.pescatarian), getString(R.string.meat_based)};
 
-        db.child("q8").setValue(Arrays.asList(options).indexOf(q8));
+        currentUser.addQuestionnaireAnswer("q8",Arrays.asList(options).indexOf(q8));
 
         if (q8.equals(getString(R.string.meat_based))) {
             loadFragment(new MeatFragment());
         } else {
-            db.child("q9a").removeValue();
-            db.child("q9b").removeValue();
-            db.child("q9c").removeValue();
-            db.child("q9d").removeValue();
+            currentUser.removeQuestionnaireAnswer("q9a");
+            currentUser.removeQuestionnaireAnswer("q9b");
+            currentUser.removeQuestionnaireAnswer("q9c");
+            currentUser.removeQuestionnaireAnswer("q9d");
             loadFragment(new WasteFragment());
         }
+
+        databaseManager.add(currentUser);
     }
 
     @Override

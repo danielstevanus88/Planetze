@@ -42,10 +42,12 @@ public class ConsumptionFragment extends BaseFormFragment<FragmentConsumptionBin
         String[] options3 = {"", getString(R.string.none), getString(R.string._1), getString(R.string._2), getString(R.string._3_or_more)};
         String[] options4 = {"", getString(R.string.never), getString(R.string.occasion), getString(R.string.frequent), getString(R.string.always)};
 
-        db.child("q18").setValue(Arrays.asList(options1).indexOf(q18));
-        db.child("q19").setValue(Arrays.asList(options2).indexOf(q19));
-        db.child("q20").setValue(Arrays.asList(options3).indexOf(q20));
-        db.child("q21").setValue(Arrays.asList(options4).indexOf(q21));
+        currentUser.addQuestionnaireAnswer("q18",Arrays.asList(options1).indexOf(q18));
+        currentUser.addQuestionnaireAnswer("q19",Arrays.asList(options2).indexOf(q19));
+        currentUser.addQuestionnaireAnswer("q20",Arrays.asList(options3).indexOf(q20));
+        currentUser.addQuestionnaireAnswer("q21",Arrays.asList(options4).indexOf(q21));
+
+        databaseManager.add(currentUser);
 
         // TODO: Replace with actual activity
         Intent intent = new Intent(getActivity(), MainActivity.class);

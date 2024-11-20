@@ -110,7 +110,7 @@ public class RegisterFragment extends Fragment {
 
                     loginManager.register(email, password).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = loginManager.getCurrentUser();
+                            FirebaseUser user = loginManager.getCurrentFirebaseUser();
                             if(user != null){
                                 User newUser = new User(user.getUid(), name, email);
                                 userDatabaseManager.add(newUser).addOnCompleteListener(task1 -> {
