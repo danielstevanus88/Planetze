@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.planetze.FormActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
@@ -122,7 +123,7 @@ public class RegisterFragment extends Fragment {
                                 userDatabaseManager.add(newUser).addOnCompleteListener(task1 -> {
                                     if(task1.isSuccessful()){
                                         // Redirect to main activity
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                                        Intent intent = new Intent(getActivity(), FormActivity.class);
                                         startActivity(intent);
                                     }else{
                                         // Show error message

@@ -13,10 +13,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
+import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.ui.login.IOnSelectionListener;
 import com.example.planetze.ui.login.Login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
-import com.example.planetze.ui.login.RegisterFragment;
+import com.example.planetze.ui.login.Register.RegisterFragment;
+import com.example.planetze.ui.login.ResetPassword.ResetPasswordFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
