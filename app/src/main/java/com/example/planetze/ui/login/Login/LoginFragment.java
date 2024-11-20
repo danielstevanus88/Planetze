@@ -9,10 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.planetze.FormActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
+import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
+import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.ui.login.IOnSelectionListener;
+import com.google.firebase.database.DataSnapshot;
 
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +39,7 @@ public class LoginFragment extends Fragment implements Contract.View{
     // MVP - Presenter
     private Contract.Presenter presenter;
 
+    private DatabaseManager databaseManager = UserDatabaseManager.getInstance();
     // Current View (This part is necessary as LoginFragment is a Fragment not a class)
     // So that we can findViewById through the view methods.
     private View view;
@@ -125,8 +131,20 @@ public class LoginFragment extends Fragment implements Contract.View{
 
     @Override
     public void onLoginSuccess(){
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
+        databaseManager =  UserDatabaseManager.getInstance();
+        databaseManager.find(loginManager.getCurrentUserUid()).addOnCompleteListener(
+                task -> {
+                    if (task.isSuccessful()) {
+                        DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
+                        loginManager.setCurrentUser(dataSnapshot.getValue(User.class));
+
+                        Intent intent = new Intent(getActivity(), FormActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getActivity(), "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
     }
 
     @Override

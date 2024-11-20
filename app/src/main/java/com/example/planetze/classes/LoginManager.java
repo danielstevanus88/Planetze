@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginManager implements Contract.Model{
     private static LoginManager loginManager;
     private static FirebaseAuth mAuth;
-
+    private static User currentUser;
     private LoginManager(){
         mAuth = FirebaseAuth.getInstance();
     }
@@ -39,7 +39,19 @@ public class LoginManager implements Contract.Model{
         mAuth.signOut();
     }
 
-    public FirebaseUser getCurrentUser(){
+    public String getCurrentUserUid(){
+        return mAuth.getUid();
+    }
+
+    public static void setCurrentUser(User user){
+        currentUser = user;
+    }
+
+    public static User getCurrentUser(){
+        return currentUser;
+    }
+
+    public static FirebaseUser getCurrentFirebaseUser(){
         return mAuth.getCurrentUser();
     }
 
