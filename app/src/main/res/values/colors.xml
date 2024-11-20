@@ -16,4 +16,8 @@
     <color name="accentColor">#d8dbe2</color>
     <color name="darkTextColor">#373f51</color>
     <color name="alternativeDarkColor">#1b1b1e</color>
+
+    <color name="green1">#0099992E</color>
+    <color name="green2">#0099996B</color>
+    <color name="green3">#00999991</color>
 </resources>

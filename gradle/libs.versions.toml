@@ -1,5 +1,6 @@
 [versions]
-agp = "8.5.1"
+agp = "8.5.2"
+firebaseBom = "33.5.1"
 coreSplashscreen = "1.2.0-alpha02"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -17,10 +18,15 @@ firebaseAuth = "23.1.0"
 annotation = "1.6.0"
 activity = "1.9.1"
 firebaseDatabase = "21.0.0"
+firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 firebase-core = { module = "com.google.firebase:firebase-core" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-database = { module = "com.google.firebase:firebase-database" }
+google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -36,6 +42,7 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

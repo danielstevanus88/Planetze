@@ -2,6 +2,7 @@ package com.example.planetze;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,17 +11,19 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.ui.login.IOnSelectionListener;
 import com.example.planetze.ui.login.Login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
-import com.example.planetze.ui.login.Register.RegisterFragment;
-import com.example.planetze.ui.login.ResetPassword.ResetPasswordFragment;
+import com.example.planetze.ui.login.RegisterFragment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 public class LoginActivity extends AppCompatActivity implements IOnSelectionListener {
 
     private LoginManager loginManager;
-
+    private DatabaseManager databaseManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +37,26 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
 
         loginManager = LoginManager.getInstance();
 
-        if (loginManager.getCurrentUser() != null) {
+        if (loginManager.getCurrentFirebaseUser() != null) {
             // Redirect to main activity
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+            databaseManager =  UserDatabaseManager.getInstance();
+            databaseManager.find(loginManager.getCurrentUserUid()).addOnCompleteListener(
+                    task -> {
+                        if (task.isSuccessful()) {
+                            DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
+                            loginManager.setCurrentUser(dataSnapshot.getValue(User.class));
 
-        showFragment(new LoginOptionFragment());
+                            Intent intent = new Intent(this, FormActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
+        }
+        else {
+            showFragment(new LoginOptionFragment());
+        }
     }
 
     // Display the login fragment inside VerticalLayout
