@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q2"
+                    style="@style/FormQuestion"
+                    android:text="@string/q2" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q2_option1"
+                    style="@style/FormOption"
+                    android:text="@string/gasoline" />
+
+                <Button
+                    android:id="@+id/q2_option2"
+                    style="@style/FormOption"
+                    android:text="@string/diesel" />
+
+                <Button
+                    android:id="@+id/q2_option3"
+                    style="@style/FormOption"
+                    android:text="@string/hybrid" />
+
+                <Button
+                    android:id="@+id/q2_option4"
+                    style="@style/FormOption"
+                    android:text="@string/electric" />
+
+                <Button
+                    android:id="@+id/q2_option5"
+                    style="@style/FormOption"
+                    android:text="@string/dunno" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q3"
+                    style="@style/FormQuestion"
+                    android:text="@string/q3" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q3_option1"
+                    style="@style/FormOption"
+                    android:text="@string/dist1" />
+
+                <Button
+                    android:id="@+id/q3_option2"
+                    style="@style/FormOption"
+                    android:text="@string/dist2" />
+
+                <Button
+                    android:id="@+id/q3_option3"
+                    style="@style/FormOption"
+                    android:text="@string/dist3" />
+
+                <Button
+                    android:id="@+id/q3_option4"
+                    style="@style/FormOption"
+                    android:text="@string/dist4" />
+
+                <Button
+                    android:id="@+id/q3_option5"
+                    style="@style/FormOption"
+                    android:text="@string/dist5" />
+
+                <Button
+                    android:id="@+id/q3_option6"
+                    style="@style/FormOption"
+                    android:text="@string/dist6" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/back"
+                    style="@style/FormButton"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/next"
+                    style="@style/FormButton"
+                    android:text="@string/next" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
