@@ -37,18 +37,22 @@ public final class FragmentRegisterBinding implements ViewBinding {
   public final EditText editTextPasswordRegister;
 
   @NonNull
+  public final TextView textButtonBack;
+
+  @NonNull
   public final TextView textRegisterTitle;
 
   private FragmentRegisterBinding(@NonNull FrameLayout rootView, @NonNull Button buttonRegister,
       @NonNull EditText editTextConfirmPasswordRegister, @NonNull EditText editTextEmailRegister,
       @NonNull EditText editTextNameRegister, @NonNull EditText editTextPasswordRegister,
-      @NonNull TextView textRegisterTitle) {
+      @NonNull TextView textButtonBack, @NonNull TextView textRegisterTitle) {
     this.rootView = rootView;
     this.buttonRegister = buttonRegister;
     this.editTextConfirmPasswordRegister = editTextConfirmPasswordRegister;
     this.editTextEmailRegister = editTextEmailRegister;
     this.editTextNameRegister = editTextNameRegister;
     this.editTextPasswordRegister = editTextPasswordRegister;
+    this.textButtonBack = textButtonBack;
     this.textRegisterTitle = textRegisterTitle;
   }
 
@@ -109,6 +113,12 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textButtonBack;
+      TextView textButtonBack = ViewBindings.findChildViewById(rootView, id);
+      if (textButtonBack == null) {
+        break missingId;
+      }
+
       id = R.id.textRegisterTitle;
       TextView textRegisterTitle = ViewBindings.findChildViewById(rootView, id);
       if (textRegisterTitle == null) {
@@ -117,7 +127,7 @@ public final class FragmentRegisterBinding implements ViewBinding {
 
       return new FragmentRegisterBinding((FrameLayout) rootView, buttonRegister,
           editTextConfirmPasswordRegister, editTextEmailRegister, editTextNameRegister,
-          editTextPasswordRegister, textRegisterTitle);
+          editTextPasswordRegister, textButtonBack, textRegisterTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

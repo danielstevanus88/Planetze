@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,20 +22,95 @@ public final class FragmentCarbonInfoBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final Button acknowledgeButton;
+  public final Button buttonAcknowledge;
+
+  @NonNull
+  public final ImageView imageView1;
+
+  @NonNull
+  public final ImageView imageView2;
+
+  @NonNull
+  public final ImageView imageView3;
+
+  @NonNull
+  public final ImageView imageView4;
+
+  @NonNull
+  public final TextView infoHeading1;
+
+  @NonNull
+  public final TextView infoHeading2;
+
+  @NonNull
+  public final TextView infoHeading3;
+
+  @NonNull
+  public final TextView infoHeading4;
 
   @NonNull
   public final TextView infoText;
 
   @NonNull
-  public final TextView infotitle;
+  public final TextView textView11;
+
+  @NonNull
+  public final TextView textView12;
+
+  @NonNull
+  public final TextView textView13;
+
+  @NonNull
+  public final TextView textView3;
+
+  @NonNull
+  public final TextView textView4;
+
+  @NonNull
+  public final TextView textView5;
+
+  @NonNull
+  public final TextView textView6;
+
+  @NonNull
+  public final TextView textView7;
+
+  @NonNull
+  public final TextView textView8;
+
+  @NonNull
+  public final TextView textView9;
 
   private FragmentCarbonInfoBinding(@NonNull FrameLayout rootView,
-      @NonNull Button acknowledgeButton, @NonNull TextView infoText, @NonNull TextView infotitle) {
+      @NonNull Button buttonAcknowledge, @NonNull ImageView imageView1,
+      @NonNull ImageView imageView2, @NonNull ImageView imageView3, @NonNull ImageView imageView4,
+      @NonNull TextView infoHeading1, @NonNull TextView infoHeading2,
+      @NonNull TextView infoHeading3, @NonNull TextView infoHeading4, @NonNull TextView infoText,
+      @NonNull TextView textView11, @NonNull TextView textView12, @NonNull TextView textView13,
+      @NonNull TextView textView3, @NonNull TextView textView4, @NonNull TextView textView5,
+      @NonNull TextView textView6, @NonNull TextView textView7, @NonNull TextView textView8,
+      @NonNull TextView textView9) {
     this.rootView = rootView;
-    this.acknowledgeButton = acknowledgeButton;
+    this.buttonAcknowledge = buttonAcknowledge;
+    this.imageView1 = imageView1;
+    this.imageView2 = imageView2;
+    this.imageView3 = imageView3;
+    this.imageView4 = imageView4;
+    this.infoHeading1 = infoHeading1;
+    this.infoHeading2 = infoHeading2;
+    this.infoHeading3 = infoHeading3;
+    this.infoHeading4 = infoHeading4;
     this.infoText = infoText;
-    this.infotitle = infotitle;
+    this.textView11 = textView11;
+    this.textView12 = textView12;
+    this.textView13 = textView13;
+    this.textView3 = textView3;
+    this.textView4 = textView4;
+    this.textView5 = textView5;
+    this.textView6 = textView6;
+    this.textView7 = textView7;
+    this.textView8 = textView8;
+    this.textView9 = textView9;
   }
 
   @Override
@@ -64,9 +140,57 @@ public final class FragmentCarbonInfoBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.acknowledgeButton;
-      Button acknowledgeButton = ViewBindings.findChildViewById(rootView, id);
-      if (acknowledgeButton == null) {
+      id = R.id.buttonAcknowledge;
+      Button buttonAcknowledge = ViewBindings.findChildViewById(rootView, id);
+      if (buttonAcknowledge == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView1;
+      ImageView imageView1 = ViewBindings.findChildViewById(rootView, id);
+      if (imageView1 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView2;
+      ImageView imageView2 = ViewBindings.findChildViewById(rootView, id);
+      if (imageView2 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView3;
+      ImageView imageView3 = ViewBindings.findChildViewById(rootView, id);
+      if (imageView3 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView4;
+      ImageView imageView4 = ViewBindings.findChildViewById(rootView, id);
+      if (imageView4 == null) {
+        break missingId;
+      }
+
+      id = R.id.infoHeading1;
+      TextView infoHeading1 = ViewBindings.findChildViewById(rootView, id);
+      if (infoHeading1 == null) {
+        break missingId;
+      }
+
+      id = R.id.infoHeading2;
+      TextView infoHeading2 = ViewBindings.findChildViewById(rootView, id);
+      if (infoHeading2 == null) {
+        break missingId;
+      }
+
+      id = R.id.infoHeading3;
+      TextView infoHeading3 = ViewBindings.findChildViewById(rootView, id);
+      if (infoHeading3 == null) {
+        break missingId;
+      }
+
+      id = R.id.infoHeading4;
+      TextView infoHeading4 = ViewBindings.findChildViewById(rootView, id);
+      if (infoHeading4 == null) {
         break missingId;
       }
 
@@ -76,14 +200,70 @@ public final class FragmentCarbonInfoBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.infotitle;
-      TextView infotitle = ViewBindings.findChildViewById(rootView, id);
-      if (infotitle == null) {
+      id = R.id.textView11;
+      TextView textView11 = ViewBindings.findChildViewById(rootView, id);
+      if (textView11 == null) {
         break missingId;
       }
 
-      return new FragmentCarbonInfoBinding((FrameLayout) rootView, acknowledgeButton, infoText,
-          infotitle);
+      id = R.id.textView12;
+      TextView textView12 = ViewBindings.findChildViewById(rootView, id);
+      if (textView12 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView13;
+      TextView textView13 = ViewBindings.findChildViewById(rootView, id);
+      if (textView13 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView3;
+      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
+      if (textView3 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView4;
+      TextView textView4 = ViewBindings.findChildViewById(rootView, id);
+      if (textView4 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView5;
+      TextView textView5 = ViewBindings.findChildViewById(rootView, id);
+      if (textView5 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView6;
+      TextView textView6 = ViewBindings.findChildViewById(rootView, id);
+      if (textView6 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView7;
+      TextView textView7 = ViewBindings.findChildViewById(rootView, id);
+      if (textView7 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView8;
+      TextView textView8 = ViewBindings.findChildViewById(rootView, id);
+      if (textView8 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView9;
+      TextView textView9 = ViewBindings.findChildViewById(rootView, id);
+      if (textView9 == null) {
+        break missingId;
+      }
+
+      return new FragmentCarbonInfoBinding((FrameLayout) rootView, buttonAcknowledge, imageView1,
+          imageView2, imageView3, imageView4, infoHeading1, infoHeading2, infoHeading3,
+          infoHeading4, infoText, textView11, textView12, textView13, textView3, textView4,
+          textView5, textView6, textView7, textView8, textView9);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

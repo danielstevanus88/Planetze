@@ -42,4 +42,7 @@ public class User {
         this.country = country;
     }
 
+    public boolean hasFilledQuestionnaires(){
+        return this.questionnaireAnswers.get("q21") != null;
+    }
 }

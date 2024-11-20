@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -25,11 +26,16 @@ public final class FragmentLoginOptionBinding implements ViewBinding {
   @NonNull
   public final Button buttonRegisterOption;
 
+  @NonNull
+  public final TextView textView;
+
   private FragmentLoginOptionBinding(@NonNull FrameLayout rootView,
-      @NonNull Button buttonLoginOption, @NonNull Button buttonRegisterOption) {
+      @NonNull Button buttonLoginOption, @NonNull Button buttonRegisterOption,
+      @NonNull TextView textView) {
     this.rootView = rootView;
     this.buttonLoginOption = buttonLoginOption;
     this.buttonRegisterOption = buttonRegisterOption;
+    this.textView = textView;
   }
 
   @Override
@@ -71,8 +77,14 @@ public final class FragmentLoginOptionBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
       return new FragmentLoginOptionBinding((FrameLayout) rootView, buttonLoginOption,
-          buttonRegisterOption);
+          buttonRegisterOption, textView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

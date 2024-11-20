@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.classes.GlobalAverages;
+import com.example.planetze.classes.LoginManager;
+import com.example.planetze.ui.form.CarbonInfoFragment;
 import com.example.planetze.ui.form.CountryFragment;
 
 public class FormActivity extends AppCompatActivity {
@@ -25,8 +28,17 @@ public class FormActivity extends AppCompatActivity {
             return insets;
         });
 
+
         GlobalAverages.initialize(this);
-        showFragment(new CountryFragment());
+
+
+        if(LoginManager.getCurrentUser().hasFilledQuestionnaires()){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else{
+            showFragment(new CarbonInfoFragment());
+        }
     }
 
     public void showFragment(Fragment fragment) {
