@@ -6,11 +6,16 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import android.view.View;
 
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.ui.home.CarbonInfoFragment;
+import com.example.planetze.ui.login.LoginFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
