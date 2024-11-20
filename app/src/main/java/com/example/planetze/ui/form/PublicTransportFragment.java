@@ -32,8 +32,9 @@ public class PublicTransportFragment extends BaseFormFragment<FragmentPublicTran
         String[] options1 = {"", getString(R.string.never), getString(R.string.occasionally), getString(R.string.frequently), getString(R.string.always)};
         String[] options2 = {"", getString(R.string.time1), getString(R.string.time2), getString(R.string.time3), getString(R.string.time4), getString(R.string.time5)};
 
-        db.child("q4").setValue(Arrays.asList(options1).indexOf(q4));
-        db.child("q5").setValue(Arrays.asList(options2).indexOf(q5));
+        currentUser.addQuestionnaireAnswer("q4",Arrays.asList(options1).indexOf(q4));
+        currentUser.addQuestionnaireAnswer("q5",Arrays.asList(options2).indexOf(q5));
+        databaseManager.add(currentUser);
         loadFragment(new AirTravelFragment());
     }
 

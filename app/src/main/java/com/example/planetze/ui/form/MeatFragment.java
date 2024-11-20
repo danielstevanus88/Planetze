@@ -38,10 +38,12 @@ public class MeatFragment extends BaseFormFragment<FragmentMeatBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.daily), getString(R.string.frequently), getString(R.string.occasionally), getString(R.string.never)};
 
-        db.child("q9a").setValue(Arrays.asList(options).indexOf(q9a));
-        db.child("q9b").setValue(Arrays.asList(options).indexOf(q9b));
-        db.child("q9c").setValue(Arrays.asList(options).indexOf(q9c));
-        db.child("q9d").setValue(Arrays.asList(options).indexOf(q9d));
+        currentUser.addQuestionnaireAnswer("q9a",Arrays.asList(options).indexOf(q9a));
+        currentUser.addQuestionnaireAnswer("q9b",Arrays.asList(options).indexOf(q9b));
+        currentUser.addQuestionnaireAnswer("q9c",Arrays.asList(options).indexOf(q9c));
+        currentUser.addQuestionnaireAnswer("q9d",Arrays.asList(options).indexOf(q9d));
+
+        databaseManager.add(currentUser);
 
         loadFragment(new WasteFragment());
     }

@@ -26,7 +26,8 @@ public class WasteFragment extends BaseFormFragment<FragmentWasteBinding> {
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.never), getString(R.string.rarely), getString(R.string.occasion), getString(R.string.frequent)};
 
-        db.child("q10").setValue(Arrays.asList(options).indexOf(q10));
+        currentUser.addQuestionnaireAnswer("q10",Arrays.asList(options).indexOf(q10));
+        databaseManager.add(currentUser);
 
         loadFragment(new HousingFragment());
     }

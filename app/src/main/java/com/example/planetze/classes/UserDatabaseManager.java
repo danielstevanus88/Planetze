@@ -1,6 +1,7 @@
 package com.example.planetze.classes;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 public class UserDatabaseManager implements DatabaseManager<User>{
@@ -22,12 +23,16 @@ public class UserDatabaseManager implements DatabaseManager<User>{
     }
 
     @Override
-    public Task<Void> delete(int id) {
+    public Task<Void> delete(String uid) {
         return null;
     }
 
-    @Override
-    public Task<Void> find(int id) {
-        return null;
+
+    public Task<DataSnapshot> find(String uid) {
+        return dbRef.child(uid).get();
+    }
+
+    public DatabaseReference getReference(String uid){
+        return dbRef.child(uid);
     }
 }

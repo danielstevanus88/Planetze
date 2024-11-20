@@ -1,8 +1,11 @@
 package com.example.planetze.ui.form;
 
+
+
 import android.widget.Button;
 
 import com.example.planetze.R;
+import com.example.planetze.classes.LoginManager;
 import com.example.planetze.databinding.FragmentAirTravelBinding;
 
 import java.util.Arrays;
@@ -32,8 +35,9 @@ public class AirTravelFragment extends BaseFormFragment<FragmentAirTravelBinding
     protected void handleNextButtonClick() {
         String[] options = {"", getString(R.string.none), getString(R.string.flights1), getString(R.string.flights2), getString(R.string.flights3), getString(R.string.flights4)};
 
-        db.child("q6").setValue(Arrays.asList(options).indexOf(q6));
-        db.child("q7").setValue(Arrays.asList(options).indexOf(q7));
+        currentUser.addQuestionnaireAnswer("q6", Arrays.asList(options).indexOf(q6));
+        currentUser.addQuestionnaireAnswer("q7", Arrays.asList(options).indexOf(q7));
+        databaseManager.add(currentUser);
         loadFragment(new FoodFragment());
     }
 

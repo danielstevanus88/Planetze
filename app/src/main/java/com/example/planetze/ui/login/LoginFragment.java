@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.planetze.FormActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
@@ -81,7 +82,7 @@ public class LoginFragment extends Fragment {
                 loginManager.login(emailText, passwordText).addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         // Redirect to main activity
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        Intent intent = new Intent(getActivity(), FormActivity.class);
                         startActivity(intent);
                     }else{
                         // Show error message

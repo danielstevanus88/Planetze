@@ -41,7 +41,9 @@ public class CountryFragment extends BaseFormFragment<FragmentCountryBinding> {
 
     @Override
     protected void handleNextButtonClick() {
-        db.child("country").setValue(country);
+        currentUser.setCountry(country);
+        Toast.makeText(getActivity(), "Country is now " + country , Toast.LENGTH_SHORT).show();
+        databaseManager.add(currentUser);
         loadFragment(new TransportationFragment());
     }
 
