@@ -1,11 +1,13 @@
 package com.example.planetze.classes;
 
+import com.example.planetze.ui.login.Login.Contract;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginManager {
+public class LoginManager implements Contract.Model{
     private static LoginManager loginManager;
     private static FirebaseAuth mAuth;
     private static User currentUser;
@@ -52,7 +54,5 @@ public class LoginManager {
     public static FirebaseUser getCurrentFirebaseUser(){
         return mAuth.getCurrentUser();
     }
-
-
 
 }

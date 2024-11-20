@@ -1,6 +1,7 @@
 package com.example.planetze.ui.login;
 
 public interface IOnSelectionListener {
-    public void onLoginOptionClick();
-    public void onRegisterOptionClick();
+    public void showLoginForm();
+    public void showRegisterForm();
+    public void showResetPasswordForm();
 }

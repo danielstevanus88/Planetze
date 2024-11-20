@@ -13,10 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
-import com.example.planetze.classes.User;
-import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.ui.login.IOnSelectionListener;
-import com.example.planetze.ui.login.LoginFragment;
+import com.example.planetze.ui.login.Login.LoginFragment;
 import com.example.planetze.ui.login.LoginOptionFragment;
 import com.example.planetze.ui.login.RegisterFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -69,18 +67,30 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     }
 
     @Override
-    public void onLoginOptionClick() {
+    public void showLoginForm() {
         showFragment(new LoginFragment());
     }
 
     @Override
-    public void onRegisterOptionClick() {
+    public void showRegisterForm() {
         showFragment(new RegisterFragment());
     }
-    
+
+    @Override
+    public void showResetPasswordForm() {
+        showFragment(new ResetPasswordFragment());
+    }
+
     @Override
     public void onBackPressed() {
-        showFragment(new LoginOptionFragment());
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        if (currentFragment instanceof LoginFragment || 
+            currentFragment instanceof RegisterFragment || 
+            currentFragment instanceof ResetPasswordFragment) {
+            showFragment(new LoginOptionFragment());
+        } else {
+            super.onBackPressed();
+        }
     }
 
 
