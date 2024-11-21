@@ -4,7 +4,7 @@
             "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\911286159e7a03ff5d5531deded5695c\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\65b220973131d4fd10364e8d6ddedebf\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\61b070af0c3ddc5b7c59f2bc7b28a3de\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\cd112f5d62d3c6fae33b527c6c45a72a\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

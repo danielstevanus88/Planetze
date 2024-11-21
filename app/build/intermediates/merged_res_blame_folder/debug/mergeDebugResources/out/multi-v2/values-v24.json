@@ -4,7 +4,17 @@
             "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\911286159e7a03ff5d5531deded5695c\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\cd112f5d62d3c6fae33b527c6c45a72a\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\65b220973131d4fd10364e8d6ddedebf\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -20,16 +30,6 @@
                         "endLines": "4,5,6,7,10,13,16,19",
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\61b070af0c3ddc5b7c59f2bc7b28a3de\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
                     }
                 }
             ]

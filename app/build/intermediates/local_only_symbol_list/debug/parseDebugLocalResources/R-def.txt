@@ -41,6 +41,7 @@ drawable ic_notifications_black_24dp
 drawable icon_bg
 drawable logo
 drawable nav_button
+drawable planetze_calender
 drawable planetze_carbonfootprint
 drawable planetze_economic
 drawable planetze_healthimpact
@@ -56,6 +57,7 @@ id back
 id buttonAcknowledge
 id buttonLogin
 id buttonLoginOption
+id buttonPickDate
 id buttonRegister
 id buttonRegisterOption
 id buttonResetPassword
@@ -65,6 +67,7 @@ id country
 id description
 id earth_graphic
 id editTextConfirmPasswordRegister
+id editTextDate
 id editTextEmailLogin
 id editTextEmailRegister
 id editTextEmailResetPassword
@@ -72,6 +75,7 @@ id editTextNameRegister
 id editTextPasswordLogin
 id editTextPasswordRegister
 id fragmentContainer
+id imageButtonCalendar
 id imageView
 id imageView1
 id imageView2
@@ -219,12 +223,14 @@ id specify_location
 id textButtonBack
 id textButtonResetPassword
 id textLoginTitle
+id textPickADate
 id textRegisterTitle
 id textResetPasswordTitle
 id textView
 id textView11
 id textView12
 id textView13
+id textView2
 id textView3
 id textView4
 id textView5
@@ -245,6 +251,8 @@ layout fragment_carbon_info
 layout fragment_consumption
 layout fragment_country
 layout fragment_dashboard
+layout fragment_eco_gauge
+layout fragment_eco_tracker
 layout fragment_energy
 layout fragment_food
 layout fragment_home
