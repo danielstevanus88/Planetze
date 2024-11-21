@@ -1,5 +1,7 @@
 package com.example.planetze.classes.EcoTracker;
 
+import com.example.planetze.classes.User;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,4 +20,13 @@ public class ActivitiesCalculator {
         return totalEmission;
     }
 
+    public static int getNumberOfDay(Activities activities){
+        HashMap<Date, List<DailyActivity>> activitiesMap = activities.getActivities();
+        return activitiesMap.size();
+    }
+
+    public static double getDailyEmissionAverage(Activities activities){
+        return calculateTotalEmission(activities)/getNumberOfDay(activities);
+    }
+    
 }
