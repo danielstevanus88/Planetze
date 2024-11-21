@@ -1,11 +1,25 @@
 package com.example.planetze.classes.EcoTracker;
 
+import com.example.planetze.classes.LoginManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class Activities {
     public HashMap<Date, List<DailyActivity>> activities;
+
+    public Activities(){
+        this.activities = new HashMap<>();
+    }
+
+    public Activities(HashMap<Date, List<DailyActivity>> activities){
+        this.activities = activities;
+    }
+    public HashMap<Date, List<DailyActivity>> getActivities(){
+        return this.activities;
+    }
 
     public List<DailyActivity> getActivityByDate(Date date){
         return activities.get(date);
@@ -26,16 +40,25 @@ public class Activities {
         }
     }
 
-    public double calculateTotalEmissionByDate(Date date){
-        List<DailyActivity> dailyActivities = activities.get(date);
-        double totalEmission = 0;
-        for(DailyActivity activity : dailyActivities){
-            totalEmission += activity.getEmission();
+    public void removeActivity(UUID uuid){
+        for(Date date : activities.keySet()){
+            List<DailyActivity> listDailyActivities = activities.get(date);
+            for(DailyActivity activity : listDailyActivities){
+                if(activity.getUuid().equals(uuid)){
+                    listDailyActivities.remove(activity);
+                    if(listDailyActivities.isEmpty()){
+                        activities.remove(date);
+                    }
+                    return;
+                }
+            }
         }
-        return totalEmission;
+
     }
 
-    public double calculateTotalEmissionByDate(int day, int month, int year){
-        return calculateTotalEmissionByDate(new Date(day, month, year));
-    }
+
+
+
+
+
 }

@@ -15,7 +15,6 @@ public class User {
         this.email = email;
     }
 
-
     public String getEmail(){
         return email;
     }
@@ -26,6 +25,10 @@ public class User {
 
     public String getName(){
         return name;
+    }
+
+    public Activities getActivities() {
+        return activities;
     }
 
 }

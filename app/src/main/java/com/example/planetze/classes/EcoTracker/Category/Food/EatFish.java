@@ -9,6 +9,6 @@ public class EatFish extends ActivityFood{
 
     @Override
     public double getEmission() {
-        return this.numberOfServings * EcoTrackerEmissionConstant.EAT_BEEF_EMISSION_PER_SERVING;
+        return this.numberOfServings * EcoTrackerEmissionConstant.EAT_FISH_EMISSION_PER_SERVING;
     }
 }

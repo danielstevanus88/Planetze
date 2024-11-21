@@ -3,6 +3,7 @@ package com.example.planetze.ui.eco_tracker;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -31,6 +32,10 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
         LinearLayout buttonPickADate = findViewById(R.id.buttonPickDate);
+        EditText textPickADate = findViewById(R.id.editTextDate);
+        textPickADate.setKeyListener(null);
+
+
         buttonPickADate.setOnClickListener( event -> {
             // Open DatePickerDialog
             Calendar calendar = Calendar.getInstance();
@@ -43,12 +48,15 @@ public class CalendarActivity extends AppCompatActivity {
                     (view, selectedYear, selectedMonth, selectedDay) -> {
                         // Month is 0-based, add 1 to display correctly
                         String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        textPickADate.setText(selectedDate);
                         Toast.makeText(this, "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
                     },
                     year, month, day);
             datePickerDialog.show();
         });
-
+        textPickADate.setOnClickListener( event -> {
+            buttonPickADate.callOnClick();
+        });
 
     }
 }
