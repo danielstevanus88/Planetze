@@ -4,7 +4,7 @@
             "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\61b070af0c3ddc5b7c59f2bc7b28a3de\\transformed\\appcompat-1.7.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\asusm\\.gradle\\caches\\8.9\\transforms\\cd112f5d62d3c6fae33b527c6c45a72a\\transformed\\appcompat-1.7.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

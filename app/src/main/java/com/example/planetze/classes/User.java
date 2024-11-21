@@ -1,5 +1,7 @@
 package com.example.planetze.classes;
 
+import com.example.planetze.classes.EcoTracker.Activities;
+
 import java.util.HashMap;
 
 public class User {
@@ -8,6 +10,9 @@ public class User {
     public String email;
     public HashMap<String, Integer> questionnaireAnswers;
     public String country;
+
+    public Activities activities;
+
     public User(String uid, String name, String email){
         this.uid = uid;
         this.name = name;
@@ -44,5 +49,9 @@ public class User {
 
     public boolean hasFilledQuestionnaires(){
         return this.questionnaireAnswers.get("q21") != null;
+    }
+
+    public Activities getActivities(){
+        return this.activities;
     }
 }

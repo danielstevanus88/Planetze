@@ -24,16 +24,20 @@
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-xxhdpi\\ic_launcher_round.webp"
-    },
-    {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\color_nav_item_color.xml.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\color\\nav_item_color.xml"
     },
     {
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_activity_calendar.xml.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_calendar.xml"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-hdpi_ic_launcher_round.webp.flat",
@@ -108,10 +112,6 @@
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_transportation.xml"
     },
     {
-        "merged": "com.example.planetze.app-debug-56:/layout_activity_splash.xml.flat",
-        "source": "com.example.planetze.app-main-58:/layout/activity_splash.xml"
-    },
-    {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\drawable_nav_button.xml.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\drawable\\nav_button.xml"
     },
@@ -126,6 +126,10 @@
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.planetze.app-debug-56:/layout_fragment_eco_tracker.xml.flat",
+        "source": "com.example.planetze.app-main-58:/layout/fragment_eco_tracker.xml"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_fragment_food.xml.flat",
@@ -228,12 +232,20 @@
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\drawable\\logo.png"
     },
     {
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_fragment_eco_gauge.xml.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_eco_gauge.xml"
+    },
+    {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\drawable_eco_gauge.png.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\drawable\\eco_gauge.png"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\drawable_planetze_calender.png.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\drawable\\planetze_calender.png"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\drawable_circular_background.xml.flat",
@@ -254,6 +266,10 @@
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_activity_splash.xml.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_fragment_eco_tracker.xml.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_eco_tracker.xml"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_fragment_personal_vehicle.xml.flat",

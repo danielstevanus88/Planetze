@@ -3223,6 +3223,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable planetze_calender
 drawable planetze_carbonfootprint
 drawable planetze_economic
 drawable planetze_healthimpact
@@ -3348,6 +3349,7 @@ id buttonAcknowledge
 id buttonLogin
 id buttonLoginOption
 id buttonPanel
+id buttonPickDate
 id buttonRegister
 id buttonRegisterOption
 id buttonResetPassword
@@ -3429,6 +3431,7 @@ id easeOut
 id east
 id edge
 id editTextConfirmPasswordRegister
+id editTextDate
 id editTextEmailLogin
 id editTextEmailRegister
 id editTextEmailResetPassword
@@ -3487,6 +3490,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButtonCalendar
 id imageView
 id imageView1
 id imageView2
@@ -3866,6 +3870,7 @@ id textButtonBack
 id textButtonResetPassword
 id textEnd
 id textLoginTitle
+id textPickADate
 id textRegisterTitle
 id textResetPasswordTitle
 id textSpacerNoButtons
@@ -3876,6 +3881,7 @@ id textView
 id textView11
 id textView12
 id textView13
+id textView2
 id textView3
 id textView4
 id textView5
@@ -4082,6 +4088,8 @@ layout fragment_carbon_info
 layout fragment_consumption
 layout fragment_country
 layout fragment_dashboard
+layout fragment_eco_gauge
+layout fragment_eco_tracker
 layout fragment_energy
 layout fragment_food
 layout fragment_home
