@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.planetze.FormActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
@@ -116,14 +117,16 @@ public class RegisterFragment extends Fragment {
 
                     loginManager.register(email, password).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = loginManager.getCurrentUser();
+                            FirebaseUser user = loginManager.getCurrentFirebaseUser();
                             if(user != null){
                                 User newUser = new User(user.getUid(), name, email);
                                 userDatabaseManager.add(newUser).addOnCompleteListener(task1 -> {
                                     if(task1.isSuccessful()){
                                         // Redirect to main activity
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                                        LoginManager.setCurrentUser(newUser);
+                                        Intent intent = new Intent(getActivity(), FormActivity.class);
                                         startActivity(intent);
+                                        getActivity().finish();
                                     }else{
                                         // Show error message
                                         Toast.makeText(getActivity(), "Error: " + task1.getException().getMessage(), Toast.LENGTH_SHORT).show();

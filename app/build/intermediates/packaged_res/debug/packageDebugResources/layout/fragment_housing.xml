@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q11"
+                    style="@style/FormQuestion"
+                    android:text="@string/q11" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q11_option1"
+                    style="@style/FormOption"
+                    android:text="@string/detached" />
+
+                <Button
+                    android:id="@+id/q11_option2"
+                    style="@style/FormOption"
+                    android:text="@string/semi_detached" />
+
+                <Button
+                    android:id="@+id/q11_option3"
+                    style="@style/FormOption"
+                    android:text="@string/townhouse" />
+
+                <Button
+                    android:id="@+id/q11_option4"
+                    style="@style/FormOption"
+                    android:text="@string/condo" />
+
+                <Button
+                    android:id="@+id/q11_option5"
+                    style="@style/FormOption"
+                    android:text="@string/other" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q12"
+                    style="@style/FormQuestion"
+                    android:text="@string/q12" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q12_option1"
+                    style="@style/FormOption"
+                    android:text="@string/_1" />
+
+                <Button
+                    android:id="@+id/q12_option2"
+                    style="@style/FormOption"
+                    android:text="@string/_2" />
+
+                <Button
+                    android:id="@+id/q12_option3"
+                    style="@style/FormOption"
+                    android:text="@string/_3_4" />
+
+                <Button
+                    android:id="@+id/q12_option4"
+                    style="@style/FormOption"
+                    android:text="@string/_5_or_more" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q13"
+                    style="@style/FormQuestion"
+                    android:text="@string/q13" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q13_option1"
+                    style="@style/FormOption"
+                    android:text="@string/under_1000_sq_ft" />
+
+                <Button
+                    android:id="@+id/q13_option2"
+                    style="@style/FormOption"
+                    android:text="@string/_1000_2000_sq_ft" />
+
+                <Button
+                    android:id="@+id/q13_option3"
+                    style="@style/FormOption"
+                    android:text="@string/over_2000_sq_ft" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/back"
+                    style="@style/FormButton"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/next"
+                    style="@style/FormButton"
+                    android:text="@string/next" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q4"
+                    style="@style/FormQuestion"
+                    android:text="@string/q4" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q4_option1"
+                    style="@style/FormOption"
+                    android:text="@string/never" />
+
+                <Button
+                    android:id="@+id/q4_option2"
+                    style="@style/FormOption"
+                    android:text="@string/occasionally" />
+
+                <Button
+                    android:id="@+id/q4_option3"
+                    style="@style/FormOption"
+                    android:text="@string/frequently" />
+
+                <Button
+                    android:id="@+id/q4_option4"
+                    style="@style/FormOption"
+                    android:text="@string/always" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    android:id="@+id/q5"
+                    style="@style/FormQuestion"
+                    android:text="@string/q5" />
+
+                <View style="@style/FormLine" />
+
+                <Button
+                    android:id="@+id/q5_option1"
+                    style="@style/FormOption"
+                    android:text="@string/time1" />
+
+                <Button
+                    android:id="@+id/q5_option2"
+                    style="@style/FormOption"
+                    android:text="@string/time2" />
+
+                <Button
+                    android:id="@+id/q5_option3"
+                    style="@style/FormOption"
+                    android:text="@string/time3" />
+
+                <Button
+                    android:id="@+id/q5_option4"
+                    style="@style/FormOption"
+                    android:text="@string/time4" />
+
+                <Button
+                    android:id="@+id/q5_option5"
+                    style="@style/FormOption"
+                    android:text="@string/time5" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/back"
+                    style="@style/FormButton"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/next"
+                    style="@style/FormButton"
+                    android:text="@string/next" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
