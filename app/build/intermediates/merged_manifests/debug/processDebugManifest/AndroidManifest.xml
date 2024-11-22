@@ -50,13 +50,11 @@
         </activity>
         <activity
             android:name="com.example.planetze.FormActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.planetze.MainActivity"
             android:exported="false"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

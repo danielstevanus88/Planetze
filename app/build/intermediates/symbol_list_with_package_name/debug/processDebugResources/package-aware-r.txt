@@ -2157,6 +2157,7 @@ color mtrl_textinput_hovered_box_stroke_color
 color nav_item_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color notification_material_background_media_default_color
 color primaryColor
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -2337,6 +2338,7 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen fab_margin
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -2991,6 +2993,11 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 dimen sliding_pane_detail_pane_width
+dimen subtitle_corner_radius
+dimen subtitle_outline_width
+dimen subtitle_shadow_offset
+dimen subtitle_shadow_radius
+dimen text_margin
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -3243,6 +3250,7 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id FirstFragment
 id META
 id NO_DEBUG
 id SHIFT
@@ -3250,6 +3258,7 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id SecondFragment
 id TOP_END
 id TOP_START
 id accelerate
@@ -3286,9 +3295,12 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id action0
 id actionDown
 id actionDownUp
 id actionUp
+id action_FirstFragment_to_SecondFragment
+id action_SecondFragment_to_FirstFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -3309,6 +3321,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addHabit
 id adjust_height
 id adjust_width
 id alertTitle
@@ -3345,6 +3358,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id button2
 id buttonAcknowledge
 id buttonLogin
 id buttonLoginOption
@@ -3355,6 +3369,7 @@ id buttonRegisterOption
 id buttonResetPassword
 id cache_measures
 id callMeasure
+id cancel_action
 id cancel_button
 id carryVelocity
 id catchphrase
@@ -3444,6 +3459,7 @@ id elastic
 id embed
 id end
 id endToStart
+id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id escape
@@ -3464,6 +3480,7 @@ id fixed
 id flip
 id floating
 id forever
+id fragView
 id fragmentContainer
 id fragment_container_view_tag
 id frost
@@ -3507,6 +3524,7 @@ id infoHeading4
 id infoText
 id invisible
 id inward
+id is_pooling_container_tag
 id italic
 id item_touch_helper_previous_elevation
 id jumpToEnd
@@ -3552,6 +3570,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id media_actions
 id message
 id middle
 id mini
@@ -3588,6 +3607,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nav_controller_view_tag
+id nav_graph
 id nav_host_fragment_activity_main
 id nav_host_fragment_container
 id nav_view
@@ -3645,6 +3665,7 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id pooling_container_listener_holder_tag
 id position
 id postLayout
 id pressed
@@ -3777,6 +3798,7 @@ id q9d_option4
 id radio
 id ratio
 id rectangles
+id recyclerView
 id report_drawn
 id reverseSawtooth
 id right
@@ -3845,6 +3867,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id status_bar_latest_event_content
 id stop
 id stretch
 id submenuarrow
@@ -3881,7 +3904,6 @@ id textView
 id textView11
 id textView12
 id textView13
-id textView2
 id textView3
 id textView4
 id textView5
@@ -4085,6 +4107,7 @@ layout design_text_input_start_icon
 layout dropdown_item
 layout fragment_air_travel
 layout fragment_carbon_info
+layout fragment_choose_habit
 layout fragment_consumption
 layout fragment_country
 layout fragment_dashboard
@@ -4159,8 +4182,17 @@ layout mtrl_search_bar
 layout mtrl_search_view
 layout notification_action
 layout notification_action_tombstone
+layout notification_media_action
+layout notification_media_cancel_action
+layout notification_template_big_media
+layout notification_template_big_media_custom
+layout notification_template_big_media_narrow
+layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
+layout notification_template_lines_media
+layout notification_template_media
+layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout select_dialog_item_material
@@ -4172,6 +4204,7 @@ mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 navigation mobile_navigation
+navigation nav_graph
 plurals mtrl_badge_content_description
 raw firebase_common_keep
 string _1
@@ -4285,6 +4318,7 @@ string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
 string firebase_database_url
+string first_fragment_label
 string fish
 string flights1
 string flights2
@@ -4307,6 +4341,7 @@ string invalid_username
 string item_view_role_description
 string location
 string login_failed
+string lorem_ipsum
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4429,6 +4464,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string pescatarian
 string pork
+string previous
 string primarily
 string project_id
 string prompt_email
@@ -4461,6 +4497,7 @@ string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string second_fragment_label
 string semi_detached
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
@@ -4603,6 +4640,7 @@ style Base_Theme_MaterialComponents_Light_Dialog_Bridge
 style Base_Theme_MaterialComponents_Light_Dialog_FixedSize
 style Base_Theme_MaterialComponents_Light_Dialog_MinWidth
 style Base_Theme_MaterialComponents_Light_DialogWhenLarge
+style Base_Theme_Planetze
 style Base_ThemeOverlay_AppCompat
 style Base_ThemeOverlay_AppCompat_ActionBar
 style Base_ThemeOverlay_AppCompat_Dark
@@ -4943,9 +4981,14 @@ style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
+style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
+style TextAppearance_Compat_Notification_Line2_Media
+style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
+style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
+style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_Design_CollapsingToolbar_Expanded
 style TextAppearance_Design_Counter
 style TextAppearance_Design_Counter_Overflow

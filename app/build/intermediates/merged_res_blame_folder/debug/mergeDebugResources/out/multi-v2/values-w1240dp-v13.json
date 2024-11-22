@@ -1,10 +1,32 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-w1240dp-v13/values-w1240dp-v13.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-56:/values-w1240dp-v13/values-w1240dp-v13.xml",
             "map": [
                 {
-                    "source": "D:\\Android\\Planetze\\app\\src\\main\\res\\values-w1240dp\\dimens.xml",
+                    "source": "C:\\Users\\user\\Planetze\\app\\src\\main\\res\\values-w1240dp\\dimens.xml",
+                    "from": {
+                        "startLines": "-1,2",
+                        "startColumns": "-1,4",
+                        "startOffsets": "-1,75",
+                        "endColumns": "-1,42",
+                        "endOffsets": "-1,113"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,114",
+                        "endColumns": "58,42",
+                        "endOffsets": "109,152"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-56:\\values-w1240dp-v13\\values-w1240dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\Planetze\\app\\src\\main\\res\\values-w1240dp\\dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

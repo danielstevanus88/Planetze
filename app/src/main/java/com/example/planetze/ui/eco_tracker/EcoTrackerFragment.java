@@ -4,10 +4,12 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -96,6 +98,18 @@ public class EcoTrackerFragment extends Fragment {
             buttonPickADate.callOnClick();
         });
 
+        Button addhabit = view.findViewById(R.id.addHabit);
+        addhabit.setOnClickListener(v -> navigateChooseHabit());
         return view;
     }
+
+    private void navigateChooseHabit() {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        ChooseHabitFragment fragmentB = new ChooseHabitFragment();
+        transaction.replace(R.id.fragView, fragmentB);  // Replace with the ID of the container in FragmentA
+        transaction.addToBackStack(null);  // Allows back navigation to FragmentA
+        transaction.commit();
+    }
+
 }
+
