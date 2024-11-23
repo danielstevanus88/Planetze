@@ -10,8 +10,20 @@ import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 
 public class FoodWasteHabit extends Habit{
+    public FoodWasteHabit() {
+        super(new Date());
+        this.name = "Minimize Food Waste";
+        this.description = "Aim to reduce food waste by planning meals";
+        this.category = "Food";
+        this.impactLevel = "Low";
+    }
     public FoodWasteHabit(Date date) {
         super(date);
+        this.name = "No Food Waste";
+        this.description = "No Food Waste";
+        this.category = "Food";
+        this.impactLevel = "Low";
+
         User currentUser = LoginManager.getCurrentUser();
         Activities activities = currentUser.getActivities();
 

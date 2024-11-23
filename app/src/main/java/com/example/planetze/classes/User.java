@@ -3,11 +3,13 @@ package com.example.planetze.classes;
 import com.example.planetze.classes.EcoTracker.Activities;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class User {
     public String uid;
     public String name;
     public String email;
+    public HashSet<String> habits;
     public HashMap<String, Integer> questionnaireAnswers;
     public String country;
 
@@ -54,4 +56,5 @@ public class User {
     public Activities getActivities(){
         return this.activities;
     }
+
 }

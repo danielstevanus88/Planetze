@@ -20,20 +20,24 @@
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_dropdown_item.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\dropdown_item.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_fragment_energy.xml.flat",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_energy.xml"
     },
     {
-        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_dropdown_item.xml.flat",
-        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\dropdown_item.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\navigation_nav_graph.xml.flat",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\navigation\\nav_graph.xml"
     },
     {
-        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_activity_habit_selection.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\activity_habit_selection.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_fragment_housing.xml.flat",
@@ -126,10 +130,6 @@
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\drawable_earth_image.png.flat",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\drawable\\earth_image.png"
-    },
-    {
-        "merged": "com.example.planetze.app-debug-58:/layout_fragment_eco_tracker.xml.flat",
-        "source": "com.example.planetze.app-main-60:/layout/fragment_eco_tracker.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_fragment_air_travel.xml.flat",
@@ -296,8 +296,16 @@
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_item_habit.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\item_habit.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_fragment_home.xml.flat",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "com.example.planetze.app-debug-58:/layout_activity_habit_selection.xml.flat",
+        "source": "com.example.planetze.app-main-60:/layout/activity_habit_selection.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",

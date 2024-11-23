@@ -1,6 +1,7 @@
 package com.example.planetze.ui.eco_tracker;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.planetze.HabitSelectionActivity;
 import com.example.planetze.R;
 
 import java.util.Calendar;
@@ -98,17 +100,13 @@ public class EcoTrackerFragment extends Fragment {
             buttonPickADate.callOnClick();
         });
 
-        Button addhabit = view.findViewById(R.id.addHabit);
-        addhabit.setOnClickListener(v -> navigateChooseHabit());
+        Button myButton = view.findViewById(R.id.addHabit);
+        // Set the OnClickListener to handle the button press
+        myButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
+            startActivity(intent);
+        });
         return view;
-    }
-
-    private void navigateChooseHabit() {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        ChooseHabitFragment fragmentB = new ChooseHabitFragment();
-        transaction.replace(R.id.fragView, fragmentB);  // Replace with the ID of the container in FragmentA
-        transaction.addToBackStack(null);  // Allows back navigation to FragmentA
-        transaction.commit();
     }
 
 }

@@ -85,6 +85,8 @@ animator nav_default_enter_anim
 animator nav_default_exit_anim
 animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
+array categories
+array impact_levels
 attr SharedValue
 attr SharedValueId
 attr action
@@ -3493,6 +3495,8 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id habit_description
+id habit_name
 id header_title
 id hide_ime_id
 id hideable
@@ -3799,6 +3803,7 @@ id radio
 id ratio
 id rectangles
 id recyclerView
+id recycler_view
 id report_drawn
 id reverseSawtooth
 id right
@@ -3827,7 +3832,9 @@ id search_go_btn
 id search_mag_icon
 id search_plate
 id search_src_text
+id search_view
 id search_voice_btn
+id select
 id select_dialog_listview
 id selected
 id selection_type
@@ -3851,6 +3858,8 @@ id south
 id spacer
 id special_effects_controller_view_tag
 id specify_location
+id spinner_category
+id spinner_impact
 id spline
 id split_action_bar
 id spread
@@ -3904,6 +3913,7 @@ id textView
 id textView11
 id textView12
 id textView13
+id textView2
 id textView3
 id textView4
 id textView5
@@ -4083,6 +4093,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_form
+layout activity_habit_selection
 layout activity_login
 layout activity_main
 layout activity_splash
@@ -4129,6 +4140,7 @@ layout fragment_transportation
 layout fragment_waste
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_habit
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

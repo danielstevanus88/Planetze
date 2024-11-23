@@ -11,6 +11,15 @@ import com.example.planetze.classes.User;
 
 public class WalkorBikeHabit extends Habit{
 
+    public WalkorBikeHabit() {
+        super(new Date());
+        this.name = "Walk or Bike for Short Trips";
+        this.description = "Opt for walking or biking instead of driving for" +
+                " short distances to reduce fuel consumption and pollution.";
+        this.category = "Transportation";
+        this.impactLevel = "High";
+
+    }
     public WalkorBikeHabit(Date startDate) {
         super(startDate);
         User currentUser = LoginManager.getCurrentUser();

@@ -84,6 +84,8 @@ int animator nav_default_enter_anim 0x7f020022
 int animator nav_default_exit_anim 0x7f020023
 int animator nav_default_pop_enter_anim 0x7f020024
 int animator nav_default_pop_exit_anim 0x7f020025
+int array categories 0x7f170000
+int array impact_levels 0x7f170001
 int attr SharedValue 0x7f030000
 int attr SharedValueId 0x7f030001
 int attr action 0x7f030002
@@ -3492,6 +3494,8 @@ int id graph_wrap 0x7f0900ef
 int id group_divider 0x7f0900f0
 int id grouping 0x7f0900f1
 int id groups 0x7f0900f2
+int id habit_description 0x7f0902d4
+int id habit_name 0x7f0902d5
 int id header_title 0x7f0900f3
 int id hide_ime_id 0x7f0900f4
 int id hideable 0x7f0900f5
@@ -3798,6 +3802,7 @@ int id radio 0x7f090220
 int id ratio 0x7f090221
 int id rectangles 0x7f090222
 int id recyclerView 0x7f0902d0
+int id recycler_view 0x7f0902d6
 int id report_drawn 0x7f090223
 int id reverseSawtooth 0x7f090224
 int id right 0x7f090225
@@ -3826,7 +3831,9 @@ int id search_go_btn 0x7f09023b
 int id search_mag_icon 0x7f09023c
 int id search_plate 0x7f09023d
 int id search_src_text 0x7f09023e
+int id search_view 0x7f0902da
 int id search_voice_btn 0x7f09023f
+int id select 0x7f0902d7
 int id select_dialog_listview 0x7f090240
 int id selected 0x7f090241
 int id selection_type 0x7f090242
@@ -3850,6 +3857,8 @@ int id south 0x7f090253
 int id spacer 0x7f090254
 int id special_effects_controller_view_tag 0x7f090255
 int id specify_location 0x7f090256
+int id spinner_category 0x7f0902d8
+int id spinner_impact 0x7f0902d9
 int id spline 0x7f090257
 int id split_action_bar 0x7f090258
 int id spread 0x7f090259
@@ -3903,6 +3912,7 @@ int id textView 0x7f090288
 int id textView11 0x7f090289
 int id textView12 0x7f09028a
 int id textView13 0x7f09028b
+int id textView2 0x7f0902d3
 int id textView3 0x7f09028c
 int id textView4 0x7f09028d
 int id textView5 0x7f09028e
@@ -4082,6 +4092,7 @@ int layout abc_search_view 0x7f0c0019
 int layout abc_select_dialog_material 0x7f0c001a
 int layout abc_tooltip 0x7f0c001b
 int layout activity_form 0x7f0c001c
+int layout activity_habit_selection 0x7f0c0091
 int layout activity_login 0x7f0c001d
 int layout activity_main 0x7f0c001e
 int layout activity_splash 0x7f0c001f
@@ -4128,6 +4139,7 @@ int layout fragment_transportation 0x7f0c0047
 int layout fragment_waste 0x7f0c0048
 int layout ime_base_split_test_activity 0x7f0c0049
 int layout ime_secondary_split_test_activity 0x7f0c004a
+int layout item_habit 0x7f0c0092
 int layout m3_alert_dialog 0x7f0c004b
 int layout m3_alert_dialog_actions 0x7f0c004c
 int layout m3_alert_dialog_title 0x7f0c004d

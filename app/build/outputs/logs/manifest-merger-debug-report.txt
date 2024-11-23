@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:1-39:12
 MERGED from [androidx.databinding:viewbinding:8.5.1] C:\Users\user\.gradle\caches\8.9\transforms\33c9e36a4aeeb4f692675ce919a2a0e8\transformed\viewbinding-8.5.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\user\.gradle\caches\8.9\transforms\99956633e5fd9976c1ccc9dfb1ce5f4f\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\user\.gradle\caches\8.9\transforms\b4775e75119880a441496924396c7a59\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:17:1-22:12
@@ -113,8 +113,8 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\user\.gradle\ca
 	xmlns:android
 		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:5:5-34:19
-INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:5:5-34:19
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:5:5-37:19
+INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:5:5-37:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\user\.gradle\caches\8.9\transforms\034fa4ee77c10b68bce50c9bed2f73f1\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\user\.gradle\caches\8.9\transforms\034fa4ee77c10b68bce50c9bed2f73f1\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\user\.gradle\caches\8.9\transforms\e0a4a1768b4f8a85d9116973b0174fb6\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -205,42 +205,48 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\user\.gradle\ca
 		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:13:9-46
 	android:dataExtractionRules
 		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:7:9-65
-activity#com.example.planetze.LoginActivity
+activity#com.example.planetze.HabitSelectionActivity
 ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:15:9-17:40
 	android:exported
 		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:17:13-37
 	android:name
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:16:13-42
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:16:13-51
+activity#com.example.planetze.LoginActivity
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:18:9-20:40
+	android:exported
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:20:13-37
+	android:name
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:19:13-42
 activity#com.example.planetze.classes.SplashScreenActivity
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:21:9-29:20
 	android:exported
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:20:13-36
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:23:13-36
 	android:name
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:19:13-57
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:22:13-57
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:22:17-69
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:22:25-66
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:27:27-74
 activity#com.example.planetze.FormActivity
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:27:9-29:48
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:30:9-32:39
 	android:exported
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:29:13-36
-	android:name
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:28:13-41
-activity#com.example.planetze.MainActivity
-ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:30:9-33:57
-	android:label
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:33:13-45
-	android:exported
-		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:32:13-37
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:32:13-36
 	android:name
 		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:31:13-41
+activity#com.example.planetze.MainActivity
+ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:33:9-36:48
+	android:label
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:36:13-45
+	android:exported
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml:34:13-41
 uses-sdk
 INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\user\Planetze\app\src\main\AndroidManifest.xml
