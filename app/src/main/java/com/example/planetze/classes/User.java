@@ -13,17 +13,18 @@ public class User {
 
     public Activities activities;
 
-    public User(String uid, String name, String email){
+    public User(String uid, String name, String email) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.questionnaireAnswers = new HashMap<>();
     }
 
-    public User(){
+    public User() {
         this.questionnaireAnswers = new HashMap<>();
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
 
@@ -31,27 +32,27 @@ public class User {
         return uid;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void addQuestionnaireAnswer(String key, int answer){
+    public void addQuestionnaireAnswer(String key, int answer) {
         questionnaireAnswers.put(key, answer);
     }
 
-    public void removeQuestionnaireAnswer(String key){
+    public void removeQuestionnaireAnswer(String key) {
         questionnaireAnswers.remove(key);
     }
 
-    public void setCountry(String country){
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public boolean hasFilledQuestionnaires(){
-        return this.questionnaireAnswers.get("q21") != null;
+    public boolean hasFilledQuestionnaires() {
+        return (this.questionnaireAnswers.containsKey("q21") && this.questionnaireAnswers.get("q21") != null);
     }
 
-    public Activities getActivities(){
+    public Activities getActivities() {
         return this.activities;
     }
 }

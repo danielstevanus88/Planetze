@@ -21,12 +21,12 @@ import com.example.planetze.ui.login.LoginOptionFragment;
 import com.example.planetze.ui.login.Register.RegisterFragment;
 import com.example.planetze.ui.login.ResetPassword.ResetPasswordFragment;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
 
 public class LoginActivity extends AppCompatActivity implements IOnSelectionListener {
 
     private LoginManager loginManager;
     private DatabaseManager databaseManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,38 +40,52 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
 
         loginManager = LoginManager.getInstance();
 
-        if (loginManager.getCurrentFirebaseUser() != null) {
-            // Redirect to main activity
-            databaseManager =  UserDatabaseManager.getInstance();
-            databaseManager.find(loginManager.getCurrentUserUid()).addOnCompleteListener(
-                    task -> {
-                        if (task.isSuccessful()) {
-                            DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
-
-                            User currentUser = dataSnapshot.getValue(User.class);
-                            loginManager.setCurrentUser(currentUser);
-
-                            Intent intent = new Intent(this, FormActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else {
-                            Toast.makeText(this, "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-            );
-        }
-        else {
-
+        if (LoginManager.getCurrentFirebaseUser() != null) {
+            handleExistingUser();
+        } else {
             showFragment(new LoginOptionFragment());
-
         }
+    }
+
+    private void handleExistingUser() {
+        databaseManager = UserDatabaseManager.getInstance();
+        databaseManager.find(loginManager.getCurrentUserUid()).addOnCompleteListener(
+                task -> {
+                    if (task.isSuccessful()) {
+                        handleSuccessfulUserRetrieval((DataSnapshot) task.getResult());
+                    } else {
+                        handleUserRetrievalError(task.getException());
+                    }
+                }
+        );
+    }
+
+    private void handleSuccessfulUserRetrieval(DataSnapshot dataSnapshot) {
+        User currentUser = dataSnapshot.getValue(User.class);
+        if (currentUser != null) {
+            LoginManager.setCurrentUser(currentUser);
+            redirectToMainActivity();
+        } else {
+            // Handle case where user data is not found
+            Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void handleUserRetrievalError(Exception exception) {
+        // Handle error while retrieving user data
+        Toast.makeText(this, "Error retrieving user data", Toast.LENGTH_SHORT).show();
+    }
+
+    private void redirectToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     // Display the login fragment inside VerticalLayout
     public void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainer , fragment)
+                .replace(R.id.fragmentContainer, fragment)
                 .commit();
     }
 
@@ -93,14 +107,12 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     @Override
     public void onBackPressed() {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-        if (currentFragment instanceof LoginFragment || 
-            currentFragment instanceof RegisterFragment || 
-            currentFragment instanceof ResetPasswordFragment) {
+        if (currentFragment instanceof LoginFragment ||
+                currentFragment instanceof RegisterFragment ||
+                currentFragment instanceof ResetPasswordFragment) {
             showFragment(new LoginOptionFragment());
         } else {
             super.onBackPressed();
         }
     }
-
-
 }

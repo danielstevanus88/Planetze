@@ -1,114 +1,150 @@
 [
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_air_travel.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_air_travel.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_consumption.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_consumption.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_eco_tracker.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_eco_tracker.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_eco_gauge.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_eco_gauge.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_login.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/activity_form.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/activity_form.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_reset_password.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_reset_password.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_dashboard.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_dashboard.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_energy.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_energy.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_country.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_country.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_home.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/dropdown_item.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_login.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_login.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_login.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_login.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_consumption.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_consumption.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_personal_vehicle.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_personal_vehicle.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_personal_vehicle.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_personal_vehicle.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_meal.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_meal.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_public_transport.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_public_transport.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_flight.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_flight.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\activity_form.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_form.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_drive_personal_vehicle.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_drive_personal_vehicle.xml"
     },
     {
-        "merged": "com.example.planetze.app-mergeDebugResources-55:/layout/fragment_eco_tracker.xml",
-        "source": "com.example.planetze.app-main-58:/layout/fragment_eco_tracker.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_carbon_info.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_carbon_info.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_eco_gauge.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_eco_gauge.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/activity_main.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_transportation.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_transportation.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_buy_new_clothes.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_buy_new_clothes.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\activity_calendar.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_calendar.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_energy_bills.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_energy_bills.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_login_option.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_login_option.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_activity_list.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_activity_list.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_main.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_waste.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_waste.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_country.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_country.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_reset_password.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_reset_password.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_waste.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_waste.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_take_public_transportation.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_take_public_transportation.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_notifications.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_notifications.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_energy.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_energy.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_dashboard.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_dashboard.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/activity_login.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_meat.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_meat.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_other_purchases.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_other_purchases.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_housing.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_housing.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_login_option.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_login_option.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\activity_splash.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_splash.xml"
+        "merged": "com.example.planetze.app-mergeDebugResources-55:/layout/fragment_drive_personal_vehicle.xml",
+        "source": "com.example.planetze.app-main-58:/layout/fragment_drive_personal_vehicle.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_register.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_register.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_notifications.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_notifications.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\dropdown_item.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\dropdown_item.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_air_travel.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_air_travel.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_carbon_info.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_carbon_info.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_home.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-55:\\layout\\fragment_food.xml",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\fragment_food.xml"
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_public_transport.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_public_transport.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_cycling_or_walking.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_cycling_or_walking.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_eco_tracker.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_eco_tracker.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_transportation.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_transportation.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_meat.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_meat.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_buy_electronics.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_buy_electronics.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_register.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_register.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/activity_splash.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_food.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_food.xml"
+    },
+    {
+        "merged": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-mergeDebugResources-55:/layout/fragment_housing.xml",
+        "source": "/Users/muxun/.gradle/daemon/8.9/com.example.planetze.app-main-58:/layout/fragment_housing.xml"
     }
 ]

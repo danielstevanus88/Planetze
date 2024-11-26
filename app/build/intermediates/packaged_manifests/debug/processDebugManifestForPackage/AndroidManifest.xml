@@ -40,7 +40,7 @@
             android:name="com.example.planetze.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.planetze.classes.SplashScreenActivity"
+            android:name="com.example.planetze.SplashScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,7 @@
         </activity>
         <activity
             android:name="com.example.planetze.FormActivity"
-            android:exported="true" >
+            android:exported="false" >
         </activity>
         <activity
             android:name="com.example.planetze.MainActivity"

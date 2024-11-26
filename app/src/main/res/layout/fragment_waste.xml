@@ -16,7 +16,7 @@
 
                 <TextView
                     android:id="@+id/q10"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q10" />
 
                 <View style="@style/FormLine" />

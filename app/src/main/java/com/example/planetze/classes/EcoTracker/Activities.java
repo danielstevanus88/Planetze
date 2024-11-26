@@ -30,7 +30,7 @@ public class Activities {
     }
 
     public void addActivity(Date date, DailyActivity activity){
-        // Check if there's ana ctivity on date
+        // Check if there's an activity on date
         if(activities.containsKey(date)){
             activities.get(date).add(activity);
         } else {
@@ -55,10 +55,5 @@ public class Activities {
         }
 
     }
-
-
-
-
-
 
 }

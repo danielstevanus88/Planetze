@@ -4,13 +4,11 @@ package com.example.planetze.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.planetze.R;
@@ -20,42 +18,24 @@ import java.lang.String;
 
 public final class FragmentEcoTrackerBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout buttonPickDate;
+  public final Button add;
 
   @NonNull
-  public final EditText editTextDate;
+  public final TextView totalEmissions;
 
-  @NonNull
-  public final ImageView imageButtonCalendar;
-
-  @NonNull
-  public final TextView textPickADate;
-
-  @NonNull
-  public final TextView textView2;
-
-  @NonNull
-  public final TextView textView3;
-
-  private FragmentEcoTrackerBinding(@NonNull FrameLayout rootView,
-      @NonNull LinearLayout buttonPickDate, @NonNull EditText editTextDate,
-      @NonNull ImageView imageButtonCalendar, @NonNull TextView textPickADate,
-      @NonNull TextView textView2, @NonNull TextView textView3) {
+  private FragmentEcoTrackerBinding(@NonNull ConstraintLayout rootView, @NonNull Button add,
+      @NonNull TextView totalEmissions) {
     this.rootView = rootView;
-    this.buttonPickDate = buttonPickDate;
-    this.editTextDate = editTextDate;
-    this.imageButtonCalendar = imageButtonCalendar;
-    this.textPickADate = textPickADate;
-    this.textView2 = textView2;
-    this.textView3 = textView3;
+    this.add = add;
+    this.totalEmissions = totalEmissions;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -80,44 +60,19 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.buttonPickDate;
-      LinearLayout buttonPickDate = ViewBindings.findChildViewById(rootView, id);
-      if (buttonPickDate == null) {
+      id = R.id.add;
+      Button add = ViewBindings.findChildViewById(rootView, id);
+      if (add == null) {
         break missingId;
       }
 
-      id = R.id.editTextDate;
-      EditText editTextDate = ViewBindings.findChildViewById(rootView, id);
-      if (editTextDate == null) {
+      id = R.id.total_emissions;
+      TextView totalEmissions = ViewBindings.findChildViewById(rootView, id);
+      if (totalEmissions == null) {
         break missingId;
       }
 
-      id = R.id.imageButtonCalendar;
-      ImageView imageButtonCalendar = ViewBindings.findChildViewById(rootView, id);
-      if (imageButtonCalendar == null) {
-        break missingId;
-      }
-
-      id = R.id.textPickADate;
-      TextView textPickADate = ViewBindings.findChildViewById(rootView, id);
-      if (textPickADate == null) {
-        break missingId;
-      }
-
-      id = R.id.textView2;
-      TextView textView2 = ViewBindings.findChildViewById(rootView, id);
-      if (textView2 == null) {
-        break missingId;
-      }
-
-      id = R.id.textView3;
-      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
-      if (textView3 == null) {
-        break missingId;
-      }
-
-      return new FragmentEcoTrackerBinding((FrameLayout) rootView, buttonPickDate, editTextDate,
-          imageButtonCalendar, textPickADate, textView2, textView3);
+      return new FragmentEcoTrackerBinding((ConstraintLayout) rootView, add, totalEmissions);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

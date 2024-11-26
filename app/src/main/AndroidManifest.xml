@@ -16,8 +16,9 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false"/>
+
         <activity
-            android:name=".classes.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
 
             <intent-filter>
@@ -29,7 +30,7 @@
 
         <activity
             android:name=".FormActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
 
         <activity
