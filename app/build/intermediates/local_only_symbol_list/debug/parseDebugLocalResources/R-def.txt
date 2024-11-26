@@ -53,6 +53,9 @@ drawable unclicked_button
 font mon_bold
 font mont_var
 font quicksand
+id LayoutConsumption
+id LayoutFood
+id LayoutTransportation
 id back
 id buttonAcknowledge
 id buttonLogin
@@ -62,6 +65,8 @@ id buttonRegister
 id buttonRegisterOption
 id buttonResetPassword
 id catchphrase
+id checkBox
+id checkboxConsumption1
 id container
 id country
 id description
@@ -86,6 +91,8 @@ id infoHeading2
 id infoHeading3
 id infoHeading4
 id infoText
+id itemCard1
+id itemConsumption1
 id logo
 id main
 id mobile_navigation
@@ -95,6 +102,9 @@ id navigation_dashboard
 id navigation_home
 id navigation_notifications
 id next
+id noConsumptionText
+id noFoodText
+id noTransportationText
 id q1
 id q10
 id q10_option1
@@ -222,14 +232,18 @@ id q9d_option4
 id specify_location
 id textButtonBack
 id textButtonResetPassword
+id textConsumption
+id textFood
 id textLoginTitle
 id textPickADate
 id textRegisterTitle
 id textResetPasswordTitle
 id textView
+id textView10
 id textView11
 id textView12
 id textView13
+id textView14
 id textView2
 id textView3
 id textView4

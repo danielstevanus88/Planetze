@@ -4,7 +4,7 @@ public class EcoTrackerEmissionConstant {
 
     // Transportation Category
     public static final double TAKE_PUBLIC_TRANSPORTATION_EMISSION = 246;
-    public static final double CYCLING_OR_WALKING_EMISSION = 300;
+    public static final double CYCLING_OR_WALKING_EMISSION = 0;
     public static final double DRIVE_PERSONAL_VEHICLE_DIESEL_EMISSION = 0.27;
     public static final double DRIVE_PERSONAL_VEHICLE_ELECTRIC_EMISSION = 0.05;
     public static final double DRIVE_PERSONAL_VEHICLE_GASOLINE_EMISSION = 0.24;

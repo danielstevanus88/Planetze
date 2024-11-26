@@ -4,11 +4,9 @@ import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 
 public class EatChicken extends ActivityFood{
     public EatChicken(int numberOfServings) {
-        super(numberOfServings);
+        this.numberOfServings = numberOfServings;
+        this.emission = numberOfServings * EcoTrackerEmissionConstant.EAT_CHICKEN_EMISSION_PER_SERVING;
+        this.displayText = "Eat Chicken (" + numberOfServings + "x)";
     }
 
-    @Override
-    public double getEmission() {
-        return this.numberOfServings * EcoTrackerEmissionConstant.EAT_CHICKEN_EMISSION_PER_SERVING;
-    }
 }

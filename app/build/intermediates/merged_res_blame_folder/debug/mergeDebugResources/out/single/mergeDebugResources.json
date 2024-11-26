@@ -24,20 +24,16 @@
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\color_nav_item_color.xml.flat",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\color\\nav_item_color.xml"
-    },
-    {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\color_nav_item_color.xml.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\color\\nav_item_color.xml"
     },
     {
-        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\layout_activity_calendar.xml.flat",
-        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\layout\\activity_calendar.xml"
+        "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-58:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\asusm\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-56:\\mipmap-hdpi_ic_launcher_round.webp.flat",

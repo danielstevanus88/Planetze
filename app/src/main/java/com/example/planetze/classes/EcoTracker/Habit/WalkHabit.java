@@ -1,20 +1,24 @@
 package com.example.planetze.classes.EcoTracker.Habit;
 
-import com.example.planetze.classes.EcoTracker.Activities;
 import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
+import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.ActivityTransportation;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class WalkHabit extends Habit{
 
     public WalkHabit(Date startDate) {
         super(startDate);
         User currentUser = LoginManager.getCurrentUser();
-        Activities activities = currentUser.getActivities();
+        HashMap<Date, List<DailyActivity>> activities = ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities());
 
         // Filter by transportation
         activities = ActivitiesFilter.filterActivitiesByCategory(activities, ActivityTransportation.class);

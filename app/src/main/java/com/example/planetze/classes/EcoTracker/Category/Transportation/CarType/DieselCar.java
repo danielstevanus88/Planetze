@@ -7,4 +7,9 @@ public class DieselCar extends Car{
     public double getCO2perKilometer() {
         return EcoTrackerEmissionConstant.DRIVE_PERSONAL_VEHICLE_DIESEL_EMISSION;
     }
+
+    @Override
+    public String toString(){
+        return "Diesel Car";
+    }
 }

@@ -4,6 +4,7 @@ package com.example.planetze.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -23,7 +24,22 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final LinearLayout LayoutConsumption;
+
+  @NonNull
+  public final LinearLayout LayoutFood;
+
+  @NonNull
+  public final LinearLayout LayoutTransportation;
+
+  @NonNull
   public final LinearLayout buttonPickDate;
+
+  @NonNull
+  public final CheckBox checkBox;
+
+  @NonNull
+  public final CheckBox checkboxConsumption1;
 
   @NonNull
   public final EditText editTextDate;
@@ -32,25 +48,68 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
   public final ImageView imageButtonCalendar;
 
   @NonNull
+  public final LinearLayout itemCard1;
+
+  @NonNull
+  public final LinearLayout itemConsumption1;
+
+  @NonNull
+  public final TextView noConsumptionText;
+
+  @NonNull
+  public final TextView noFoodText;
+
+  @NonNull
+  public final TextView noTransportationText;
+
+  @NonNull
+  public final TextView textConsumption;
+
+  @NonNull
+  public final TextView textFood;
+
+  @NonNull
   public final TextView textPickADate;
+
+  @NonNull
+  public final TextView textView10;
+
+  @NonNull
+  public final TextView textView14;
 
   @NonNull
   public final TextView textView2;
 
-  @NonNull
-  public final TextView textView3;
-
   private FragmentEcoTrackerBinding(@NonNull FrameLayout rootView,
-      @NonNull LinearLayout buttonPickDate, @NonNull EditText editTextDate,
-      @NonNull ImageView imageButtonCalendar, @NonNull TextView textPickADate,
-      @NonNull TextView textView2, @NonNull TextView textView3) {
+      @NonNull LinearLayout LayoutConsumption, @NonNull LinearLayout LayoutFood,
+      @NonNull LinearLayout LayoutTransportation, @NonNull LinearLayout buttonPickDate,
+      @NonNull CheckBox checkBox, @NonNull CheckBox checkboxConsumption1,
+      @NonNull EditText editTextDate, @NonNull ImageView imageButtonCalendar,
+      @NonNull LinearLayout itemCard1, @NonNull LinearLayout itemConsumption1,
+      @NonNull TextView noConsumptionText, @NonNull TextView noFoodText,
+      @NonNull TextView noTransportationText, @NonNull TextView textConsumption,
+      @NonNull TextView textFood, @NonNull TextView textPickADate, @NonNull TextView textView10,
+      @NonNull TextView textView14, @NonNull TextView textView2) {
     this.rootView = rootView;
+    this.LayoutConsumption = LayoutConsumption;
+    this.LayoutFood = LayoutFood;
+    this.LayoutTransportation = LayoutTransportation;
     this.buttonPickDate = buttonPickDate;
+    this.checkBox = checkBox;
+    this.checkboxConsumption1 = checkboxConsumption1;
     this.editTextDate = editTextDate;
     this.imageButtonCalendar = imageButtonCalendar;
+    this.itemCard1 = itemCard1;
+    this.itemConsumption1 = itemConsumption1;
+    this.noConsumptionText = noConsumptionText;
+    this.noFoodText = noFoodText;
+    this.noTransportationText = noTransportationText;
+    this.textConsumption = textConsumption;
+    this.textFood = textFood;
     this.textPickADate = textPickADate;
+    this.textView10 = textView10;
+    this.textView14 = textView14;
     this.textView2 = textView2;
-    this.textView3 = textView3;
   }
 
   @Override
@@ -80,9 +139,39 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.LayoutConsumption;
+      LinearLayout LayoutConsumption = ViewBindings.findChildViewById(rootView, id);
+      if (LayoutConsumption == null) {
+        break missingId;
+      }
+
+      id = R.id.LayoutFood;
+      LinearLayout LayoutFood = ViewBindings.findChildViewById(rootView, id);
+      if (LayoutFood == null) {
+        break missingId;
+      }
+
+      id = R.id.LayoutTransportation;
+      LinearLayout LayoutTransportation = ViewBindings.findChildViewById(rootView, id);
+      if (LayoutTransportation == null) {
+        break missingId;
+      }
+
       id = R.id.buttonPickDate;
       LinearLayout buttonPickDate = ViewBindings.findChildViewById(rootView, id);
       if (buttonPickDate == null) {
+        break missingId;
+      }
+
+      id = R.id.checkBox;
+      CheckBox checkBox = ViewBindings.findChildViewById(rootView, id);
+      if (checkBox == null) {
+        break missingId;
+      }
+
+      id = R.id.checkboxConsumption1;
+      CheckBox checkboxConsumption1 = ViewBindings.findChildViewById(rootView, id);
+      if (checkboxConsumption1 == null) {
         break missingId;
       }
 
@@ -98,9 +187,63 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.itemCard1;
+      LinearLayout itemCard1 = ViewBindings.findChildViewById(rootView, id);
+      if (itemCard1 == null) {
+        break missingId;
+      }
+
+      id = R.id.itemConsumption1;
+      LinearLayout itemConsumption1 = ViewBindings.findChildViewById(rootView, id);
+      if (itemConsumption1 == null) {
+        break missingId;
+      }
+
+      id = R.id.noConsumptionText;
+      TextView noConsumptionText = ViewBindings.findChildViewById(rootView, id);
+      if (noConsumptionText == null) {
+        break missingId;
+      }
+
+      id = R.id.noFoodText;
+      TextView noFoodText = ViewBindings.findChildViewById(rootView, id);
+      if (noFoodText == null) {
+        break missingId;
+      }
+
+      id = R.id.noTransportationText;
+      TextView noTransportationText = ViewBindings.findChildViewById(rootView, id);
+      if (noTransportationText == null) {
+        break missingId;
+      }
+
+      id = R.id.textConsumption;
+      TextView textConsumption = ViewBindings.findChildViewById(rootView, id);
+      if (textConsumption == null) {
+        break missingId;
+      }
+
+      id = R.id.textFood;
+      TextView textFood = ViewBindings.findChildViewById(rootView, id);
+      if (textFood == null) {
+        break missingId;
+      }
+
       id = R.id.textPickADate;
       TextView textPickADate = ViewBindings.findChildViewById(rootView, id);
       if (textPickADate == null) {
+        break missingId;
+      }
+
+      id = R.id.textView10;
+      TextView textView10 = ViewBindings.findChildViewById(rootView, id);
+      if (textView10 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView14;
+      TextView textView14 = ViewBindings.findChildViewById(rootView, id);
+      if (textView14 == null) {
         break missingId;
       }
 
@@ -110,14 +253,11 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView3;
-      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
-      if (textView3 == null) {
-        break missingId;
-      }
-
-      return new FragmentEcoTrackerBinding((FrameLayout) rootView, buttonPickDate, editTextDate,
-          imageButtonCalendar, textPickADate, textView2, textView3);
+      return new FragmentEcoTrackerBinding((FrameLayout) rootView, LayoutConsumption, LayoutFood,
+          LayoutTransportation, buttonPickDate, checkBox, checkboxConsumption1, editTextDate,
+          imageButtonCalendar, itemCard1, itemConsumption1, noConsumptionText, noFoodText,
+          noTransportationText, textConsumption, textFood, textPickADate, textView10, textView14,
+          textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

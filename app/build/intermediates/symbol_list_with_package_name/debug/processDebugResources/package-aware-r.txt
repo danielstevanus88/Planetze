@@ -3243,6 +3243,9 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id LayoutConsumption
+id LayoutFood
+id LayoutTransportation
 id META
 id NO_DEBUG
 id SHIFT
@@ -3366,7 +3369,9 @@ id center_vertical
 id chain
 id chain2
 id chains
+id checkBox
 id checkbox
+id checkboxConsumption1
 id checked
 id chronometer
 id circle_center
@@ -3508,6 +3513,8 @@ id infoText
 id invisible
 id inward
 id italic
+id itemCard1
+id itemConsumption1
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -3605,8 +3612,11 @@ id never
 id neverCompleteToEnd
 id neverCompleteToStart
 id next
+id noConsumptionText
+id noFoodText
 id noScroll
 id noState
+id noTransportationText
 id none
 id normal
 id north
@@ -3868,7 +3878,9 @@ id text
 id text2
 id textButtonBack
 id textButtonResetPassword
+id textConsumption
 id textEnd
+id textFood
 id textLoginTitle
 id textPickADate
 id textRegisterTitle
@@ -3878,9 +3890,11 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView10
 id textView11
 id textView12
 id textView13
+id textView14
 id textView2
 id textView3
 id textView4
