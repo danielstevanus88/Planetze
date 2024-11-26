@@ -96,7 +96,7 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
                 case 4:
                     activity = new DrivePersonalVehicle(distance, new ElectricCar());
             }
-            currentUser.activities.addActivity(new Date(), activity);
+            currentUser.addActivity(new Date(), activity);
             databaseManager.add(currentUser);
 
             Intent intent = new Intent(getActivity(), MainActivity.class);
