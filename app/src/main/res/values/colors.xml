@@ -18,6 +18,8 @@
     <color name="alternativeDarkColor">#1b1b1e</color>
     <color name="active_color">#FF6200EE</color>
     <color name="inactive_color">#FFBDBDBD</color>
+    <color name="primaryRed">#FF0000</color>
+    <color name="primaryYellow">#FFAA00</color>
 
     <color name="green1">#0099992E</color>
     <color name="green2">#0099996B</color>

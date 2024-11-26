@@ -15,7 +15,7 @@
 
                 <TextView
                     android:id="@+id/specify_location"
-                    style="@style/FormQuestion"
+                    style="@style/Header2"
                     android:text="@string/location" />
 
                 <com.google.android.material.textfield.TextInputLayout

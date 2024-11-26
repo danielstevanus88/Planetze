@@ -1,4 +1,4 @@
-package com.example.planetze.classes;
+package com.example.planetze;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,9 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.example.planetze.LoginActivity;
-import com.example.planetze.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

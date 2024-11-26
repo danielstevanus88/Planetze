@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    style="@style/Header1"
+                    android:text="@string/meal" />
+
+                <View style="@style/FormLine" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/type_of_meal" />
+
+                <Button
+                    android:id="@+id/option1"
+                    style="@style/FormOption"
+                    android:text="@string/beef2" />
+
+                <Button
+                    android:id="@+id/option2"
+                    style="@style/FormOption"
+                    android:text="@string/pork2" />
+
+                <Button
+                    android:id="@+id/option3"
+                    style="@style/FormOption"
+                    android:text="@string/chicken2" />
+
+                <Button
+                    android:id="@+id/option4"
+                    style="@style/FormOption"
+                    android:text="@string/fish2" />
+
+                <Button
+                    android:id="@+id/option5"
+                    style="@style/FormOption"
+                    android:text="@string/plant_based" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/number_of_servings_consumed" />
+
+                <EditText
+                    android:id="@+id/distance"
+                    style="@style/Input"
+                    android:hint="@string/number_of_servings" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/back"
+                    style="@style/FormButton"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/submit"
+                    style="@style/FormButton"
+                    android:text="@string/submit" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
