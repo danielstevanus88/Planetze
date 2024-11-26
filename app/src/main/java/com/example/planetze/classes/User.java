@@ -46,6 +46,8 @@ public class User {
         updateUserToDatabase();
     }
 
+
+
     public void setCountry(String country){
         this.country = country;
         updateUserToDatabase();
@@ -53,6 +55,10 @@ public class User {
 
     public boolean hasFilledQuestionnaires(){
         return this.questionnaireAnswers.get("q21") != null;
+    }
+
+    public HashMap<String,Integer> getQuestionnaireAnswers(){
+        return this.questionnaireAnswers;
     }
 
     public Activities getActivities(){
