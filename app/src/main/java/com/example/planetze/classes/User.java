@@ -23,6 +23,7 @@ public class User {
     public User(){
         this.questionnaireAnswers = new HashMap<>();
     }
+
     public String getEmail(){
         return email;
     }
@@ -37,14 +38,17 @@ public class User {
 
     public void addQuestionnaireAnswer(String key, int answer){
         questionnaireAnswers.put(key, answer);
+        updateUserToDatabase();
     }
 
     public void removeQuestionnaireAnswer(String key){
         questionnaireAnswers.remove(key);
+        updateUserToDatabase();
     }
 
     public void setCountry(String country){
         this.country = country;
+        updateUserToDatabase();
     }
 
     public boolean hasFilledQuestionnaires(){
@@ -53,5 +57,9 @@ public class User {
 
     public Activities getActivities(){
         return this.activities;
+    }
+
+    private void updateUserToDatabase(){
+        UserDatabaseManager.getInstance().add(this);
     }
 }

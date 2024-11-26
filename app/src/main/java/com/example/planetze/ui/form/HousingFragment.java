@@ -39,8 +39,6 @@ public class HousingFragment extends BaseFormFragment<FragmentHousingBinding> {
         currentUser.addQuestionnaireAnswer("q11",Arrays.asList(options1).indexOf(q11));
         currentUser.addQuestionnaireAnswer("q12",Arrays.asList(options2).indexOf(q12));
         currentUser.addQuestionnaireAnswer("q13",Arrays.asList(options3).indexOf(q13));
-
-        databaseManager.add(currentUser);
         loadFragment(new EnergyFragment());
     }
 

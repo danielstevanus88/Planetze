@@ -37,8 +37,6 @@ public class FoodFragment extends BaseFormFragment<FragmentFoodBinding> {
             currentUser.removeQuestionnaireAnswer("q9d");
             loadFragment(new WasteFragment());
         }
-
-        databaseManager.add(currentUser);
     }
 
     @Override

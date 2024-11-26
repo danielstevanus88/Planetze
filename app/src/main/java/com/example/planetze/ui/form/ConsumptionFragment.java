@@ -47,8 +47,6 @@ public class ConsumptionFragment extends BaseFormFragment<FragmentConsumptionBin
         currentUser.addQuestionnaireAnswer("q20",Arrays.asList(options3).indexOf(q20));
         currentUser.addQuestionnaireAnswer("q21",Arrays.asList(options4).indexOf(q21));
 
-        databaseManager.add(currentUser);
-
         // TODO: Replace with actual activity
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
