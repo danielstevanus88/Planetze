@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.form.CarbonInfoFragment"
-    android:background="@color/splashBackgroundColor">
+    android:background="@color/accentColor">
 
     <ScrollView
         android:layout_width="match_parent"
