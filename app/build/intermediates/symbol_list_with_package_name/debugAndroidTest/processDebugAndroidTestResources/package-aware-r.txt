@@ -1,3 +1,0 @@
-com.example.planetze.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
