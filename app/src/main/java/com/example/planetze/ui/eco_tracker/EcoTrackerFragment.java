@@ -2,19 +2,23 @@ package com.example.planetze.ui.eco_tracker;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.planetze.HabitSelectionActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
@@ -125,6 +129,13 @@ public class EcoTrackerFragment extends Fragment {
             buttonPickADate.callOnClick();
         });
 
+        Button myButton = view.findViewById(R.id.addHabit);
+        // Set the OnClickListener to handle the button press
+        myButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
+            startActivity(intent);
+        });
+
         User currentUser = LoginManager.getCurrentUser();
         currentUser.addActivity(new Date(25, 11, 2024), new TakePublicTransportation(10));
         currentUser.addActivity(new Date(25, 11, 2024), new CyclingOrWalking());
@@ -140,6 +151,7 @@ public class EcoTrackerFragment extends Fragment {
 
         return view;
     }
+
 
     private void showActivitiesOnDate(Date selectedDate, Context context, View view) {
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
@@ -165,10 +177,10 @@ public class EcoTrackerFragment extends Fragment {
                 CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
                 if(activity instanceof ActivityFood) {
                     layoutFood.addView(cardView);
-                
+
                 } else if(activity instanceof ActivityConsumption) {
                     layoutConsumption.addView(cardView);
-                
+
                 } else {
                     layoutTransportation.addView(cardView);
                 }
@@ -179,17 +191,17 @@ public class EcoTrackerFragment extends Fragment {
         TextView noConsumptionText = view.findViewById(R.id.noConsumptionText);
         TextView noFoodText = view.findViewById(R.id.noFoodText);
         TextView noTransportationText = view.findViewById(R.id.noTransportationText);
-        
+
         if(layoutConsumption.getChildCount() > 2){
             noConsumptionText.setVisibility(View.GONE);
         } else {
-            noConsumptionText.setVisibility(View.VISIBLE);  
-        } 
+            noConsumptionText.setVisibility(View.VISIBLE);
+        }
         if(layoutTransportation.getChildCount() > 2){
             noTransportationText.setVisibility(View.GONE);
         } else {
             noTransportationText.setVisibility(View.VISIBLE);
-        } 
+        }
         if(layoutFood.getChildCount() > 2){
             noFoodText.setVisibility(View.GONE);
         } else {
@@ -199,3 +211,4 @@ public class EcoTrackerFragment extends Fragment {
 
 
 }
+

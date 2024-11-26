@@ -10,15 +10,21 @@ import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 
-import java.util.HashMap;
-import java.util.List;
+public class WalkorBikeHabit extends Habit{
 
-public class WalkHabit extends Habit{
+    public WalkorBikeHabit() {
+        super(new Date());
+        this.name = "Walk or Bike for Short Trips";
+        this.description = "Opt for walking or biking instead of driving for" +
+                " short distances to reduce fuel consumption and pollution.";
+        this.category = "Transportation";
+        this.impactLevel = "High";
 
-    public WalkHabit(Date startDate) {
+    }
+    public WalkorBikeHabit(Date startDate) {
         super(startDate);
         User currentUser = LoginManager.getCurrentUser();
-        HashMap<Date, List<DailyActivity>> activities = ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities());
+        Activities activities = currentUser.getActivities();
 
         // Filter by transportation
         activities = ActivitiesFilter.filterActivitiesByCategory(activities, ActivityTransportation.class);

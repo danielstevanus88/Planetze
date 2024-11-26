@@ -7,14 +7,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.HashSet;
 
 public class User {
-        public String uid;
-        public String name;
-        public String email;
-        public HashMap<String, Integer> questionnaireAnswers;
-        public String country;
-        public HashMap<String, List<DailyActivity>> activities;
+    public String uid;
+    public String name;
+    public String email;
+    public HashSet<String> habits;
+    public HashMap<String, Integer> questionnaireAnswers;
+    public String country;
+    public HashMap<String, List<DailyActivity>> activities;
 
     public User(String uid, String name, String email){
         this.uid = uid;
@@ -84,7 +86,7 @@ public class User {
 
     }
 
-    
+
     public String getEmail(){
         return email;
     }
@@ -101,5 +103,6 @@ public class User {
 
 
 
-    
+
+
 }
