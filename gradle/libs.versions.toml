@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.2"
+agp = "8.5.2"
 coreSplashscreen = "1.2.0-alpha02"
 eazegraph = "1.2.2"
 junit = "4.13.2"

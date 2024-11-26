@@ -1,5 +1,0 @@
-com.example.planetze.test.app-core-1.6.1-0 /Users/muxun/.gradle/caches/8.9/transforms/e7560fc3205124804b906a9d6ed1a998/transformed/core-1.6.1/res
-com.example.planetze.test.app-androidTest-1 /Users/muxun/Planetze/app/build/generated/res/resValues/androidTest/debug
-com.example.planetze.test.app-mergeDebugAndroidTestResources-2 /Users/muxun/Planetze/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-com.example.planetze.test.app-mergeDebugAndroidTestResources-3 /Users/muxun/Planetze/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-com.example.planetze.test.app-debugAndroidTest-4 /Users/muxun/Planetze/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
