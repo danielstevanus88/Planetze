@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-55:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/muxun/Planetze/app/src/main/res/values-night/themes.xml",
@@ -23,24 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/9e93b04abcb26c1c8efafb2e53020e1e/transformed/appcompat-1.7.0/res/values-night-v8/values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,687",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,771"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,48",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,4156",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,4240"
-                    }
-                },
-                {
-                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/a6e1e44c27189ff5f4feb547a5d17a82/transformed/material-1.12.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/7ac395e01e2790f046ee67ad838c23a6/transformed/material-1.12.0/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -54,6 +37,23 @@
                         "startOffsets": "687,762,873,962,1063,1170,1277,1376,1483,1586,1713,1801,1925,2027,2129,2245,2347,2461,2589,2705,2827,2963,3083,3217,3337,3449,4245,4362,4486,4616,4738,4876,5010,5126",
                         "endColumns": "74,110,88,100,106,106,98,106,102,126,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
                         "endOffsets": "757,868,957,1058,1165,1272,1371,1478,1581,1708,1796,1920,2022,2124,2240,2342,2456,2584,2700,2822,2958,3078,3212,3332,3444,3570,4357,4481,4611,4733,4871,5005,5121,5241"
+                    }
+                },
+                {
+                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/5fd2c1d1e158190beba67586157b2002/transformed/appcompat-1.7.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,48",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,4156",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,4240"
                     }
                 }
             ]

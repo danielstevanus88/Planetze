@@ -53,9 +53,9 @@ public class EcoTrackerFragment extends Fragment {
 
     private void setPieChart() {
         // TODO: Set the pie chart data from the activities
-        float transportation = (float) 1;
-        float foodConsumption = (float) 1;
-        float consumptionAndShopping = (float) 1;
+        float transportation = (float) 10;
+        float foodConsumption = (float) 10;
+        float consumptionAndShopping = (float) 10;
 
         pieChart.addPieSlice(new PieModel("Transportation", transportation, Color.parseColor("#FF0000")));
         pieChart.addPieSlice(new PieModel("Food Consumption", foodConsumption, Color.parseColor("#FFAA00")));

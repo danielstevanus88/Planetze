@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-v22/values-v22.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-55:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/9e93b04abcb26c1c8efafb2e53020e1e/transformed/appcompat-1.7.0/res/values-v22/values-v22.xml",
+                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/5fd2c1d1e158190beba67586157b2002/transformed/appcompat-1.7.0/res/values-v22/values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

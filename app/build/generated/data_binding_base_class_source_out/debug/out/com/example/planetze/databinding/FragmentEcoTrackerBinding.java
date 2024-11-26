@@ -15,6 +15,7 @@ import com.example.planetze.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
+import org.eazegraph.lib.charts.PieChart;
 
 public final class FragmentEcoTrackerBinding implements ViewBinding {
   @NonNull
@@ -24,12 +25,16 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
   public final Button add;
 
   @NonNull
+  public final PieChart piechart;
+
+  @NonNull
   public final TextView totalEmissions;
 
   private FragmentEcoTrackerBinding(@NonNull ConstraintLayout rootView, @NonNull Button add,
-      @NonNull TextView totalEmissions) {
+      @NonNull PieChart piechart, @NonNull TextView totalEmissions) {
     this.rootView = rootView;
     this.add = add;
+    this.piechart = piechart;
     this.totalEmissions = totalEmissions;
   }
 
@@ -66,13 +71,20 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.piechart;
+      PieChart piechart = ViewBindings.findChildViewById(rootView, id);
+      if (piechart == null) {
+        break missingId;
+      }
+
       id = R.id.total_emissions;
       TextView totalEmissions = ViewBindings.findChildViewById(rootView, id);
       if (totalEmissions == null) {
         break missingId;
       }
 
-      return new FragmentEcoTrackerBinding((ConstraintLayout) rootView, add, totalEmissions);
+      return new FragmentEcoTrackerBinding((ConstraintLayout) rootView, add, piechart,
+          totalEmissions);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

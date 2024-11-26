@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-54:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-55:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/6de10fa1f6bb74ca046bf746ae5d1df5/transformed/play-services-auth-20.7.0/res/values-watch-v20/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11",
-                        "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "173,248,324,399,474,561,638,725",
-                        "endColumns": "74,75,74,74,86,76,86,75",
-                        "endOffsets": "247,323,398,473,560,637,724,800"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,134,214,293,372,463,544,635",
-                        "endColumns": "78,79,78,78,90,80,90,79",
-                        "endOffsets": "129,209,288,367,458,539,630,710"
-                    }
-                },
-                {
-                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/9e93b04abcb26c1c8efafb2e53020e1e/transformed/appcompat-1.7.0/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/5fd2c1d1e158190beba67586157b2002/transformed/appcompat-1.7.0/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -37,6 +20,23 @@
                         "endLines": "12,15,18",
                         "endColumns": "12,12,12",
                         "endOffsets": "869,1040,1213"
+                    }
+                },
+                {
+                    "source": "/Users/muxun/.gradle/caches/8.9/transforms/6895e8d817d36eadf65deaa4d53620f8/transformed/play-services-auth-20.7.0/res/values-watch-v20/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11",
+                        "startColumns": "0,0,0,0,0,0,0,0",
+                        "startOffsets": "173,248,324,399,474,561,638,725",
+                        "endColumns": "74,75,74,74,86,76,86,75",
+                        "endOffsets": "247,323,398,473,560,637,724,800"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,134,214,293,372,463,544,635",
+                        "endColumns": "78,79,78,78,90,80,90,79",
+                        "endOffsets": "129,209,288,367,458,539,630,710"
                     }
                 }
             ]

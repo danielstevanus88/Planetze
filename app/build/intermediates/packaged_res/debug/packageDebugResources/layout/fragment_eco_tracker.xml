@@ -13,29 +13,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="56dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/alternativeDarkColor"
-                    android:textSize="20sp"
-                    android:layout_gravity="start"
-                    android:padding="8dp"
-                    android:text="@string/daily_co2e_emissions" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-                </Space>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:layout_gravity="start"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="bottom"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:text="@string/daily_co2e_emissions"
+                        android:textColor="@color/alternativeDarkColor"
+                        android:textSize="20sp" />
+
+                    <View style="@style/FormLine" />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/add"
@@ -49,12 +56,81 @@
                 android:id="@+id/total_emissions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/primaryColor"
-                android:textSize="24sp"
                 android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
                 android:padding="8dp"
-                android:text="@string/total_co2e_emissions" />
+                android:text="@string/total_co2e_emissions"
+                android:textColor="@color/primaryColor"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:padding="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/red_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/transport" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="4dp">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/yellow_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/food_consumption" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="4dp">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/green_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/consumption_and_shopping" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

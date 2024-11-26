@@ -3,6 +3,7 @@ package com.example.planetze.classes;
 import com.example.planetze.classes.EcoTracker.Activities;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class User {
     public String uid;
@@ -10,7 +11,7 @@ public class User {
     public String email;
     public HashMap<String, Integer> questionnaireAnswers;
     public String country;
-
+    public HashMap<String, List<String>> habit;
     public Activities activities;
 
     public User(String uid, String name, String email) {

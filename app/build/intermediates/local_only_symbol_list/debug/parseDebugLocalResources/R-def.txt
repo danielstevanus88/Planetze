@@ -13,6 +13,8 @@ color ic_launcher_background
 color inactive_color
 color nav_item_color
 color primaryColor
+color primaryRed
+color primaryYellow
 color purple_200
 color purple_500
 color purple_700
@@ -33,6 +35,7 @@ drawable earth_image
 drawable eco_balance
 drawable eco_gauge
 drawable eco_tracker
+drawable green_icon
 drawable ic_dashboard_black_24dp
 drawable ic_home_black_24dp
 drawable ic_launcher_background
@@ -50,7 +53,9 @@ drawable planetze_login_background
 drawable planetze_logo
 drawable planetze_socialinequality
 drawable planetze_whatisclimatechange
+drawable red_icon
 drawable unclicked_button
+drawable yellow_icon
 font mon_bold
 font mont_var
 font quicksand
@@ -116,6 +121,7 @@ id option3
 id option4
 id option5
 id other_purchases
+id piechart
 id q1
 id q10
 id q10_option1
@@ -336,6 +342,7 @@ string chicken
 string chicken2
 string condo
 string consumption
+string consumption_and_shopping
 string country
 string cycling_or_walking
 string daily
@@ -366,6 +373,7 @@ string flights2
 string flights3
 string flights4
 string food
+string food_consumption
 string frequent
 string frequently
 string gas
@@ -457,6 +465,7 @@ string title_notifications
 string total_co2e_emissions
 string townhouse
 string train
+string transport
 string transportation
 string type_of_bill
 string type_of_electronic_device
@@ -474,6 +483,8 @@ string wood
 string yes
 string yes_occasionally
 string yes_regularly
+style ActivityIcon
+style ActivityText
 style AddButton
 style FormBox
 style FormButton
