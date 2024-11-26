@@ -37,6 +37,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.Planetze" >
         <activity
+            android:name="com.example.planetze.LogHabitActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.planetze.HabitSelectionActivity"
             android:exported="false" />
         <activity

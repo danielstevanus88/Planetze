@@ -94,6 +94,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="location">Please specify your current location</string>
+    <string name="log_a_habit">Log a Habit</string>
     <string name="login_failed">"Login failed"</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -176,6 +177,7 @@
     <string name="quarterly">Quarterly</string>
     <string name="rarely">Rarely</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="select_an_habit">Select an Habit</string>
     <string name="semi_detached">Semi-detached house</string>
     <string name="time1">Under 1 hour</string>
     <string name="time2">1–3 hours</string>

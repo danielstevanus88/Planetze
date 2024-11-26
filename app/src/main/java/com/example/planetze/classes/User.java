@@ -3,13 +3,13 @@ package com.example.planetze.classes;
 import com.example.planetze.classes.EcoTracker.Activities;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 
 public class User {
     public String uid;
     public String name;
     public String email;
-    public HashSet<String> habits;
+    public HashMap<String, List<String>> habit;
     public HashMap<String, Integer> questionnaireAnswers;
     public String country;
 
@@ -20,10 +20,12 @@ public class User {
         this.name = name;
         this.email = email;
         this.questionnaireAnswers = new HashMap<>();
+        this.habit = new HashMap<String, List<String>>();
     }
 
     public User(){
         this.questionnaireAnswers = new HashMap<>();
+        this.habit = new HashMap<String, List<String>>();
     }
     public String getEmail(){
         return email;
@@ -57,4 +59,7 @@ public class User {
         return this.activities;
     }
 
+    public HashMap<String, List<String>> getHabit(){
+        return this.habit;
+    }
 }

@@ -63,7 +63,6 @@ id action_FirstFragment_to_SecondFragment
 id action_SecondFragment_to_FirstFragment
 id addHabit
 id back
-id button2
 id buttonAcknowledge
 id buttonLogin
 id buttonLoginOption
@@ -71,6 +70,7 @@ id buttonPickDate
 id buttonRegister
 id buttonRegisterOption
 id buttonResetPassword
+id calendarView
 id catchphrase
 id container
 id country
@@ -99,6 +99,8 @@ id infoHeading2
 id infoHeading3
 id infoHeading4
 id infoText
+id logHabit
+id logHabitButton
 id logo
 id main
 id mobile_navigation
@@ -233,11 +235,11 @@ id q9d_option1
 id q9d_option2
 id q9d_option3
 id q9d_option4
-id recyclerView
 id recycler_view
 id search_view
 id select
 id specify_location
+id spinnerHabit
 id spinner_category
 id spinner_impact
 id textButtonBack
@@ -261,15 +263,16 @@ id textView9
 id text_dashboard
 id text_home
 id text_notifications
+id title
 layout activity_form
 layout activity_habit_selection
+layout activity_log_habit
 layout activity_login
 layout activity_main
 layout activity_splash
 layout dropdown_item
 layout fragment_air_travel
 layout fragment_carbon_info
-layout fragment_choose_habit
 layout fragment_consumption
 layout fragment_country
 layout fragment_dashboard
@@ -350,6 +353,7 @@ string hybrid
 string invalid_password
 string invalid_username
 string location
+string log_a_habit
 string login_failed
 string lorem_ipsum
 string meat_based
@@ -397,6 +401,7 @@ string q9
 string quarterly
 string rarely
 string second_fragment_label
+string select_an_habit
 string semi_detached
 string time1
 string time2

@@ -276,6 +276,10 @@
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\drawable\\ic_notifications_black_24dp.xml"
     },
     {
+        "merged": "com.example.planetze.app-debug-58:/layout_activity_log_habit.xml.flat",
+        "source": "com.example.planetze.app-main-60:/layout/activity_log_habit.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\drawable_planetze_carbonfootprint.jpg.flat",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\drawable\\planetze_carbonfootprint.jpg"
     },
@@ -304,8 +308,8 @@
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.planetze.app-debug-58:/layout_activity_habit_selection.xml.flat",
-        "source": "com.example.planetze.app-main-60:/layout/activity_habit_selection.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\layout_activity_log_habit.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\activity_log_habit.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-debug-58:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",

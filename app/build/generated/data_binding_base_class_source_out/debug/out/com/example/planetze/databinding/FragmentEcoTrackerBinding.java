@@ -28,9 +28,6 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
   public final Button addHabit;
 
   @NonNull
-  public final Button button2;
-
-  @NonNull
   public final LinearLayout buttonPickDate;
 
   @NonNull
@@ -43,22 +40,26 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
   public final ImageView imageButtonCalendar;
 
   @NonNull
+  public final Button logHabitButton;
+
+  @NonNull
   public final TextView textPickADate;
 
   @NonNull
   public final TextView textView3;
 
   private FragmentEcoTrackerBinding(@NonNull FrameLayout rootView, @NonNull Button addHabit,
-      @NonNull Button button2, @NonNull LinearLayout buttonPickDate, @NonNull EditText editTextDate,
+      @NonNull LinearLayout buttonPickDate, @NonNull EditText editTextDate,
       @NonNull FragmentContainerView fragView, @NonNull ImageView imageButtonCalendar,
-      @NonNull TextView textPickADate, @NonNull TextView textView3) {
+      @NonNull Button logHabitButton, @NonNull TextView textPickADate,
+      @NonNull TextView textView3) {
     this.rootView = rootView;
     this.addHabit = addHabit;
-    this.button2 = button2;
     this.buttonPickDate = buttonPickDate;
     this.editTextDate = editTextDate;
     this.fragView = fragView;
     this.imageButtonCalendar = imageButtonCalendar;
+    this.logHabitButton = logHabitButton;
     this.textPickADate = textPickADate;
     this.textView3 = textView3;
   }
@@ -96,12 +97,6 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.button2;
-      Button button2 = ViewBindings.findChildViewById(rootView, id);
-      if (button2 == null) {
-        break missingId;
-      }
-
       id = R.id.buttonPickDate;
       LinearLayout buttonPickDate = ViewBindings.findChildViewById(rootView, id);
       if (buttonPickDate == null) {
@@ -126,6 +121,12 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.logHabitButton;
+      Button logHabitButton = ViewBindings.findChildViewById(rootView, id);
+      if (logHabitButton == null) {
+        break missingId;
+      }
+
       id = R.id.textPickADate;
       TextView textPickADate = ViewBindings.findChildViewById(rootView, id);
       if (textPickADate == null) {
@@ -138,8 +139,8 @@ public final class FragmentEcoTrackerBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentEcoTrackerBinding((FrameLayout) rootView, addHabit, button2,
-          buttonPickDate, editTextDate, fragView, imageButtonCalendar, textPickADate, textView3);
+      return new FragmentEcoTrackerBinding((FrameLayout) rootView, addHabit, buttonPickDate,
+          editTextDate, fragView, imageButtonCalendar, logHabitButton, textPickADate, textView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

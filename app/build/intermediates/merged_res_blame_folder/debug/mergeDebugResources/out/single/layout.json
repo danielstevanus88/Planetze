@@ -40,10 +40,6 @@
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_transportation.xml"
     },
     {
-        "merged": "com.example.planetze.app-mergeDebugResources-57:/layout/activity_habit_selection.xml",
-        "source": "com.example.planetze.app-main-60:/layout/activity_habit_selection.xml"
-    },
-    {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\fragment_air_travel.xml",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_air_travel.xml"
     },
@@ -62,6 +58,10 @@
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\fragment_consumption.xml",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_consumption.xml"
+    },
+    {
+        "merged": "com.example.planetze.app-mergeDebugResources-57:/layout/activity_log_habit.xml",
+        "source": "com.example.planetze.app-main-60:/layout/activity_log_habit.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\fragment_personal_vehicle.xml",
@@ -110,6 +110,10 @@
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\fragment_reset_password.xml",
         "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\fragment_reset_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\activity_log_habit.xml",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-main-60:\\layout\\activity_log_habit.xml"
     },
     {
         "merged": "C:\\Users\\user\\.gradle\\daemon\\8.9\\com.example.planetze.app-mergeDebugResources-57:\\layout\\fragment_notifications.xml",

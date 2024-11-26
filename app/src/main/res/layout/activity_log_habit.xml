@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogHabitActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Progress and logging for current Habit(s)"
+            android:textAlignment="center"
+            android:textColor="#009999"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerHabit"
+            android:layout_width="131dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:spinnerMode="dropdown" />
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="305dp"
+            android:background="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/secondaryColor"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/darkTextColor"
+                android:ems="10"
+                android:hint="mm/dd/yyyy"
+                android:inputType="date"
+                android:textColorHint="@color/darkTextColor" />
+
+            <LinearLayout
+                android:id="@+id/buttonPickDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="@color/darkTextColor"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textPickADate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:clickable="true"
+                    android:text="Pick"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:id="@+id/imageButtonCalendar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/planetze_calender" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/logHabitButton"
+                style="@style/FormButton"
+                android:text="Back" />
+
+            <Button
+                android:id="@+id/logHabit"
+                style="@style/FormButton"
+                android:text="Select" />
+        </LinearLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

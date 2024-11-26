@@ -3360,7 +3360,6 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id button2
 id buttonAcknowledge
 id buttonLogin
 id buttonLoginOption
@@ -3370,6 +3369,7 @@ id buttonRegister
 id buttonRegisterOption
 id buttonResetPassword
 id cache_measures
+id calendarView
 id callMeasure
 id cancel_action
 id cancel_button
@@ -3545,6 +3545,8 @@ id linear
 id listMode
 id list_item
 id locale
+id logHabit
+id logHabitButton
 id logo
 id ltr
 id m3_side_sheet
@@ -3802,7 +3804,6 @@ id q9d_option4
 id radio
 id ratio
 id rectangles
-id recyclerView
 id recycler_view
 id report_drawn
 id reverseSawtooth
@@ -3858,6 +3859,7 @@ id south
 id spacer
 id special_effects_controller_view_tag
 id specify_location
+id spinnerHabit
 id spinner_category
 id spinner_impact
 id spline
@@ -4094,6 +4096,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_form
 layout activity_habit_selection
+layout activity_log_habit
 layout activity_login
 layout activity_main
 layout activity_splash
@@ -4118,7 +4121,6 @@ layout design_text_input_start_icon
 layout dropdown_item
 layout fragment_air_travel
 layout fragment_carbon_info
-layout fragment_choose_habit
 layout fragment_consumption
 layout fragment_country
 layout fragment_dashboard
@@ -4352,6 +4354,7 @@ string invalid_password
 string invalid_username
 string item_view_role_description
 string location
+string log_a_habit
 string login_failed
 string lorem_ipsum
 string m3_exceed_max_badge_text_suffix
@@ -4510,6 +4513,7 @@ string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
 string second_fragment_label
+string select_an_habit
 string semi_detached
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior

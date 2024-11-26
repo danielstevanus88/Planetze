@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Select an Habit"
+            android:text="@string/select_an_habit"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="#009999"

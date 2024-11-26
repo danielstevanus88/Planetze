@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.planetze.HabitSelectionActivity;
+import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
+import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
 
 import java.util.Calendar;
 
@@ -26,7 +28,7 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class EcoTrackerFragment extends Fragment {
-
+    User user = LoginManager.getInstance().getCurrentUser();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -105,6 +107,18 @@ public class EcoTrackerFragment extends Fragment {
         myButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
             startActivity(intent);
+        });
+        Button loghabit = view.findViewById(R.id.logHabitButton);
+        // Set the OnClickListener to handle the button press
+        loghabit.setOnClickListener(v -> {
+            if (user.habit == null || user.habit.isEmpty()){
+                Toast.makeText(getActivity(), "You have not adopted" +
+                        " a habit yet", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Intent intent = new Intent(getActivity(), LogHabitActivity.class);
+                startActivity(intent);
+            }
         });
         return view;
     }
