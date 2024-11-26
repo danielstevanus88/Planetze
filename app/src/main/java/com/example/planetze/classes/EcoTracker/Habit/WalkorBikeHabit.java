@@ -24,14 +24,14 @@ public class WalkorBikeHabit extends Habit{
     public WalkorBikeHabit(Date startDate) {
         super(startDate);
         User currentUser = LoginManager.getCurrentUser();
-        Activities activities = currentUser.getActivities();
-
-        // Filter by transportation
-        activities = ActivitiesFilter.filterActivitiesByCategory(activities, ActivityTransportation.class);
-
-        // Set the number of carbon emission saved per day based on average of previous day
-        this.numberOfCarbonEmissionSavedPerDay =
-                ActivitiesCalculator.getDailyEmissionAverage(activities)
-                        - EcoTrackerEmissionConstant.CYCLING_OR_WALKING_EMISSION;
+//        Activities activities = currentUser.getActivities();
+//
+//        // Filter by transportation
+//        activities = ActivitiesFilter.filterActivitiesByCategory(activities, ActivityTransportation.class);
+//
+//        // Set the number of carbon emission saved per day based on average of previous day
+//        this.numberOfCarbonEmissionSavedPerDay =
+//                ActivitiesCalculator.getDailyEmissionAverage(activities)
+//                        - EcoTrackerEmissionConstant.CYCLING_OR_WALKING_EMISSION;
     }
 }

@@ -1,13 +1,16 @@
 package com.example.planetze.classes.EcoTracker.Habit;
-
-import com.example.planetze.classes.EcoTracker.Activities;
 import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
+import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
 import com.example.planetze.classes.EcoTracker.Category.Food.ActivityFood;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class FoodWasteHabit extends Habit{
     public FoodWasteHabit() {
@@ -25,15 +28,16 @@ public class FoodWasteHabit extends Habit{
         this.impactLevel = "Low";
 
         User currentUser = LoginManager.getCurrentUser();
-        Activities activities = currentUser.getActivities();
+        HashMap<String, List<DailyActivity>> activities = currentUser.getActivities();
 
         // Filter by Food
-        activities = ActivitiesFilter.filterActivitiesByCategory(activities,
-                ActivityFood.class);
+//        activities = ActivitiesFilter.filterActivitiesByCategory(
+//                ActivitiesConverter.getActivitiesWithClassDate(activities),
+//                ActivityFood.class);
 
         // Set the number of carbon emission saved per day based on average of previous day
         this.numberOfCarbonEmissionSavedPerDay =
-                ActivitiesCalculator.getDailyEmissionAverage(activities)
+                ActivitiesCalculator.getDailyEmissionAverage(ActivitiesConverter.getActivitiesWithClassDate(activities))
                         - EcoTrackerEmissionConstant.CYCLING_OR_WALKING_EMISSION;
     }
 }
