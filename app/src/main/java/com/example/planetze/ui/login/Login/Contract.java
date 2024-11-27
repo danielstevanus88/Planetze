@@ -8,13 +8,15 @@ import com.google.firebase.auth.AuthResult;
 public interface Contract {
     public interface Model {
         public Task<AuthResult> login(String email, String password);
+
+        public boolean isUserVerified();
     }
 
 
     public interface View {
         public String getEmail();
         public String getPassword();
-        public void showMessage(String message);
+        public void showMessage(String title, String message);
         public void onLoginSuccess();
 
     }
