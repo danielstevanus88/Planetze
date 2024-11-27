@@ -1,5 +1,7 @@
 package com.example.planetze.ui.login.Register;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,12 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.planetze.FormActivity;
+import com.example.planetze.LoginActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -117,21 +122,31 @@ public class RegisterFragment extends Fragment {
 
                     loginManager.register(email, password).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = loginManager.getCurrentFirebaseUser();
+                            FirebaseUser user = LoginManager.getCurrentFirebaseUser();
                             if(user != null){
                                 User newUser = new User(user.getUid(), name, email);
                                 userDatabaseManager.add(newUser).addOnCompleteListener(task1 -> {
                                     if(task1.isSuccessful()){
-                                        // Redirect to main activity
-                                        LoginManager.setCurrentUser(newUser);
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                                        startActivity(intent);
-                                        getActivity().finish();
+                                        // Send verification email
+                                        if(!user.isEmailVerified()){
+                                            user.sendEmailVerification().addOnCompleteListener(task2 -> {
+                                                if (task2.isSuccessful()){
+                                                    showMessage("Sent!", "Confirmation Email has been sent. Check your email inbox.");
+
+                                                    loginManager.logout();
+                                                    requireActivity().onBackPressed();
+                                                } else {
+                                                    showMessage("Error!", "Failed to send verification email. Please relogin");
+                                                }
+                                            });
+                                        }
                                     }else{
                                         // Show error message
-                                        Toast.makeText(getActivity(), "Error: " + task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        showMessage("Error: " , task1.getException().getMessage());
+
                                     }
                                 });
+
                             }
                         } else {
                             // Show error message
@@ -141,9 +156,23 @@ public class RegisterFragment extends Fragment {
                 }
             }
         );
-        
+
 
         // Inflate the layout for this fragment
         return view;
+    }
+    public void showMessage(String title, String message){
+        // Show dialog, confirmation of exiting the app
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
