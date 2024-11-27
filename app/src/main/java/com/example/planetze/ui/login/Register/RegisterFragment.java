@@ -124,23 +124,28 @@ public class RegisterFragment extends Fragment {
                         if (task.isSuccessful()) {
                             FirebaseUser user = LoginManager.getCurrentFirebaseUser();
                             if(user != null){
-                                // Send verification email
-                                if(!user.isEmailVerified()){
-                                    user.sendEmailVerification().addOnCompleteListener(task2 -> {
-                                        if (task2.isSuccessful()){
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                            builder.setTitle("Sent!");
-                                            builder.setMessage("Confirmation Email has been sent. Check your email inbox.");
-                                            AlertDialog dialog = builder.create();
-                                            dialog.show();
-
-                                            requireActivity().onBackPressed();
-                                            loginManager.logout();
-                                        } else {
-                                            Toast.makeText(getActivity(), "Failed to send verification email. Please relogin", Toast.LENGTH_SHORT).show();
+                                User newUser = new User(user.getUid(), name, email);
+                                userDatabaseManager.add(newUser).addOnCompleteListener(task1 -> {
+                                    if(task1.isSuccessful()){
+                                        // Send verification email
+                                        if(!user.isEmailVerified()){
+                                            user.sendEmailVerification().addOnCompleteListener(task2 -> {
+                                                if (task2.isSuccessful()){
+                                                    showMessage("Sent!", "Confirmation Email has been sent. Check your email inbox.");
+                                                    requireActivity().onBackPressed();
+                                                    loginManager.logout();
+                                                } else {
+                                                    showMessage("Error!", "Failed to send verification email. Please relogin");
+                                                }
+                                            });
                                         }
-                                    });
-                                }
+                                    }else{
+                                        // Show error message
+                                        showMessage("Error: " , task1.getException().getMessage());
+
+                                    }
+                                });
+
                             }
                         } else {
                             // Show error message
@@ -150,9 +155,23 @@ public class RegisterFragment extends Fragment {
                 }
             }
         );
-        
+
 
         // Inflate the layout for this fragment
         return view;
+    }
+    public void showMessage(String title, String message){
+        // Show dialog, confirmation of exiting the app
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
