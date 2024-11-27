@@ -2,12 +2,16 @@ package com.example.planetze.classes.ScreenUtilities;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +19,8 @@ import androidx.cardview.widget.CardView;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
+import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
 
 public class ViewGenerator {
     @SuppressLint("ResourceAsColor")
@@ -74,17 +80,44 @@ public class ViewGenerator {
         verticalLayout.addView(titleTextView);
         verticalLayout.addView(co2TextView);
 
-        // Create CheckBox
-        CheckBox checkBox = new CheckBox(context);
-        checkBox.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        ));
+        // Create Edit and Delete
+        // Create the parent LinearLayout
+        LinearLayout linearLayout = new LinearLayout(context);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
+        linearLayout.setGravity(Gravity.CENTER|Gravity.END);
 
+        // Create the ImageView
+        ImageView imageView = new ImageView(context);
+        imageView.setId(View.generateViewId());
+        LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
+                PixelConverter.convertDpToPx(context, 15), PixelConverter.convertDpToPx(context,15));
+        imageParams.weight = 1; // Same as android:layout_weight="1"
+        imageView.setLayoutParams(imageParams);
+        imageView.setImageResource(R.drawable.planetze_trash);  // Replace with your drawable resource
+        imageView.setClickable(true);
+        setOnClickListenerForDelete(activity, imageView, context);
 
-        // Add vertical layout and checkbox to parent layout
+        // Create the TextView
+        TextView textView = new TextView(context);
+        textView.setId(View.generateViewId());
+        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        textParams.weight = 1; // Same as android:layout_weight="1"
+        textParams.topMargin = PixelConverter.convertDpToPx(context, 5);  // Same as android:layout_marginTop="5dp"
+        textView.setLayoutParams(textParams);
+        textView.setText("Edit");
+
+        // Add the ImageView and TextView to the LinearLayout
+        linearLayout.addView(imageView);
+        linearLayout.addView(textView);
+
+        // Add vertical layout and edit/delete to parent layout
         parentLayout.addView(verticalLayout);
-        parentLayout.addView(checkBox);
+        parentLayout.addView(linearLayout);
+
 
         // Add parent layout to CardView
         cardView.addView(parentLayout);
@@ -99,4 +132,36 @@ public class ViewGenerator {
             layout.removeViewAt(i);  // Remove each child starting from the second one
         }
     }
+
+    public void showMessage(Context context, String title, String message){
+        // Show dialog, confirmation of exiting the app
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public static void setOnClickListenerForDelete(DailyActivity activity, ImageView imageView, Context context){
+        imageView.setOnClickListener(event -> {
+            String uuid = activity.getUuid();
+            User user = LoginManager.getCurrentUser();
+
+            user.removeActivity(uuid);
+        });
+    }
+
 }

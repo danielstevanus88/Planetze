@@ -18,29 +18,38 @@ public class User {
     public String country;
     public HashMap<String, List<DailyActivity>> activities;
 
+    private UserDatabaseManager userDatabaseManager;
+
     public User(String uid, String name, String email){
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
+
+        this.userDatabaseManager = UserDatabaseManager.getInstance();
     }
 
     public User(){
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
+
+        this.userDatabaseManager = UserDatabaseManager.getInstance();
     }
 
     public void addQuestionnaireAnswer(String key, int answer){
         questionnaireAnswers.put(key, answer);
+        userDatabaseManager.add(this);
     }
 
     public void removeQuestionnaireAnswer(String key){
         questionnaireAnswers.remove(key);
+        userDatabaseManager.add(this);
     }
 
     public void setCountry(String country){
         this.country = country;
+        userDatabaseManager.add(this);
     }
 
     public boolean hasFilledQuestionnaires(){
@@ -68,17 +77,20 @@ public class User {
             newActivity.add(activity);
             activities.put(date.toString(), newActivity);
         }
+        userDatabaseManager.add(this);
     }
 
-    public void removeActivity(UUID uuid){
+    public void removeActivity(String uuid){
         for(String date : activities.keySet()){
             List<DailyActivity> listDailyActivities = activities.get(date);
+            if(listDailyActivities == null) continue;
             for(DailyActivity activity : listDailyActivities){
                 if(activity.getUuid().equals(uuid)){
                     listDailyActivities.remove(activity);
                     if(listDailyActivities.isEmpty()){
                         activities.remove(date);
                     }
+                    userDatabaseManager.add(this);
                     return;
                 }
             }
