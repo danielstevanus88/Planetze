@@ -131,7 +131,8 @@ public class LoginTest {
         verify(taskMock).addOnCompleteListener(captor.capture());
 
         captor.getValue().onComplete(taskMock);
-        verify(view).showMessage("Verification link has been sent!", "We have send the verification link to your inbox. Please check your inbox.");
+        verify(model).sendVerificationEmail();
+        verify(view).onLoginNotVerified();
     }
 
 }

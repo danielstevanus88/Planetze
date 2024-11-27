@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -158,6 +160,12 @@ public class LoginFragment extends Fragment implements Contract.View{
                     }
                 }
         );
+    }
+
+    @Override
+    public void onLoginNotVerified(){
+        showMessage("Verification link has been sent!", "We have send the verification link to your inbox. Please check your inbox.");
+
     }
 
     @Override
