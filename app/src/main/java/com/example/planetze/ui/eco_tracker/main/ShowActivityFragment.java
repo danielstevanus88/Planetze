@@ -97,15 +97,11 @@ public class ShowActivityFragment extends Fragment {
         EditText textPickADate = view.findViewById(R.id.editTextDate);
         textPickADate.setKeyListener(null);
 
-
         buttonPickADate.setOnClickListener( event -> {
-            // Open DatePickerDialog
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     getActivity(),
@@ -119,10 +115,25 @@ public class ShowActivityFragment extends Fragment {
                     },
                     year, month, day);
             datePickerDialog.show();
-
         });
         textPickADate.setOnClickListener( event -> {
-            buttonPickADate.callOnClick();
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    getActivity(),
+                    (v, selectedYear, selectedMonth, selectedDay) -> {
+                        // Month is 0-based, add 1 to display correctly
+                        Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
+                        textPickADate.setText(selectedDate.toString());
+                        Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
+
+                        showActivitiesOnDate(selectedDate, getActivity(), view);
+                    },
+                    year, month, day);
+            datePickerDialog.show();
         });
 
         Button myButton = view.findViewById(R.id.addHabit);
@@ -204,4 +215,6 @@ public class ShowActivityFragment extends Fragment {
             noFoodText.setVisibility(View.VISIBLE);
         }
     }
+
+
 }

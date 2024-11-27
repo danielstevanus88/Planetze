@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:paddingBottom="?attr/actionBarSize"
+    android:paddingBottom="75dp"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
@@ -16,8 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondaryColor"
-            android:gravity="center"
+            android:gravity="center|left"
             android:orientation="horizontal"
             android:padding="20dp"
             tools:layout_editor_absoluteX="1dp"
@@ -27,6 +26,38 @@
                 android:id="@+id/buttonPickDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:animationCache="false"
+                android:clickable="true"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageButtonCalendar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/planetze_calender"
+                    app:tint="#000000" />
+
+                <EditText
+                    android:id="@+id/editTextDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="mm/dd/yyyy"
+                    android:inputType="date" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttonAddActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="0"
                 android:animationCache="false"
                 android:background="@color/primaryColor"
@@ -36,37 +67,30 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/imageButtonCalendar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
+                    android:id="@+id/imageButtonPlus"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="0"
-                    app:srcCompat="@drawable/planetze_calender" />
+                    android:foregroundTint="#FFFFFF"
+                    android:foregroundTintMode="add"
+                    android:tintMode="src_in"
+                    app:srcCompat="@drawable/planetze_plus"
+                    app:tint="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/textPickADate"
+                    android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="0"
-                    android:clickable="true"
-                    android:text="Pick"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/editTextDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:ems="10"
-                    android:hint="mm/dd/yyyy"
-                    android:inputType="date"
-                    android:textColorHint="@color/white" />
+                    android:text="Add Activity"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
         </LinearLayout>
+
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
@@ -84,6 +108,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="#009999"
             android:text="Add Habit" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
