@@ -3,63 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="hi"
     app:startDestination="@+id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.planetze.ui.eco_tracker.EcoTrackerFragment"
+        android:name="com.example.planetze.ui.eco_tracker.main.ShowActivityFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_eco_tracker" />
-
-    <fragment
-        android:id="@+id/activity_list"
-        android:name="com.example.planetze.ui.eco_tracker.ActivityListFragment"
-        tools:layout="@layout/fragment_activity_list" />
-
-    <fragment
-        android:id="@+id/drive_personal_vehicle"
-        android:name="com.example.planetze.ui.eco_tracker.DrivePersonalVehicleFragment"
-        tools:layout="@layout/fragment_drive_personal_vehicle" />
-
-    <fragment
-        android:id="@+id/take_public_transportation"
-        android:name="com.example.planetze.ui.eco_tracker.TakePublicTransportationFragment"
-        tools:layout="@layout/fragment_take_public_transportation" />
-
-    <fragment
-        android:id="@+id/cycling_or_walking"
-        android:name="com.example.planetze.ui.eco_tracker.CyclingOrWalkingFragment"
-        tools:layout="@layout/fragment_cycling_or_walking" />
-
-    <fragment
-        android:id="@+id/flight"
-        android:name="com.example.planetze.ui.eco_tracker.FlightFragment"
-        tools:layout="@layout/fragment_flight" />
-
-    <fragment
-        android:id="@+id/meal"
-        android:name="com.example.planetze.ui.eco_tracker.MealFragment"
-        tools:layout="@layout/fragment_meal" />
-
-    <fragment
-        android:id="@+id/buy_new_clothes"
-        android:name="com.example.planetze.ui.eco_tracker.BuyNewClothesFragment"
-        tools:layout="@layout/fragment_buy_new_clothes" />
-
-    <fragment
-        android:id="@+id/buy_electronics"
-        android:name="com.example.planetze.ui.eco_tracker.BuyElectronicsFragment"
-        tools:layout="@layout/fragment_buy_electronics" />
-
-    <fragment
-        android:id="@+id/other_purchases"
-        android:name="com.example.planetze.ui.eco_tracker.OtherPurchasesFragment"
-        tools:layout="@layout/fragment_other_purchases" />
-
-    <fragment
-        android:id="@+id/energy_bills"
-        android:name="com.example.planetze.ui.eco_tracker.EnergyBillsFragment"
-        tools:layout="@layout/fragment_energy_bills" />
+        tools:layout="@layout/fragment_show_activity" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -72,4 +23,66 @@
         android:name="com.example.planetze.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+
+    <fragment
+        android:id="@+id/activity_list"
+        android:name="com.example.planetze.ui.eco_tracker.ActivityListFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_activity_list" />
+
+    <fragment
+        android:id="@+id/drive_personal_vehicle"
+        android:name="com.example.planetze.ui.eco_tracker.DrivePersonalVehicleFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_drive_personal_vehicle" />
+
+    <fragment
+        android:id="@+id/take_public_transportation"
+        android:name="com.example.planetze.ui.eco_tracker.TakePublicTransportationFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_take_public_transportation" />
+
+    <fragment
+        android:id="@+id/cycling_or_walking"
+        android:name="com.example.planetze.ui.eco_tracker.CyclingOrWalkingFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_cycling_or_walking" />
+
+    <fragment
+        android:id="@+id/flight"
+        android:name="com.example.planetze.ui.eco_tracker.FlightFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_flight" />
+
+    <fragment
+        android:id="@+id/meal"
+        android:name="com.example.planetze.ui.eco_tracker.MealFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_meal" />
+
+    <fragment
+        android:id="@+id/buy_new_clothes"
+        android:name="com.example.planetze.ui.eco_tracker.BuyNewClothesFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_buy_new_clothes" />
+
+    <fragment
+        android:id="@+id/buy_electronics"
+        android:name="com.example.planetze.ui.eco_tracker.BuyElectronicsFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_buy_electronics" />
+
+    <fragment
+        android:id="@+id/other_purchases"
+        android:name="com.example.planetze.ui.eco_tracker.OtherPurchasesFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_other_purchases" />
+
+    <fragment
+        android:id="@+id/energy_bills"
+        android:name="com.example.planetze.ui.eco_tracker.EnergyBillsFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_energy_bills" />
+
 </navigation>

@@ -7,4 +7,9 @@ public class ElectricCar extends Car{
     public double getCO2perKilometer() {
         return EcoTrackerEmissionConstant.DRIVE_PERSONAL_VEHICLE_ELECTRIC_EMISSION;
     }
+
+    @Override
+    public String toString(){
+        return "Electric Car";
+    }
 }

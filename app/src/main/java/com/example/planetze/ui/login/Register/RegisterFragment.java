@@ -124,7 +124,7 @@ public class RegisterFragment extends Fragment {
                                     if(task1.isSuccessful()){
                                         // Redirect to main activity
                                         LoginManager.setCurrentUser(newUser);
-                                        Intent intent = new Intent(getActivity(), FormActivity.class);
+                                        Intent intent = new Intent(getActivity(), MainActivity.class);
                                         startActivity(intent);
                                         getActivity().finish();
                                     }else{

@@ -1,7 +1,5 @@
 package com.example.planetze.classes.EcoTracker;
 
-import android.os.Build;
-
 import java.time.LocalDate;
 
 public class Date implements Comparable<Date>{
@@ -9,27 +7,23 @@ public class Date implements Comparable<Date>{
     int month;
     int year;
 
-    // Constructor with empty parameters will set the date for today's date
     public Date(){
-        LocalDate today = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            today = LocalDate.now();
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.day = today.getDayOfMonth();
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.month = today.getMonthValue();
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.year = today.getYear();
-        }
+        this.day = 0;
+        this.month = 0;
+        this.year = 0;
     }
-
     public Date(int day, int month, int year){
         this.day = day;
         this.month = month;
         this.year = year;
+    }
+
+    // Date should be in format "MM-DD-YYYY"
+    public Date(String date){
+        String[] dateArray = date.split("-");
+        this.month = Integer.parseInt(dateArray[0]);
+        this.day = Integer.parseInt(dateArray[1]);
+        this.year = Integer.parseInt(dateArray[2]);
     }
 
     @Override
@@ -49,5 +43,14 @@ public class Date implements Comparable<Date>{
     @Override
     public int compareTo(Date date) {
         return (this.day - date.day) + (this.month - date.month) * 31 + (this.year - date.year)* 366;
+    }
+
+    public static Date today() {
+        LocalDate currentDate = LocalDate.now();
+        return new Date(currentDate.getDayOfMonth(), currentDate.getMonthValue(), currentDate.getYear());
+    }
+
+    public String toString(){
+        return month+"-"+day+"-"+year;
     }
 }
