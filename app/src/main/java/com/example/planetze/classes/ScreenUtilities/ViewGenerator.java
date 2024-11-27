@@ -1,6 +1,9 @@
 package com.example.planetze.classes.ScreenUtilities;
 
+
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +13,11 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 
 public class ViewGenerator {
+    @SuppressLint("ResourceAsColor")
     public static CardView createDailyACtivityCardView(View view, DailyActivity activity, Context context){
         // Create CardView
         CardView cardView = new CardView(context);
@@ -75,6 +80,7 @@ public class ViewGenerator {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
         ));
+
 
         // Add vertical layout and checkbox to parent layout
         parentLayout.addView(verticalLayout);
