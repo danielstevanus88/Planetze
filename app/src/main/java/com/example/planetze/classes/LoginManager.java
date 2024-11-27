@@ -49,6 +49,8 @@ public class LoginManager implements Contract.Model{
         return mAuth.getUid();
     }
 
+
+
     public static void setCurrentUser(User user){
         currentUser = user;
     }

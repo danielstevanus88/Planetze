@@ -132,8 +132,9 @@ public class RegisterFragment extends Fragment {
                                             user.sendEmailVerification().addOnCompleteListener(task2 -> {
                                                 if (task2.isSuccessful()){
                                                     showMessage("Sent!", "Confirmation Email has been sent. Check your email inbox.");
-                                                    requireActivity().onBackPressed();
+
                                                     loginManager.logout();
+                                                    requireActivity().onBackPressed();
                                                 } else {
                                                     showMessage("Error!", "Failed to send verification email. Please relogin");
                                                 }
