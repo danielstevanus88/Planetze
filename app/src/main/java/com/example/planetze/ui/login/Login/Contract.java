@@ -9,6 +9,10 @@ public interface Contract {
     public interface Model {
         public Task<AuthResult> login(String email, String password);
 
+        public void logout();
+
+        public void sendVerificationEmail();
+
         public boolean isUserVerified();
     }
 

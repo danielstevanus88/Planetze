@@ -30,6 +30,8 @@ public class LoginPresenter implements Contract.Presenter{
                 if(model.isUserVerified()) {
                     view.onLoginSuccess();
                 } else {
+                    model.sendVerificationEmail();
+                    model.logout();
                     view.onLoginNotVerified();
                 }
                 return;

@@ -131,6 +131,7 @@ public class LoginTest {
         verify(taskMock).addOnCompleteListener(captor.capture());
 
         captor.getValue().onComplete(taskMock);
+        verify(model).sendVerificationEmail();
         verify(view).onLoginNotVerified();
     }
 

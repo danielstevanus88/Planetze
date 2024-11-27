@@ -164,7 +164,6 @@ public class LoginFragment extends Fragment implements Contract.View{
 
     @Override
     public void onLoginNotVerified(){
-        loginManager.logout();
         showMessage("Verification link has been sent!", "We have send the verification link to your inbox. Please check your inbox.");
 
     }
