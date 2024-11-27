@@ -18,6 +18,7 @@ public interface Contract {
         public String getPassword();
         public void showMessage(String title, String message);
         public void onLoginSuccess();
+        public void onLoginNotVerified();
 
     }
 
