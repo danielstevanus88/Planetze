@@ -54,9 +54,12 @@ dependencies {
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
+    implementation(libs.play.services.wallet)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.github.blackfizz:eazegraph:1.2.2")
+    implementation(libs.github.glide)
+    annotationProcessor(libs.glide.compiler)
+    implementation(libs.eazegraph)
     testImplementation(libs.mockito.core)
 }

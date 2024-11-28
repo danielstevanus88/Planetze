@@ -13,15 +13,17 @@ public class Project {
     String imageLink;
     double carbonCredits;
     double price;
+    String location;
     public Project(){
         this.name = "";
         this.shortDescription = "";
         this.longDescription = "";
         this.imageLink = "";
         this.uuid = "";
+        this.location = "";
     }
 
-    public Project(String name, String shortDescription, String longDescription, String imageLink, int carbonCredits, double price){
+    public Project(String name, String location, String shortDescription, String longDescription, String imageLink, int carbonCredits, double price){
         this.name = name;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -29,6 +31,7 @@ public class Project {
         this.carbonCredits = carbonCredits;
         this.price = price;
         this.uuid = UUID.randomUUID().toString();
+        this.location = location;
     }
 
     public String getUuid() {
@@ -56,5 +59,9 @@ public class Project {
 
     public String getShortDescription() {
         return shortDescription;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }
