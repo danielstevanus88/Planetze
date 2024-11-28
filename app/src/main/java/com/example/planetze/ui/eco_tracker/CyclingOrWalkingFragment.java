@@ -1,20 +1,24 @@
 package com.example.planetze.ui.eco_tracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
+import com.example.planetze.MainActivity;
+import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
+import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentCyclingOrWalkingBinding;
-import com.example.planetze.databinding.FragmentDrivePersonalVehicleBinding;
 
-public class CyclingOrWalkingFragment extends Fragment {
+public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
     private FragmentCyclingOrWalkingBinding binding;
+    private double distance;
 
     @Nullable
     @Override
@@ -22,7 +26,29 @@ public class CyclingOrWalkingFragment extends Fragment {
         binding = FragmentCyclingOrWalkingBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        binding.back.setOnClickListener(this::handleBackButtonClick);
+
+        binding.submit.setOnClickListener(this::handleNextButtonClick);
+
         return view;
     }
 
+    private void handleNextButtonClick(View view) {
+        try {
+            distance = Double.parseDouble(binding.distance.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
+        }
+        if (distance <= 0) {
+            Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
+        } else {
+            Date date = Date.today();
+            CyclingOrWalking activity = new CyclingOrWalking(distance);
+            currentUser.addActivity(date, activity);
+            databaseManager.add(currentUser);
+
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+    }
 }

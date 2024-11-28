@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,108 +8,219 @@
     android:paddingBottom="?attr/actionBarSize"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondaryColor"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp">
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:layout_gravity="start"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:gravity="bottom"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/daily_co2e_emissions"
+                        android:textColor="@color/alternativeDarkColor"
+                        android:textSize="20sp" />
+
+                    <View style="@style/FormLine" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/add"
+                    style="@style/AddButton"
+                    android:text="+"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/total_emissions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/total_co2e_emissions"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+
+                <org.eazegraph.lib.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_weight="1"
+                    tools:ignore="MissingClass" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/red_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/transport" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="4dp">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/yellow_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/food_consumption" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="4dp">
+
+                        <View
+                            style="@style/ActivityIcon"
+                            android:background="@drawable/green_icon" />
+
+                        <TextView
+                            style="@style/ActivityText"
+                            android:text="@string/consumption_and_shopping" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/FormLine" />
 
             <LinearLayout
                 android:id="@+id/buttonPickDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="16dp"
                 android:animationCache="false"
-                android:background="@color/primaryColor"
+                android:background="@drawable/nav_button"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:textAlignment="center">
 
                 <ImageView
                     android:id="@+id/imageButtonCalendar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="16dp"
                     app:srcCompat="@drawable/planetze_calender" />
-
-                <TextView
-                    android:id="@+id/textPickADate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="0"
-                    android:clickable="true"
-                    android:text="Pick"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/white"
-                    android:ems="10"
+                    android:ems="8"
+                    android:fontFamily="@font/poppins"
                     android:hint="mm/dd/yyyy"
                     android:inputType="date"
                     android:textColorHint="@color/white" />
 
             </LinearLayout>
 
-        </LinearLayout>
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#009999"
-            android:text="Log Habit" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/addHabit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#009999"
-            android:text="Add Habit" />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Log Habit" />
+
+                <Button
+                    android:id="@+id/addHabit"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Add Habit" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="2dp"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="16dp">
 
                 <LinearLayout
                     android:id="@+id/LayoutFood"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textFood"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Food"
                         android:textColor="@color/primaryColor"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -117,9 +228,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="start"
                         android:text="No food activity this day"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -127,18 +239,19 @@
                 <LinearLayout
                     android:id="@+id/LayoutTransportation"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Transportation"
                         android:textColor="@color/primaryColor"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -146,26 +259,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="start"
                         android:text="No transportation activity this day"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textSize="16sp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:visibility="gone"
-                        app:cardElevation="8dp"
-                        tools:layout_editor_absoluteX="2dp"
-                        tools:layout_editor_absoluteY="204dp">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:id="@+id/itemCard1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="10dp">
+                            android:padding="16dp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -203,18 +313,19 @@
                 <LinearLayout
                     android:id="@+id/LayoutConsumption"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textConsumption"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Consumption"
                         android:textColor="@color/primaryColor"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -222,20 +333,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="start"
                         android:text="No consumption activity this day"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textSize="16sp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:padding="0dp"
-                        android:paddingStart="0dp"
-                        android:visibility="gone"
-                        tools:layout_editor_absoluteX="2dp"
-                        tools:layout_editor_absoluteY="204dp">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:id="@+id/itemConsumption1"
@@ -270,8 +377,7 @@
                             <CheckBox
                                 android:id="@+id/checkboxConsumption1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0" />
+                                android:layout_height="match_parent" />
 
                         </LinearLayout>
 
@@ -280,9 +386,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
