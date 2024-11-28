@@ -157,10 +157,27 @@ public class ViewGenerator {
 
     public static void setOnClickListenerForDelete(DailyActivity activity, ImageView imageView, Context context){
         imageView.setOnClickListener(event -> {
-            String uuid = activity.getUuid();
-            User user = LoginManager.getCurrentUser();
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Confirmation");
+            builder.setMessage("Are you sure to delete the activity "+ activity.toString() +" ?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String uuid = activity.getUuid();
+                    User user = LoginManager.getCurrentUser();
+                    user.removeActivity(uuid);
+                }
+            });
 
-            user.removeActivity(uuid);
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    return;
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
         });
     }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import com.example.planetze.classes.EcoTracker.Category.Transportation.DrivePers
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
+import com.example.planetze.classes.FirebaseListenerDailyActivity;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.ScreenUtilities.ViewGenerator;
 import com.example.planetze.classes.User;
@@ -40,13 +42,14 @@ import com.example.planetze.classes.UserDatabaseManager;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ShowActivityFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShowActivityFragment extends Fragment {
+public class ShowActivityFragment extends Fragment implements FirebaseListenerDailyActivity {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +59,9 @@ public class ShowActivityFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View view;
+    private Date currentSelectedDate;
 
     public ShowActivityFragment() {
         // Required empty public constructor
@@ -86,13 +92,17 @@ public class ShowActivityFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_show_activity, container, false);
+        this.view = inflater.inflate(R.layout.fragment_show_activity, container, false);
 
+        UserDatabaseManager.subscribeAsDailyActivityListener(this);
+        Log.d("hehe", "subscribed to database manager");
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
         textPickADate.setKeyListener(null);
@@ -111,7 +121,7 @@ public class ShowActivityFragment extends Fragment {
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
 
-                        showActivitiesOnDate(selectedDate, getActivity(), view);
+                        showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
             datePickerDialog.show();
@@ -129,8 +139,8 @@ public class ShowActivityFragment extends Fragment {
                         Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-
-                        showActivitiesOnDate(selectedDate, getActivity(), view);
+                        this.currentSelectedDate = selectedDate;
+                        showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
             datePickerDialog.show();
@@ -154,13 +164,14 @@ public class ShowActivityFragment extends Fragment {
 
         UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
         userDatabaseManager.add(currentUser);
-        showActivitiesOnDate(Date.today(), getActivity(),view);
+        showActivitiesOnDate(Date.today(), getActivity());
 
-        return view;
+        return this.view;
     }
 
 
-    private void showActivitiesOnDate(Date selectedDate, Context context, View view) {
+    private void showActivitiesOnDate(Date selectedDate, Context context) {
+        if(selectedDate == null) return;
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
         LinearLayout layoutFood = view.findViewById(R.id.LayoutFood);
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);
@@ -180,12 +191,13 @@ public class ShowActivityFragment extends Fragment {
 
         for(Date date : allActivities.keySet()){
             List<DailyActivity> dailyActivities = allActivities.get(date);
+            if (dailyActivities == null) continue;
             for(DailyActivity activity : dailyActivities){
                 CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
-                if(activity instanceof ActivityFood) {
+                if(Objects.equals(activity.getCategoryName(), "Food")) {
                     layoutFood.addView(cardView);
 
-                } else if(activity instanceof ActivityConsumption) {
+                } else if(Objects.equals(activity.getCategoryName(), "Consumption")) {
                     layoutConsumption.addView(cardView);
 
                 } else {
@@ -215,6 +227,14 @@ public class ShowActivityFragment extends Fragment {
             noFoodText.setVisibility(View.VISIBLE);
         }
     }
+
+
+    @Override
+    public void update() {
+        showActivitiesOnDate(this.currentSelectedDate, getActivity());
+    }
+
+
 
 
 }
