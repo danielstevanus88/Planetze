@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.2"
+applandeoMaterialCalendarView = "1.6.0"
 coreSplashscreen = "1.2.0-alpha02"
 eazegraph = "1.2.2"
 junit = "4.13.2"
@@ -43,6 +44,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+material-calendar-view-v160 = { module = "com.applandeo:material-calendar-view", version.ref = "applandeoMaterialCalendarView" }
 material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 material-calendar-view = { module = "com.applandeo:material-calendar-view", version.ref = "materialCalendarView" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }

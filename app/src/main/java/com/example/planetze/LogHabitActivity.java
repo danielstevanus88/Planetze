@@ -84,7 +84,7 @@ public class LogHabitActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.spinnerHabit);
         ArrayList<String> habitList = new ArrayList<>(habits.keySet());
-        habitList.add(0, "N/A");
+        habitList.add(0, "Select a habit");
         // Set up the adapter for the spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, habitList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.planetze.HabitSelectionActivity;
+import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
@@ -146,12 +147,20 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
             datePickerDialog.show();
         });
 
-        Button myButton = view.findViewById(R.id.addHabit);
+        Button addHabitButton = view.findViewById(R.id.addHabit);
         // Set the OnClickListener to handle the button press
-        myButton.setOnClickListener(v -> {
+        addHabitButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
             startActivity(intent);
         });
+
+        Button logHabitButton = view.findViewById(R.id.buttonToLogHabit);
+        // Set the OnClickListener to handle the button press
+        logHabitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LogHabitActivity.class);
+            startActivity(intent);
+        });
+
 
         User currentUser = LoginManager.getCurrentUser();
         currentUser.addActivity(new Date(25, 11, 2024), new TakePublicTransportation(10));

@@ -172,8 +172,8 @@
     <string name="previous">Previous</string>
     <string name="habit_completion_message">You have completed %1$d times during the past week</string>
     <string name="habit_completion_confirmation">I have done this habit for the day</string>
-    <string name="logging_current_habit">Logging for current Habit(s)</string>
-    <string name="habit_progress">Progress for current Habit(s)</string>
+    <string name="logging_current_habit">Log Habits</string>
+    <string name="habit_progress">Habits Progress</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
