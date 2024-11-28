@@ -23,10 +23,20 @@ public class LoginManager implements Contract.Model{
         return loginManager;
     }
 
-    public Task<AuthResult> login(String email, String password){
+    @Override
+    public Task<AuthResult> login(String email, String password) {
         return mAuth.signInWithEmailAndPassword(email, password);
     }
 
+    @Override
+    public boolean isUserVerified() {
+        return getCurrentFirebaseUser().isEmailVerified();
+    }
+
+    @Override
+    public void sendVerificationEmail(){
+        getCurrentFirebaseUser().sendEmailVerification();
+    }
     public Task<AuthResult> register(String email, String password){
         return mAuth.createUserWithEmailAndPassword(email, password);
     }
@@ -42,6 +52,8 @@ public class LoginManager implements Contract.Model{
     public String getCurrentUserUid(){
         return mAuth.getUid();
     }
+
+
 
     public static void setCurrentUser(User user){
         currentUser = user;

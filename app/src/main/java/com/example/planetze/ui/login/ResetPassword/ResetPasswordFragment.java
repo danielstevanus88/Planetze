@@ -1,5 +1,7 @@
 package com.example.planetze.ui.login.ResetPassword;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -89,6 +91,7 @@ public class ResetPasswordFragment extends Fragment {
         Button resetButton = view.findViewById(R.id.buttonResetPassword);
         resetButton.setOnClickListener(res -> {
             if(textResetEmail.getText().toString().isEmpty()){
+                showMessage("Invalid Input", "Please enter your email");
                 Toast.makeText(getContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                 return;
             } 
@@ -96,15 +99,30 @@ public class ResetPasswordFragment extends Fragment {
             // Send reset password email
             loginManager.resetPassword(textResetEmail.getText().toString()).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
-                    Log.d("ResetPassword", "Reset password email sent");
+                    showMessage("Email sent!", "Reset password email sent");
                     getActivity().onBackPressed();
                 } else {
-                    Log.d("ResetPassword", "Failed to send reset password email");
+                    showMessage("Error", "Failed to send reset password email");
                 }
             });
-            Toast.makeText(getContext(), "Reset password email sent", Toast.LENGTH_SHORT).show();
+
             
         });
         return view;
+    }
+
+    public void showMessage(String title, String message){
+        // Show dialog, confirmation of exiting the app
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

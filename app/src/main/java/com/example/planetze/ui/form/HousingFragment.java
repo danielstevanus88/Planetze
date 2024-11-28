@@ -10,22 +10,26 @@ import java.util.List;
 
 public class HousingFragment extends BaseFormFragment<FragmentHousingBinding> {
 
+    private List<Button> buttons1;
+    private List<Button> buttons2;
+    private List<Button> buttons3;
     private String q11, q12, q13;
 
     @Override
     protected void setupClickListeners() {
-        binding.q11Option1.setOnClickListener(this::handleButtonClick);
-        binding.q11Option2.setOnClickListener(this::handleButtonClick);
-        binding.q11Option3.setOnClickListener(this::handleButtonClick);
-        binding.q11Option4.setOnClickListener(this::handleButtonClick);
-        binding.q11Option5.setOnClickListener(this::handleButtonClick);
-        binding.q12Option1.setOnClickListener(this::handleButtonClick);
-        binding.q12Option2.setOnClickListener(this::handleButtonClick);
-        binding.q12Option3.setOnClickListener(this::handleButtonClick);
-        binding.q12Option4.setOnClickListener(this::handleButtonClick);
-        binding.q13Option1.setOnClickListener(this::handleButtonClick);
-        binding.q13Option2.setOnClickListener(this::handleButtonClick);
-        binding.q13Option3.setOnClickListener(this::handleButtonClick);
+        buttons1 = Arrays.asList(binding.q11Option1, binding.q11Option2, binding.q11Option3, binding.q11Option4, binding.q11Option5);
+        buttons2 = Arrays.asList(binding.q12Option1, binding.q12Option2, binding.q12Option3, binding.q12Option4);
+        buttons3 = Arrays.asList(binding.q13Option1, binding.q13Option2, binding.q13Option3);
+
+        for (Button button : buttons1) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons2) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons3) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -46,10 +50,6 @@ public class HousingFragment extends BaseFormFragment<FragmentHousingBinding> {
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons1 = Arrays.asList(binding.q11Option1, binding.q11Option2, binding.q11Option3, binding.q11Option4, binding.q11Option5);
-        List<Button> buttons2 = Arrays.asList(binding.q12Option1, binding.q12Option2, binding.q12Option3, binding.q12Option4);
-        List<Button> buttons3 = Arrays.asList(binding.q13Option1, binding.q13Option2, binding.q13Option3);
-
         if (buttons1.contains(clickedButton)) {
             setButtons(buttons1, clickedButton);
             q11 = clickedButton.getText().toString();

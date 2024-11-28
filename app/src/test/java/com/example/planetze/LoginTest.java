@@ -41,7 +41,7 @@ public class LoginTest {
         when(view.getPassword()).thenReturn("abcdef");
 
         presenter.login();
-        verify(view).showMessage("Email or password cannot be empty");
+        verify(view).showMessage("Invalid Input", "Email or password cannot be empty");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class LoginTest {
         when(view.getPassword()).thenReturn("");
 
         presenter.login();
-        verify(view).showMessage("Email or password cannot be empty");
+        verify(view).showMessage("Invalid Input", "Email or password cannot be empty");
     }
 
 
@@ -72,7 +72,7 @@ public class LoginTest {
         Task<AuthResult> taskMock = mock(Task.class);
         when(model.login(emailForTesting, passwordForTesting)).thenReturn(taskMock);
         when(taskMock.isSuccessful()).thenReturn(true);
-
+        when(model.isUserVerified()).thenReturn(true);
         presenter.login();
 
         ArgumentCaptor<OnCompleteListener> captor = ArgumentCaptor.forClass(OnCompleteListener.class);
@@ -105,7 +105,34 @@ public class LoginTest {
         verify(taskMock).addOnCompleteListener(captor.capture());
 
         captor.getValue().onComplete(taskMock);
-        verify(view).showMessage("Invalid email or password!");
+        verify(view).showMessage("Invalid email or password", "You entered invalid email and/or password");
+    }
+
+    @Test
+    public void testLoginUserNotVerified() {
+
+        // Mock dependencies
+        FirebaseAuth authMock = mock(FirebaseAuth.class);
+        Contract.Presenter presenter = new LoginPresenter(model, view);
+
+        // Set email and password for this test
+        String emailForTesting = "accountForTesting@gmail.com";
+        String passwordForTesting = "abcdef";
+        when(view.getEmail()).thenReturn(emailForTesting);
+        when(view.getPassword()).thenReturn(passwordForTesting);
+
+        Task<AuthResult> taskMock = mock(Task.class);
+        when(model.login(emailForTesting, passwordForTesting)).thenReturn(taskMock);
+        when(taskMock.isSuccessful()).thenReturn(true);
+        when(model.isUserVerified()).thenReturn(false);
+        presenter.login();
+
+        ArgumentCaptor<OnCompleteListener> captor = ArgumentCaptor.forClass(OnCompleteListener.class);
+        verify(taskMock).addOnCompleteListener(captor.capture());
+
+        captor.getValue().onComplete(taskMock);
+        verify(model).sendVerificationEmail();
+        verify(view).onLoginNotVerified();
     }
 
 }
