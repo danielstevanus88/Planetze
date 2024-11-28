@@ -118,11 +118,6 @@ public class User {
         userDatabaseManager.add(this);
     }
 
-
-
-
-
-
     public HashMap<String, List<String>> getHabit(){
         return this.habit;
     }
