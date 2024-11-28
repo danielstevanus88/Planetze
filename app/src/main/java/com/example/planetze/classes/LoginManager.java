@@ -13,6 +13,7 @@ public class LoginManager implements Contract.Model{
     private static User currentUser;
     private LoginManager(){
         mAuth = FirebaseAuth.getInstance();
+
     }
 
     public static LoginManager getInstance(){
@@ -47,15 +48,17 @@ public class LoginManager implements Contract.Model{
 
     public void logout(){
         mAuth.signOut();
+        currentUser = null;
     }
-
     public String getCurrentUserUid(){
         return mAuth.getUid();
     }
 
-
-
     public static void setCurrentUser(User user){
+        // Will be called only when user logged in successfully
+        if(currentUser == null) {
+            UserDatabaseManager.setListenerToUser(user);
+        }
         currentUser = user;
     }
 
