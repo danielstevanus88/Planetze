@@ -1,8 +1,8 @@
 package com.example.planetze.classes;
 
-import com.example.planetze.classes.EcoTracker.Activities;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
+import com.example.planetze.classes.EcoTracker.Habit.Habit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ public class User {
     public User(){
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
-
+        this.habit = new HashMap<>();
         this.userDatabaseManager = UserDatabaseManager.getInstance();
     }
 
@@ -113,6 +113,10 @@ public class User {
         return name;
     }
 
+    public void addHabit(Habit selectedHabit,List<String> habit){
+        this.habit.put(selectedHabit.name, habit);
+        userDatabaseManager.add(this);
+    }
 
 
 

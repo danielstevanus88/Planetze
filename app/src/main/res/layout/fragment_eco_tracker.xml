@@ -64,10 +64,29 @@
                 android:text="@string/total_co2e_emissions"
                 android:textColor="@color/primaryColor"
                 android:textSize="24sp" />
+            <Button
+                android:layout_gravity="center"
+                android:backgroundTint="#009999"
+                android:layout_marginTop="20dp"
+                android:id="@+id/logHabitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log Habit" />
+
+            <Button
+                android:id="@+id/addHabit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#009999"
+                android:text="Add Habit" />
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:orientation="vertical">
+
                 <org.eazegraph.lib.charts.PieChart
                     android:id="@+id/piechart"
                     android:layout_width="0dp"

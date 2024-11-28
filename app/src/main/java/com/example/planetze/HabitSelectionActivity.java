@@ -3,6 +3,7 @@ package com.example.planetze;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,7 +20,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.planetze.classes.EcoTracker.Activities;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Habit.FoodWasteHabit;
 import com.example.planetze.classes.EcoTracker.Habit.Habit;
@@ -55,7 +55,7 @@ public class HabitSelectionActivity extends AppCompatActivity {
     private Spinner spinnerCategory;
     private Spinner spinnerImpact;
     private SearchView searchView;
-    private User user = LoginManager.getInstance().getCurrentUser();
+    private User user;
     private UserDatabaseManager databaseManager = UserDatabaseManager.getInstance();
 
     @Override
@@ -137,21 +137,20 @@ public class HabitSelectionActivity extends AppCompatActivity {
             return insets;
         });
 
+
+
         Button nextButton = findViewById(R.id.select);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User user = LoginManager.getCurrentUser();
                 Habit selectedHabit = recyclerAdaptor.getSelectedHabit();
                 if (selectedHabit != null) {
-                    if(!user.habit.containsKey(selectedHabit.name)){
+                    if(!user.getHabit().containsKey(selectedHabit.name)){
                         List<String> habit = new ArrayList<>();
                         habit.add("0");
                         Toast.makeText(HabitSelectionActivity.this, "Added habit", Toast.LENGTH_SHORT).show();
-                        user.habit.put(selectedHabit.name, habit);
-                        databaseManager.add(user);
-                        Intent intent = new Intent(HabitSelectionActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        user.addHabit(selectedHabit, habit);
                     }
                     else{
                         Toast.makeText(HabitSelectionActivity.this, "You have already selected this habit", Toast.LENGTH_SHORT).show();

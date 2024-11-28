@@ -33,7 +33,7 @@ public class EcoTrackerFragment extends Fragment {
 
     PieChart pieChart;
     private FragmentEcoTrackerBinding binding;
-    User user = LoginManager.getInstance().getCurrentUser();
+    private User user;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -49,6 +49,7 @@ public class EcoTrackerFragment extends Fragment {
         binding = FragmentEcoTrackerBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        User user = LoginManager.getCurrentUser();
         pieChart = binding.piechart;
         setPieChart();
 
