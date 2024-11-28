@@ -93,7 +93,6 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
     @Override
@@ -103,6 +102,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
 
         UserDatabaseManager.subscribeAsDailyActivityListener(this);
         Log.d("hehe", "subscribed to database manager");
+
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
         textPickADate.setKeyListener(null);
@@ -120,7 +120,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
                         Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-
+                        this.currentSelectedDate = selectedDate;
                         showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
@@ -154,12 +154,8 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         });
 
         User currentUser = LoginManager.getCurrentUser();
-        currentUser.addActivity(new Date(25, 11, 2024), new TakePublicTransportation(10));
-        currentUser.addActivity(new Date(25, 11, 2024), new CyclingOrWalking());
-        currentUser.addActivity(new Date(25, 11, 2024), new DrivePersonalVehicle(10, new GasolineCar()));
-        currentUser.addActivity(new Date(25, 11, 2024), new EatBeef(2));
-        currentUser.addActivity(new Date(26, 11, 2024), new EatPork(1));
-        currentUser.addActivity(new Date(29, 11, 2024), new BuyClothes(10));
+        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation(10));
+        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking());
 
 
         UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
@@ -231,6 +227,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
 
     @Override
     public void update() {
+//        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
         showActivitiesOnDate(this.currentSelectedDate, getActivity());
     }
 
