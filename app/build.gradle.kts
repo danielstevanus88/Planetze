@@ -57,6 +57,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.material.calendar.view)
 
     testImplementation(libs.mockito.core)
 }

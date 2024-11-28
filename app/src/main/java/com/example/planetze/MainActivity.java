@@ -3,6 +3,7 @@ package com.example.planetze;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,6 +20,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.planetze.databinding.ActivityMainBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -26,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        String lastLaunchDate = preferences.getString("lastLaunchDate", null);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(new Date());
+        if (lastLaunchDate == null || !lastLaunchDate.equals(currentDate)) {
+            showDailyPopup(); // Show the pop-up
+            // Save the current date as the last launch date
+            preferences.edit().putString("lastLaunchDate", currentDate).apply();
+        }
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -79,5 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (false)
             super.onBackPressed();
+    }
+    private void showDailyPopup() {
+        // Create and display an AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Daily Reminder")
+                .setMessage("Daily reminder to log your habits!")
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

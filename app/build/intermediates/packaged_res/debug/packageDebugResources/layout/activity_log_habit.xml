@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".LogHabitActivity">
 
     <LinearLayout
@@ -17,29 +17,70 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Progress and logging for current Habit(s)"
+            android:text="@string/habit_progress"
+            android:textAlignment="center"
+            android:textColor="#009999"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/choose_habit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/choose_habit"/>
+
+            <Spinner
+                android:id="@+id/spinnerHabit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/completionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#0FFFFF"
+            android:focusable="true"
+            app:selectionColor="#009999"
+            app:highlightedDaysLabelsColor="#009999"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            app:headerColor="#009999"
+            app:type="many_days_picker"
+            app:selectionDisabled="true"/>
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/logging_current_habit"
             android:textAlignment="center"
             android:textColor="#009999"
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinnerHabit"
-            android:layout_width="131dp"
-            android:layout_height="34dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:spinnerMode="dropdown" />
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="305dp"
-            android:background="#FFFFFF" />
-
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:background="@color/secondaryColor"
             android:gravity="center"
@@ -53,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/darkTextColor"
                 android:ems="10"
-                android:hint="mm/dd/yyyy"
+                android:hint="@string/date_format"
                 android:inputType="date"
                 android:textColorHint="@color/darkTextColor" />
 
@@ -87,6 +128,34 @@
             </LinearLayout>
         </LinearLayout>
 
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/habit_completion_confirmation"/>
+
+        <Button
+            android:id="@+id/logHabit"
+            style="@style/FormButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/confirm" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#009999"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/Complete_Habit">
+
+        </TextView>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,14 +164,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/logHabitButton"
+                android:id="@+id/back"
                 style="@style/FormButton"
-                android:text="Back" />
+                android:text="@string/back" />
 
             <Button
-                android:id="@+id/logHabit"
+                android:id="@+id/removehabit"
                 style="@style/FormButton"
-                android:text="Select" />
+                android:text="@string/mark_done" />
         </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView

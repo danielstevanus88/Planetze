@@ -18,6 +18,7 @@
     <!--    annual carbon footprints questions and options-->
     <string name="back">Back</string>
     <string name="next">Next</string>
+    <string name="confirm">Confirm</string>
     <string name="q1">1. Do you own or regularly use a car?</string>
     <string name="q2">2. What type of car do you drive?</string>
     <string name="q3">3. How many kilometers/miles do you drive per year?</string>
@@ -115,7 +116,10 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="previous">Previous</string>
-
+    <string name="habit_completion_message">You have completed %1$d times during the past week</string>
+    <string name="habit_completion_confirmation">I have done this habit for the day</string>
+    <string name="logging_current_habit">Logging for current Habit(s)</string>
+    <string name="habit_progress">Progress for current Habit(s)</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -153,5 +157,10 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="log_a_habit">Log a Habit</string>
-    <string name="select_an_habit">Select an Habit</string>
+    <string name="select_an_habit">Select Habit</string>
+    <string name="date_format">mm-dd-yyyy</string>
+    <string name="choose_habit">Choose a Habit: </string>
+    <string name="mark_done">Mark as Done</string>
+    <string name="Complete_Habit">Complete Habit</string>
+    <string name="get_recommended_habits">Get Recommended Habits</string>
 </resources>

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.planetze.app-mergeDebugResources-56:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.planetze.app-mergeDebugResources-57:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\8.9\\transforms\\e1d3fc3397afdd2e49a26e198eaa073a\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\8.9\\transforms\\a9a43a3714293d38f9291e34636c9153\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\8.9\\transforms\\1d9f2d1570bb621c1f823f5bb46f2e6e\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\8.9\\transforms\\45c8b3a1197c47c0e3720866ca815697\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

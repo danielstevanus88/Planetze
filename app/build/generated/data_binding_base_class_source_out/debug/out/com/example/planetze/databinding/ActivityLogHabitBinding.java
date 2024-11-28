@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.applandeo.materialcalendarview.CalendarView;
 import com.example.planetze.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -27,10 +28,19 @@ public final class ActivityLogHabitBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button back;
+
+  @NonNull
   public final LinearLayout buttonPickDate;
 
   @NonNull
   public final CalendarView calendarView;
+
+  @NonNull
+  public final TextView chooseHabit;
+
+  @NonNull
+  public final TextView completionTextView;
 
   @NonNull
   public final EditText editTextDate;
@@ -45,10 +55,13 @@ public final class ActivityLogHabitBinding implements ViewBinding {
   public final Button logHabit;
 
   @NonNull
-  public final Button logHabitButton;
+  public final ConstraintLayout main;
 
   @NonNull
-  public final ConstraintLayout main;
+  public final RadioButton radioButton;
+
+  @NonNull
+  public final Button removehabit;
 
   @NonNull
   public final Spinner spinnerHabit;
@@ -59,24 +72,34 @@ public final class ActivityLogHabitBinding implements ViewBinding {
   @NonNull
   public final TextView title;
 
-  private ActivityLogHabitBinding(@NonNull ConstraintLayout rootView,
+  @NonNull
+  public final TextView title3;
+
+  private ActivityLogHabitBinding(@NonNull ConstraintLayout rootView, @NonNull Button back,
       @NonNull LinearLayout buttonPickDate, @NonNull CalendarView calendarView,
+      @NonNull TextView chooseHabit, @NonNull TextView completionTextView,
       @NonNull EditText editTextDate, @NonNull FragmentContainerView fragView,
       @NonNull ImageView imageButtonCalendar, @NonNull Button logHabit,
-      @NonNull Button logHabitButton, @NonNull ConstraintLayout main, @NonNull Spinner spinnerHabit,
-      @NonNull TextView textPickADate, @NonNull TextView title) {
+      @NonNull ConstraintLayout main, @NonNull RadioButton radioButton, @NonNull Button removehabit,
+      @NonNull Spinner spinnerHabit, @NonNull TextView textPickADate, @NonNull TextView title,
+      @NonNull TextView title3) {
     this.rootView = rootView;
+    this.back = back;
     this.buttonPickDate = buttonPickDate;
     this.calendarView = calendarView;
+    this.chooseHabit = chooseHabit;
+    this.completionTextView = completionTextView;
     this.editTextDate = editTextDate;
     this.fragView = fragView;
     this.imageButtonCalendar = imageButtonCalendar;
     this.logHabit = logHabit;
-    this.logHabitButton = logHabitButton;
     this.main = main;
+    this.radioButton = radioButton;
+    this.removehabit = removehabit;
     this.spinnerHabit = spinnerHabit;
     this.textPickADate = textPickADate;
     this.title = title;
+    this.title3 = title3;
   }
 
   @Override
@@ -106,6 +129,12 @@ public final class ActivityLogHabitBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.back;
+      Button back = ViewBindings.findChildViewById(rootView, id);
+      if (back == null) {
+        break missingId;
+      }
+
       id = R.id.buttonPickDate;
       LinearLayout buttonPickDate = ViewBindings.findChildViewById(rootView, id);
       if (buttonPickDate == null) {
@@ -115,6 +144,18 @@ public final class ActivityLogHabitBinding implements ViewBinding {
       id = R.id.calendarView;
       CalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
       if (calendarView == null) {
+        break missingId;
+      }
+
+      id = R.id.choose_habit;
+      TextView chooseHabit = ViewBindings.findChildViewById(rootView, id);
+      if (chooseHabit == null) {
+        break missingId;
+      }
+
+      id = R.id.completionTextView;
+      TextView completionTextView = ViewBindings.findChildViewById(rootView, id);
+      if (completionTextView == null) {
         break missingId;
       }
 
@@ -142,13 +183,19 @@ public final class ActivityLogHabitBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logHabitButton;
-      Button logHabitButton = ViewBindings.findChildViewById(rootView, id);
-      if (logHabitButton == null) {
+      ConstraintLayout main = (ConstraintLayout) rootView;
+
+      id = R.id.radioButton;
+      RadioButton radioButton = ViewBindings.findChildViewById(rootView, id);
+      if (radioButton == null) {
         break missingId;
       }
 
-      ConstraintLayout main = (ConstraintLayout) rootView;
+      id = R.id.removehabit;
+      Button removehabit = ViewBindings.findChildViewById(rootView, id);
+      if (removehabit == null) {
+        break missingId;
+      }
 
       id = R.id.spinnerHabit;
       Spinner spinnerHabit = ViewBindings.findChildViewById(rootView, id);
@@ -168,9 +215,16 @@ public final class ActivityLogHabitBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLogHabitBinding((ConstraintLayout) rootView, buttonPickDate, calendarView,
-          editTextDate, fragView, imageButtonCalendar, logHabit, logHabitButton, main, spinnerHabit,
-          textPickADate, title);
+      id = R.id.title3;
+      TextView title3 = ViewBindings.findChildViewById(rootView, id);
+      if (title3 == null) {
+        break missingId;
+      }
+
+      return new ActivityLogHabitBinding((ConstraintLayout) rootView, back, buttonPickDate,
+          calendarView, chooseHabit, completionTextView, editTextDate, fragView,
+          imageButtonCalendar, logHabit, main, radioButton, removehabit, spinnerHabit,
+          textPickADate, title, title3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

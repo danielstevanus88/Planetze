@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +19,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.planetze.classes.EcoTracker.Activities;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Habit.FoodWasteHabit;
 import com.example.planetze.classes.EcoTracker.Habit.Habit;
 import com.example.planetze.classes.EcoTracker.Habit.LeftoverHabit;
@@ -40,7 +44,9 @@ import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HabitSelectionActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -139,6 +145,7 @@ public class HabitSelectionActivity extends AppCompatActivity {
                 if (selectedHabit != null) {
                     if(!user.habit.containsKey(selectedHabit.name)){
                         List<String> habit = new ArrayList<>();
+                        habit.add("0");
                         Toast.makeText(HabitSelectionActivity.this, "Added habit", Toast.LENGTH_SHORT).show();
                         user.habit.put(selectedHabit.name, habit);
                         databaseManager.add(user);
@@ -169,8 +176,8 @@ public class HabitSelectionActivity extends AppCompatActivity {
     private void filterlist(String text, String category, String impact) {
         ArrayList<Habit> filtered = new ArrayList<>();
         for (Habit habit : habitList) {
-            boolean matchesCategory = category.equals("All") || habit.getCategory().equals(category);
-            boolean matchesImpact = impact.equals("All") || habit.getImpactLevel().equals(impact);
+            boolean matchesCategory = category.equals("Select category") || habit.getCategory().equals(category);
+            boolean matchesImpact = impact.equals("Select impact level") || habit.getImpactLevel().equals(impact);
             boolean matchesQuery = habit.getName().toLowerCase().contains(text.toLowerCase());
 
             if (matchesCategory && matchesImpact && matchesQuery) {
@@ -185,4 +192,5 @@ public class HabitSelectionActivity extends AppCompatActivity {
             recyclerAdaptor.setFilteredList(filtered);
         }
     }
+
 }

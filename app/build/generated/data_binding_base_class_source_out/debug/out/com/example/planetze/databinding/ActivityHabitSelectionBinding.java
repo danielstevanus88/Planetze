@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,12 +46,15 @@ public final class ActivityHabitSelectionBinding implements ViewBinding {
   public final Spinner spinnerImpact;
 
   @NonNull
+  public final Switch switch1;
+
+  @NonNull
   public final TextView textView2;
 
   private ActivityHabitSelectionBinding(@NonNull ConstraintLayout rootView, @NonNull Button back,
       @NonNull ConstraintLayout main, @NonNull RecyclerView recyclerView,
       @NonNull SearchView searchView, @NonNull Button select, @NonNull Spinner spinnerCategory,
-      @NonNull Spinner spinnerImpact, @NonNull TextView textView2) {
+      @NonNull Spinner spinnerImpact, @NonNull Switch switch1, @NonNull TextView textView2) {
     this.rootView = rootView;
     this.back = back;
     this.main = main;
@@ -59,6 +63,7 @@ public final class ActivityHabitSelectionBinding implements ViewBinding {
     this.select = select;
     this.spinnerCategory = spinnerCategory;
     this.spinnerImpact = spinnerImpact;
+    this.switch1 = switch1;
     this.textView2 = textView2;
   }
 
@@ -127,6 +132,12 @@ public final class ActivityHabitSelectionBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.switch1;
+      Switch switch1 = ViewBindings.findChildViewById(rootView, id);
+      if (switch1 == null) {
+        break missingId;
+      }
+
       id = R.id.textView2;
       TextView textView2 = ViewBindings.findChildViewById(rootView, id);
       if (textView2 == null) {
@@ -134,7 +145,7 @@ public final class ActivityHabitSelectionBinding implements ViewBinding {
       }
 
       return new ActivityHabitSelectionBinding((ConstraintLayout) rootView, back, main,
-          recyclerView, searchView, select, spinnerCategory, spinnerImpact, textView2);
+          recyclerView, searchView, select, spinnerCategory, spinnerImpact, switch1, textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

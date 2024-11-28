@@ -56,10 +56,17 @@
             android:iconifiedByDefault="false"
             android:queryHint="Search habits..." />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/get_recommended_habits" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="409dp"
-            android:layout_height="640dp"
+            android:layout_height="620dp"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp"
             android:layout_marginTop="8dp"/>
