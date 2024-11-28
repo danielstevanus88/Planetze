@@ -1,5 +1,7 @@
 package com.example.planetze.classes.EcoTracker.Habit;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,17 @@ import java.util.ArrayList;
 
 public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyViewHolder>{
     private ArrayList<Habit> habitList;
+    int selection_position = -1;
 
     public RecyclerAdaptor(ArrayList<Habit> habitList) {
         this.habitList = habitList;
+    }
+
+    public Habit getSelectedHabit() {
+        if (selection_position != -1) {
+            return habitList.get(selection_position);
+        }
+        return null;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -38,11 +48,21 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdaptor.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdaptor.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Habit habit = habitList.get(position);
         holder.habitName.setText(habit.getName());  // Set habit name in TextView
         holder.habitDescription.setText(habit.getDescription());  // Set habit description in TextView
-
+        if(selection_position == position) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#d7d7db"));
+        }else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+        holder.itemView.setOnClickListener(v -> {
+            int previousPosition = selection_position;  // Store the previous selected position
+            selection_position = position;  // Update the selected position
+            notifyItemChanged(previousPosition);  // Notify the previous item to update its background
+            notifyItemChanged(position);  // Notify the current item to update its background
+        });
     }
 
     @Override
