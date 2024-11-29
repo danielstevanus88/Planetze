@@ -11,11 +11,14 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +62,8 @@ public class EcoBalanceFragment extends Fragment {
     private CheckoutViewModel model;
 
     private PayButton googlePayButton;
+
+    private double priceToPay;
 
     private final ActivityResultLauncher<Task<PaymentData>> paymentDataLauncher =
             registerForActivityResult(new TaskResultContracts.GetPaymentDataResult(), result -> {
@@ -153,15 +158,17 @@ public class EcoBalanceFragment extends Fragment {
         TextView descriptionText = customView.findViewById(R.id.textProjectDescription);
         TextView locationText = customView.findViewById(R.id.textProjectLocation);
         TextView costText = customView.findViewById(R.id.textProjectCost);
-
+        TextView rateText = customView.findViewById(R.id.textRate);
 
         // Set all text related
         titleText.setText(project.getName());
         descriptionText.setText(project.getLongDescription());
         locationText.setText(project.getLocation());
-
-        String costString = project.getPrice() + "/" + project.getCarbonCredits();
+        String rateString = "$" + project.getPrice() + " for " + project.getCarbonCredits() + " Carbon Credits";
+        rateText.setText(rateString);
+        String costString = "$" + project.getPrice() + "/" + project.getCarbonCredits() + " Carbon Credits";
         costText.setText(costString);
+
 
         // Set image
         ImageView imageView = customView.findViewById(R.id.imageProject);
@@ -172,7 +179,6 @@ public class EcoBalanceFragment extends Fragment {
                 .into(imageView);
 
         // Find and set listeners for buttons
-        Button checkoutButton = customView.findViewById(R.id.buttonProjectCheckout);
         googlePayButton = customView.findViewById(R.id.googlePayButton);
         try {
             googlePayButton.initialize(
@@ -186,13 +192,32 @@ public class EcoBalanceFragment extends Fragment {
             // Keep Google Pay button hidden (consider logging this to your app analytics service)
         }
 
-        checkoutButton.setOnClickListener(v -> {
-            // TODO: Implement google pay api
-            try {
-                ButtonOptions.newBuilder()
-                        .setAllowedPaymentMethods(PaymentsUtil.getAllowedPaymentMethods().toString()).build();
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
+        // EditText Dollar
+        EditText editTextAmount= customView.findViewById(R.id.editTextAmount);
+        TextView textCredits = customView.findViewById(R.id.textCredits);
+        editTextAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Called before the text is changed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(String.valueOf(editTextAmount.getText()).isEmpty()){
+                    textCredits.setText(0);
+                    googlePayButton.setEnabled(false);
+                }
+                // Called when the text is changing
+                // Called when the text is changing
+                priceToPay = Double.parseDouble(String.valueOf(editTextAmount.getText()));
+                String creditsString = String.valueOf(Double.parseDouble(String.valueOf(editTextAmount.getText()))  * project.getCarbonCredits() / project.getPrice()) + " carbon credits";
+                textCredits.setText(creditsString);
+                googlePayButton.setEnabled(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -216,7 +241,7 @@ public class EcoBalanceFragment extends Fragment {
 
     public void requestPayment(View view) {
         // The price provided to the API should include taxes and shipping.
-        final Task<PaymentData> task = model.getLoadPaymentDataTask("50.2");
+        final Task<PaymentData> task = model.getLoadPaymentDataTask(String.valueOf(this.priceToPay));
         task.addOnCompleteListener(paymentDataLauncher::launch);
     }
 
