@@ -165,4 +165,6 @@
     <string name="transport">Transportation</string>
     <string name="food_consumption">Food Consumption</string>
     <string name="consumption_and_shopping">Consumption and Shopping</string>
+    <string name="habit_suggestions">Habit Suggestions</string>
+    <string name="activity_management">Activity Management</string>
 </resources>

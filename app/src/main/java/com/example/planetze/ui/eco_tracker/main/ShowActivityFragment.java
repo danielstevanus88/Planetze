@@ -1,9 +1,16 @@
 package com.example.planetze.ui.eco_tracker.main;
 
+import static com.example.planetze.classes.EcoTracker.ActivitiesCalculator.calculateTotalEmission;
+import static com.example.planetze.classes.EcoTracker.ActivitiesConverter.getActivitiesWithClassDate;
+import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterActivitiesByRangeOfDate;
+import static com.example.planetze.classes.EcoTracker.Date.today;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +30,6 @@ import androidx.navigation.Navigation;
 
 import com.example.planetze.HabitSelectionActivity;
 import com.example.planetze.R;
-import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
-import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.ActivityConsumption;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
 import com.example.planetze.classes.EcoTracker.Category.Food.ActivityFood;
@@ -41,18 +46,23 @@ import com.example.planetze.classes.ScreenUtilities.ViewGenerator;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.databinding.FragmentShowActivityBinding;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 
-import org.eazegraph.lib.charts.PieChart;
-import org.eazegraph.lib.models.PieModel;
-
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
 public class ShowActivityFragment extends Fragment {
 
-    PieChart pieChart;
+    private final User currentUser = LoginManager.getCurrentUser();
+    private final HashMap<Date, List<DailyActivity>> activities = filterActivitiesByRangeOfDate(getActivitiesWithClassDate(currentUser.activities), today(), today());
     private FragmentShowActivityBinding binding;
+    private PieChart pieChart;
 
     @Nullable
     @Override
@@ -66,7 +76,7 @@ public class ShowActivityFragment extends Fragment {
         binding.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
                 navController.navigate(R.id.activity_list);
             }
         });
@@ -119,7 +129,7 @@ public class ShowActivityFragment extends Fragment {
 
         UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
         userDatabaseManager.add(currentUser);
-        showActivitiesOnDate(Date.today(), getActivity(), view);
+        showActivitiesOnDate(today(), getActivity(), view);
 
         return view;
     }
@@ -137,8 +147,8 @@ public class ShowActivityFragment extends Fragment {
 
         User currentUser = LoginManager.getCurrentUser();
         HashMap<Date, List<DailyActivity>> allActivities =
-                ActivitiesFilter.filterActivitiesByRangeOfDate(
-                        ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities()),
+                filterActivitiesByRangeOfDate(
+                        getActivitiesWithClassDate(currentUser.getActivities()),
                         selectedDate,
                         selectedDate
                 );
@@ -181,14 +191,76 @@ public class ShowActivityFragment extends Fragment {
         }
     }
 
-    private void setPieChart() {
-        // TODO: Set the pie chart data from the activities
-        float transportation = (float) 10;
-        float foodConsumption = (float) 10;
-        float consumptionAndShopping = (float) 10;
+    private double getTotal() {
+        return calculateTotalEmission(activities);
+    }
 
-        pieChart.addPieSlice(new PieModel("Transportation", transportation, Color.parseColor("#FF0000")));
-        pieChart.addPieSlice(new PieModel("Food Consumption", foodConsumption, Color.parseColor("#FFAA00")));
-        pieChart.addPieSlice(new PieModel("Consumption and Shopping", consumptionAndShopping, Color.parseColor("#009999")));
+    @SuppressLint("DefaultLocale")
+    private void setPieChart() {
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        float transportation = 0f;
+        float foodConsumption = 0f;
+        float consumptionAndShopping = 0f;
+
+        List<DailyActivity> dailyActivities = activities.get(today());
+        if (dailyActivities != null) {
+            for (DailyActivity activity : dailyActivities) {
+                switch (activity.getCategoryName()) {
+                    case "Transportation":
+                        transportation += (float) activity.getEmission();
+                        break;
+                    case "Food":
+                        foodConsumption += (float) activity.getEmission();
+                        break;
+                    case "Consumption":
+                        consumptionAndShopping += (float) activity.getEmission();
+                        break;
+                }
+            }
+        }
+
+        entries.add(new PieEntry(transportation, "Transportation"));
+        entries.add(new PieEntry(foodConsumption, "Food Consumption"));
+        entries.add(new PieEntry(consumptionAndShopping, "Consumption and Shopping"));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Daily CO2e Emissions");
+        dataSet.setColors(
+                Color.parseColor("#FF0000"),
+                Color.parseColor("#FFAA00"),
+                Color.parseColor("#009999")
+        );
+
+        // Customize text appearance (font, size, color)
+        dataSet.setValueTextSize(18f);
+        dataSet.setValueTextColor(getResources().getColor(R.color.white));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dataSet.setValueTypeface(getResources().getFont(R.font.poppins_bold));
+        }
+
+        // Legend customization
+        Legend legend = pieChart.getLegend();
+        legend.setTextSize(16f);
+        legend.setTextColor(getResources().getColor(R.color.alternativeDarkColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            legend.setTypeface(getResources().getFont(R.font.poppins_regular));
+        }
+
+        PieData pieData = new PieData(dataSet);
+        pieChart.setData(pieData);
+
+        pieChart.setCenterText(String.format("%.2f", getTotal()) + " kg");
+        pieChart.setCenterTextSize(22f);
+        pieChart.setCenterTextColor(getResources().getColor(R.color.alternativeDarkColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            pieChart.setCenterTextTypeface(getResources().getFont(R.font.poppins_bold));
+        }
+
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setDrawEntryLabels(false);
+        legend.setEnabled(false);
+        pieChart.setDrawCenterText(true);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+
+        pieChart.invalidate(); // Refresh the chart
     }
 }
