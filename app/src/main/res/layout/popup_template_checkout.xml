@@ -76,6 +76,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Checkout $25 for 100 Carbon Credits" />
+
+            <com.google.android.gms.wallet.button.PayButton
+                android:id="@+id/googlePayButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
         </LinearLayout>
     </ScrollView>
 

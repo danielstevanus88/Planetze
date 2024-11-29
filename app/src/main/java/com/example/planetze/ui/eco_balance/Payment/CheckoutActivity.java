@@ -31,37 +31,7 @@ public class CheckoutActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeUi() {
 
-        // Use view binding to access the UI elements
-        ActivityCheckoutBinding layoutBinding = ActivityCheckoutBinding.inflate(getLayoutInflater());
-        setContentView(layoutBinding.getRoot());
-
-        // The Google Pay button is a layout file – take the root view
-        googlePayButton = layoutBinding.googlePayButton;
-        try {
-            googlePayButton.initialize(
-                    ButtonOptions.newBuilder()
-                            .setAllowedPaymentMethods(PaymentsUtil.getAllowedPaymentMethods().toString()).build()
-            );
-            googlePayButton.setOnClickListener(this::requestPayment);
-        } catch (JSONException e) {
-            // Keep Google Pay button hidden (consider logging this to your app analytics service)
-        }
-    }
-
-    private static JSONObject getTransactionInfo(String price) throws JSONException {
-        return new JSONObject()
-                .put("totalPrice", price)
-                .put("totalPriceStatus", "FINAL")
-                .put("countryCode", Constants.COUNTRY_CODE)
-                .put("currencyCode", Constants.CURRENCY_CODE)
-                .put("checkoutOption", "COMPLETE_IMMEDIATE_PURCHASE");
-    }
-
-    private static JSONObject getMerchantInfo() throws JSONException {
-        return new JSONObject().put("Planetze", "Planetze");
-    }
 
 
 

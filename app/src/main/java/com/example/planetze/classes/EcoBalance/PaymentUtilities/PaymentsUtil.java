@@ -36,7 +36,7 @@ import java.math.RoundingMode;
  * existence. Please consult the documentation to learn more and feel free to remove ones not
  * relevant to your implementation.
  */
-public class PaymentsUtilities {
+public class PaymentsUtil {
 
     /**
      * Create a Google Pay API base request object with properties used in all requests.
@@ -44,7 +44,7 @@ public class PaymentsUtilities {
      * @return Google Pay API base request object.
      * @throws JSONException if the object is malformed.
      */
-    private static JSONObject getBaseRequest() throws JSONException {
+    static JSONObject getBaseRequest() throws JSONException {
         return new JSONObject()
                 .put("apiVersion", 2)
                 .put("apiVersionMinor", 0);
