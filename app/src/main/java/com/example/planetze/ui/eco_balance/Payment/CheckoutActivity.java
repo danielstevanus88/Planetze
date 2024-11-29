@@ -10,7 +10,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoBalance.PaymentUtilities.Constants;
-import com.example.planetze.classes.EcoBalance.PaymentUtilities.PaymentUtilities;
 import com.example.planetze.databinding.ActivityCheckoutBinding;
 import com.google.android.gms.wallet.button.ButtonOptions;
 

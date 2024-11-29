@@ -24,7 +24,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.samples.pay.util.PaymentsUtil;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wallet.IsReadyToPayRequest;
 import com.google.android.gms.wallet.PaymentData;
@@ -93,4 +92,3 @@ public class CheckoutViewModel extends AndroidViewModel {
         return paymentsClient.loadPaymentData(request);
     }
 }
-    

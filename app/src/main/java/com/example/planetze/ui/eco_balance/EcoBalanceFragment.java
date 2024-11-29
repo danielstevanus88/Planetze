@@ -1,8 +1,12 @@
 package com.example.planetze.ui.eco_balance;
 
+import static java.util.Locale.getDefault;
+
 import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,12 +23,15 @@ import com.bumptech.glide.Glide;
 
 
 import com.example.planetze.R;
+import com.example.planetze.classes.EcoBalance.PaymentUtilities.CheckoutViewModel;
 import com.example.planetze.classes.EcoBalance.PaymentUtilities.PaymentsUtil;
 import com.example.planetze.classes.EcoBalance.Project;
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wallet.PaymentData;
 import com.google.android.gms.wallet.button.ButtonOptions;
 import com.google.android.gms.wallet.button.PayButton;
+import com.google.android.gms.wallet.contract.TaskResultContracts;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +55,28 @@ public class EcoBalanceFragment extends Fragment {
     public EcoBalanceFragment() {
         // Required empty public constructor
     }
+
+    private CheckoutViewModel model;
+
+    private PayButton googlePayButton;
+
+    private final ActivityResultLauncher<Task<PaymentData>> paymentDataLauncher =
+            registerForActivityResult(new TaskResultContracts.GetPaymentDataResult(), result -> {
+                int statusCode = result.getStatus().getStatusCode();
+                switch (statusCode) {
+                    case CommonStatusCodes.SUCCESS:
+                        handlePaymentSuccess(result.getResult());
+                        break;
+                    //case CommonStatusCodes.CANCELED: The user canceled
+                    case CommonStatusCodes.DEVELOPER_ERROR:
+                        handleError(statusCode, result.getStatus().getStatusMessage());
+                        break;
+                    default:
+                        handleError(statusCode, "Unexpected non API" +
+                                " exception when trying to deliver the task result to an activity!");
+                        break;
+                }
+            });
 
     /**
      * Use this factory method to create a new instance of
@@ -102,7 +131,6 @@ public class EcoBalanceFragment extends Fragment {
         return view;
     }
 
-    private PayButton googlePayButton;
     private void showCustomDialog(Project project) {
         // Inflate the custom layout
         View customView = getLayoutInflater().inflate(R.layout.popup_template_checkout, null);
@@ -145,7 +173,7 @@ public class EcoBalanceFragment extends Fragment {
 
         // Find and set listeners for buttons
         Button checkoutButton = customView.findViewById(R.id.buttonProjectCheckout);
-        PayButton googlePayButton = customView.findViewById(R.id.googlePayButton);
+        googlePayButton = customView.findViewById(R.id.googlePayButton);
         try {
             googlePayButton.initialize(
                     ButtonOptions.newBuilder()
@@ -157,11 +185,15 @@ public class EcoBalanceFragment extends Fragment {
         } catch (JSONException e) {
             // Keep Google Pay button hidden (consider logging this to your app analytics service)
         }
-        checkoutButton.setOnClickListener { requestPayment() }
+
         checkoutButton.setOnClickListener(v -> {
             // TODO: Implement google pay api
-            ButtonOptions.newBuilder()
-                    .setAllowedPaymentMethods(PaymentUtilities.allowedPaymentMethods.toString()).build();
+            try {
+                ButtonOptions.newBuilder()
+                        .setAllowedPaymentMethods(PaymentsUtil.getAllowedPaymentMethods().toString()).build();
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         // Back Button
@@ -199,7 +231,7 @@ public class EcoBalanceFragment extends Fragment {
             final JSONObject info = paymentMethodData.getJSONObject("info");
             final String billingName = info.getJSONObject("billingAddress").getString("name");
             Toast.makeText(
-                    this, getString(R.string.payments_show_name, billingName),
+                    getActivity(), "Payment",
                     Toast.LENGTH_LONG).show();
 
             // Logging token string.
@@ -208,13 +240,17 @@ public class EcoBalanceFragment extends Fragment {
                     .getString("token"));
 
 
-            // Successfully paid
-            startActivity(new Intent(this, CheckoutSuccessActivity.class));
+//            // Successfully paid
+//            startActivity(new Intent(this, CheckoutSuccessActivity.class));
 
         } catch (JSONException e) {
             Log.e("handlePaymentSuccess", "Error: " + e);
         }
     }
 
+    private void handleError(int statusCode, @Nullable String message) {
+        Log.e("loadPaymentData failed",
+                String.format(getDefault(), "Error code: %d, Message: %s", statusCode, message));
+    }
 
 }
