@@ -188,13 +188,13 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/logHabitButton"
                     style="@style/FormButton"
                     android:layout_weight="1"
                     android:text="Log Habit" />
 
                 <Button
-                    android:id="@+id/addHabit"
+                    android:id="@+id/addHabitButton"
                     style="@style/FormButton"
                     android:layout_weight="1"
                     android:text="Add Habit" />

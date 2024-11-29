@@ -14,21 +14,32 @@ public class LoginPresenter implements Contract.Presenter{
 
     @Override
     public void login() {
+        // Get the email and password from view
         String email = view.getEmail();
         String password = view.getPassword();
 
+        // Check valid input (non-empty)
         if(email.isEmpty() || password.isEmpty()){
-            view.showMessage("Email or password cannot be empty");
+            view.showMessage("Invalid Input", "Email or password cannot be empty");
             return;
         }
 
+        // Try logging in with the email and password
         model.login(email, password).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
-                view.onLoginSuccess();
-            }else{
-                // Show error message
-                view.showMessage("Invalid email or password!");
+                if(model.isUserVerified()) {
+                    view.onLoginSuccess();
+                } else {
+                    model.sendVerificationEmail();
+                    model.logout();
+                    view.onLoginNotVerified();
+                }
+                return;
             }
+
+            // Show error message
+            view.showMessage("Invalid email or password", "You entered invalid email and/or password");
+
         });
 
 

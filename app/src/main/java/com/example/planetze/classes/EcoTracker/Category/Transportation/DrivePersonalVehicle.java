@@ -10,7 +10,7 @@ public class DrivePersonalVehicle extends ActivityTransportation{
     public DrivePersonalVehicle(double distance, Car car){
         this.distance = distance;
         this.car = car;
-        this.emission = car.getCO2perKilometer() * distance;
+        this.emission = car.getEmissionPerKilometer() * distance;
         this.displayText = "Drive " + car.toString() + " (" + distance + "km)";
     }
 }

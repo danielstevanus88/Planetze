@@ -1,17 +1,26 @@
 package com.example.planetze.classes.EcoTracker.Category.Transportation.CarType;
 
+import androidx.annotation.NonNull;
+
+import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
+
 public class Car{
-    public double CO2perKm;
+    public double emissionPerKilometer;
     public String displayCar;
     public Car(){
-        this.CO2perKm = getCO2perKilometer();
-        this.displayCar = toString();
+        this.emissionPerKilometer = EcoTrackerEmissionConstant.DRIVE_PERSONAL_VEHICLE_DIESEL_EMISSION;
+        this.displayCar = "Car";
     }
 
-    public  double getCO2perKilometer(){
-        return this.CO2perKm;
-    };
+    public  double getEmissionPerKilometer(){
+        return this.emissionPerKilometer;
+    }
 
+    public String getDisplayCar(){
+        return this.displayCar;
+    }
+
+    @NonNull
     public String toString(){
         return this.displayCar;
     }

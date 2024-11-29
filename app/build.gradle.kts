@@ -58,5 +58,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.blackfizz:eazegraph:1.2.2")
+    implementation(libs.material.calendar.view)
+
     testImplementation(libs.mockito.core)
 }
