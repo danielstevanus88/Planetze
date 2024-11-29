@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingBottom="?attr/actionBarSize">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    style="@style/Header1"
+                    android:text="@string/drive_personal_vehicle" />
+
+                <View style="@style/FormLine" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/distance_driven" />
+
+                <EditText
+                    android:id="@+id/distance"
+                    style="@style/Input"
+                    android:hint="@string/distance_driven_in_km" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/vehicle_type" />
+
+                <Button
+                    android:id="@+id/option1"
+                    style="@style/FormOption"
+                    android:text="@string/gasoline" />
+
+                <Button
+                    android:id="@+id/option2"
+                    style="@style/FormOption"
+                    android:text="@string/diesel" />
+
+                <Button
+                    android:id="@+id/option3"
+                    style="@style/FormOption"
+                    android:text="@string/hybrid" />
+
+                <Button
+                    android:id="@+id/option4"
+                    style="@style/FormOption"
+                    android:text="@string/electric" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/back"
+                    style="@style/FormButton"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/submit"
+                    style="@style/FormButton"
+                    android:text="@string/submit" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

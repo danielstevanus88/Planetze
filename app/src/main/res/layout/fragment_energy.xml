@@ -16,7 +16,7 @@
 
                 <TextView
                     android:id="@+id/q14"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q14" />
 
                 <View style="@style/FormLine" />
@@ -57,7 +57,7 @@
 
                 <TextView
                     android:id="@+id/q15"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q15" />
 
                 <View style="@style/FormLine" />
@@ -93,7 +93,7 @@
 
                 <TextView
                     android:id="@+id/q16"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q16" />
 
                 <View style="@style/FormLine" />
@@ -134,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/q17"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q17" />
 
                 <View style="@style/FormLine" />

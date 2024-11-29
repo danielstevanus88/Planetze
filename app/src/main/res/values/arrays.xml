@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Select category</item>
+        <item>Consumption</item>
+        <item>Energy</item>
+        <item>Food</item>
+        <item>Transportation</item>
+    </string-array>
+
+    <string-array name="impact_levels">
+        <item>Select impact level</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+</resources>

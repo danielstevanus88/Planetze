@@ -28,6 +28,9 @@
     <color name="active_color">#009999</color>
     <color name="inactive_color">#D8DBE2</color>
 
+    <color name="primaryRed">#FF0000</color>
+    <color name="primaryYellow">#FFAA00</color>
+
     <color name="green1">#0099992E</color>
     <color name="green2">#0099996B</color>
     <color name="green3">#00999991</color>
