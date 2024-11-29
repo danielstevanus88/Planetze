@@ -28,7 +28,7 @@ import java.util.List;
 public abstract class BaseFormFragment<VB extends ViewBinding> extends Fragment {
 
     protected VB binding;
-    protected DatabaseManager databaseManager = UserDatabaseManager.getInstance();
+    protected DatabaseManager<User> databaseManager = UserDatabaseManager.getInstance();
     protected User currentUser = LoginManager.getCurrentUser();
 
     protected abstract void setupClickListeners();

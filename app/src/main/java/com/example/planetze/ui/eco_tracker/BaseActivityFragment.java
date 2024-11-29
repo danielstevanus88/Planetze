@@ -15,7 +15,7 @@ import java.util.List;
 
 public abstract class BaseActivityFragment extends Fragment {
 
-    protected DatabaseManager databaseManager = UserDatabaseManager.getInstance();
+    protected DatabaseManager<User> databaseManager = UserDatabaseManager.getInstance();
     protected User currentUser = LoginManager.getCurrentUser();
 
     protected void setButtons(List<Button> buttons, Button clicked) {

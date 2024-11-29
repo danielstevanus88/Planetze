@@ -2,13 +2,16 @@ package com.example.planetze.classes.EcoTracker.Category.Transportation;
 
 import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 
-public class TakePublicTransportation extends ActivityTransportation {
+public class Flight extends ActivityTransportation {
     public String type;
+    public int num;
 
-    public TakePublicTransportation(String type, double hour) {
+    public Flight(String type, int num) {
         this.type = type;
-        this.hour = hour;
+        this.num = num;
+        // TODO: Calculate emission based on type
         this.emission = hour * EcoTrackerEmissionConstant.TAKE_PUBLIC_TRANSPORTATION_EMISSION;
-        this.displayText = "Take " + type + " (" + hour + "hr)";
+        // TODO: Modify display text
+        this.displayText = "Take " + type + " flight (" + num + ")";
     }
 }

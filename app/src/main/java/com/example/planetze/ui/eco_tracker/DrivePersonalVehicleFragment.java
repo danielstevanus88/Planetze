@@ -29,7 +29,7 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
     private FragmentDrivePersonalVehicleBinding binding;
     private List<Button> buttons;
     private double distance;
-    private int option;
+    private int type;
     private DrivePersonalVehicle activity;
 
     @Nullable
@@ -47,7 +47,7 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
             int originalOption = currentUser.questionnaireAnswers.get("q2");
             buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
             buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
-            option = originalOption;
+            type = originalOption;
         }
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
@@ -71,7 +71,7 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
 
         if (buttons.contains(clickedButton)) {
             setButtons(buttons, clickedButton);
-            option = Arrays.asList(options).indexOf(clickedButton.getText().toString());
+            type = Arrays.asList(options).indexOf(clickedButton.getText().toString());
         }
     }
 
@@ -83,20 +83,26 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
         }
         if (distance <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
-        } else if (option <= 0 || option >= 5) {
+        } else if (type <= 0 || type >= 5) {
             Toast.makeText(getActivity(), "Please select an option", Toast.LENGTH_SHORT).show();
         } else {
-            switch (option) {
+            switch (type) {
                 case 1:
                     activity = new DrivePersonalVehicle(distance, new GasolineCar());
+                    break;
                 case 2:
                     activity = new DrivePersonalVehicle(distance, new DieselCar());
+                    break;
                 case 3:
                     activity = new DrivePersonalVehicle(distance, new HybridCar());
+                    break;
                 case 4:
                     activity = new DrivePersonalVehicle(distance, new ElectricCar());
+                    break;
             }
-            currentUser.addActivity(new Date(), activity);
+            Date date = Date.today();
+            currentUser.addActivity(date, activity);
+            currentUser.addQuestionnaireAnswer("q2", type);
             databaseManager.add(currentUser);
 
             Intent intent = new Intent(getActivity(), MainActivity.class);

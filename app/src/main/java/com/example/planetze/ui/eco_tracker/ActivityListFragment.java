@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentActivityListBinding;
-import com.example.planetze.databinding.FragmentEcoTrackerBinding;
 
 public class ActivityListFragment extends Fragment {
 
