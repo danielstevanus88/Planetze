@@ -12,6 +12,7 @@ public class EnergyBill extends ActivityConsumption {
         this.displayText = type + " energy bill (" + amount + ")";
         // TODO: calculate emission
         this.emission = 0;
+
     }
 
 }

@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -65,10 +66,11 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
     private PieChart pieChart;
 
     private View view;
-    private Date currentSelectedDate;
+    private static Date currentSelectedDate;
 
     public ShowActivityFragment() {
         // Required empty public constructor
+        currentSelectedDate = Date.today();
     }
 
     
@@ -97,7 +99,6 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         textPickADate.setText(today().toString());
         textPickADate.setKeyListener(null);
 
-        this.currentSelectedDate = Date.today();
         buttonPickADate.setOnClickListener( event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -111,7 +112,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
                         Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-                        this.currentSelectedDate = selectedDate;
+                        currentSelectedDate = selectedDate;
                         showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
@@ -136,16 +137,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
             startActivity(intent);
         });
 
-
-        User currentUser = LoginManager.getCurrentUser();
-        // TODO: REMOVE THIS
-        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation("aa", 10));
-        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking(10));
-
-
-        UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
-        userDatabaseManager.add(currentUser);
-        showActivitiesOnDate(Date.today(), getActivity());
+        showActivitiesOnDate(currentSelectedDate, getActivity());
 
         return this.view;
     }
@@ -153,6 +145,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
 
     private void showActivitiesOnDate(Date selectedDate, Context context) {
         if(selectedDate == null) return;
+        setPieChart();
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
         LinearLayout layoutFood = view.findViewById(R.id.LayoutFood);
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);
@@ -266,7 +259,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
 
-        pieChart.setCenterText(String.format("%.2f", getTotal()) + " kg");
+        pieChart.setCenterText(String.format("%.2f", foodConsumption + transportation + consumptionAndShopping) + " kg");
         pieChart.setCenterTextSize(22f);
         pieChart.setCenterTextColor(getResources().getColor(R.color.alternativeDarkColor));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -282,13 +275,18 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         pieChart.invalidate(); // Refresh the chart
     }
 
+    public static Date getCurrentSelectedDate(){
+        return currentSelectedDate;
+    }
+
 
     @Override
     public void update() {
-//        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
-        this.activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+
+
         setPieChart();
-        showActivitiesOnDate(this.currentSelectedDate, getActivity());
+        showActivitiesOnDate(currentSelectedDate, getActivity());
+
     }
 
 

@@ -12,14 +12,16 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentCyclingOrWalkingBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
     private FragmentCyclingOrWalkingBinding binding;
     private double distance;
-
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,9 +29,14 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
         View view = binding.getRoot();
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
+        }
         return view;
     }
 
@@ -42,13 +49,15 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
         if (distance <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             CyclingOrWalking activity = new CyclingOrWalking(distance);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 }

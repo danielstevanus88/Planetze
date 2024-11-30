@@ -99,6 +99,16 @@ public class User {
         }
 
     }
+    public void addHabit(Habit selectedHabit,List<String> habit){
+        this.habit.put(selectedHabit.name, habit);
+        userDatabaseManager.add(this);
+    }
+
+    public HashMap<String, List<String>> getHabit(){
+        return this.habit;
+    }
+
+
 
 
     public String getEmail(){
@@ -113,12 +123,7 @@ public class User {
         return name;
     }
 
-    public void addHabit(Habit selectedHabit,List<String> habit){
-        this.habit.put(selectedHabit.name, habit);
-        userDatabaseManager.add(this);
-    }
-
-    public HashMap<String, List<String>> getHabit(){
-        return this.habit;
+    public HashMap<String, Integer> getQuestionnaireAnswers() {
+        return questionnaireAnswers;
     }
 }
