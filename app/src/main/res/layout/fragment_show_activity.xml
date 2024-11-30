@@ -189,6 +189,8 @@
                         android:fontFamily="@font/poppins"
                         android:hint="mm/dd/yyyy"
                         android:inputType="date"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="@color/white"
                         android:textColorHint="@color/white" />
 
                 </LinearLayout>
@@ -440,6 +442,7 @@
                     android:layout_weight="1"
                     android:text="Add Habit" />
             </LinearLayout>
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
