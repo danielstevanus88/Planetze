@@ -217,4 +217,7 @@
     <string name="mark_done">Mark as Done</string>
     <string name="Complete_Habit">Complete Habit</string>
     <string name="get_recommended_habits">Get Recommended Habits</string>
+    <string name="habit_suggestions">Habit Suggestions</string>
+    <string name="activity_management">Activity Management</string>
+
 </resources>
