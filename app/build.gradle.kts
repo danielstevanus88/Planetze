@@ -59,7 +59,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.github.glide)
     annotationProcessor(libs.glide.compiler)
-    implementation(libs.eazegraph)
     implementation(libs.mpandroidchart) // Add this line to add the MPAndroidChart library
     implementation(libs.material.calendar.view)
     testImplementation(libs.mockito.core)
