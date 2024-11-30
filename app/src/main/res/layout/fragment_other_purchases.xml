@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    android:paddingBottom="?attr/actionBarSize">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,7 +28,7 @@
                 <EditText
                     android:id="@+id/type"
                     style="@style/Input"
-                    android:hint="@string/type_of_purchase"/>
+                    android:hint="@string/type_of_purchase" />
 
                 <TextView
                     style="@style/Header2"
@@ -35,7 +37,7 @@
                 <EditText
                     android:id="@+id/num"
                     style="@style/Input"
-                    android:hint="@string/number_of_the_purchases"/>
+                    android:hint="@string/number_of_the_purchases" />
 
             </LinearLayout>
 

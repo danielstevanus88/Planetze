@@ -23,6 +23,9 @@
             android:name=".ui.eco_balance.Payment.CheckoutActivity"
             android:exported="false" />
         <activity
+            android:name=".LogHabitActivity"
+            android:exported="false" />
+        <activity
             android:name=".HabitSelectionActivity"
             android:exported="false" />
         <activity

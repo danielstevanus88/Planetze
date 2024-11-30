@@ -1,20 +1,24 @@
 package com.example.planetze.ui.eco_tracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
+import com.example.planetze.MainActivity;
+import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
+import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentBuyNewClothesBinding;
-import com.example.planetze.databinding.FragmentMealBinding;
 
-public class BuyNewClothesFragment extends Fragment {
+public class BuyNewClothesFragment extends BaseActivityFragment {
 
     private FragmentBuyNewClothesBinding binding;
+    private int num;
 
     @Nullable
     @Override
@@ -22,7 +26,30 @@ public class BuyNewClothesFragment extends Fragment {
         binding = FragmentBuyNewClothesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        binding.back.setOnClickListener(this::handleBackButtonClick);
+
+        binding.submit.setOnClickListener(this::handleNextButtonClick);
+
         return view;
+    }
+
+    private void handleNextButtonClick(View view) {
+        try {
+            num = Integer.parseInt(binding.input.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Please enter a valid number of clothes", Toast.LENGTH_SHORT).show();
+        }
+        if (num <= 0) {
+            Toast.makeText(getActivity(), "Please enter a valid number of clothes", Toast.LENGTH_SHORT).show();
+        } else {
+            Date date = Date.today();
+            BuyClothes activity = new BuyClothes(num);
+            currentUser.addActivity(date, activity);
+            databaseManager.add(currentUser);
+
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

@@ -6,80 +6,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HabitSelectionActivity">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/splashBackgroundColor">
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Select an Habit"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="#009999"
-            android:textSize="30sp"/>
+        tools:layout_editor_absoluteY="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:orientation="vertical" >
 
-            <!-- Filter by category -->
-            <Spinner
-                android:id="@+id/spinner_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/categories" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/splashBackgroundColor"
+                android:isScrollContainer="true"
+                android:orientation="vertical"
+                android:scrollbars="vertical">
 
-            <!-- Filter by impact -->
-            <Spinner
-                android:id="@+id/spinner_impact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/impact_levels" />
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/select_an_habit"
+                    android:textAlignment="center"
+                    android:textColor="#009999"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <!-- Filter by category -->
+                    <Spinner
+                        android:id="@+id/spinner_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:entries="@array/categories"
+                        android:spinnerMode="dropdown" />
+
+                    <!-- Filter by impact -->
+                    <Spinner
+                        android:id="@+id/spinner_impact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:entries="@array/impact_levels"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
+
+                <SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search habits..." />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/get_recommended_habits" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/back"
+                        style="@style/FormButton"
+                        android:text="Back" />
+
+                    <Button
+                        android:id="@+id/select"
+                        style="@style/FormButton"
+                        android:text="Select" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <SearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search habits..." />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="409dp"
-            android:layout_height="640dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp"
-            android:layout_marginTop="8dp"/>
-
-        <LinearLayout
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-        <Button
-            android:id="@+id/back"
-            style="@style/FormButton"
-            android:text="Back" />
-
-        <Button
-            android:id="@+id/select"
-            style="@style/FormButton"
-            android:text="Select" />
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

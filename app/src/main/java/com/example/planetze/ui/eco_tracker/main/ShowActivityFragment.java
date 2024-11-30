@@ -1,8 +1,16 @@
 package com.example.planetze.ui.eco_tracker.main;
 
+import static com.example.planetze.classes.EcoTracker.ActivitiesCalculator.calculateTotalEmission;
+import static com.example.planetze.classes.EcoTracker.ActivitiesConverter.getActivitiesWithClassDate;
+import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterActivitiesByRangeOfDate;
+import static com.example.planetze.classes.EcoTracker.Date.today;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -18,18 +26,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.example.planetze.HabitSelectionActivity;
+import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.ActivityConsumption;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
-import com.example.planetze.classes.EcoTracker.Category.Food.ActivityFood;
-import com.example.planetze.classes.EcoTracker.Category.Food.EatBeef;
-import com.example.planetze.classes.EcoTracker.Category.Food.EatPork;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.GasolineCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.DrivePersonalVehicle;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
@@ -38,27 +45,24 @@ import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.ScreenUtilities.ViewGenerator;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
+import com.example.planetze.databinding.FragmentShowActivityBinding;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShowActivityFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ShowActivityFragment extends Fragment implements FirebaseListenerDailyActivity {
+public class ShowActivityFragment extends Fragment implements FirebaseListenerDailyActivity{
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private HashMap<Date, List<DailyActivity>> activities;
+    private FragmentShowActivityBinding binding;
+    private PieChart pieChart;
 
     private View view;
     private Date currentSelectedDate;
@@ -67,46 +71,33 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShowActivityFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShowActivityFragment newInstance(String param1, String param2) {
-        ShowActivityFragment fragment = new ShowActivityFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentShowActivityBinding.inflate(inflater, container, false);
+        view = binding.getRoot();
+        activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+        pieChart = binding.piechart;
+        setPieChart();
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.fragment_show_activity, container, false);
+        binding.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.activity_list);
+            }
+        });
 
         UserDatabaseManager.subscribeAsDailyActivityListener(this);
         Log.d("hehe", "subscribed to database manager");
 
+
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
+        textPickADate.setText(today().toString());
         textPickADate.setKeyListener(null);
 
+        this.currentSelectedDate = Date.today();
         buttonPickADate.setOnClickListener( event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -125,37 +116,31 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
                     },
                     year, month, day);
             datePickerDialog.show();
-        });
-        textPickADate.setOnClickListener( event -> {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    getActivity(),
-                    (v, selectedYear, selectedMonth, selectedDay) -> {
-                        // Month is 0-based, add 1 to display correctly
-                        Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
-                        textPickADate.setText(selectedDate.toString());
-                        Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-                        this.currentSelectedDate = selectedDate;
-                        showActivitiesOnDate(selectedDate, getActivity());
-                    },
-                    year, month, day);
-            datePickerDialog.show();
+        });
+        textPickADate.setOnClickListener(event -> {
+            buttonPickADate.callOnClick();
         });
 
-        Button myButton = view.findViewById(R.id.addHabit);
+        Button addHabitButton = view.findViewById(R.id.addHabitButton);
         // Set the OnClickListener to handle the button press
-        myButton.setOnClickListener(v -> {
+        addHabitButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
             startActivity(intent);
         });
 
+        Button logHabitButton = view.findViewById(R.id.logHabitButton);
+        // Set the OnClickListener to handle the button press
+        logHabitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LogHabitActivity.class);
+            startActivity(intent);
+        });
+
+
         User currentUser = LoginManager.getCurrentUser();
-        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation(10));
-        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking());
+        // TODO: REMOVE THIS
+        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation("aa", 10));
+        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking(10));
 
 
         UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
@@ -207,27 +192,102 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         TextView noFoodText = view.findViewById(R.id.noFoodText);
         TextView noTransportationText = view.findViewById(R.id.noTransportationText);
 
-        if(layoutConsumption.getChildCount() > 2){
+        if (layoutConsumption.getChildCount() > 2) {
             noConsumptionText.setVisibility(View.GONE);
         } else {
             noConsumptionText.setVisibility(View.VISIBLE);
         }
-        if(layoutTransportation.getChildCount() > 2){
+        if (layoutTransportation.getChildCount() > 2) {
             noTransportationText.setVisibility(View.GONE);
         } else {
             noTransportationText.setVisibility(View.VISIBLE);
         }
-        if(layoutFood.getChildCount() > 2){
+        if (layoutFood.getChildCount() > 2) {
             noFoodText.setVisibility(View.GONE);
         } else {
             noFoodText.setVisibility(View.VISIBLE);
         }
     }
 
+    private double getTotal() {
+        return calculateTotalEmission(filterActivitiesByRangeOfDate(activities, today(), today()));
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void setPieChart() {
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        float transportation = 0f;
+        float foodConsumption = 0f;
+        float consumptionAndShopping = 0f;
+
+        List<DailyActivity> dailyActivities = activities.get(this.currentSelectedDate);
+        if (dailyActivities != null) {
+            for (DailyActivity activity : dailyActivities) {
+                switch (activity.getCategoryName()) {
+                    case "Transportation":
+                        transportation += (float) activity.getEmission();
+                        break;
+                    case "Food":
+                        foodConsumption += (float) activity.getEmission();
+                        break;
+                    case "Consumption":
+                        consumptionAndShopping += (float) activity.getEmission();
+                        break;
+                }
+            }
+        }
+
+        entries.add(new PieEntry(transportation, "Transportation"));
+        entries.add(new PieEntry(foodConsumption, "Food Consumption"));
+        entries.add(new PieEntry(consumptionAndShopping, "Consumption and Shopping"));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Daily CO2e Emissions");
+        dataSet.setColors(
+                Color.parseColor("#FF0000"),
+                Color.parseColor("#FFAA00"),
+                Color.parseColor("#009999")
+        );
+
+        // Customize text appearance (font, size, color)
+        dataSet.setValueTextSize(18f);
+        dataSet.setValueTextColor(getResources().getColor(R.color.white));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dataSet.setValueTypeface(getResources().getFont(R.font.poppins_bold));
+        }
+
+        // Legend customization
+        Legend legend = pieChart.getLegend();
+        legend.setTextSize(16f);
+        legend.setTextColor(getResources().getColor(R.color.alternativeDarkColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            legend.setTypeface(getResources().getFont(R.font.poppins_regular));
+        }
+
+        PieData pieData = new PieData(dataSet);
+        pieChart.setData(pieData);
+
+        pieChart.setCenterText(String.format("%.2f", getTotal()) + " kg");
+        pieChart.setCenterTextSize(22f);
+        pieChart.setCenterTextColor(getResources().getColor(R.color.alternativeDarkColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            pieChart.setCenterTextTypeface(getResources().getFont(R.font.poppins_bold));
+        }
+
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setDrawEntryLabels(false);
+        legend.setEnabled(false);
+        pieChart.setDrawCenterText(true);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+
+        pieChart.invalidate(); // Refresh the chart
+    }
+
 
     @Override
     public void update() {
 //        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
+        this.activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+        setPieChart();
         showActivitiesOnDate(this.currentSelectedDate, getActivity());
     }
 

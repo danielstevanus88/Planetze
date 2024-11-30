@@ -32,11 +32,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -50,7 +50,6 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.annotation)
     implementation(libs.activity)
-    implementation(libs.firebase.database)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
@@ -61,5 +60,7 @@ dependencies {
     implementation(libs.github.glide)
     annotationProcessor(libs.glide.compiler)
     implementation(libs.eazegraph)
+    implementation(libs.mpandroidchart) // Add this line to add the MPAndroidChart library
+    implementation(libs.material.calendar.view)
     testImplementation(libs.mockito.core)
 }
