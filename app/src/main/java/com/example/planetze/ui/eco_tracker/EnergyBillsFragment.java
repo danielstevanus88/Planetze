@@ -15,6 +15,7 @@ import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.EnergyBill;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentEnergyBillsBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,13 +67,12 @@ public class EnergyBillsFragment extends BaseActivityFragment {
         if (amount <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid bill amount", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             EnergyBill activity = new EnergyBill(type, amount);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 

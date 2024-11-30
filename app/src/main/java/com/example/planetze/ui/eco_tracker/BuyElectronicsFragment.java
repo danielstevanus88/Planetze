@@ -14,6 +14,7 @@ import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyElectronics;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentBuyElectronicsBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 public class BuyElectronicsFragment extends BaseActivityFragment {
 
@@ -48,13 +49,15 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
         if (num <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of devices", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             BuyElectronics activity = new BuyElectronics(type, num);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
+
+
+
         }
     }
 

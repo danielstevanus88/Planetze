@@ -20,6 +20,7 @@ import com.example.planetze.classes.EcoTracker.Category.Food.EatPlantBased;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatPork;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentMealBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +74,7 @@ public class MealFragment extends BaseActivityFragment {
         if (num <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of servings", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             switch (type) {
                 case 1:
                     EatBeef activity1 = new EatBeef(num);
@@ -96,10 +97,9 @@ public class MealFragment extends BaseActivityFragment {
                     currentUser.addActivity(date, activity5);
                     break;
             }
-            databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 

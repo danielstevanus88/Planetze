@@ -20,6 +20,7 @@ import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.H
 import com.example.planetze.classes.EcoTracker.Category.Transportation.DrivePersonalVehicle;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentDrivePersonalVehicleBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -100,13 +101,12 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
                     activity = new DrivePersonalVehicle(distance, new ElectricCar());
                     break;
             }
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             currentUser.addActivity(date, activity);
             currentUser.addQuestionnaireAnswer("q2", type);
-            databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 }

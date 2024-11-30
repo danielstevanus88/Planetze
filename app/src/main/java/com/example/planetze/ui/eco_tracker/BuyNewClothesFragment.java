@@ -14,6 +14,7 @@ import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentBuyNewClothesBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 public class BuyNewClothesFragment extends BaseActivityFragment {
 
@@ -42,13 +43,13 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
         if (num <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of clothes", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             BuyClothes activity = new BuyClothes(num);
             currentUser.addActivity(date, activity);
             databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 

@@ -14,6 +14,7 @@ import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyOthers;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentOtherPurchasesBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 public class OtherPurchasesFragment extends BaseActivityFragment {
 
@@ -48,13 +49,13 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
         if (num <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of purchases", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             BuyOthers activity = new BuyOthers(type, num);
             currentUser.addActivity(date, activity);
             databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 

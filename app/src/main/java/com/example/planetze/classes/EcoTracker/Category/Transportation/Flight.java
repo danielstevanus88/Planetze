@@ -10,7 +10,7 @@ public class Flight extends ActivityTransportation {
         this.type = type;
         this.num = num;
         // TODO: Calculate emission based on type
-        this.emission = hour * EcoTrackerEmissionConstant.TAKE_PUBLIC_TRANSPORTATION_EMISSION;
+        this.emission = num * EcoTrackerEmissionConstant.TAKE_PUBLIC_TRANSPORTATION_EMISSION;
         // TODO: Modify display text
         this.displayText = "Take " + type + " flight (" + num + ")";
     }

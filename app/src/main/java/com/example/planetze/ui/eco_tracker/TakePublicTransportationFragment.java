@@ -15,6 +15,7 @@ import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
+import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,13 +67,13 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
         if (hour <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = ShowActivityFragment.getCurrentSelectedDate();
             TakePublicTransportation activity = new TakePublicTransportation(type, hour);
             currentUser.addActivity(date, activity);
             databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            handleBackButtonClick(view);
+            handleBackButtonClick(view);
         }
     }
 }
