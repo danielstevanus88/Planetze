@@ -11,6 +11,11 @@ public class DailyActivity {
     // Field: Unique ID
     public String uuid;
 
+    // Field: Id associated with the type of the activity. This is to help firebase deserializing
+    // the daily activity type
+    public int typeId;
+
+
     // Fields: Basic
     public String categoryName;
     public double emission;
@@ -20,6 +25,8 @@ public class DailyActivity {
     public String displayText;
     public double distance;
     public double hour;
+    public String type;
+    public int numberOfFlights;
 
     // Fields: Consumption Category
     public int numberOfPurchase;

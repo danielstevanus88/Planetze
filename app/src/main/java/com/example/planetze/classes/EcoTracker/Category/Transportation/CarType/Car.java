@@ -7,9 +7,11 @@ import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 public class Car{
     public double emissionPerKilometer;
     public String displayCar;
+    public int carTypeId;
     public Car(){
         this.emissionPerKilometer = EcoTrackerEmissionConstant.DRIVE_PERSONAL_VEHICLE_DIESEL_EMISSION;
         this.displayCar = "Car";
+        this.carTypeId = 1;
     }
 
     public  double getEmissionPerKilometer(){
