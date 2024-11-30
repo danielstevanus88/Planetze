@@ -28,7 +28,7 @@
     <color name="active_color">#009999</color>
     <color name="inactive_color">#D8DBE2</color>
 
-    <color name="green1">#0099992E</color>
-    <color name="green2">#0099996B</color>
-    <color name="green3">#00999991</color>
+    <color name="green1">#2E009999</color>
+    <color name="green2">#6B009999</color>
+    <color name="green3">#91009999</color>
 </resources>

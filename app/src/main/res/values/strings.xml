@@ -221,5 +221,7 @@
     <string name="get_recommended_habits">Get Recommended Habits</string>
     <string name="habit_suggestions">Habit Suggestions</string>
     <string name="activity_management">Activity Management</string>
+    <string name="everyday">Everyday</string>
+    <string name="empowering_you_to_live_sustainability">Empowering You to\nLive Sustainability</string>
 
 </resources>

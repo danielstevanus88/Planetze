@@ -1,60 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".classes.SplashScreenActivity"
-   android:background="@color/accentColor">
+    android:background="@color/accentColor"
+    tools:context=".SplashScreenActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="218dp"
-        android:layout_height="87dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/logo" />
-
-    <ImageView
-        android:id="@+id/earth_graphic"
-        android:layout_width="386dp"
-        android:layout_height="351dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/earth_image" />
-
-    <TextView
-        android:id="@+id/catchphrase"
-        android:layout_width="386dp"
-        android:layout_height="154dp"
-        android:layout_below="@id/earth_graphic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:fontFamily="@font/mon_bold"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
         android:gravity="center"
-        android:shadowColor="#d0d9d2"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:textAlignment="center"
-        android:textColor="#1B1B1E"
-        android:textSize="25sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/catchphrase"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/quicksand"
-        android:textAlignment="center"
-        android:textColor="#1B1B1E"
-        android:textSize="20sp"
-        android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="262dp"
+                android:layout_height="71dp"
+                app:srcCompat="@drawable/logo" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/icon_circle">
+
+            <FrameLayout
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@drawable/green_container_1">
+
+                <FrameLayout
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/green_container_2">
+
+                    <FrameLayout
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/green_container_3">
+
+                        <FrameLayout
+                            android:layout_width="240dp"
+                            android:layout_height="240dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/green_container_4">
+
+                            <ImageView
+                                android:id="@+id/penguin"
+                                android:layout_width="220dp"
+                                android:layout_height="220dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/penguin" />
+                        </FrameLayout>
+                    </FrameLayout>
+                </FrameLayout>
+            </FrameLayout>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/empowering_you_to_live_sustainability"
+            android:textAlignment="center"
+            android:textColor="@color/alternativeDarkColor"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-16dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="@string/everyday"
+            android:textAlignment="center"
+            android:textColor="@color/primaryColor"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
