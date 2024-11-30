@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
 import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
@@ -27,6 +28,7 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
     private String type;
     private int hour;
 
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +40,13 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
         binding.back.setOnClickListener(this::handleBackButtonClick);
 
         binding.submit.setOnClickListener(this::handleNextButtonClick);
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
+            type = editDailyActivity.getType();
+        }
 
         return view;
     }
@@ -70,7 +79,10 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
             Date date = ShowActivityFragment.getCurrentSelectedDate();
             TakePublicTransportation activity = new TakePublicTransportation(type, hour);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
+
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
 
             handleBackButtonClick(view);
             handleBackButtonClick(view);

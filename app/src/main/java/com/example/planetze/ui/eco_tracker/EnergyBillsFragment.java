@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.EnergyBill;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentEnergyBillsBinding;
 import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
@@ -27,6 +28,7 @@ public class EnergyBillsFragment extends BaseActivityFragment {
     private String type;
     private double amount;
 
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,8 +38,14 @@ public class EnergyBillsFragment extends BaseActivityFragment {
         setOnClickListeners();
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.amount.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
+            type = editDailyActivity.getItemName();
+        }
 
         return view;
     }
@@ -71,6 +79,9 @@ public class EnergyBillsFragment extends BaseActivityFragment {
             EnergyBill activity = new EnergyBill(type, amount);
             currentUser.addActivity(date, activity);
 
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
             handleBackButtonClick(view);
             handleBackButtonClick(view);
         }

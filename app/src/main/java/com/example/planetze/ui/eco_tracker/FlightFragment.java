@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.Flight;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentFlightBinding;
 import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
@@ -27,6 +28,7 @@ public class FlightFragment extends BaseActivityFragment {
     private int flights;
     private String type;
 
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,8 +38,14 @@ public class FlightFragment extends BaseActivityFragment {
         setOnClickListeners();
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.flights.setText(String.valueOf(editDailyActivity.getNumberOfFlights()));
+            type = editDailyActivity.getType();
+        }
 
         return view;
     }
@@ -70,6 +78,11 @@ public class FlightFragment extends BaseActivityFragment {
             Date date = ShowActivityFragment.getCurrentSelectedDate();
             Flight activity = new Flight(type, flights);
             currentUser.addActivity(date, activity);
+
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
+
             handleBackButtonClick(view);
             handleBackButtonClick(view);
         }

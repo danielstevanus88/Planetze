@@ -26,4 +26,8 @@ public class Car{
     public String toString(){
         return this.displayCar;
     }
+
+    public int getCarTypeId() {
+        return this.carTypeId;
+    }
 }

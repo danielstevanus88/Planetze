@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -136,7 +137,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
             startActivity(intent);
         });
 
-        showActivitiesOnDate(Date.today(), getActivity());
+        showActivitiesOnDate(currentSelectedDate, getActivity());
 
         return this.view;
     }

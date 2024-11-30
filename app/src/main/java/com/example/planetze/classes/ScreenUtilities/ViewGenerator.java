@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.planetze.R;
+import com.example.planetze.classes.EcoTracker.Category.EcoTrackerActivityConstant;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
+
+import java.io.Serializable;
 
 public class ViewGenerator {
     @SuppressLint("ResourceAsColor")
@@ -109,6 +116,43 @@ public class ViewGenerator {
         textParams.topMargin = PixelConverter.convertDpToPx(context, 5);  // Same as android:layout_marginTop="5dp"
         textView.setLayoutParams(textParams);
         textView.setText("Edit");
+        textView.setClickable(true);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController((AppCompatActivity) context, R.id.nav_host_fragment_activity_main);
+                Bundle args = new Bundle();
+
+                args.putSerializable("dailyActivity", activity);
+
+                if (activity.getTypeId() == EcoTrackerActivityConstant.ID_DRIVE_PERSONAL_VEHICLE) {
+                    navController.navigate(R.id.drive_personal_vehicle, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_TAKE_PUBLIC_TRANSPORTATION) {
+                    navController.navigate(R.id.take_public_transportation, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_CYCLING_OR_WALKING) {
+                    navController.navigate(R.id.cycling_or_walking, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_FLIGHT) {
+                    navController.navigate(R.id.flight, args);
+                } else if (
+                        activity.getTypeId() == EcoTrackerActivityConstant.ID_EAT_BEEF
+                                || activity.getTypeId() == EcoTrackerActivityConstant.ID_EAT_FISH
+                                || activity.getTypeId() == EcoTrackerActivityConstant.ID_EAT_CHICKEN
+                                || activity.getTypeId() == EcoTrackerActivityConstant.ID_EAT_PLANT_BASED
+                                || activity.getTypeId() == EcoTrackerActivityConstant.ID_EAT_PORK
+                ) {
+                    navController.navigate(R.id.meal, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_BUY_CLOTHES) {
+                    navController.navigate(R.id.buy_new_clothes, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_BUY_ELECTRONICS) {
+                    navController.navigate(R.id.buy_electronics, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_BUY_OTHERS) {
+                    navController.navigate(R.id.other_purchases, args);
+                } else if (activity.getTypeId() == EcoTrackerActivityConstant.ID_ENERGY_BILL) {
+                    navController.navigate(R.id.energy_bills, args);
+                }
+
+            }
+        });
 
         // Add the ImageView and TextView to the LinearLayout
         linearLayout.addView(imageView);

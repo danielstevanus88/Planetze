@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyElectronics;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentBuyElectronicsBinding;
 import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
@@ -22,14 +23,21 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
     private String type;
     private int num;
 
+    private DailyActivity editDailyActivity;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentBuyElectronicsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
 
+            binding.num.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
+            binding.type.setText(editDailyActivity.getItemName());
+        }
+        binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;
@@ -53,6 +61,9 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
             BuyElectronics activity = new BuyElectronics(type, num);
             currentUser.addActivity(date, activity);
 
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
             handleBackButtonClick(view);
             handleBackButtonClick(view);
 
