@@ -26,7 +26,7 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
     private FragmentTakePublicTransportationBinding binding;
     private List<Button> buttons;
     private String type;
-    private int hour;
+    private double hour;
 
     private DailyActivity editDailyActivity;
     @Nullable
@@ -69,7 +69,7 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            hour = Integer.parseInt(binding.hour.getText().toString());
+            hour = Double.parseDouble(binding.hour.getText().toString());
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         }
