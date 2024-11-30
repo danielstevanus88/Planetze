@@ -166,6 +166,8 @@
     <string name="transport">Transportation</string>
     <string name="food_consumption">Food Consumption</string>
     <string name="consumption_and_shopping">Consumption and Shopping</string>
+    <string name="google_pay_status_unavailable">Google Pay Unavailable</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
