@@ -32,11 +32,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -50,10 +50,10 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.annotation)
     implementation(libs.activity)
-    implementation(libs.firebase.database)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
+    implementation(libs.mpandroidchart) // Add this line to add the MPAndroidChart library
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

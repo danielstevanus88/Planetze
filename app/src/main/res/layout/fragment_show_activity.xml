@@ -15,12 +15,14 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
             <LinearLayout
+                android:id="@+id/DailyEmissionsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -51,42 +53,25 @@
                 <Button
                     android:id="@+id/add"
                     style="@style/AddButton"
+                    android:layout_marginEnd="16dp"
                     android:text="+"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/total_emissions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_medium"
-                    android:padding="8dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="@string/total_co2e_emissions"
-                    android:textColor="@color/primaryColor"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/PieChartContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
-                <org.eazegraph.lib.charts.PieChart
+                <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/piechart"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:layout_weight="1"
+                    android:layout_height="350dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     tools:ignore="MissingClass" />
 
                 <LinearLayout
@@ -145,42 +130,70 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View style="@style/FormLine" />
-
             <LinearLayout
-                android:id="@+id/buttonPickDate"
-                android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="16dp"
-                android:animationCache="false"
-                android:background="@drawable/nav_button"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:textAlignment="center">
+                android:id="@+id/ActivityManagementTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageButtonCalendar"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_margin="16dp"
-                    app:srcCompat="@drawable/planetze_calender" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:gravity="bottom"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/activity_management"
+                    android:textColor="@color/alternativeDarkColor"
+                    android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/editTextDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/white"
-                    android:ems="8"
-                    android:fontFamily="@font/poppins"
-                    android:hint="mm/dd/yyyy"
-                    android:inputType="date"
-                    android:textColorHint="@color/white" />
+                <View style="@style/FormLine" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/DateSelectorContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/buttonPickDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:animationCache="false"
+                    android:background="@drawable/nav_button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
+
+                    <ImageView
+                        android:id="@+id/imageButtonCalendar"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_margin="16dp"
+                        app:srcCompat="@drawable/planetze_calender" />
+
+                    <EditText
+                        android:id="@+id/editTextDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="56dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/white"
+                        android:ems="8"
+                        android:fontFamily="@font/poppins"
+                        android:hint="mm/dd/yyyy"
+                        android:inputType="date"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="@color/white"
+                        android:textColorHint="@color/white" />
+
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -201,55 +214,25 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ActivityListContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:id="@+id/LayoutFood"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textFood"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/poppins"
-                        android:text="Food"
-                        android:textColor="@color/primaryColor"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/noFoodText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="start"
-                        android:text="No food activity this day"
-                        android:textAlignment="viewStart"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/LayoutTransportation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Transportation"
+                        android:text="@string/transportation"
                         android:textColor="@color/primaryColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -311,10 +294,42 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/LayoutFood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/textFood"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/food"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/noFoodText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="start"
+                        android:text="No food activity this day"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/LayoutConsumption"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <TextView
                         android:id="@+id/textConsumption"
@@ -323,7 +338,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Consumption"
+                        android:text="@string/consumption"
                         android:textColor="@color/primaryColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -386,6 +401,48 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/HabitSuggestionsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:gravity="bottom"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/habit_suggestions"
+                    android:textColor="@color/alternativeDarkColor"
+                    android:textSize="20sp" />
+
+                <View style="@style/FormLine" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/HabitSuggestionsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Log Habit" />
+
+                <Button
+                    android:id="@+id/addHabit"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Add Habit" />
+            </LinearLayout>
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
