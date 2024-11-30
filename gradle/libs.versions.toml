@@ -12,6 +12,7 @@ constraintlayout = "2.2.0"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 materialVersion = "1.12.0"
+materialCalendarView = "1.9.2"
 mockitoCore = "4.8.0"
 mpandroidchart = "v3.1.0"
 navigationFragment = "2.8.4"
@@ -49,6 +50,7 @@ lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-lived
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 #noinspection SimilarGradleDependency
 material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+material-calendar-view = { module = "com.applandeo:material-calendar-view", version.ref = "materialCalendarView" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }

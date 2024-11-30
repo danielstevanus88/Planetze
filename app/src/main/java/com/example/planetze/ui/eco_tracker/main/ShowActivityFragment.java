@@ -12,6 +12,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +28,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.planetze.HabitSelectionActivity;
+import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
+import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
+import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.ActivityConsumption;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
 import com.example.planetze.classes.EcoTracker.Category.Food.ActivityFood;
@@ -37,10 +43,10 @@ import com.example.planetze.classes.EcoTracker.Category.Food.EatBeef;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatPork;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.GasolineCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.DrivePersonalVehicle;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
+import com.example.planetze.classes.FirebaseListenerDailyActivity;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.ScreenUtilities.ViewGenerator;
 import com.example.planetze.classes.User;
@@ -52,6 +58,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -64,11 +72,19 @@ public class ShowActivityFragment extends Fragment {
     private FragmentShowActivityBinding binding;
     private PieChart pieChart;
 
-    @Nullable
+    private View view;
+    private Date currentSelectedDate;
+
+    public ShowActivityFragment() {
+        // Required empty public constructor
+    }
+
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentShowActivityBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        view = binding.getRoot();
 
         pieChart = binding.piechart;
         setPieChart();
@@ -81,17 +97,20 @@ public class ShowActivityFragment extends Fragment {
             }
         });
 
+        UserDatabaseManager.subscribeAsDailyActivityListener(this);
+        Log.d("hehe", "subscribed to database manager");
+
+
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
         textPickADate.setKeyListener(null);
 
-        buttonPickADate.setOnClickListener(event -> {
-            // Open DatePickerDialog
+        this.currentSelectedDate = Date.today();
+        buttonPickADate.setOnClickListener( event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
-
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     getActivity(),
@@ -100,8 +119,8 @@ public class ShowActivityFragment extends Fragment {
                         Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-
-                        showActivitiesOnDate(selectedDate, getActivity(), view);
+                        this.currentSelectedDate = selectedDate;
+                        showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
             datePickerDialog.show();
@@ -111,31 +130,37 @@ public class ShowActivityFragment extends Fragment {
             buttonPickADate.callOnClick();
         });
 
-        Button myButton = view.findViewById(R.id.addHabit);
+        Button addHabitButton = view.findViewById(R.id.addHabitButton);
         // Set the OnClickListener to handle the button press
-        myButton.setOnClickListener(v -> {
+        addHabitButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
             startActivity(intent);
         });
 
+        Button logHabitButton = view.findViewById(R.id.logHabitButton);
+        // Set the OnClickListener to handle the button press
+        logHabitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LogHabitActivity.class);
+            startActivity(intent);
+        });
+
+
         User currentUser = LoginManager.getCurrentUser();
-        currentUser.addActivity(new Date(25, 11, 2024), new TakePublicTransportation("Train", 10));
-        currentUser.addActivity(new Date(25, 11, 2024), new CyclingOrWalking(2));
-        currentUser.addActivity(new Date(25, 11, 2024), new DrivePersonalVehicle(10, new GasolineCar()));
-        currentUser.addActivity(new Date(25, 11, 2024), new EatBeef(2));
-        currentUser.addActivity(new Date(26, 11, 2024), new EatPork(1));
-        currentUser.addActivity(new Date(29, 11, 2024), new BuyClothes(10));
+        // TODO: REMOVE THIS
+        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation("aa", 10));
+        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking(10));
 
 
         UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
         userDatabaseManager.add(currentUser);
-        showActivitiesOnDate(today(), getActivity(), view);
+        showActivitiesOnDate(Date.today(), getActivity());
 
-        return view;
+        return this.view;
     }
 
 
-    private void showActivitiesOnDate(Date selectedDate, Context context, View view) {
+    private void showActivitiesOnDate(Date selectedDate, Context context) {
+        if(selectedDate == null) return;
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
         LinearLayout layoutFood = view.findViewById(R.id.LayoutFood);
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);
@@ -147,20 +172,21 @@ public class ShowActivityFragment extends Fragment {
 
         User currentUser = LoginManager.getCurrentUser();
         HashMap<Date, List<DailyActivity>> allActivities =
-                filterActivitiesByRangeOfDate(
-                        getActivitiesWithClassDate(currentUser.getActivities()),
+                ActivitiesFilter.filterActivitiesByRangeOfDate(
+                        ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities()),
                         selectedDate,
                         selectedDate
                 );
 
-        for (Date date : allActivities.keySet()) {
+        for(Date date : allActivities.keySet()){
             List<DailyActivity> dailyActivities = allActivities.get(date);
-            for (DailyActivity activity : dailyActivities) {
+            if (dailyActivities == null) continue;
+            for(DailyActivity activity : dailyActivities){
                 CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
-                if (activity instanceof ActivityFood) {
+                if(Objects.equals(activity.getCategoryName(), "Food")) {
                     layoutFood.addView(cardView);
 
-                } else if (activity instanceof ActivityConsumption) {
+                } else if(Objects.equals(activity.getCategoryName(), "Consumption")) {
                     layoutConsumption.addView(cardView);
 
                 } else {
@@ -263,4 +289,15 @@ public class ShowActivityFragment extends Fragment {
 
         pieChart.invalidate(); // Refresh the chart
     }
+
+
+    @Override
+    public void update() {
+//        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
+        showActivitiesOnDate(this.currentSelectedDate, getActivity());
+    }
+
+
+
+
 }

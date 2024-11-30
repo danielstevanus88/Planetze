@@ -193,6 +193,22 @@
 
                 </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/logHabitButton"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Log Habit" />
+
+                <Button
+                    android:id="@+id/addHabitButton"
+                    style="@style/FormButton"
+                    android:layout_weight="1"
+                    android:text="Add Habit" />
             </LinearLayout>
 
             <LinearLayout

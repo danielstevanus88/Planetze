@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Planetze"
         tools:targetApi="31">
         <activity
+            android:name=".LogHabitActivity"
+            android:exported="false" />
+        <activity
             android:name=".HabitSelectionActivity"
             android:exported="false" />
         <activity
