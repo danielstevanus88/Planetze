@@ -36,12 +36,6 @@ import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.ActivityConsumption;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
-import com.example.planetze.classes.EcoTracker.Category.Food.ActivityFood;
-import com.example.planetze.classes.EcoTracker.Category.Food.EatBeef;
-import com.example.planetze.classes.EcoTracker.Category.Food.EatPork;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.GasolineCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
@@ -58,17 +52,15 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
-import org.eazegraph.lib.charts.PieChart;
-import org.eazegraph.lib.models.PieModel;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
-public class ShowActivityFragment extends Fragment {
+public class ShowActivityFragment extends Fragment implements FirebaseListenerDailyActivity{
 
-    private final User currentUser = LoginManager.getCurrentUser();
-    private final HashMap<Date, List<DailyActivity>> activities = filterActivitiesByRangeOfDate(getActivitiesWithClassDate(currentUser.activities), today(), today());
+    private HashMap<Date, List<DailyActivity>> activities;
     private FragmentShowActivityBinding binding;
     private PieChart pieChart;
 
@@ -79,13 +71,12 @@ public class ShowActivityFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
+    
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentShowActivityBinding.inflate(inflater, container, false);
         view = binding.getRoot();
-
+        activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
         pieChart = binding.piechart;
         setPieChart();
 
@@ -103,6 +94,7 @@ public class ShowActivityFragment extends Fragment {
 
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
+        textPickADate.setText(today().toString());
         textPickADate.setKeyListener(null);
 
         this.currentSelectedDate = Date.today();
@@ -218,7 +210,7 @@ public class ShowActivityFragment extends Fragment {
     }
 
     private double getTotal() {
-        return calculateTotalEmission(activities);
+        return calculateTotalEmission(filterActivitiesByRangeOfDate(activities, today(), today()));
     }
 
     @SuppressLint("DefaultLocale")
@@ -228,7 +220,7 @@ public class ShowActivityFragment extends Fragment {
         float foodConsumption = 0f;
         float consumptionAndShopping = 0f;
 
-        List<DailyActivity> dailyActivities = activities.get(today());
+        List<DailyActivity> dailyActivities = activities.get(this.currentSelectedDate);
         if (dailyActivities != null) {
             for (DailyActivity activity : dailyActivities) {
                 switch (activity.getCategoryName()) {
@@ -294,6 +286,8 @@ public class ShowActivityFragment extends Fragment {
     @Override
     public void update() {
 //        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
+        this.activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+        setPieChart();
         showActivitiesOnDate(this.currentSelectedDate, getActivity());
     }
 
