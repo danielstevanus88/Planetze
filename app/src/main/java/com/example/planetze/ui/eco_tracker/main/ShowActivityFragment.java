@@ -66,11 +66,10 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
     private PieChart pieChart;
 
     private View view;
-    private static Date currentSelectedDate;
+    private static Date currentSelectedDate = Date.today();
 
     public ShowActivityFragment() {
         // Required empty public constructor
-        currentSelectedDate = Date.today();
     }
 
     
@@ -98,7 +97,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         EditText textPickADate = view.findViewById(R.id.editTextDate);
         textPickADate.setText(today().toString());
         textPickADate.setKeyListener(null);
-
+        textPickADate.setText(currentSelectedDate.toString());
         buttonPickADate.setOnClickListener( event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);

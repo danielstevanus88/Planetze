@@ -24,6 +24,14 @@ public class ActivityListFragment extends Fragment {
         binding = FragmentActivityListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.navigation_home);
+            }
+        });
+
         binding.t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
