@@ -1,5 +1,8 @@
 package com.example.planetze.classes.EcoTracker.Category.Consumption;
 
+import com.example.planetze.classes.EcoTracker.Category.EcoTrackerActivityConstant;
+import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
+
 public class EnergyBill extends ActivityConsumption {
 
     public String type;
@@ -12,6 +15,7 @@ public class EnergyBill extends ActivityConsumption {
         this.displayText = type + " energy bill (" + amount + ")";
         // TODO: calculate emission
         this.emission = 0;
+        this.typeId = EcoTrackerActivityConstant.ID_ENERGY_BILL;
 
     }
 
