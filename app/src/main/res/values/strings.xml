@@ -4,11 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -26,7 +21,7 @@
     <string name="q4">4. How often do you use public transportation (bus, train, subway)?</string>
     <string name="q5">5. How much time do you spend on public transport per week (bus, train, subway)?</string>
     <string name="q6">6. How many short-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
-    <string name="q7">6. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
+    <string name="q7">7. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
     <string name="q8">8. What best describes your diet?</string>
     <string name="q9">9. How often do you eat the following animal-based products?</string>
     <string name="q10">10. How often do you waste food or throw away uneaten leftovers?</string>
@@ -221,5 +216,32 @@
     <string name="get_recommended_habits">Get Recommended Habits</string>
     <string name="habit_suggestions">Habit Suggestions</string>
     <string name="activity_management">Activity Management</string>
+    <string name="everyday">Everyday</string>
+    <string name="empowering_you_to_live_sustainability">Empowering You to\nLive Sustainability</string>
+    <string name="carbon_info_heading_1">What is Carbon Footprint</string>
+    <string name="carbon_info_heading_2">Why Carbon Footprints Matter</string>
+    <string name="carbon_info_heading_3">Conclusion</string>
+    <string name="carbon_info_heading_4">What\'s Next?</string>
+    <string name="carbon_info_sub_1">1. Climate Change</string>
+    <string name="carbon_info_sub_2">2. Health Impacts</string>
+    <string name="carbon_info_sub_3">3. Economic Strain</string>
+    <string name="carbon_info_sub_4">4. Social Inequality</string>
+    <string name="carbon_info_text_1">Carbon footprint is the total amount of greenhouse gases, especially carbon dioxide (CO₂), emitted directly or indirectly by one\'s activities. These emissions contribute to climate change and are measured in tons of CO₂ equivalents.</string>
+    <string name="carbon_info_text_2">Greenhouse gases trap heat in the atmosphere, causing global warming, extreme weather events and also lead to environmental degradation such as rising sea levels, habitat loss.</string>
+    <string name="carbon_info_text_3">Emissions from fossil fuels release pollutants harmful to health, causing respiratory and cardiovascular issues.</string>
+    <string name="carbon_info_text_4">Climate-related disasters burden global economies, especially in regions less able to recover.</string>
+    <string name="carbon_info_text_5">Vulnerable communities face the harshest impacts of climate change.</string>
+    <string name="carbon_info_text_6">By making sustainable choices like using renewable energy, reducing waste, and supporting environmental policies, you can play a crucial role in combating climate change and creating a healthier, more sustainable future for everyone.</string>
+    <string name="carbon_info_text_7">You\'re about to fill a one-time questionnaires to calculate your annual carbon footprints.</string>
+    <string name="get_started">Get Started</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="back_cap">BACK</string>
+    <string name="welcome_to_planetze">Welcome to Planetze</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirmation_password">Confirmation Password</string>
 
 </resources>

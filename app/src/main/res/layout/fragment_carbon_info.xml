@@ -1,231 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.form.CarbonInfoFragment"
-    android:background="@color/accentColor">
+    android:background="@color/accentColor"
+    tools:context=".ui.form.CarbonInfoFragment">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/infoHeading1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="What is Carbon Footprint"
-                android:textColor="@color/primaryColor"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                style="@style/InfoHeading1"
+                android:text="@string/carbon_info_heading_1" />
 
             <TextView
-                android:id="@+id/infoText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Carbon footprint is the total amount of greenhouse gases, especially carbon dioxide (CO₂), emitted directly or indirectly by one's activities. These emissions contribute to climate change and are measured in tons of CO₂ equivalents."
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:text="@string/carbon_info_text_1" />
 
             <TextView
-                android:id="@+id/infoHeading2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Why Carbon Footprints Matter"
-                android:textColor="@color/primaryColor"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                style="@style/InfoHeading1"
+                android:text="@string/carbon_info_heading_2" />
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="0dp"
-                android:text="1. Climate Change"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                style="@style/InfoSubheading"
+                android:text="@string/carbon_info_sub_1" />
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/planetze_whatisclimatechange" />
+            <androidx.cardview.widget.CardView style="@style/InfoCardView">
+
+                <ImageView
+                    style="@style/InfoImage"
+                    android:src="@drawable/planetze_whatisclimatechange" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp"
-                android:text="Greenhouse gases trap heat in the atmosphere, causing global warming, extreme weather events and also lead to environmental degradation such as rising sea levels, habitat loss." />
+                style="@style/InfoText"
+
+                android:layout_marginBottom="16dp"
+                android:text="@string/carbon_info_text_2" />
 
             <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="0dp"
-                android:text="2. Health Impacts"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                style="@style/InfoSubheading"
+                android:text="@string/carbon_info_sub_2" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/planetze_healthimpact" />
+            <androidx.cardview.widget.CardView style="@style/InfoCardView">
+
+                <ImageView
+                    style="@style/InfoImage"
+                    android:src="@drawable/planetze_healthimpact" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Emissions from fossil fuels release pollutants harmful to health, causing respiratory and cardiovascular issues."
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:layout_marginBottom="16dp"
+                android:text="@string/carbon_info_text_3" />
 
             <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="0dp"
-                android:text="3. Economic Strain"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                style="@style/InfoSubheading"
+                android:text="@string/carbon_info_sub_3" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/planetze_economic" />
+            <androidx.cardview.widget.CardView style="@style/InfoCardView">
+
+                <ImageView
+                    style="@style/InfoImage"
+                    android:src="@drawable/planetze_economic" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Climate-related disasters burden global economies, especially in regions less able to recover."
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:layout_marginBottom="16dp"
+                android:text="@string/carbon_info_text_4" />
 
             <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="0dp"
-                android:text="4. Social Inequality"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                style="@style/InfoSubheading"
+                android:text="@string/carbon_info_sub_4" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/planetze_socialinequality" />
+            <androidx.cardview.widget.CardView style="@style/InfoCardView">
+
+                <ImageView
+                    style="@style/InfoImage"
+                    android:src="@drawable/planetze_socialinequality" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vulnerable communities face the harshest impacts of climate change."
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:text="@string/carbon_info_text_5" />
 
             <TextView
-                android:id="@+id/infoHeading3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Conclusion"
-                android:textColor="@color/primaryColor"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                style="@style/InfoHeading1"
+                android:text="@string/carbon_info_heading_3" />
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" By making sustainable choices like using renewable energy, reducing waste, and supporting environmental policies, you can play a crucial role in combating climate change and creating a healthier, more sustainable future for everyone."
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:text="@string/carbon_info_text_6" />
 
             <TextView
-                android:id="@+id/infoHeading4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="What's Next?"
-                android:textColor="@color/primaryColor"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                style="@style/InfoHeading1"
+                android:text="@string/carbon_info_heading_4" />
 
             <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="You're about to fill a one-time questionnaires to calculate your annual carbon footprints. "
-                android:textAlignment="center"
-                android:textColor="#1B1B1E"
-                android:textSize="20sp" />
+                style="@style/InfoText"
+                android:text="@string/carbon_info_text_7" />
 
             <Button
                 android:id="@+id/buttonAcknowledge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#009999"
-                android:text="Acknowledge and Continue" />
+                style="@style/FormButton"
+                android:text="@string/get_started" />
         </LinearLayout>
     </ScrollView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
