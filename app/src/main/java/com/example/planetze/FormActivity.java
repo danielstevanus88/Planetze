@@ -29,13 +29,9 @@ public class FormActivity extends AppCompatActivity {
 
         GlobalAverages.initialize(this);
 
-        if (LoginManager.getCurrentUser() != null && LoginManager.getCurrentUser().hasFilledQuestionnaires()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            showFragment(new CarbonInfoFragment());
-        }
+
+        showFragment(new CarbonInfoFragment());
+
     }
 
     public void showFragment(Fragment fragment) {

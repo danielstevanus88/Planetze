@@ -15,9 +15,10 @@ public class ActivitiesCalculator {
                 totalEmission += activity.getEmission();
             }
         }
-
         return totalEmission;
     }
+
+
 
     public static int getNumberOfDay(HashMap<Date, List<DailyActivity>> activitiesMap){
         return activitiesMap.size();

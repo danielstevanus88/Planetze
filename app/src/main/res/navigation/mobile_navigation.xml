@@ -24,6 +24,13 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_eco_balance" />
 
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.planetze.ui.profile.ProfileFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/activity_list"
         android:name="com.example.planetze.ui.eco_tracker.ActivityListFragment"

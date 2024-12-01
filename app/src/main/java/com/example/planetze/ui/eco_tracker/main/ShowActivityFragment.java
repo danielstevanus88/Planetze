@@ -89,7 +89,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
             }
         });
 
-        UserDatabaseManager.subscribeAsDailyActivityListener(this);
+//        UserDatabaseManager.subscribeAsDailyActivityListener(this);
         Log.d("hehe", "subscribed to database manager");
 
 
@@ -155,15 +155,16 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         ViewGenerator.removeAllChildExceptTheFirstXChild(layoutTransportation, 2);
 
         User currentUser = LoginManager.getCurrentUser();
-        HashMap<Date, List<DailyActivity>> allActivities =
-                ActivitiesFilter.filterActivitiesByRangeOfDate(
-                        ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities()),
-                        selectedDate,
-                        selectedDate
-                );
 
-        for(Date date : allActivities.keySet()){
-            List<DailyActivity> dailyActivities = allActivities.get(date);
+
+        activities = ActivitiesFilter.filterActivitiesByRangeOfDate(
+                ActivitiesConverter.getActivitiesWithClassDate(currentUser.getActivities()),
+                selectedDate,
+                selectedDate
+        );
+
+        for(Date date : activities.keySet()){
+            List<DailyActivity> dailyActivities = activities.get(date);
             if (dailyActivities == null) continue;
             for(DailyActivity activity : dailyActivities){
                 CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
@@ -212,7 +213,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         float foodConsumption = 0f;
         float consumptionAndShopping = 0f;
 
-        List<DailyActivity> dailyActivities = activities.get(this.currentSelectedDate);
+        List<DailyActivity> dailyActivities = activities.get(currentSelectedDate);
         if (dailyActivities != null) {
             for (DailyActivity activity : dailyActivities) {
                 switch (activity.getCategoryName()) {
@@ -282,12 +283,23 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
     @Override
     public void update() {
 
-
-        setPieChart();
         showActivitiesOnDate(currentSelectedDate, getActivity());
 
+        setPieChart();
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserDatabaseManager.subscribeAsDailyActivityListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UserDatabaseManager.unsubscribeAsDailyActivityListener(this);
+    }
 
 
 

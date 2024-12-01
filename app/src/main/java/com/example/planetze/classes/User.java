@@ -1,5 +1,7 @@
 package com.example.planetze.classes;
 
+import android.text.Editable;
+
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.Habit.Habit;
@@ -20,6 +22,7 @@ public class User {
     public HashMap<String, List<DailyActivity>> activities;
 
     private UserDatabaseManager userDatabaseManager;
+    public int carbonCredits;
 
     public User(String uid, String name, String email){
         this.uid = uid;
@@ -30,6 +33,7 @@ public class User {
 
         this.userDatabaseManager = UserDatabaseManager.getInstance();
         this.habit = new HashMap<String, List<String>>();
+
     }
 
     public User(){
@@ -37,6 +41,7 @@ public class User {
         this.activities = new HashMap<>();
         this.habit = new HashMap<>();
         this.userDatabaseManager = UserDatabaseManager.getInstance();
+        this.carbonCredits = 0;
     }
 
     public void addQuestionnaireAnswer(String key, int answer){
@@ -63,6 +68,10 @@ public class User {
 
         return this.activities;
 
+    }
+
+    public int getCarbonCredits(){
+        return this.carbonCredits;
     }
 
 
@@ -123,7 +132,12 @@ public class User {
         return name;
     }
 
+
     public HashMap<String, Integer> getQuestionnaireAnswers() {
         return questionnaireAnswers;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

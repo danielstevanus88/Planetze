@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
+import com.example.planetze.classes.EcoTracker.Category.EcoTrackerActivityConstant;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatBeef;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatChicken;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatFish;
@@ -50,6 +51,7 @@ public class MealFragment extends BaseActivityFragment {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
 
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfServings()));
+            type = editDailyActivity.getTypeId() - EcoTrackerActivityConstant.ID_EAT_BEEF + 1;
         }
 
         return view;
