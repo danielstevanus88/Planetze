@@ -4,11 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -26,7 +21,7 @@
     <string name="q4">4. How often do you use public transportation (bus, train, subway)?</string>
     <string name="q5">5. How much time do you spend on public transport per week (bus, train, subway)?</string>
     <string name="q6">6. How many short-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
-    <string name="q7">6. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
+    <string name="q7">7. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
     <string name="q8">8. What best describes your diet?</string>
     <string name="q9">9. How often do you eat the following animal-based products?</string>
     <string name="q10">10. How often do you waste food or throw away uneaten leftovers?</string>
