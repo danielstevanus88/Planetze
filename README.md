@@ -55,6 +55,7 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 <!-- Not sure whether to add license -->
 
 ## Acknowledgments
+- This is a grouped project for CSCB07H3.
 - Contributors: [@Daniel Stevanus](https://github.com/danielstevanus88), [@Tommy Wang](https://github.com/Grimshock1015), [@Muxun Zhang](https://github.com/muxunzzz), [@Helena Zhao](https://github.com/HelenaZhao05), [@Rizky Rajendra Ananta Dewa](https://github.com/RRDewa).
 
 ## Technologies Used
