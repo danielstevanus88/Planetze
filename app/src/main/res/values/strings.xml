@@ -239,5 +239,14 @@
     <string name="carbon_info_text_6">By making sustainable choices like using renewable energy, reducing waste, and supporting environmental policies, you can play a crucial role in combating climate change and creating a healthier, more sustainable future for everyone.</string>
     <string name="carbon_info_text_7">You\'re about to fill a one-time questionnaires to calculate your annual carbon footprints.</string>
     <string name="get_started">Get Started</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="back_cap">BACK</string>
+    <string name="welcome_to_planetze">Welcome to Planetze</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirmation_password">Confirmation Password</string>
 
 </resources>
