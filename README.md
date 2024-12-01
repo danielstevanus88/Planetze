@@ -28,6 +28,7 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 
 **Eco Tracker**: Tracks users' carbon emissions based on their daily activities.  
 **Eco Gauge**: A visual representation of progress toward carbon reduction goals, motivating users wit clear, tangible results.
+**Eco Balance**: Provides the users with the ability to offset their carbon emissions.
 
 ### App Preview
 <!-- Add screenshots of app -->
