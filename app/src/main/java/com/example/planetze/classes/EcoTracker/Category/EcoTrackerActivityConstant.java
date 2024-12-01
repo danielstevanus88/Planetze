@@ -9,10 +9,11 @@ public class EcoTrackerActivityConstant {
 
         // Food
         public static final int ID_EAT_BEEF = 5;
-        public static final int ID_EAT_CHICKEN = 6;
-        public static final int ID_EAT_FISH = 7;
-        public static final int ID_EAT_PLANT_BASED = 8;
-        public static final int ID_EAT_PORK = 9;
+
+        public static final int ID_EAT_PORK = 6;
+        public static final int ID_EAT_CHICKEN = 7;
+        public static final int ID_EAT_FISH = 8;
+        public static final int ID_EAT_PLANT_BASED = 9;
 
         // Transportation
         public static final int ID_CYCLING_OR_WALKING = 10;

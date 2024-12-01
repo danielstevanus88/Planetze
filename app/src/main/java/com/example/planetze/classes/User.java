@@ -1,5 +1,7 @@
 package com.example.planetze.classes;
 
+import android.text.Editable;
+
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.Habit.Habit;
@@ -125,5 +127,9 @@ public class User {
 
     public HashMap<String, Integer> getQuestionnaireAnswers() {
         return questionnaireAnswers;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
