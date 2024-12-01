@@ -146,8 +146,6 @@ public class LogHabitActivity extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogHabitActivity.this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
