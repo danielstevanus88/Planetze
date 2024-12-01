@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Name"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/editTextName"
@@ -56,7 +56,8 @@
                     android:gravity="right"
                     android:inputType="text"
                     android:text="Daniel Stevanus"
-                    android:textColor="#6D6D6D" />
+                    android:textColor="#6D6D6D"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -75,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Email"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/editTextEmail"
@@ -89,7 +90,8 @@
                     android:gravity="right"
                     android:inputType="text"
                     android:text="danielstevanus89@gmail.com"
-                    android:textColor="#6D6D6D" />
+                    android:textColor="#6D6D6D"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -107,10 +109,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Annual CO2"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextCarbon"
+                    android:id="@+id/editTextAnnualCarbon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -121,7 +123,8 @@
                     android:gravity="right"
                     android:inputType="text"
                     android:text="50kg"
-                    android:textColor="#6D6D6D" />
+                    android:textColor="#6D6D6D"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -139,10 +142,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Carbon Credits"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextAnnualCarbon"
+                    android:id="@+id/editTextCarbonCredit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -153,7 +156,8 @@
                     android:gravity="right"
                     android:inputType="text"
                     android:text="0.24"
-                    android:textColor="#6D6D6D" />
+                    android:textColor="#6D6D6D"
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </LinearLayout>

@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.example.planetze.FormActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.DatabaseManager;
+import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
+import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
@@ -83,6 +85,15 @@ public class ProfileFragment extends Fragment {
         loginManager = LoginManager.getInstance();
         user = LoginManager.getCurrentUser();
         EditText editTextName = view.findViewById(R.id.editTextName);
+        EditText editTextGmail = view.findViewById(R.id.editTextEmail);
+        // TODO: THIS IS NOT ANNUAL, CHANGE THIS
+        EditText editTextAnnual = view.findViewById(R.id.editTextAnnualCarbon);
+        EditText editTextCarbonCredit = view.findViewById(R.id.editTextCarbonCredit);
+
+        editTextName.setText(user.getName());
+        editTextGmail.setText(user.getEmail());
+        editTextAnnual.setText(String.valueOf(ActivitiesCalculator.calculateTotalEmission(ActivitiesConverter.getActivitiesWithClassDate(user.getActivities()))));
+        editTextCarbonCredit.setText(String.valueOf(user.getCarbonCredits()));
 
         editTextName.setOnEditorActionListener((v, actionId, event) -> {
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
