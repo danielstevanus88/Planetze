@@ -243,5 +243,7 @@
     <string name="register">Register</string>
     <string name="name">Name</string>
     <string name="confirmation_password">Confirmation Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset">Reset</string>
 
 </resources>
