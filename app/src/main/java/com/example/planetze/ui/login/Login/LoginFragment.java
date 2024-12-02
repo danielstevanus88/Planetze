@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.planetze.FormActivity;
 import com.example.planetze.LoginActivity;
+import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.LoginManager;
@@ -150,11 +151,20 @@ public class LoginFragment extends Fragment implements Contract.View{
                 task -> {
                     if (task.isSuccessful()) {
                         DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
-                        LoginManager.setCurrentUser(dataSnapshot.getValue(User.class));
 
-                        Intent intent = new Intent(getActivity(), FormActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
+                        User user = dataSnapshot.getValue(User.class);
+                        LoginManager.setCurrentUser(user);
+
+
+                        if(!user.hasFilledQuestionnaires()) {
+                            Intent intent = new Intent(getActivity(), FormActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        } else {
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
                     } else {
                         Toast.makeText(getActivity(), "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
                     }

@@ -142,39 +142,10 @@ public class HabitSelectionActivity extends AppCompatActivity {
         });
 
 
-
-        Button nextButton = findViewById(R.id.select);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User user = LoginManager.getCurrentUser();
-                Habit selectedHabit = recyclerAdaptor.getSelectedHabit();
-                switchButton.setChecked(false);
-                if (selectedHabit != null) {
-                    if(!user.getHabit().containsKey(selectedHabit.name)){
-                        List<String> habit = new ArrayList<>();
-                        habit.add("0");
-                        Toast.makeText(HabitSelectionActivity.this, "Added habit", Toast.LENGTH_SHORT).show();
-                        user.addHabit(selectedHabit, habit);
-                        Intent intent = new Intent(HabitSelectionActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(HabitSelectionActivity.this, "You have already selected this habit", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // Show a message if no habit is selected
-                    Toast.makeText(HabitSelectionActivity.this, "Please select a habit", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
         Button backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HabitSelectionActivity.this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

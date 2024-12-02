@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.util.Log;
 
+import com.example.planetze.classes.EcoTracker.Category.EcoTrackerActivityConstant;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.Car;
 
 public class DrivePersonalVehicle extends ActivityTransportation{
@@ -12,5 +13,6 @@ public class DrivePersonalVehicle extends ActivityTransportation{
         this.car = car;
         this.emission = car.getEmissionPerKilometer() * distance;
         this.displayText = "Drive " + car.toString() + " (" + distance + "km)";
+        this.typeId = EcoTrackerActivityConstant.ID_DRIVE_PERSONAL_VEHICLE;
     }
 }

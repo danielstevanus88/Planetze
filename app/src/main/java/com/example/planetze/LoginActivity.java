@@ -1,5 +1,7 @@
 package com.example.planetze;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -112,7 +114,36 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
                 currentFragment instanceof ResetPasswordFragment) {
             showFragment(new LoginOptionFragment());
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Exit");
+            builder.setMessage("Are you sure you want to quit the app?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    closeApplication();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+
+            if (false)
+                super.onBackPressed();
         }
+    }
+
+    public void closeApplication(){
+        // Clear all tasks and exit
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
