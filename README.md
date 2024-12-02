@@ -15,6 +15,7 @@ It provides real-time carbon footprint calculations, visual dashboards, and comp
   - [Prerequisites](#prerequisites)
   - [Building from Source](#building-from-source)
   - [Post-Installation](#post-installation)
+- [Folder Structure](#folder-structure)
 - [Acknowledgments](#acknowledgments)
 - [Technologies Used](#technologies-used)
 
@@ -31,13 +32,20 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 **Eco Balance**: Provides the users with the ability to offset their carbon emissions.
 
 ### App Preview
-<!-- Add screenshots of app -->
+![Splash Screen](docs/splash_screen.png)
+![Welcome Page](docs/login_option.png)
+![Login Page](docs/login.png)
+![Register Page](docs/register.png)
+![Eco Tracker Screen]()
+![Eco Gauge Screen]()
+![Eco Balance Screen]()
+<!-- TODO -->
 
 ## Installation
 
 ### Prerequisites
 - Android device running Android 5.0 (Lollipop) or higher.
-- Optional: Android Studio if you want to build the app from source.
+- Android Studio if you want to build the app from source.
 
 ### Building from Source
 1. Clone the repository:
@@ -52,11 +60,14 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 - Log in with your credentials or create a new account.
 - Explore the app and its features!
 
+## Folder Structure
+<!-- TODO -->
+
 <!-- Not sure whether to add license -->
 
 ## Acknowledgments
 - This is a grouped project for CSCB07H3.
-- Contributors: [@Daniel Stevanus](https://github.com/danielstevanus88), [@Tommy Wang](https://github.com/Grimshock1015), [@Muxun Zhang](https://github.com/muxunzzz), [@Helena Zhao](https://github.com/HelenaZhao05), [@Rizky Rajendra Ananta Dewa](https://github.com/RRDewa).
+- Contributors: [@Daniel Stevanus](https://github.com/danielstevanus88), [@Muxun Zhang](https://github.com/muxunzzz), [@Tommy Wang](https://github.com/Grimshock1015), [@Helena Zhao](https://github.com/HelenaZhao05), [@Rizky Rajendra Ananta Dewa](https://github.com/RRDewa).
 
 ## Technologies Used
 - **Java**: For Android app development.
