@@ -1,7 +1,6 @@
 package com.example.planetze.ui.eco_tracker.main;
 
 import static com.example.planetze.classes.EcoTracker.ActivitiesCalculator.calculateTotalEmission;
-import static com.example.planetze.classes.EcoTracker.ActivitiesConverter.getActivitiesWithClassDate;
 import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterActivitiesByRangeOfDate;
 import static com.example.planetze.classes.EcoTracker.Date.today;
 
@@ -12,10 +11,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +23,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.HabitSelectionActivity;
 import com.example.planetze.LogHabitActivity;
@@ -45,7 +42,7 @@ import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.ScreenUtilities.ViewGenerator;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
-import com.example.planetze.databinding.FragmentShowActivityBinding;
+import com.example.planetze.databinding.FragmentEcoTrackerBinding;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -58,39 +55,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class ShowActivityFragment extends Fragment implements FirebaseListenerDailyActivity{
+public class EcoTrackerFragment extends Fragment implements FirebaseListenerDailyActivity {
 
     private HashMap<Date, List<DailyActivity>> activities;
-    private FragmentShowActivityBinding binding;
+    private FragmentEcoTrackerBinding binding;
     private PieChart pieChart;
-
     private View view;
     private Date currentSelectedDate;
 
-    public ShowActivityFragment() {
+    public EcoTrackerFragment() {
         // Required empty public constructor
     }
 
-    
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentShowActivityBinding.inflate(inflater, container, false);
+        binding = FragmentEcoTrackerBinding.inflate(inflater, container, false);
         view = binding.getRoot();
         activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+
         pieChart = binding.piechart;
         setPieChart();
+
+        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_activity_main);
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();
 
         binding.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.activity_list);
+                navController.navigate(R.id.action_eco_tracker_to_activity_list);
             }
         });
 
         UserDatabaseManager.subscribeAsDailyActivityListener(this);
         Log.d("hehe", "subscribed to database manager");
-
 
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
@@ -98,7 +97,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         textPickADate.setKeyListener(null);
 
         this.currentSelectedDate = Date.today();
-        buttonPickADate.setOnClickListener( event -> {
+        buttonPickADate.setOnClickListener(event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
@@ -152,7 +151,7 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
 
 
     private void showActivitiesOnDate(Date selectedDate, Context context) {
-        if(selectedDate == null) return;
+        if (selectedDate == null) return;
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
         LinearLayout layoutFood = view.findViewById(R.id.LayoutFood);
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);
@@ -170,15 +169,15 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
                         selectedDate
                 );
 
-        for(Date date : allActivities.keySet()){
+        for (Date date : allActivities.keySet()) {
             List<DailyActivity> dailyActivities = allActivities.get(date);
             if (dailyActivities == null) continue;
-            for(DailyActivity activity : dailyActivities){
+            for (DailyActivity activity : dailyActivities) {
                 CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
-                if(Objects.equals(activity.getCategoryName(), "Food")) {
+                if (Objects.equals(activity.getCategoryName(), "Food")) {
                     layoutFood.addView(cardView);
 
-                } else if(Objects.equals(activity.getCategoryName(), "Consumption")) {
+                } else if (Objects.equals(activity.getCategoryName(), "Consumption")) {
                     layoutConsumption.addView(cardView);
 
                 } else {
@@ -290,8 +289,6 @@ public class ShowActivityFragment extends Fragment implements FirebaseListenerDa
         setPieChart();
         showActivitiesOnDate(this.currentSelectedDate, getActivity());
     }
-
-
 
 
 }

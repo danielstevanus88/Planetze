@@ -1,6 +1,5 @@
 package com.example.planetze.ui.eco_tracker;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatBeef;
 import com.example.planetze.classes.EcoTracker.Category.Food.EatChicken;
@@ -98,8 +98,8 @@ public class MealFragment extends BaseActivityFragment {
             }
             databaseManager.add(currentUser);
 
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.eco_tracker);
         }
     }
 

@@ -245,5 +245,8 @@
     <string name="confirmation_password">Confirmation Password</string>
     <string name="reset_password">Reset Password</string>
     <string name="reset">Reset</string>
+    <string name="eco_tracker">Eco Tracker</string>
+    <string name="eco_gauge">Eco Gauge</string>
+    <string name="eco_balance">Eco Balance</string>
 
 </resources>

@@ -5,20 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.example.planetze.classes.LoginManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.planetze.classes.LoginManager;
 import com.example.planetze.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private LoginManager loginManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +39,34 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
         NavController navController = getNavController();
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        binding.navView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.eco_tracker) {
+                // Check if already on eco_tracker or its nested fragments
+                if (navController.getCurrentDestination() != null &&
+                        (navController.getCurrentDestination().getId() == R.id.eco_tracker ||
+                                navController.getCurrentDestination().getId() == R.id.activity_list ||
+                                navController.getCurrentDestination().getId() == R.id.drive_personal_vehicle ||
+                                navController.getCurrentDestination().getId() == R.id.take_public_transportation ||
+                                navController.getCurrentDestination().getId() == R.id.cycling_or_walking ||
+                                navController.getCurrentDestination().getId() == R.id.flight ||
+                                navController.getCurrentDestination().getId() == R.id.meal ||
+                                navController.getCurrentDestination().getId() == R.id.buy_new_clothes ||
+                                navController.getCurrentDestination().getId() == R.id.buy_electronics ||
+                                navController.getCurrentDestination().getId() == R.id.other_purchases ||
+                                navController.getCurrentDestination().getId() == R.id.energy_bills
+                        )) {
+                    // Already on eco_tracker or its nested fragments, pop back stack
+                    navController.popBackStack(R.id.eco_tracker, false);
+                } else {
+                    // Navigate to eco_tracker
+                    navController.navigate(R.id.eco_tracker);
+                }
+                return true; // Indicate that the event was handled
+            }
+            // ... handle other bottom navigation items ...
+            return NavigationUI.onNavDestinationSelected(item, navController);
+        });
 
         loginManager = LoginManager.getInstance();
 
@@ -97,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         if (false)
             super.onBackPressed();
     }
+
     private void showDailyPopup() {
         // Create and display an AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
