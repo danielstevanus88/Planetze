@@ -2,8 +2,6 @@ package com.example.planetze.ui.eco_tracker.main;
 
 import static com.example.planetze.classes.EcoTracker.ActivitiesCalculator.calculateTotalEmission;
 import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterActivitiesByRangeOfDate;
-import static com.example.planetze.classes.EcoTracker.Date.today;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -33,8 +31,6 @@ import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.FirebaseListenerDailyActivity;
