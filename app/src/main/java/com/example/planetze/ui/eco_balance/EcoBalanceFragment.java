@@ -209,8 +209,9 @@ public class EcoBalanceFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(String.valueOf(editTextAmount.getText()).isEmpty()){
-                    textCredits.setText("0");
+                    textCredits.setText("0 carbon credit");
                     googlePayButton.setEnabled(false);
+                    return;
                 }
                 // Called when the text is changing
                 // Called when the text is changing
@@ -228,7 +229,8 @@ public class EcoBalanceFragment extends Fragment {
         });
 
         // Back Button
-        Button backButton = customView.findViewById(R.id.buttonProjectBack);
+        ImageView backButton = customView.findViewById(R.id.buttonProjectBack);
+        backButton.setClickable(true);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
