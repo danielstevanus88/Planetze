@@ -1,6 +1,6 @@
-package com.example.planetze.ui;
+package com.example.planetze.classes.AnnualEmission;
 
-public class AnnualEmisisonCalculator {
+public class AnnualEmissionConstant{
     // DETACHED UNDER 1000 SQ
     public static int [][][] detachedUnder1000 =    {
             {
@@ -378,5 +378,7 @@ public class AnnualEmisisonCalculator {
                     {0, 8500, 3600, 0, 7400, 4900},
                     {0, 11100, 4000, 0, 7800, 5100}}
     };
+
+
 
 }
