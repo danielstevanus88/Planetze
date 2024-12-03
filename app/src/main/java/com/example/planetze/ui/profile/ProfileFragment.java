@@ -27,6 +27,7 @@ import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.ScreenUtilities.StringHandler;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
 
@@ -90,8 +91,8 @@ public class ProfileFragment extends Fragment {
         EditText editTextAnnual = view.findViewById(R.id.editTextAnnualCarbon);
         EditText editTextCarbonCredit = view.findViewById(R.id.editTextCarbonCredit);
 
-        editTextName.setText(user.getName());
-        editTextGmail.setText(user.getEmail());
+        editTextName.setText(StringHandler.limitString(user.getName(), ProfileConstants.MAX_LENGTH_NAME));
+        editTextGmail.setText(StringHandler.limitEmail(user.getEmail(), ProfileConstants.MAX_LENGTH_EMAIL));
         editTextAnnual.setText(String.valueOf(ActivitiesCalculator.calculateTotalEmission(ActivitiesConverter.getActivitiesWithClassDate(user.getActivities()))));
         editTextCarbonCredit.setText(String.valueOf(user.getCarbonCredits()));
 
