@@ -3,7 +3,7 @@ package com.example.planetze.classes.EcoTracker;
 public class EcoTrackerEmissionConstant {
 
     // Transportation Category
-    public static final double TAKE_PUBLIC_TRANSPORTATION_EMISSION = 246;
+    public static final double TAKE_PUBLIC_TRANSPORTATION_EMISSION = 1.3;
     public static final double CYCLING_OR_WALKING_EMISSION = 0;
     public static final double DRIVE_PERSONAL_VEHICLE_DIESEL_EMISSION = 0.27;
     public static final double DRIVE_PERSONAL_VEHICLE_ELECTRIC_EMISSION = 0.05;

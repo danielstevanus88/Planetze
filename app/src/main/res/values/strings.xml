@@ -255,5 +255,6 @@
     <string name="breakdown_by_category">Breakdown By Category</string>
     <string name="housing">Housing</string>
     <string name="annual_carbon_emission">Your Annual CO2e Emission is</string>
+    <string name="You_have_emitted">You have emitted</string>
 
 </resources>

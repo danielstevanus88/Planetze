@@ -28,6 +28,7 @@ import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 
+import com.example.planetze.classes.GlobalAverages;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.github.mikephil.charting.charts.BarChart;
@@ -45,6 +46,8 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.Utils;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,9 +58,12 @@ public class EcoGaugeFragment extends Fragment {
     private Spinner timePeriodSpinner;
     private Button calculateButton;
     private BarChart emissionsBarChart; // BarChart instance
-
-
     private LineChart lineChart;
+
+    private TextView totalEmissionText;
+
+    private TextView percentageLocalText;
+    private TextView percentageGlobalText;
     private String selectedTimePeriod = "Daily"; // Default selection
 
     public EcoGaugeFragment() {
@@ -78,7 +84,9 @@ public class EcoGaugeFragment extends Fragment {
         // Initialize views
         timePeriodSpinner = view.findViewById(R.id.time_period_spinner);
         emissionsBarChart = view.findViewById(R.id.emissions_bar_chart);
-
+        totalEmissionText  = view.findViewById(R.id.textHowLong);
+        percentageLocalText = view.findViewById(R.id.textPercentageLocal);
+        percentageGlobalText = view.findViewById(R.id.textPercentageGlobal);
         lineChart = view.findViewById(R.id.emissionLineChart);
 
         // Set up the spinner
@@ -106,24 +114,35 @@ public class EcoGaugeFragment extends Fragment {
     }
 
 
+    @SuppressLint("DefaultLocale")
     private void calculateEmissions() {
         try {
             Date today = Date.today();
             Date startDate;
+            String suffix = "";
+            double divisor = 1;
 
             // Calculate the start date based on the selected time period
             switch (selectedTimePeriod) {
                 case "Weekly":
                     startDate = new Date(today.getDay() - 7, today.getMonth(), today.getYear());
+                    suffix = "This week";
+                    divisor = 365/7;
                     break;
                 case "Monthly":
                     startDate = new Date(today.getDay(), today.getMonth() - 1, today.getYear());
+                    suffix = "This month";
+                    divisor = 12;
                     break;
                 case "Yearly":
                     startDate = new Date(today.getDay(), today.getMonth(), today.getYear() - 1);
+                    suffix = "This year";
+                    divisor = 1;
                     break;
                 default: // "Daily"
-                    startDate = new Date(today.getDay() - 1, today.getMonth(), today.getYear());
+                    startDate = Date.today();
+                    suffix ="Today";
+                    divisor = 365;
             }
 
             // Correct for negative days or months
@@ -142,14 +161,50 @@ public class EcoGaugeFragment extends Fragment {
 
             // Filter activities within the selected range
             HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, startDate, today);
+            HashMap<String, Double> emissionByCategory = ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities);
 
-            displayBarChart(ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities));
+            double total = emissionByCategory.get("Transportation") +emissionByCategory.get("Food") + emissionByCategory.get("Consumption");
+            // Edit Text
+            String displayText = suffix + ", you produced " + String.format("%.2f", total) + "kg of CO2 emission. Comparing to the your country, " + user.getCountry() + " and globally, your CO2 emission are";
+            totalEmissionText.setText(displayText);
+
+            GlobalAverages.initialize(getActivity());
+            double countryAveragePerYear = GlobalAverages.getAverageOfCountry(user.getCountry());
+            double globalAVreagePerYear = GlobalAverages.getGlobalAverages();
+            double ratioLocal = total / (countryAveragePerYear * 1000 / divisor) * 100;
+
+            String displayLocal = "";
+            if(ratioLocal > 100) {
+                ratioLocal -= 100;
+                displayLocal = "+" + String.format("%.0f", ratioLocal) + "%";
+            }
+            else if(ratioLocal < 100) {
+                ratioLocal = 100 - ratioLocal;
+                displayLocal = "-" + String.format("%.0f", ratioLocal) + "%";
+            }
+            percentageLocalText.setText(displayLocal);
+
+            double ratioGlobal = total / (globalAVreagePerYear * 1000 / divisor) * 100;
+
+            String displayGlobal = "";
+            if(ratioGlobal > 100) {
+                ratioGlobal -= 100;
+                displayGlobal = "+" + String.format("%.0f", ratioGlobal) + "%";
+            }
+            else if(ratioGlobal < 100) {
+                ratioGlobal = 100 - ratioGlobal;
+                displayGlobal = "-" + String.format("%.0f", ratioGlobal) + "%";
+            }
+            percentageGlobalText.setText(displayGlobal);
+            // Display bar Chart
+            displayBarChart(emissionByCategory);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getContext(), "Error calculating emissions", Toast.LENGTH_SHORT).show();
         }
 
 
+        // Display Line Chart
         lineChart.setTouchEnabled(true);
         lineChart.setPinchZoom(true);
         displayLineChart();
@@ -319,10 +374,10 @@ public class EcoGaugeFragment extends Fragment {
             dataSets.add(setFood);
             dataSets.add(setConsumption);
             LineData data = new LineData(dataSets);
-if(lineChart.getData() != null) {
-
-    lineChart.clear();
-}
+            if(lineChart.getData() != null) {
+                lineChart.clear();
+            }
+            lineChart.getDescription().setEnabled(false);
             lineChart.setData(data);
             lineChart.animateY(1500);
             lineChart.invalidate();

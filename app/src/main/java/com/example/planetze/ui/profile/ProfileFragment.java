@@ -91,7 +91,7 @@ public class ProfileFragment extends Fragment {
 
         String displayEmission = String.format("%.2f", AnnualEmissionCalculator.getTotalEmission(user)) + "kg";
         editTextAnnual.setText(displayEmission);
-        editTextCarbonCredit.setText(String.valueOf(user.getCarbonCredits()));
+        editTextCarbonCredit.setText(String.format("%.2f", user.getCarbonCredits()));
 
         editTextName.setOnEditorActionListener((v, actionId, event) -> {
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
