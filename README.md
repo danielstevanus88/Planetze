@@ -1,7 +1,5 @@
 # Planetze
 
-<!-- Not sure whether to add badges -->
-
 ## Description
 This project is a carbon-tracking Android app that helps users monitor daily carbon emissions from activities like commuting, energy use, and shopping. 
 It provides real-time carbon footprint calculations, visual dashboards, and comparisons to regional averages, encouraging users to take simple steps to reduce their carbon footprint.
@@ -15,10 +13,12 @@ It provides real-time carbon footprint calculations, visual dashboards, and comp
   - [Prerequisites](#prerequisites)
   - [Building from Source](#building-from-source)
   - [Post-Installation](#post-installation)
+- [Dependencies](#dependencies)
 - [Folder Structure](#folder-structure)
   - [Key Directories and Files](#key-directories-and-files)
-- [Acknowledgments](#acknowledgments)
 - [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
@@ -61,6 +61,42 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 - Log in with your credentials or create a new account.
 - Explore the app and its features!
 
+## Dependencies
+
+This project relies on the following dependencies:
+
+### Core Android Libraries
+- **AndroidX AppCompat**: Provides backward-compatible versions of Android components.
+- **Material Components**: Implements Material Design guidelines.
+- **ConstraintLayout**: A powerful layout manager for creating flexible and efficient UI.
+
+### Jetpack Libraries
+- **Lifecycle LiveData and ViewModel**: Manages UI-related data lifecycle-aware.
+- **Navigation Components**: Simplifies navigation within the app.
+
+### Firebase
+- **Firebase Analytics**: Tracks user engagement and events.
+- **Firebase Authentication**: Handles user sign-in and authentication.
+- **Firebase Realtime Database**: Provides real-time data synchronization.
+- **Firebase Crashlytics**: Tracks app crashes and provides detailed insights.
+
+### Third-Party Libraries
+- **Glide**: Efficient image loading and caching.
+- **MPAndroidChart**: For creating interactive and customizable charts.
+- **Material Calendar View**: Provides a customizable Material Design calendar widget.
+- **Mockito**: Used for unit testing.
+
+### Testing Dependencies
+- **JUnit**: Standard testing framework for Java.
+- **Espresso**: UI testing for Android apps.
+
+### Additional Tools
+- **Legacy Support v4**: For maintaining compatibility with older Android versions.
+- **RecyclerView**: A flexible view for rendering lists.
+- **Google Play Services Wallet**: For handling Google Wallet services.
+
+Dependencies are managed through Gradle. To review the full list of dependencies and their versions, see the [`build.gradle.kts`](app/build.gradle) file.
+
 ## Folder Structure
 ```
 Planetze/
@@ -101,12 +137,20 @@ Planetze/
 - **`build.gradle.kts`**: Kotlin-based Gradle build configuration for the project.
 - **`README.md`**: Main project documentation.
 
-<!-- Not sure whether to add license -->
+## Technologies Used
+- **Java**: For Android app development.
+- **Firebase**: For authentication and data storage.
+
+## Contributing
+We welcome contributions!  
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature-name`. Please follow the [branch naming standard](https://www.conventionalcommits.org/en/v1.0.0/).
+3. Commit your changes: `git commit -m 'Add a new feature'`. Please follow the [convention](https://www.conventionalcommits.org/en/v1.0.0/).
+4. Push to the branch: `git push origin feature-name`.
+5. Submit a pull request.
+
+For major changes, please open an issue first to discuss what you'd like to change.
 
 ## Acknowledgments
 - This is a grouped project for CSCB07H3.
 - Contributors: [@Daniel Stevanus](https://github.com/danielstevanus88), [@Muxun Zhang](https://github.com/muxunzzz), [@Tommy Wang](https://github.com/Grimshock1015), [@Helena Zhao](https://github.com/HelenaZhao05), [@Rizky Rajendra Ananta Dewa](https://github.com/RRDewa).
-
-## Technologies Used
-- **Java**: For Android app development.
-- **Firebase**: For authentication and data storage.
