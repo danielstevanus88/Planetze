@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,53 +13,46 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.Flight;
+import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
-import com.example.planetze.databinding.FragmentFlightBinding;
+import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
 import com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class FlightFragment extends BaseActivityFragment {
+public class TakePublicTransportationFragment extends BaseActivityFragment {
 
-    private FragmentFlightBinding binding;
+    private FragmentTakePublicTransportationBinding binding;
     private List<Button> buttons;
-    private int flights;
     private String type;
-
+    private double hour;
     private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentFlightBinding.inflate(inflater, container, false);
+        binding = FragmentTakePublicTransportationBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         setOnClickListeners();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
-
-            binding.flights.setText(String.valueOf(editDailyActivity.getNumberOfFlights()));
+            binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
             type = editDailyActivity.getType();
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
+
 
         return view;
     }
 
     private void setOnClickListeners() {
-        buttons = Arrays.asList(binding.option1, binding.option2);
+        buttons = Arrays.asList(binding.option1, binding.option2, binding.option3);
         for (Button button : buttons) {
             button.setOnClickListener(this::handleOptionButtonClick);
         }
@@ -76,23 +69,23 @@ public class FlightFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            flights = Integer.parseInt(binding.flights.getText().toString());
+            hour = Double.parseDouble(binding.hour.getText().toString());
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid number of flights", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         }
-        if (flights <= 0) {
-            Toast.makeText(getActivity(), "Please enter a valid number of flights", Toast.LENGTH_SHORT).show();
+        if (hour <= 0) {
+            Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         } else {
             Date date = EcoTrackerFragment.getCurrentSelectedDate();
-            Flight activity = new Flight(type, flights);
+            TakePublicTransportation activity = new TakePublicTransportation(type, hour);
             currentUser.addActivity(date, activity);
 
             if(editDailyActivity != null){
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
 
+
             navigateToMain();
         }
     }
-
 }

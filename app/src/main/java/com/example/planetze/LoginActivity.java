@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
         Toast.makeText(this, "Error retrieving user data", Toast.LENGTH_SHORT).show();
     }
 
+
     private void redirectToMainActivity(User user) {
 
         if(!user.hasFilledQuestionnaires()) {

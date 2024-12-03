@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,8 +43,6 @@ public class MealFragment extends BaseActivityFragment {
 
         setOnClickListeners();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
@@ -53,12 +51,6 @@ public class MealFragment extends BaseActivityFragment {
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfServings()));
             type = editDailyActivity.getTypeId() - EcoTrackerActivityConstant.ID_EAT_BEEF + 1;
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
         }
 
         return view;

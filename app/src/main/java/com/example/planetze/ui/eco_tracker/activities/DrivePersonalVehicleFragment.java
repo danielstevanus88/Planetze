@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,7 +43,6 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
 
         setOnClickListeners();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
 
@@ -57,18 +56,12 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
             buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
             buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
             type = originalOption;
-
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
         }
         else if (currentUser.getQuestionnaireAnswers().containsKey("q2")
                 && currentUser.getQuestionnaireAnswers().get("q2") >= 1
                 && currentUser.getQuestionnaireAnswers().get("q2") <= 4) {
 
+        binding.submit.setOnClickListener(this::handleNextButtonClick);
             int originalOption = currentUser.getQuestionnaireAnswers().get("q2");
             handleOptionButtonClick(buttons.get(originalOption - 1));
             type = originalOption;

@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,7 +30,6 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
         binding = FragmentCyclingOrWalkingBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
 
@@ -39,12 +38,7 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
             binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
         return view;
     }

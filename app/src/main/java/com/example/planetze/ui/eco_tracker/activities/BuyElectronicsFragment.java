@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,15 +12,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyOthers;
+import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyElectronics;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
-import com.example.planetze.databinding.FragmentOtherPurchasesBinding;
+import com.example.planetze.databinding.FragmentBuyElectronicsBinding;
 import com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment;
 
-public class OtherPurchasesFragment extends BaseActivityFragment {
+public class BuyElectronicsFragment extends BaseActivityFragment {
 
-    private FragmentOtherPurchasesBinding binding;
+    private FragmentBuyElectronicsBinding binding;
     private String type;
     private int num;
 
@@ -28,12 +28,8 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentOtherPurchasesBinding.inflate(inflater, container, false);
+        binding = FragmentBuyElectronicsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
-        binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
@@ -41,13 +37,9 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
             binding.type.setText(editDailyActivity.getItemName());
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
         }
+        binding.submit.setOnClickListener(this::handleNextButtonClick);
+
         return view;
     }
 
@@ -55,23 +47,24 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
         try {
             num = Integer.parseInt(binding.num.getText().toString());
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid number of purchases", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid number of devices", Toast.LENGTH_SHORT).show();
         }
         try {
             type = binding.type.getText().toString();
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid type of purchase", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid type of device", Toast.LENGTH_SHORT).show();
         }
         if (num <= 0) {
-            Toast.makeText(getActivity(), "Please enter a valid number of purchases", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid number of devices", Toast.LENGTH_SHORT).show();
         } else {
             Date date = EcoTrackerFragment.getCurrentSelectedDate();
-            BuyOthers activity = new BuyOthers(type, num);
+            BuyElectronics activity = new BuyElectronics(type, num);
             currentUser.addActivity(date, activity);
 
             if(editDailyActivity != null){
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
+
 
             navigateToMain();
         }

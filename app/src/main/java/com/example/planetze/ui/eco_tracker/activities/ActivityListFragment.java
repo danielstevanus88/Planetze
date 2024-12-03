@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,7 +39,6 @@ public class ActivityListFragment extends Fragment {
 
     private void navigateToFragment(int fragmentId) {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.eco_tracker_navigation);
         navController.navigate(fragmentId);
     }
 }

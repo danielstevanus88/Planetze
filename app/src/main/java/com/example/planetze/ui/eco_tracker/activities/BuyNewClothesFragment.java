@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,19 +30,13 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
         binding = FragmentBuyNewClothesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-        binding.submit.setOnClickListener(this::handleNextButtonClick);
+       binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
 
             binding.input.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
 
         return view;

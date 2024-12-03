@@ -5,7 +5,6 @@ import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterAct
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,8 +25,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.planetze.HabitSelectionActivity;
-import com.example.planetze.LogHabitActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
@@ -121,15 +118,13 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         Button addHabitButton = view.findViewById(R.id.addHabitButton);
         // Set the OnClickListener to handle the button press
         addHabitButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), HabitSelectionActivity.class);
-            startActivity(intent);
+            navController.navigate(R.id.habit_selection);
         });
 
         Button logHabitButton = view.findViewById(R.id.logHabitButton);
         // Set the OnClickListener to handle the button press
         logHabitButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), LogHabitActivity.class);
-            startActivity(intent);
+            navController.navigate(R.id.log_habit);
         });
 
 
