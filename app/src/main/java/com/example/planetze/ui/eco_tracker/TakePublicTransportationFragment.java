@@ -43,10 +43,17 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
-
             binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
             type = editDailyActivity.getType();
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
+
 
         return view;
     }
@@ -85,8 +92,7 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
             }
 
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 }

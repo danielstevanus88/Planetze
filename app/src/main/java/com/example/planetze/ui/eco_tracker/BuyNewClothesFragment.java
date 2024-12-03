@@ -37,6 +37,12 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
 
             binding.input.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
 
         return view;
@@ -59,8 +65,7 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 

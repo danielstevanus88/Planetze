@@ -36,6 +36,12 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
 
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
             binding.type.setText(editDailyActivity.getItemName());
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
         binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
@@ -66,8 +72,7 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
             }
 
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 

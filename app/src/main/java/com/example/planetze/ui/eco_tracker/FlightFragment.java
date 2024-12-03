@@ -46,6 +46,13 @@ public class FlightFragment extends BaseActivityFragment {
 
             binding.flights.setText(String.valueOf(editDailyActivity.getNumberOfFlights()));
             type = editDailyActivity.getType();
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
 
         return view;
@@ -84,8 +91,7 @@ public class FlightFragment extends BaseActivityFragment {
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 

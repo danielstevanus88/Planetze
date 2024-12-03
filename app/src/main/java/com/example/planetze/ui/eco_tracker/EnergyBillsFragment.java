@@ -45,6 +45,13 @@ public class EnergyBillsFragment extends BaseActivityFragment {
 
             binding.amount.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
             type = editDailyActivity.getItemName();
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
 
         return view;
@@ -83,8 +90,7 @@ public class EnergyBillsFragment extends BaseActivityFragment {
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 

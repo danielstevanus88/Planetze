@@ -43,15 +43,10 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
 
         setOnClickListeners();
 
-        if (currentUser.getQuestionnaireAnswers().containsKey("q2")
-                && currentUser.getQuestionnaireAnswers().get("q2") >= 1
-                && currentUser.getQuestionnaireAnswers().get("q2") <= 4) {
+        binding.back.setOnClickListener(this::handleBackButtonClick);
+        binding.submit.setOnClickListener(this::handleNextButtonClick);
 
-            int originalOption = currentUser.getQuestionnaireAnswers().get("q2");
-            buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
-            buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
-            type = originalOption;
-        }
+
 
         if (getArguments() != null && getArguments().get("dailyActivity") != null) {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
@@ -62,11 +57,23 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
             buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
             buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
             type = originalOption;
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
+        }
+        else if (currentUser.getQuestionnaireAnswers().containsKey("q2")
+                && currentUser.getQuestionnaireAnswers().get("q2") >= 1
+                && currentUser.getQuestionnaireAnswers().get("q2") <= 4) {
+
+            int originalOption = currentUser.getQuestionnaireAnswers().get("q2");
+            handleOptionButtonClick(buttons.get(originalOption - 1));
+            type = originalOption;
         }
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
-        binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;
     }
@@ -122,8 +129,7 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
 
             currentUser.addQuestionnaireAnswer("q2", type);
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 }

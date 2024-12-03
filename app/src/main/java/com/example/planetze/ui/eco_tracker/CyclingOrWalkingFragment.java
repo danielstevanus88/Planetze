@@ -38,6 +38,13 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
             editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
 
             binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
         return view;
     }
@@ -58,8 +65,8 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
             if(editDailyActivity != null){
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+
+            navigateToMain();
         }
     }
 }

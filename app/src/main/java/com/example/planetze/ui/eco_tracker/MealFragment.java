@@ -52,6 +52,13 @@ public class MealFragment extends BaseActivityFragment {
 
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfServings()));
             type = editDailyActivity.getTypeId() - EcoTrackerActivityConstant.ID_EAT_BEEF + 1;
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
         }
 
         return view;
@@ -112,8 +119,7 @@ public class MealFragment extends BaseActivityFragment {
                 currentUser.removeActivity(editDailyActivity.getUuid());
             }
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            navigateToMain();
         }
     }
 
