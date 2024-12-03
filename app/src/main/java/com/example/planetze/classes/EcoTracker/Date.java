@@ -139,5 +139,87 @@ public class Date implements Comparable<Date>{
         return month+"-"+day+"-"+year;
     }
 
+    public Date getAWeekBefore(){
+        Date ret = this;
+      for(int i = 0; i <= 6; i++)  {
+          ret = ret.getOneDayBefore();
+      }
+      return ret;
+    };
+
+    public Date getOneDayAfter() {
+        int newDay = day + 1;
+        int newMonth = month;
+        int newYear = year;
+
+        // Check if the day exceeds the number of days in the current month
+        if (newDay > getDaysInMonth(month, year)) {
+            newDay = 1;
+            newMonth++;
+
+            // Check if the month exceeds December
+            if (newMonth > 12) {
+                newMonth = 1;
+                newYear++;
+            }
+        }
+
+        return new Date(newDay, newMonth, newYear);
+    }
+
+    public Date getFourWeekBefore(){
+        Date ret = this;
+        for(int i = 0; i < 27; i++)  {
+            ret = ret.getOneDayBefore();
+        }
+        return ret;
+    }
+
+    public Date getTwelveMonthBefore(){
+        Date ret = this;
+        for(int i = 0; i < 364; i++)  {
+            ret = ret.getOneDayBefore();
+        }
+        return ret;
+    }
+
+    public Date getOneWeekAfter() {
+        Date ret = this;
+        for(int i = 0; i <= 6; i++)  {
+            ret = ret.getOneDayAfter();
+        }
+        return ret;
+    }
+
+
+
+    public Date getOneMonthAfter(){
+        int dayInMonth = getDaysInMonth(this.month, this.year);
+        Date ret = this;
+        for(int i = 0; i <= dayInMonth-1; i++){
+            ret = ret.getOneDayAfter();
+        }
+        return ret;
+    }
+
+    public Date getOneYearBefore(){
+        return this.getTwelveMonthBefore();
+    }
+
+    public Date getOneYearAfter(){
+        return new Date(this.day, this.month, this.year + 1);
+    }
+
+    public Date getSixYearsBefore(){
+        Date ret = this;
+        for(int i = 0; i < 6; i ++){
+            ret = ret.getTwelveMonthBefore();
+        }
+        return ret;
+    }
+
+
+
+
 
 }
