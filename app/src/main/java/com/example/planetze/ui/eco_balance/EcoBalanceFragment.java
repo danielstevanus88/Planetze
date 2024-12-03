@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -266,7 +265,7 @@ public class EcoBalanceFragment extends Fragment {
 
             User user = LoginManager.getCurrentUser();
             double carbonCreditBefore = user.getCarbonCredits();
-            user.setCarbonCredits(carbonCreditBefore + carbonCreditsToCheckout);
+            user.changeCarbonCredits(carbonCreditBefore + carbonCreditsToCheckout);
             Toast.makeText(
                     getActivity(), "Payment Success",
                     Toast.LENGTH_LONG).show();

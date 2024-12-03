@@ -32,8 +32,10 @@ public class UserDatabaseManager implements DatabaseManager<User>{
         }
         return userDatabaseManager;
     }
+
     @Override
     public Task<Void> add(User user) {
+        Log.d("added stuff", "a");
         return dbRef.child(String.valueOf(user.getUid())).setValue(user);
     }
 
@@ -60,12 +62,14 @@ public class UserDatabaseManager implements DatabaseManager<User>{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("Updated", "user changed");
-                LoginManager.setCurrentUser(snapshot.getValue(User.class));
-                for(FirebaseListenerDailyActivity listener: listeners){
+                if(!listeners.isEmpty()) {
+//                    LoginManager.setCurrentUser(snapshot.getValue(User.class));
+                    for (FirebaseListenerDailyActivity listener : listeners) {
 
 
-                    Log.d("Called", "listener update method");
-                    listener.update();
+                        Log.d("Called", "listener update method");
+                        listener.update();
+                    }
                 }
             }
 

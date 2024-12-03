@@ -49,7 +49,6 @@ public class EnergyFragment extends BaseFormFragment<FragmentEnergyBinding> { //
         currentUser.addQuestionnaireAnswer("q15",Arrays.asList(options2).indexOf(q15));
         currentUser.addQuestionnaireAnswer("q16",Arrays.asList(options1).indexOf(q16));
         currentUser.addQuestionnaireAnswer("q17",Arrays.asList(options3).indexOf(q17));
-        databaseManager.add(currentUser);
         loadFragment(new ConsumptionFragment());
     }
 

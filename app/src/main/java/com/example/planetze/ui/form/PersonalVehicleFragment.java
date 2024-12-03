@@ -37,8 +37,6 @@ public class PersonalVehicleFragment extends BaseFormFragment<FragmentPersonalVe
 
         currentUser.addQuestionnaireAnswer("q2",Arrays.asList(options1).indexOf(q2));
         currentUser.addQuestionnaireAnswer("q3",Arrays.asList(options2).indexOf(q3));
-
-        databaseManager.add(currentUser);
         loadFragment(new PublicTransportFragment());
     }
 

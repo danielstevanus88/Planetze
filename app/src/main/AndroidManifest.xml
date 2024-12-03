@@ -35,6 +35,10 @@
         <activity
             android:name=".FormActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".FormResultActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false"

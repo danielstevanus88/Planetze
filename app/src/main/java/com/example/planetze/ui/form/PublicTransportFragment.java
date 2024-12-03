@@ -36,7 +36,6 @@ public class PublicTransportFragment extends BaseFormFragment<FragmentPublicTran
 
         currentUser.addQuestionnaireAnswer("q4",Arrays.asList(options1).indexOf(q4));
         currentUser.addQuestionnaireAnswer("q5",Arrays.asList(options2).indexOf(q5));
-        databaseManager.add(currentUser);
         loadFragment(new AirTravelFragment());
     }
 

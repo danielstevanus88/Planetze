@@ -47,9 +47,6 @@ public class MeatFragment extends BaseFormFragment<FragmentMeatBinding> {
         currentUser.addQuestionnaireAnswer("q9b",Arrays.asList(options).indexOf(q9b));
         currentUser.addQuestionnaireAnswer("q9c",Arrays.asList(options).indexOf(q9c));
         currentUser.addQuestionnaireAnswer("q9d",Arrays.asList(options).indexOf(q9d));
-
-        databaseManager.add(currentUser);
-
         loadFragment(new WasteFragment());
     }
 

@@ -38,8 +38,6 @@ public class TransportationFragment extends BaseFormFragment<FragmentTransportat
         }
 
 
-        databaseManager.add(currentUser);
-
     }
 
     @Override

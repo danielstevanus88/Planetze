@@ -36,7 +36,6 @@ public class AirTravelFragment extends BaseFormFragment<FragmentAirTravelBinding
 
         currentUser.addQuestionnaireAnswer("q6", Arrays.asList(options).indexOf(q6));
         currentUser.addQuestionnaireAnswer("q7", Arrays.asList(options).indexOf(q7));
-        databaseManager.add(currentUser);
         loadFragment(new FoodFragment());
     }
 
