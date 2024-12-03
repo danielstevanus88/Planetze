@@ -1,22 +1,21 @@
-package com.example.planetze;
+package com.example.planetze.ui.eco_tracker.habit;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,13 +41,16 @@ import com.example.planetze.classes.EcoTracker.Habit.WaterHabit;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.example.planetze.classes.UserDatabaseManager;
+import com.example.planetze.databinding.FragmentHabitSelectionBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HabitSelectionActivity extends AppCompatActivity {
+public class HabitSelectionFragment extends Fragment {
+    private FragmentHabitSelectionBinding binding;
+    private View view;
     private RecyclerView recyclerView;
     private RecyclerAdaptor recyclerAdaptor;
     private ArrayList<Habit> habitList;
@@ -56,15 +58,15 @@ public class HabitSelectionActivity extends AppCompatActivity {
     private Spinner spinnerImpact;
     private SearchView searchView;
     private User user;
-    private UserDatabaseManager databaseManager = UserDatabaseManager.getInstance();
+    private final UserDatabaseManager databaseManager = UserDatabaseManager.getInstance();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_habit_selection);
-        searchView = findViewById(R.id.search_view);
-        Switch switchButton = findViewById(R.id.switch1);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentHabitSelectionBinding.inflate(inflater, container, false);
+        view = binding.getRoot();
+
+        searchView = binding.searchView;
+        Switch switchButton = binding.switch1;
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -75,11 +77,11 @@ public class HabitSelectionActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String query) {
                 switchButton.setChecked(false);
-                filterlist(query,spinnerCategory.getSelectedItem().toString(), spinnerImpact.getSelectedItem().toString());
+                filterlist(query, spinnerCategory.getSelectedItem().toString(), spinnerImpact.getSelectedItem().toString());
                 return true;
             }
         });
-        spinnerImpact = findViewById(R.id.spinner_impact);
+        spinnerImpact = binding.spinnerImpact;
         spinnerImpact.setSelection(0);
         spinnerImpact.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -88,14 +90,15 @@ public class HabitSelectionActivity extends AppCompatActivity {
                 String selectedImpact = parent.getItemAtPosition(position).toString();
                 String selectedCategory = spinnerCategory.getSelectedItem().toString();
                 String query = searchView.getQuery().toString();
-                filterlist(query, selectedCategory,selectedImpact);
+                filterlist(query, selectedCategory, selectedImpact);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
-        spinnerCategory = findViewById(R.id.spinner_category);
+        spinnerCategory = binding.spinnerCategory;
         spinnerCategory.setSelection(0);
         spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -108,11 +111,12 @@ public class HabitSelectionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
-        recyclerView = findViewById(R.id.recycler_view);  // Reference to RecyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = binding.recyclerView;  // Reference to RecyclerView
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         habitList = new ArrayList<>();
         habitList.add(new FoodWasteHabit());
@@ -135,21 +139,11 @@ public class HabitSelectionActivity extends AppCompatActivity {
         recyclerAdaptor = new RecyclerAdaptor(habitList);
         recyclerView.setAdapter(recyclerAdaptor);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
-        Button backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
 
         switchButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             user = LoginManager.getCurrentUser();
@@ -168,8 +162,7 @@ public class HabitSelectionActivity extends AppCompatActivity {
                             consumptioncounter++;
                         } else if (activity.getCategoryName().equals("Energy")) {
                             energycounter++;
-                        }
-                        else{
+                        } else {
                             foodcounter++;
                         }
                     }
@@ -189,24 +182,24 @@ public class HabitSelectionActivity extends AppCompatActivity {
                 if (foodcounter == maxCount && maxCount > 0) {
                     recommendations.add("Food");
                 }
-                if(maxCount == 0){
-                    Toast.makeText(HabitSelectionActivity.this, "No recommended categories", Toast.LENGTH_LONG).show();
+                if (maxCount == 0) {
+                    Toast.makeText(getActivity(), "No recommended categories", Toast.LENGTH_LONG).show();
                 }
                 // Handle filtering and messaging
                 else if (!recommendations.isEmpty()) {
                     String message = "Recommended categories: " + String.join(", ", recommendations);
-                    Toast.makeText(HabitSelectionActivity.this, message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
                     String selectedImpact = spinnerImpact.getSelectedItem().toString();
                     String query = searchView.getQuery().toString();
                     filterlist2(query, recommendations, selectedImpact);
                     // Filter the list based on the first recommendation (if needed)
                 }
-            }
-            else{
-                filterlist("",spinnerCategory.getSelectedItem().toString(), spinnerImpact.getSelectedItem().toString());
+            } else {
+                filterlist("", spinnerCategory.getSelectedItem().toString(), spinnerImpact.getSelectedItem().toString());
             }
         });
 
+        return this.view;
     }
 
     private void filterlist(String text, String category, String impact) {
@@ -221,10 +214,9 @@ public class HabitSelectionActivity extends AppCompatActivity {
             }
         }
         if (filtered.isEmpty()) {
-            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No Data Found..", Toast.LENGTH_SHORT).show();
             recyclerAdaptor.setFilteredList(new ArrayList<Habit>());
-        }
-        else {
+        } else {
             recyclerAdaptor.setFilteredList(filtered);
         }
     }
@@ -244,7 +236,7 @@ public class HabitSelectionActivity extends AppCompatActivity {
         }
 
         if (filtered.isEmpty()) {
-            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No Data Found..", Toast.LENGTH_SHORT).show();
             recyclerAdaptor.setFilteredList(new ArrayList<Habit>());
         } else {
             recyclerAdaptor.setFilteredList(filtered);

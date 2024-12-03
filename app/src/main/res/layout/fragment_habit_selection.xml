@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/accentColor"
-    tools:context=".HabitSelectionActivity">
+    android:paddingTop="64dp"
+    android:paddingBottom="64dp"
+    tools:context=".ui.eco_tracker.habit.HabitSelectionFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,14 +33,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp">
-
-                    <Button
-                        android:id="@+id/back"
-                        style="@style/FormButton"
-                        android:layout_width="100dp"
-                        android:layout_margin="0dp"
-                        android:layout_weight="0"
-                        android:text="Back" />
 
                     <LinearLayout
                         android:id="@+id/SelectHabitTitle"
@@ -123,14 +117,13 @@
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
+                    android:padding="16dp"
                     tools:layout_editor_absoluteX="1dp"
                     tools:layout_editor_absoluteY="1dp" />
 
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
