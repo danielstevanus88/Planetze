@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/accentColor"
     tools:context=".HabitSelectionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="16dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/splashBackgroundColor"
                 android:isScrollContainer="true"
                 android:orientation="vertical"
                 android:scrollbars="vertical">
@@ -34,23 +40,27 @@
                         android:layout_weight="0"
                         android:text="Back" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:id="@+id/SelectHabitTitle"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/select_an_habit"
-                        android:textColor="#009999"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SectionTitle"
+                            android:text="@string/select_an_habit" />
+
+                        <View style="@style/FormLine" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
@@ -60,6 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:layout_weight="1"
                         android:entries="@array/categories"
                         android:spinnerMode="dropdown" />
 
@@ -69,6 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:layout_weight="1"
                         android:entries="@array/impact_levels"
                         android:spinnerMode="dropdown" />
 
@@ -78,6 +90,8 @@
                     android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/input_box"
                     android:iconifiedByDefault="false"
                     android:queryHint="Search habits..." >
 
@@ -85,38 +99,38 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@color/primaryColor"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/nav_button"
                     android:orientation="vertical">
 
                     <Switch
                         android:id="@+id/switch1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
                         android:layout_gravity="center"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@string/get_recommended_habits"
                         android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_margin="16dp"
                     android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     tools:layout_editor_absoluteX="1dp"
                     tools:layout_editor_absoluteY="1dp" />
 
-
-
-
             </LinearLayout>
         </LinearLayout>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
