@@ -31,8 +31,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/SelectHabitTitle"
@@ -62,8 +61,7 @@
                     <Spinner
                         android:id="@+id/spinner_category"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_height="56dp"
                         android:layout_weight="1"
                         android:entries="@array/categories"
                         android:spinnerMode="dropdown" />
@@ -72,8 +70,7 @@
                     <Spinner
                         android:id="@+id/spinner_impact"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_height="56dp"
                         android:layout_weight="1"
                         android:entries="@array/impact_levels"
                         android:spinnerMode="dropdown" />
