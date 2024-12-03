@@ -29,6 +29,8 @@ import com.example.planetze.R;
 import com.example.planetze.classes.EcoBalance.PaymentUtilities.CheckoutViewModel;
 import com.example.planetze.classes.EcoBalance.PaymentUtilities.PaymentsUtil;
 import com.example.planetze.classes.EcoBalance.Project;
+import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.User;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wallet.PaymentData;
@@ -56,6 +58,7 @@ public class EcoBalanceFragment extends Fragment {
     private String mParam2;
 
     double carbonCreditsToCheckout;
+    AlertDialog currentDialog;
 
     public EcoBalanceFragment() {
         // Required empty public constructor
@@ -151,8 +154,8 @@ public class EcoBalanceFragment extends Fragment {
         builder.setView(customView);
 
         // Create and show the dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        currentDialog = builder.create();
+        currentDialog.show();
 
 
         // Set title
@@ -206,12 +209,13 @@ public class EcoBalanceFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(String.valueOf(editTextAmount.getText()).isEmpty()){
-                    textCredits.setText(0);
+                    textCredits.setText("0");
                     googlePayButton.setEnabled(false);
                 }
                 // Called when the text is changing
                 // Called when the text is changing
                 carbonCreditsToCheckout = Double.parseDouble(String.valueOf(editTextAmount.getText())) * project.getCarbonCredits() / project.getPrice();
+                priceToPay = Double.parseDouble(String.valueOf(editTextAmount.getText()));
                 String creditsString = String.valueOf(carbonCreditsToCheckout) + " carbon credits";
                 textCredits.setText(creditsString);
                 googlePayButton.setEnabled(true);
@@ -228,7 +232,7 @@ public class EcoBalanceFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                currentDialog.dismiss();
             }
         });
     }
@@ -257,10 +261,14 @@ public class EcoBalanceFragment extends Fragment {
 
             final JSONObject info = paymentMethodData.getJSONObject("info");
             final String billingName = info.getJSONObject("billingAddress").getString("name");
+
+            User user = LoginManager.getCurrentUser();
+            user.setCarbonCredits(user.getCarbonCredits() + carbonCreditsToCheckout);
             Toast.makeText(
                     getActivity(), "Payment Success",
                     Toast.LENGTH_LONG).show();
 
+            currentDialog.dismiss();
             // Logging token string.
             Log.d("Google Pay token", paymentMethodData
                     .getJSONObject("tokenizationData")

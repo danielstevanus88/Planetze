@@ -22,7 +22,7 @@ public class User {
     public HashMap<String, List<DailyActivity>> activities;
 
     private UserDatabaseManager userDatabaseManager;
-    public int carbonCredits;
+    public double carbonCredits;
 
     public User(String uid, String name, String email){
         this.uid = uid;
@@ -72,7 +72,7 @@ public class User {
 
     }
 
-    public int getCarbonCredits(){
+    public double getCarbonCredits(){
         return this.carbonCredits;
     }
 
@@ -144,7 +144,7 @@ public class User {
         userDatabaseManager.add(this);
     }
 
-    public void setCarbonCredits(int carbonCredits) {
+    public void setCarbonCredits(double carbonCredits) {
         this.carbonCredits = carbonCredits;
     }
 }

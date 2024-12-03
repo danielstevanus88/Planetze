@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
         User currentUser = dataSnapshot.getValue(User.class);
         if (currentUser != null) {
             LoginManager.setCurrentUser(currentUser);
-            redirectToMainActivity();
+            redirectToMainActivity(currentUser);
         } else {
             // Handle case where user data is not found
             Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show();
@@ -78,10 +78,17 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
         Toast.makeText(this, "Error retrieving user data", Toast.LENGTH_SHORT).show();
     }
 
-    private void redirectToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+    private void redirectToMainActivity(User user) {
+
+        if(!user.hasFilledQuestionnaires()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Intent intent = new Intent(this , MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     // Display the login fragment inside VerticalLayout
