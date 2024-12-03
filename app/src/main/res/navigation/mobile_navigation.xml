@@ -10,11 +10,11 @@
         android:id="@+id/eco_tracker"
         android:name="com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment"
         android:label="Eco Tracker"
-        tools:layout="@layout/fragment_eco_tracker" >
+        tools:layout="@layout/fragment_eco_tracker">
 
         <action
             android:id="@+id/action_eco_tracker_to_activity_list"
-            app:destination="@id/eco_tracker_navigation" />
+            app:destination="@id/activity_list" />
     </fragment>
 
     <fragment
@@ -35,98 +35,93 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_profile" />
 
-    <navigation
-        android:id="@+id/eco_tracker_navigation"
-        app:startDestination="@id/activity_list">
+    <fragment
+        android:id="@+id/activity_list"
+        android:name="com.example.planetze.ui.eco_tracker.ActivityListFragment"
+        android:label="Activity List"
+        tools:layout="@layout/fragment_activity_list">
+        <action
+            android:id="@+id/action_activity_list_to_drive_personal_vehicle"
+            app:destination="@id/drive_personal_vehicle" />
+        <action
+            android:id="@+id/action_activity_list_to_take_public_transportation"
+            app:destination="@id/take_public_transportation" />
+        <action
+            android:id="@+id/action_activity_list_to_cycling_or_walking"
+            app:destination="@id/cycling_or_walking" />
+        <action
+            android:id="@+id/action_activity_list_to_flight"
+            app:destination="@id/flight" />
+        <action
+            android:id="@+id/action_activity_list_to_meal"
+            app:destination="@id/meal" />
+        <action
+            android:id="@+id/action_activity_list_to_buy_new_clothes"
+            app:destination="@id/buy_new_clothes" />
+        <action
+            android:id="@+id/action_activity_list_to_buy_electronics"
+            app:destination="@id/buy_electronics" />
+        <action
+            android:id="@+id/action_activity_list_to_other_purchases"
+            app:destination="@id/other_purchases" />
+        <action
+            android:id="@+id/action_activity_list_to_energy_bills"
+            app:destination="@id/energy_bills" />
+    </fragment>
 
-        <fragment
-            android:id="@+id/activity_list"
-            android:name="com.example.planetze.ui.eco_tracker.ActivityListFragment"
-            android:label="Activity List"
-            tools:layout="@layout/fragment_activity_list" >
-            <action
-                android:id="@+id/action_activity_list_to_drive_personal_vehicle"
-                app:destination="@id/drive_personal_vehicle" />
-            <action
-                android:id="@+id/action_activity_list_to_take_public_transportation"
-                app:destination="@id/take_public_transportation" />
-            <action
-                android:id="@+id/action_activity_list_to_cycling_or_walking"
-                app:destination="@id/cycling_or_walking" />
-            <action
-                android:id="@+id/action_activity_list_to_flight"
-                app:destination="@id/flight" />
-            <action
-                android:id="@+id/action_activity_list_to_meal"
-                app:destination="@id/meal" />
-            <action
-                android:id="@+id/action_activity_list_to_buy_new_clothes"
-                app:destination="@id/buy_new_clothes" />
-            <action
-                android:id="@+id/action_activity_list_to_buy_electronics"
-                app:destination="@id/buy_electronics" />
-            <action
-                android:id="@+id/action_activity_list_to_other_purchases"
-                app:destination="@id/other_purchases" />
-            <action
-                android:id="@+id/action_activity_list_to_energy_bills"
-                app:destination="@id/energy_bills" />
-        </fragment>
+    <fragment
+        android:id="@+id/drive_personal_vehicle"
+        android:name="com.example.planetze.ui.eco_tracker.DrivePersonalVehicleFragment"
+        android:label="Drive Personal Vehicle Activity"
+        tools:layout="@layout/fragment_drive_personal_vehicle" />
 
-        <fragment
-            android:id="@+id/drive_personal_vehicle"
-            android:name="com.example.planetze.ui.eco_tracker.DrivePersonalVehicleFragment"
-            android:label="Drive Personal Vehicle Activity"
-            tools:layout="@layout/fragment_drive_personal_vehicle" />
+    <fragment
+        android:id="@+id/take_public_transportation"
+        android:name="com.example.planetze.ui.eco_tracker.TakePublicTransportationFragment"
+        android:label="Take Public Transportation Activity"
+        tools:layout="@layout/fragment_take_public_transportation" />
 
-        <fragment
-            android:id="@+id/take_public_transportation"
-            android:name="com.example.planetze.ui.eco_tracker.TakePublicTransportationFragment"
-            android:label="Take Public Transportation Activity"
-            tools:layout="@layout/fragment_take_public_transportation" />
+    <fragment
+        android:id="@+id/cycling_or_walking"
+        android:name="com.example.planetze.ui.eco_tracker.CyclingOrWalkingFragment"
+        android:label="Cycling or Walking Activity"
+        tools:layout="@layout/fragment_cycling_or_walking" />
 
-        <fragment
-            android:id="@+id/cycling_or_walking"
-            android:name="com.example.planetze.ui.eco_tracker.CyclingOrWalkingFragment"
-            android:label="Cycling or Walking Activity"
-            tools:layout="@layout/fragment_cycling_or_walking" />
+    <fragment
+        android:id="@+id/flight"
+        android:name="com.example.planetze.ui.eco_tracker.FlightFragment"
+        android:label="Flight Activity"
+        tools:layout="@layout/fragment_flight" />
 
-        <fragment
-            android:id="@+id/flight"
-            android:name="com.example.planetze.ui.eco_tracker.FlightFragment"
-            android:label="Flight Activity"
-            tools:layout="@layout/fragment_flight" />
+    <fragment
+        android:id="@+id/meal"
+        android:name="com.example.planetze.ui.eco_tracker.MealFragment"
+        android:label="Meal Activity"
+        tools:layout="@layout/fragment_meal" />
 
-        <fragment
-            android:id="@+id/meal"
-            android:name="com.example.planetze.ui.eco_tracker.MealFragment"
-            android:label="Meal Activity"
-            tools:layout="@layout/fragment_meal" />
+    <fragment
+        android:id="@+id/buy_new_clothes"
+        android:name="com.example.planetze.ui.eco_tracker.BuyNewClothesFragment"
+        android:label="Buy New Clothes Activity"
+        tools:layout="@layout/fragment_buy_new_clothes" />
 
-        <fragment
-            android:id="@+id/buy_new_clothes"
-            android:name="com.example.planetze.ui.eco_tracker.BuyNewClothesFragment"
-            android:label="Buy New Clothes Activity"
-            tools:layout="@layout/fragment_buy_new_clothes" />
+    <fragment
+        android:id="@+id/buy_electronics"
+        android:name="com.example.planetze.ui.eco_tracker.BuyElectronicsFragment"
+        android:label="Buy Electronics Activity"
+        tools:layout="@layout/fragment_buy_electronics" />
 
-        <fragment
-            android:id="@+id/buy_electronics"
-            android:name="com.example.planetze.ui.eco_tracker.BuyElectronicsFragment"
-            android:label="Buy Electronics Activity"
-            tools:layout="@layout/fragment_buy_electronics" />
+    <fragment
+        android:id="@+id/other_purchases"
+        android:name="com.example.planetze.ui.eco_tracker.OtherPurchasesFragment"
+        android:label="Other purchases Activity"
+        tools:layout="@layout/fragment_other_purchases" />
 
-        <fragment
-            android:id="@+id/other_purchases"
-            android:name="com.example.planetze.ui.eco_tracker.OtherPurchasesFragment"
-            android:label="Other purchases Activity"
-            tools:layout="@layout/fragment_other_purchases" />
+    <fragment
+        android:id="@+id/energy_bills"
+        android:name="com.example.planetze.ui.eco_tracker.EnergyBillsFragment"
+        android:label="Energy Bills Activity"
+        tools:layout="@layout/fragment_energy_bills" />
 
-        <fragment
-            android:id="@+id/energy_bills"
-            android:name="com.example.planetze.ui.eco_tracker.EnergyBillsFragment"
-            android:label="Energy Bills Activity"
-            tools:layout="@layout/fragment_energy_bills" />
-
-    </navigation>
 
 </navigation>

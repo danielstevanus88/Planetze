@@ -50,8 +50,6 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
             type = originalOption;
         }
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;

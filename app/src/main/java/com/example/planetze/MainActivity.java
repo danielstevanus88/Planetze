@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -79,13 +80,18 @@ public class MainActivity extends AppCompatActivity {
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.eco_tracker) {
+                binding.backButton.setVisibility(View.GONE);
                 binding.pageTitle.setText(getResources().getString(R.string.eco_tracker));
             } else if (destination.getId() == R.id.eco_gauge) {
+                binding.backButton.setVisibility(View.GONE);
                 binding.pageTitle.setText(getResources().getString(R.string.eco_gauge));
             } else if (destination.getId() == R.id.eco_balance) {
+                binding.backButton.setVisibility(View.GONE);
                 binding.pageTitle.setText(getResources().getString(R.string.eco_balance));
             } else if (destination.getId() == R.id.navigation_profile) {
                 binding.pageTitle.setText(getResources().getString(R.string.profile));
+            } else {
+                binding.backButton.setVisibility(View.VISIBLE);
             }
         });
     }

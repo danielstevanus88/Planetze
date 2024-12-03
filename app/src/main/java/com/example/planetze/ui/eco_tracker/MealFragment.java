@@ -39,8 +39,6 @@ public class MealFragment extends BaseActivityFragment {
 
         setOnClickListeners();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;

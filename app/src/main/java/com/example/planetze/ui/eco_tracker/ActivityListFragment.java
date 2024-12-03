@@ -39,7 +39,6 @@ public class ActivityListFragment extends Fragment {
 
     private void navigateToFragment(int fragmentId) {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.eco_tracker_navigation);
         navController.navigate(fragmentId);
     }
 }

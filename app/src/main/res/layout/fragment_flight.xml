@@ -55,14 +55,9 @@
             <LinearLayout style="@style/FormNav">
 
                 <Button
-                    android:id="@+id/back"
-                    style="@style/FormButton"
-                    android:text="@string/back" />
-
-                <Button
                     android:id="@+id/submit"
                     style="@style/FormButton"
-                    android:text="@string/submit" />
+                    android:text="@string/add_activity" />
             </LinearLayout>
 
         </LinearLayout>

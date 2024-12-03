@@ -45,7 +45,6 @@ public class ViewGenerator {
                 Bundle args = new Bundle();
 
                 args.putSerializable("dailyActivity", activity);
-                navController.navigate(R.id.eco_tracker_navigation);
 
                 if (activity.getTypeId() == EcoTrackerActivityConstant.ID_DRIVE_PERSONAL_VEHICLE) {
                     navController.navigate(R.id.drive_personal_vehicle, args);

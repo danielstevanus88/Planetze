@@ -28,8 +28,6 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
         binding = FragmentBuyElectronicsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;

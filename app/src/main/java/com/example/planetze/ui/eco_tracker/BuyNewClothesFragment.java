@@ -27,8 +27,6 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
         binding = FragmentBuyNewClothesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;
