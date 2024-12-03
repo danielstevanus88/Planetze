@@ -249,5 +249,6 @@
     <string name="eco_gauge">Eco Gauge</string>
     <string name="eco_balance">Eco Balance</string>
     <string name="profile">Profile</string>
+    <string name="user_details">User details</string>
 
 </resources>

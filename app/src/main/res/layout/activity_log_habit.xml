@@ -9,38 +9,42 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/title"
+            <LinearLayout
+                android:id="@+id/HabitProgressTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/habit_progress"
-                android:textAlignment="center"
-                android:textColor="#009999"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/habit_progress" />
+
+                <View style="@style/FormLine" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_margin="16dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/spinnerHabit"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_gravity="center"
                     android:spinnerMode="dropdown" />
 
@@ -51,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins"
                 android:gravity="center" />
 
             <com.applandeo.materialcalendarview.CalendarView
@@ -67,57 +72,60 @@
                 app:selectionDisabled="true"
                 app:type="many_days_picker" />
 
-            <TextView
-                android:id="@+id/title3"
+            <LinearLayout
+                android:id="@+id/LogHabitsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/logging_current_habit"
-                android:textAlignment="center"
-                android:textColor="#009999"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/logging_current_habit" />
+
+                <View style="@style/FormLine" />
+
+            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/DateSelectorContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center|left"
-                android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="1dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/buttonPickDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
                     android:animationCache="false"
+                    android:background="@drawable/nav_button"
                     android:clickable="true"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal">
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
 
                     <ImageView
                         android:id="@+id/imageButtonCalendar"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0"
-                        app:srcCompat="@drawable/planetze_calender"
-                        app:tint="#000000" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_margin="16dp"
+                        app:srcCompat="@drawable/planetze_calender" />
 
                     <EditText
                         android:id="@+id/editTextDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="56dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/white"
+                        android:ems="8"
+                        android:fontFamily="@font/poppins"
                         android:hint="mm/dd/yyyy"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="@color/white"
+                        android:textColorHint="@color/white" />
 
                 </LinearLayout>
 
@@ -128,34 +136,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/habit_completion_confirmation" />
+                android:layout_margin="16dp"
+                android:text="@string/habit_completion_confirmation"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/logHabit"
                 style="@style/FormButton"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/confirm" />
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/CompleteHabitTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/Complete_Habit"
-                android:textAlignment="center"
-                android:textColor="#009999"
-                android:textSize="30sp"
-                android:textStyle="bold">
+                android:orientation="vertical">
 
-            </TextView>
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/Complete_Habit" />
+
+                <View style="@style/FormLine" />
+
+            </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
                 android:orientation="horizontal">
 
                 <Button

@@ -157,9 +157,9 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);
 
         // Reset the view (Empty all view, except the first two child (title and "no activity" text)
-        ViewGenerator.removeAllChildExceptTheFirstXChild(layoutConsumption, 2);
-        ViewGenerator.removeAllChildExceptTheFirstXChild(layoutFood, 2);
-        ViewGenerator.removeAllChildExceptTheFirstXChild(layoutTransportation, 2);
+        ViewGenerator.removeViewsFromIndex(layoutConsumption, 2);
+        ViewGenerator.removeViewsFromIndex(layoutFood, 2);
+        ViewGenerator.removeViewsFromIndex(layoutTransportation, 2);
 
         User currentUser = LoginManager.getCurrentUser();
         HashMap<Date, List<DailyActivity>> allActivities =
@@ -173,7 +173,7 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
             List<DailyActivity> dailyActivities = allActivities.get(date);
             if (dailyActivities == null) continue;
             for (DailyActivity activity : dailyActivities) {
-                CardView cardView = ViewGenerator.createDailyACtivityCardView(view, activity, context);
+                CardView cardView = ViewGenerator.createDailyActivityCardView(view, activity, context);
                 if (Objects.equals(activity.getCategoryName(), "Food")) {
                     layoutFood.addView(cardView);
 
