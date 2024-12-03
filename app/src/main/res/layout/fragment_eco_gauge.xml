@@ -24,6 +24,8 @@ tools:context=".ui.eco_gauge.EcoGaugeFragment"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="sans-serif-medium"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="Choose the time period of your emissions"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -35,11 +37,93 @@ tools:context=".ui.eco_gauge.EcoGaugeFragment"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#009688"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <TextView
+                android:id="@+id/textHowLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="8dp"
+                android:paddingRight="10dp"
+                android:text="@string/annual_carbon_emission"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textPercentageLocal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_extra_bold"
+                        android:gravity="center"
+                        android:text="115%"
+                        android:textAlignment="center"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="32sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Locally"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textPercentageGlobal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_extra_bold"
+                        android:gravity="center"
+                        android:text="115%"
+                        android:textAlignment="center"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="32sp" />
+
+                    <TextView
+                        android:id="@+id/textViewGlobally"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Globally"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="350dp"
                 android:layout_margin="18dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="12dp"
@@ -48,12 +132,12 @@ tools:context=".ui.eco_gauge.EcoGaugeFragment"
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/emissionLineChart"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp" />
+                    android:layout_height="match_parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="550dp"
+                android:layout_height="350dp"
                 android:layout_margin="18dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="12dp"

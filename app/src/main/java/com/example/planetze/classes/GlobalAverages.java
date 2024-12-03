@@ -75,4 +75,11 @@ public class GlobalAverages {
 
         return averages[index];
     }
+    public static double getGlobalAverages(){
+        double ret = 0;
+        for (double average: averages){
+            ret = ret + average / averages.length;
+        }
+        return ret;
+    }
 }
