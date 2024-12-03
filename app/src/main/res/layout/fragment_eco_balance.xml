@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="64dp"
+    android:paddingBottom="64dp"
     tools:context=".ui.eco_balance.EcoBalanceFragment">
-
-    <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,21 +18,27 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Select A Project"
-                android:textColor="@color/primaryColor"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/SelectHabitTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/select_a_project" />
+
+                <View style="@style/FormLine" />
+
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/projectCard1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="true">
 
                 <LinearLayout
@@ -41,13 +46,13 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/box_border_radius_1"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="16dp">
 
                     <ImageView
                         android:id="@+id/imageView1"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/planetze_socialinequality"
                         android:visibility="visible" />

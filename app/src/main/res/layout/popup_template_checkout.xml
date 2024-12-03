@@ -13,31 +13,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="32dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <Button
+                <ImageView
                     android:id="@+id/buttonProjectBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Back" />
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/back"
+                    android:focusable="true"
+                    android:src="@drawable/arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/primaryColor" />
 
                 <TextView
                     android:id="@+id/textProjectTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Reforestation Project"
                     android:textAlignment="center"
                     android:textColor="@color/primaryColor"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </LinearLayout>
 
@@ -45,7 +59,7 @@
                 android:id="@+id/imageProject"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/planetze_socialinequality" />
 
@@ -53,21 +67,21 @@
                 android:id="@+id/textProjectLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/textProjectCost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/textProjectDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 android:text="TextView" />
 
             <LinearLayout
@@ -76,7 +90,7 @@
                 android:background="@color/primaryColor"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/textRate"
@@ -93,11 +107,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="32dp"
                 android:background="@color/accentColor"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,15 +120,15 @@
 
                     <EditText
                         android:id="@+id/editTextAmount"
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ems="10"
+                        android:ems="4"
                         android:hint="$20"
                         android:inputType="numberDecimal" />
 
                     <TextView
                         android:id="@+id/textCredits"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -130,10 +144,10 @@
                 android:id="@+id/googlePayButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
-                android:backgroundTintMode="src_in" />
+                android:backgroundTintMode="src_in"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </LinearLayout>
     </ScrollView>
 
