@@ -61,7 +61,44 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 - Explore the app and its features!
 
 ## Folder Structure
-<!-- TODO -->
+```
+Planetze/
+├── README.md                                 # Project documentation
+├── app/                                      # Main Android app module
+│   ├── build.gradle.kts                      # App-level Gradle build script
+│   ├── google-services.json                  # Firebase configuration file
+│   ├── proguard-rules.pro                    # ProGuard rules for release builds
+│   └── src/                                  # Source code directory
+│       ├── androidTest/                      # Instrumentation tests
+│       ├── main/                             # Main application code
+│       │   ├── AndroidManifest.xml           # App’s manifest file
+│       │   ├── assets/                       # Asset files (csv file)
+│       │   ├── ic_launcher-playstore.png     # Play Store app icon
+│       │   ├── java/                         # Java source code
+│       │   ├── planetze_logo-playstore.png   # Additional app graphics
+│       │   └── res/                          # Resources (layouts, drawables, strings, etc.)
+│       └── test/                             # Unit test code (test for login)
+├── build.gradle.kts                          # Project-level Gradle build script
+├── docs/                                     # Documentation assets (pull request template, app screenshot)
+├── gradle/                                   # Gradle wrapper and dependency configurations
+│   ├── libs.versions.toml                    # Dependency version catalog
+│   └── wrapper/                              # Gradle wrapper files
+├── gradle.properties                         # Gradle build properties
+├── gradlew                                   # Gradle wrapper script (Unix)
+├── gradlew.bat                               # Gradle wrapper script (Windows)
+├── local.properties                          # Local environment configuration
+└── settings.gradle.kts                       # Settings file for Gradle
+```
+
+### Key Directories and Files:
+- **`app/`**: Contains the Android application code and configurations.
+  - **`src/main/`**: Main source code for the app, including resources and the manifest.
+  - **`src/androidTest/`**: Instrumented tests for UI testing.
+  - **`src/test/`**: Unit tests folder containing the test for login.
+- **`docs/`**: Documentation assets like images and templates.
+- **`gradle/`**: Gradle wrapper files and dependency version management.
+- **`build.gradle.kts`**: Kotlin-based Gradle build configuration for the project.
+- **`README.md`**: Main project documentation.
 
 <!-- Not sure whether to add license -->
 
