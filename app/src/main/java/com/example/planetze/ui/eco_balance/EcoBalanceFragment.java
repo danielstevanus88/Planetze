@@ -263,7 +263,8 @@ public class EcoBalanceFragment extends Fragment {
             final String billingName = info.getJSONObject("billingAddress").getString("name");
 
             User user = LoginManager.getCurrentUser();
-            user.setCarbonCredits(user.getCarbonCredits() + carbonCreditsToCheckout);
+            double carbonCreditBefore = user.getCarbonCredits();
+            user.setCarbonCredits(carbonCreditBefore + carbonCreditsToCheckout);
             Toast.makeText(
                     getActivity(), "Payment Success",
                     Toast.LENGTH_LONG).show();

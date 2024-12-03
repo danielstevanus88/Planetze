@@ -146,5 +146,6 @@ public class User {
 
     public void setCarbonCredits(double carbonCredits) {
         this.carbonCredits = carbonCredits;
+//        userDatabaseManager.add(this);
     }
 }
