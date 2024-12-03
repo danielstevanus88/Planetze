@@ -39,12 +39,7 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
             binding.num.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
             binding.type.setText(editDailyActivity.getItemName());
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
         return view;
     }

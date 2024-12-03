@@ -1,8 +1,11 @@
 package com.example.planetze.ui.eco_tracker.activities;
 
+import android.view.View;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.DatabaseManager;

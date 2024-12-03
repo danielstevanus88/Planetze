@@ -38,12 +38,7 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
             binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
         return view;
     }

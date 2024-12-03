@@ -44,12 +44,7 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
             binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
             type = editDailyActivity.getType();
 
-            binding.back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    navigateToMain();
-                }
-            });
+
         }
 
 

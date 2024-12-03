@@ -38,7 +38,6 @@ public class BuyElectronicsFragment extends BaseActivityFragment {
             binding.type.setText(editDailyActivity.getItemName());
 
         }
-        binding.back.setOnClickListener(this::handleBackButtonClick);
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
         return view;
