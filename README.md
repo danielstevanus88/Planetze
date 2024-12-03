@@ -8,7 +8,6 @@ It provides real-time carbon footprint calculations, visual dashboards, and comp
 - [Description](#description)
 - [Project Overview](#project-overview)
   - [Key Features](#key-features)
-  - [App Preview](#app-preview)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Building from Source](#building-from-source)
