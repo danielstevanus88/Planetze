@@ -4,7 +4,8 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/chartBackground"
-tools:context=".ui.eco_gauge.EcoGaugeFragment">
+tools:context=".ui.eco_gauge.EcoGaugeFragment"
+    android:paddingBottom="75dp">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -46,13 +47,14 @@ tools:context=".ui.eco_gauge.EcoGaugeFragment">
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_margin="18dp"
+        android:layout_weight="1"
         app:cardCornerRadius="12dp"
         app:cardElevation="8dp">
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/emissions_bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="match_parent"
             android:padding="16dp" />
     </androidx.cardview.widget.CardView>
 
