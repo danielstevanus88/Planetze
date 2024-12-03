@@ -27,8 +27,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
         viewBinding = true
@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -50,11 +49,16 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.annotation)
     implementation(libs.activity)
-    implementation(libs.firebase.database)
     implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.legacy.support.v4)
+    implementation(libs.recyclerview)
+    implementation(libs.play.services.wallet)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    implementation(libs.github.glide)
+    annotationProcessor(libs.glide.compiler)
+    implementation(libs.mpandroidchart) // Add this line to add the MPAndroidChart library
+    implementation(libs.material.calendar.view)
     testImplementation(libs.mockito.core)
 }

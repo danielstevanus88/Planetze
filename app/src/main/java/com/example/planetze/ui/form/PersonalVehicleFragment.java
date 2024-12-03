@@ -10,21 +10,21 @@ import java.util.List;
 
 public class PersonalVehicleFragment extends BaseFormFragment<FragmentPersonalVehicleBinding> {
 
+    private List<Button> buttons2;
+    private List<Button> buttons3;
     private String q2, q3;
 
     @Override
     protected void setupClickListeners() {
-        binding.q2Option1.setOnClickListener(this::handleButtonClick);
-        binding.q2Option2.setOnClickListener(this::handleButtonClick);
-        binding.q2Option3.setOnClickListener(this::handleButtonClick);
-        binding.q2Option4.setOnClickListener(this::handleButtonClick);
-        binding.q2Option5.setOnClickListener(this::handleButtonClick);
-        binding.q3Option1.setOnClickListener(this::handleButtonClick);
-        binding.q3Option2.setOnClickListener(this::handleButtonClick);
-        binding.q3Option3.setOnClickListener(this::handleButtonClick);
-        binding.q3Option4.setOnClickListener(this::handleButtonClick);
-        binding.q3Option5.setOnClickListener(this::handleButtonClick);
-        binding.q3Option6.setOnClickListener(this::handleButtonClick);
+        buttons2 = Arrays.asList(binding.q2Option1, binding.q2Option2, binding.q2Option3, binding.q2Option4, binding.q2Option5);
+        buttons3 = Arrays.asList(binding.q3Option1, binding.q3Option2, binding.q3Option3, binding.q3Option4, binding.q3Option5, binding.q3Option6);
+
+        for (Button button : buttons2) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons3) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -42,9 +42,6 @@ public class PersonalVehicleFragment extends BaseFormFragment<FragmentPersonalVe
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons2 = Arrays.asList(binding.q2Option1, binding.q2Option2, binding.q2Option3, binding.q2Option4, binding.q2Option5);
-        List<Button> buttons3 = Arrays.asList(binding.q3Option1, binding.q3Option2, binding.q3Option3, binding.q3Option4, binding.q3Option5, binding.q3Option6);
-
         if (buttons2.contains(clickedButton)) {
             setButtons(buttons2, clickedButton);
             q2 = clickedButton.getText().toString();

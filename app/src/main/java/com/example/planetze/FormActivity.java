@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.example.planetze.classes.GlobalAverages;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.ui.form.CarbonInfoFragment;
-import com.example.planetze.ui.form.CountryFragment;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -28,17 +27,11 @@ public class FormActivity extends AppCompatActivity {
             return insets;
         });
 
-
         GlobalAverages.initialize(this);
 
 
-        if(LoginManager.getCurrentUser().hasFilledQuestionnaires()){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        } else{
-            showFragment(new CarbonInfoFragment());
-        }
+        showFragment(new CarbonInfoFragment());
+
     }
 
     public void showFragment(Fragment fragment) {

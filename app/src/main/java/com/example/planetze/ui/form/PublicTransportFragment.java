@@ -10,19 +10,21 @@ import java.util.List;
 
 public class PublicTransportFragment extends BaseFormFragment<FragmentPublicTransportBinding> {
 
+    private List<Button> buttons4;
+    private List<Button> buttons5;
     private String q4, q5;
 
     @Override
     protected void setupClickListeners() {
-        binding.q4Option1.setOnClickListener(this::handleButtonClick);
-        binding.q4Option2.setOnClickListener(this::handleButtonClick);
-        binding.q4Option3.setOnClickListener(this::handleButtonClick);
-        binding.q4Option4.setOnClickListener(this::handleButtonClick);
-        binding.q5Option1.setOnClickListener(this::handleButtonClick);
-        binding.q5Option2.setOnClickListener(this::handleButtonClick);
-        binding.q5Option3.setOnClickListener(this::handleButtonClick);
-        binding.q5Option4.setOnClickListener(this::handleButtonClick);
-        binding.q5Option5.setOnClickListener(this::handleButtonClick);
+        buttons4 = Arrays.asList(binding.q4Option1, binding.q4Option2, binding.q4Option3, binding.q4Option4);
+        buttons5 = Arrays.asList(binding.q5Option1, binding.q5Option2, binding.q5Option3, binding.q5Option4, binding.q5Option5);
+
+        for (Button button : buttons4) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons5) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -39,9 +41,6 @@ public class PublicTransportFragment extends BaseFormFragment<FragmentPublicTran
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons4 = Arrays.asList(binding.q4Option1, binding.q4Option2, binding.q4Option3, binding.q4Option4);
-        List<Button> buttons5 = Arrays.asList(binding.q5Option1, binding.q5Option2, binding.q5Option3, binding.q5Option4, binding.q5Option5);
-
         if (buttons4.contains(clickedButton)) {
             setButtons(buttons4, clickedButton);
             q4 = clickedButton.getText().toString();

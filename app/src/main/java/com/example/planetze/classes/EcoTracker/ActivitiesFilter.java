@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ActivitiesFilter {
-    public static Activities filterActivitiesByRangeOfDate(Activities activities, Date from, Date to){
-        HashMap<Date, List<DailyActivity>> activitiesMap = activities.getActivities();
+    public static HashMap<Date, List<DailyActivity>> filterActivitiesByRangeOfDate(HashMap<Date, List<DailyActivity>> activitiesMap, Date from, Date to){
         HashMap<Date, List<DailyActivity>> filteredActivities = new HashMap<>();
 
         for (HashMap.Entry<Date, List<DailyActivity>> entry : activitiesMap.entrySet()) {
@@ -19,12 +18,11 @@ public class ActivitiesFilter {
             }
         }
 
-        return new Activities(filteredActivities);
+        return filteredActivities;
     }
 
     // filter by category where category is checked by using instanceof a class
-    public static <T extends DailyActivity> Activities filterActivitiesByCategory(Activities activities, Class<? extends T> category){
-        HashMap<Date, List<DailyActivity>> activitiesMap = activities.getActivities();
+    public static <T extends DailyActivity> HashMap<Date, List<DailyActivity>> filterActivitiesByCategory(HashMap<Date, List<DailyActivity>> activitiesMap, Class<? extends T> category){
         HashMap<Date, List<DailyActivity>> filteredActivities = new HashMap<>();
 
         for (HashMap.Entry<Date, List<DailyActivity>> entry : activitiesMap.entrySet()) {
@@ -43,6 +41,6 @@ public class ActivitiesFilter {
             filteredActivities.put(date, filteredDailyActivities);
         }
 
-        return new Activities(filteredActivities);
+        return filteredActivities;
     }
 }

@@ -1,17 +1,18 @@
 package com.example.planetze.classes.EcoTracker.Category.Transportation;
 
+import static android.content.ContentValues.TAG;
+
+import android.util.Log;
+
+import com.example.planetze.classes.EcoTracker.Category.EcoTrackerActivityConstant;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.Car;
 
 public class DrivePersonalVehicle extends ActivityTransportation{
-    double distance;
-    Car car;
     public DrivePersonalVehicle(double distance, Car car){
         this.distance = distance;
         this.car = car;
-    }
-
-    @Override
-    public double getEmission(){
-        return car.getCO2perKilometer() * distance;
+        this.emission = car.getEmissionPerKilometer() * distance;
+        this.displayText = "Drive " + car.toString() + " (" + distance + "km)";
+        this.typeId = EcoTrackerActivityConstant.ID_DRIVE_PERSONAL_VEHICLE;
     }
 }

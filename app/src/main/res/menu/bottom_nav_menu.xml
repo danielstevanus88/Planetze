@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/eco_tracker"
         android:icon="@drawable/eco_tracker"
-        android:title="Eco Tracker" />
+        android:title="@string/eco_tracker" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/eco_gauge"
         android:icon="@drawable/eco_gauge"
-        android:title="Eco Gauge" />
+        android:title="@string/eco_gauge" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/eco_balance"
         android:icon="@drawable/eco_balance"
-        android:title="Eco Balance" />
+        android:title="@string/eco_balance" />
 
 </menu>

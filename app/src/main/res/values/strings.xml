@@ -4,11 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -18,13 +13,15 @@
     <!--    annual carbon footprints questions and options-->
     <string name="back">Back</string>
     <string name="next">Next</string>
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
     <string name="q1">1. Do you own or regularly use a car?</string>
     <string name="q2">2. What type of car do you drive?</string>
     <string name="q3">3. How many kilometers/miles do you drive per year?</string>
     <string name="q4">4. How often do you use public transportation (bus, train, subway)?</string>
     <string name="q5">5. How much time do you spend on public transport per week (bus, train, subway)?</string>
     <string name="q6">6. How many short-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
-    <string name="q7">6. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
+    <string name="q7">7. How many long-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?</string>
     <string name="q8">8. What best describes your diet?</string>
     <string name="q9">9. How often do you eat the following animal-based products?</string>
     <string name="q10">10. How often do you waste food or throw away uneaten leftovers?</string>
@@ -85,10 +82,10 @@
     <string name="other">Other</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
-    <string name="_3_4">3-4</string>
+    <string name="_3_4">3–4</string>
     <string name="_5_or_more">5 or more</string>
     <string name="under_1000_sq_ft">Under 1000 sq. ft.</string>
-    <string name="_1000_2000_sq_ft">1000-2000 sq. ft.</string>
+    <string name="_1000_2000_sq_ft">1000–2000 sq. ft.</string>
     <string name="over_2000_sq_ft">Over 2000 sq. ft.</string>
     <string name="natural_gas">Natural Gas</string>
     <string name="electricity">Electricity</string>
@@ -111,4 +108,149 @@
     <string name="alway">Always</string>
     <string name="location">Please specify your current location</string>
     <string name="country">Country</string>
+
+    <!--    Eco Tracker-->
+    <string name="daily_co2e_emissions">Daily CO2e Emissions</string>
+    <string name="total_co2e_emissions">Total CO2e Emissions</string>
+    <string name="transportation">Transportation Activities</string>
+    <string name="drive_personal_vehicle">Drive Personal Vehicle</string>
+    <string name="take_public_transportation">Take Public Transportation</string>
+    <string name="cycling_or_walking">Cycling or Walking</string>
+    <string name="flight">Flight (Short-Haul or Long-Haul)</string>
+    <string name="food">Food Consumption Activities</string>
+    <string name="meal">Meal</string>
+    <string name="consumption">Consumption and Shopping Activities</string>
+    <string name="buy_new_clothes">Buy New Clothes</string>
+    <string name="buy_electronics">Buy Electronics</string>
+    <string name="other_purchases">Other Purchases</string>
+    <string name="energy_bills">Energy Bills</string>
+    <string name="distance_driven_in_km">Distance driven in km</string>
+    <string name="type_of_public_transportation">Type of public transportation</string>
+    <string name="vehicle_type">Vehicle type</string>
+    <string name="time_spent_on_public_transportation">Time spent on public transportation</string>
+    <string name="time_spend_in_hours">Time spend in hours</string>
+    <string name="distance_driven">Distance driven</string>
+    <string name="bus">Bus</string>
+    <string name="train">Train</string>
+    <string name="subway">Subway</string>
+    <string name="distance_cycled_or_walked">Distance cycled or walked</string>
+    <string name="distance_in_km">Distance in km</string>
+    <string name="number_of_flights_taken_today">Number of flights taken today</string>
+    <string name="number_of_flights">Number of flights</string>
+    <string name="type_of_flight">Type of flight</string>
+    <string name="short_haul"><![CDATA[Short-haul (<1,500 km)]]></string>
+    <string name="long_haul"><![CDATA[Long-haul (>1,500 km)]]></string>
+    <string name="type_of_meal">Type of meal</string>
+    <string name="beef2">Beef</string>
+    <string name="pork2">Pork</string>
+    <string name="chicken2">Chicken</string>
+    <string name="fish2">Fish</string>
+    <string name="plant_based">Plant-based</string>
+    <string name="number_of_servings_consumed">Number of servings consumed</string>
+    <string name="number_of_servings">Number of servings</string>
+    <string name="number_of_clothing_items_purchased">Number of clothing items purchased</string>
+    <string name="number_of_clothes">Number of clothes</string>
+    <string name="type_of_electronic_device">Type of electronic device</string>
+    <string name="number_of_devices_purchased">Number of devices purchased</string>
+    <string name="type_of_purchase">Type of purchase</string>
+    <string name="number_of_the_purchases">Number of the purchases</string>
+    <string name="type_of_bill">Type of bill</string>
+    <string name="gas">Gas</string>
+    <string name="water">Water</string>
+    <string name="specific_bill_amount">Specific bill amount</string>
+    <string name="transport">Transportation</string>
+    <string name="food_consumption">Food Consumption</string>
+    <string name="consumption_and_shopping">Consumption and Shopping</string>
+    <string name="google_pay_status_unavailable">Google Pay Unavailable</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+    <string name="habit_completion_message">You have completed %1$d times during the past week</string>
+    <string name="habit_completion_confirmation">I have done this habit for the day</string>
+    <string name="logging_current_habit">Log Habits</string>
+    <string name="habit_progress">Habits Progress</string>
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="log_a_habit">Log a Habit</string>
+    <string name="select_an_habit">Select Habit</string>
+    <string name="date_format">mm-dd-yyyy</string>
+    <string name="choose_habit">Choose a Habit: </string>
+    <string name="mark_done">Mark as Done</string>
+    <string name="Complete_Habit">Complete Habit</string>
+    <string name="get_recommended_habits">Get Recommended Habits</string>
+    <string name="habit_suggestions">Habit Suggestions</string>
+    <string name="activity_management">Activity Management</string>
+    <string name="everyday">Everyday</string>
+    <string name="empowering_you_to_live_sustainability">Empowering You to\nLive Sustainability</string>
+    <string name="carbon_info_heading_1">What is Carbon Footprint</string>
+    <string name="carbon_info_heading_2">Why Carbon Footprints Matter</string>
+    <string name="carbon_info_heading_3">Conclusion</string>
+    <string name="carbon_info_heading_4">What\'s Next?</string>
+    <string name="carbon_info_sub_1">1. Climate Change</string>
+    <string name="carbon_info_sub_2">2. Health Impacts</string>
+    <string name="carbon_info_sub_3">3. Economic Strain</string>
+    <string name="carbon_info_sub_4">4. Social Inequality</string>
+    <string name="carbon_info_text_1">Carbon footprint is the total amount of greenhouse gases, especially carbon dioxide (CO₂), emitted directly or indirectly by one\'s activities. These emissions contribute to climate change and are measured in tons of CO₂ equivalents.</string>
+    <string name="carbon_info_text_2">Greenhouse gases trap heat in the atmosphere, causing global warming, extreme weather events and also lead to environmental degradation such as rising sea levels, habitat loss.</string>
+    <string name="carbon_info_text_3">Emissions from fossil fuels release pollutants harmful to health, causing respiratory and cardiovascular issues.</string>
+    <string name="carbon_info_text_4">Climate-related disasters burden global economies, especially in regions less able to recover.</string>
+    <string name="carbon_info_text_5">Vulnerable communities face the harshest impacts of climate change.</string>
+    <string name="carbon_info_text_6">By making sustainable choices like using renewable energy, reducing waste, and supporting environmental policies, you can play a crucial role in combating climate change and creating a healthier, more sustainable future for everyone.</string>
+    <string name="carbon_info_text_7">You\'re about to fill a one-time questionnaires to calculate your annual carbon footprints.</string>
+    <string name="get_started">Get Started</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="back_cap">BACK</string>
+    <string name="welcome_to_planetze">Welcome to Planetze</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirmation_password">Confirmation Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset">Reset</string>
+    <string name="eco_tracker">Eco Tracker</string>
+    <string name="eco_gauge">Eco Gauge</string>
+    <string name="eco_balance">Eco Balance</string>
+    <string name="profile">Profile</string>
+    <string name="user_details">User details</string>
+    <string name="add_activity">Add Activity</string>
+    <string name="select_a_project">Select A Project</string>
+
 </resources>

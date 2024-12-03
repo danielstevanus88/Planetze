@@ -10,12 +10,15 @@ import java.util.List;
 
 public class TransportationFragment extends BaseFormFragment<FragmentTransportationBinding> {
 
+    private List<Button> buttons1;
     private String q1;
 
     @Override
     protected void setupClickListeners() {
-        binding.q1Option1.setOnClickListener(this::handleButtonClick);
-        binding.q1Option2.setOnClickListener(this::handleButtonClick);
+        buttons1 = Arrays.asList(binding.q1Option1, binding.q1Option2);
+        for (Button button : buttons1) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -39,8 +42,6 @@ public class TransportationFragment extends BaseFormFragment<FragmentTransportat
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons1 = Arrays.asList(binding.q1Option1, binding.q1Option2);
-
         if (buttons1.contains(clickedButton)) {
             setButtons(buttons1, clickedButton);
             q1 = clickedButton.getText().toString();

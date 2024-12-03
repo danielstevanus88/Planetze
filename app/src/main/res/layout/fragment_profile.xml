@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="64dp"
+    android:paddingBottom="64dp"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="bottom"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="@string/user_details"
+            android:textColor="@color/alternativeDarkColor"
+            android:textSize="20sp" />
+
+        <View style="@style/FormLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/ProfileBox">
+
+                <TextView
+                    android:id="@+id/textName"
+                    style="@style/ProfileTitle"
+                    android:text="@string/name" />
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    style="@style/ProfileInfo"
+                    android:inputType="text"
+                    android:text="Daniel Stevanus" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ProfileBox">
+
+                <TextView
+                    android:id="@+id/textEmail"
+                    style="@style/ProfileTitle"
+                    android:text="@string/email" />
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    style="@style/ProfileInfo"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:text="danielstevanus89@gmail.com" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ProfileBox">
+
+                <TextView
+                    android:id="@+id/textAnnualCarbon"
+                    style="@style/ProfileTitle"
+                    android:text="Annual CO2" />
+
+                <EditText
+                    android:id="@+id/editTextAnnualCarbon"
+                    style="@style/ProfileInfo"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:text="50kg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ProfileBox">
+
+                <TextView
+                    android:id="@+id/textCarbonCredit"
+                    style="@style/ProfileTitle"
+                    android:text="Carbon Credits" />
+
+                <EditText
+                    android:id="@+id/editTextCarbonCredit"
+                    style="@style/ProfileInfo"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:text="0.24" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </Space>
+
+        <Button
+            android:id="@+id/buttonRecalculate"
+            style="@style/FormButton"
+            android:layout_weight="0"
+            android:text="Recalculate Annual Carbon Emission" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            style="@style/FormButton"
+            android:layout_weight="0"
+            android:backgroundTint="@color/secondary2"
+            android:text="Logout"
+            android:textColor="@color/primaryColor" />
+    </LinearLayout>
+</FrameLayout>

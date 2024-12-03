@@ -10,30 +10,31 @@ import java.util.List;
 
 public class EnergyFragment extends BaseFormFragment<FragmentEnergyBinding> { // TODO: Replace with actual fragment name
 
+    private List<Button> buttons14;
+    private List<Button> buttons15;
+    private List<Button> buttons16;
+    private List<Button> buttons17;
     private String q14, q15, q16, q17;
 
     @Override
     protected void setupClickListeners() {
-        binding.q14Option1.setOnClickListener(this::handleButtonClick);
-        binding.q14Option2.setOnClickListener(this::handleButtonClick);
-        binding.q14Option3.setOnClickListener(this::handleButtonClick);
-        binding.q14Option4.setOnClickListener(this::handleButtonClick);
-        binding.q14Option5.setOnClickListener(this::handleButtonClick);
-        binding.q14Option6.setOnClickListener(this::handleButtonClick);
-        binding.q15Option1.setOnClickListener(this::handleButtonClick);
-        binding.q15Option2.setOnClickListener(this::handleButtonClick);
-        binding.q15Option3.setOnClickListener(this::handleButtonClick);
-        binding.q15Option4.setOnClickListener(this::handleButtonClick);
-        binding.q15Option5.setOnClickListener(this::handleButtonClick);
-        binding.q16Option1.setOnClickListener(this::handleButtonClick);
-        binding.q16Option2.setOnClickListener(this::handleButtonClick);
-        binding.q16Option3.setOnClickListener(this::handleButtonClick);
-        binding.q16Option4.setOnClickListener(this::handleButtonClick);
-        binding.q16Option5.setOnClickListener(this::handleButtonClick);
-        binding.q16Option6.setOnClickListener(this::handleButtonClick);
-        binding.q17Option1.setOnClickListener(this::handleButtonClick);
-        binding.q17Option2.setOnClickListener(this::handleButtonClick);
-        binding.q17Option3.setOnClickListener(this::handleButtonClick);
+        buttons14 = Arrays.asList(binding.q14Option1, binding.q14Option2, binding.q14Option3, binding.q14Option4, binding.q14Option5, binding.q14Option6);
+        buttons15 = Arrays.asList(binding.q15Option1, binding.q15Option2, binding.q15Option3, binding.q15Option4, binding.q15Option5);
+        buttons16 = Arrays.asList(binding.q16Option1, binding.q16Option2, binding.q16Option3, binding.q16Option4, binding.q16Option5, binding.q16Option6);
+        buttons17 = Arrays.asList(binding.q17Option1, binding.q17Option2, binding.q17Option3);
+
+        for (Button button : buttons14) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons15) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons16) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons17) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -53,11 +54,6 @@ public class EnergyFragment extends BaseFormFragment<FragmentEnergyBinding> { //
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons14 = Arrays.asList(binding.q14Option1, binding.q14Option2, binding.q14Option3, binding.q14Option4, binding.q14Option5, binding.q14Option6);
-        List<Button> buttons15 = Arrays.asList(binding.q15Option1, binding.q15Option2, binding.q15Option3, binding.q15Option4, binding.q15Option5);
-        List<Button> buttons16 = Arrays.asList(binding.q16Option1, binding.q16Option2, binding.q16Option3, binding.q16Option4, binding.q16Option5, binding.q16Option6);
-        List<Button> buttons17 = Arrays.asList(binding.q17Option1, binding.q17Option2, binding.q17Option3);
-
         if (buttons14.contains(clickedButton)) {
             setButtons(buttons14, clickedButton);
             q14 = clickedButton.getText().toString();

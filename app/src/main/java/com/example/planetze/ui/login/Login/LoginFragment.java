@@ -1,15 +1,20 @@
 package com.example.planetze.ui.login.Login;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.planetze.FormActivity;
+import com.example.planetze.LoginActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.DatabaseManager;
@@ -39,7 +44,6 @@ public class LoginFragment extends Fragment implements Contract.View{
     // MVP - Presenter
     private Contract.Presenter presenter;
 
-    private DatabaseManager databaseManager = UserDatabaseManager.getInstance();
     // Current View (This part is necessary as LoginFragment is a Fragment not a class)
     // So that we can findViewById through the view methods.
     private View view;
@@ -125,27 +129,53 @@ public class LoginFragment extends Fragment implements Contract.View{
     }
 
     @Override
-    public void showMessage(String message){
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    public void showMessage(String title, String message){
+        // Show dialog, confirmation of exiting the app
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
     public void onLoginSuccess(){
-        databaseManager =  UserDatabaseManager.getInstance();
+        DatabaseManager<User> databaseManager = UserDatabaseManager.getInstance();
         databaseManager.find(loginManager.getCurrentUserUid()).addOnCompleteListener(
                 task -> {
                     if (task.isSuccessful()) {
                         DataSnapshot dataSnapshot = (DataSnapshot) task.getResult();
-                        loginManager.setCurrentUser(dataSnapshot.getValue(User.class));
 
-                        Intent intent = new Intent(getActivity(), FormActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
+                        User user = dataSnapshot.getValue(User.class);
+                        LoginManager.setCurrentUser(user);
+
+
+                        if(!user.hasFilledQuestionnaires()) {
+                            Intent intent = new Intent(getActivity(), FormActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        } else {
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
                     } else {
                         Toast.makeText(getActivity(), "Failed to retrieve user data", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
+    }
+
+    @Override
+    public void onLoginNotVerified(){
+        showMessage("Verification link has been sent!", "We have send the verification link to your inbox. Please check your inbox.");
+
     }
 
     @Override

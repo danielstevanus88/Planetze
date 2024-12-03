@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ActivitiesCalculator {
-    public static double calculateTotalEmission(Activities activities){
-        HashMap<Date, List<DailyActivity>> activitiesMap = activities.getActivities();
+    public static double calculateTotalEmission(HashMap<Date, List<DailyActivity>> activitiesMap){
         
         double totalEmission = 0;
         for(Date date : activitiesMap.keySet()){
@@ -16,16 +15,16 @@ public class ActivitiesCalculator {
                 totalEmission += activity.getEmission();
             }
         }
-
         return totalEmission;
     }
 
-    public static int getNumberOfDay(Activities activities){
-        HashMap<Date, List<DailyActivity>> activitiesMap = activities.getActivities();
+
+
+    public static int getNumberOfDay(HashMap<Date, List<DailyActivity>> activitiesMap){
         return activitiesMap.size();
     }
 
-    public static double getDailyEmissionAverage(Activities activities){
+    public static double getDailyEmissionAverage(HashMap<Date, List<DailyActivity>> activities){
         return calculateTotalEmission(activities)/getNumberOfDay(activities);
     }
     

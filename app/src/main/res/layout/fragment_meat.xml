@@ -16,13 +16,13 @@
 
                 <TextView
                     android:id="@+id/q9"
-                    style="@style/FormQuestion"
+                    style="@style/Header1"
                     android:text="@string/q9" />
 
                 <View style="@style/FormLine" />
 
                 <TextView
-                    style="@style/FormQuestion"
+                    style="@style/Header2"
                     android:text="@string/beef" />
 
                 <Button
@@ -50,7 +50,7 @@
             <LinearLayout style="@style/FormBox">
 
                 <TextView
-                    style="@style/FormQuestion"
+                    style="@style/Header2"
                     android:text="@string/pork" />
 
                 <Button
@@ -78,7 +78,7 @@
             <LinearLayout style="@style/FormBox">
 
                 <TextView
-                    style="@style/FormQuestion"
+                    style="@style/Header2"
                     android:text="@string/chicken" />
 
                 <Button
@@ -106,7 +106,7 @@
             <LinearLayout style="@style/FormBox">
 
                 <TextView
-                    style="@style/FormQuestion"
+                    style="@style/Header2"
                     android:text="@string/fish" />
 
                 <Button

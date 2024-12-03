@@ -10,26 +10,31 @@ import java.util.List;
 
 public class MeatFragment extends BaseFormFragment<FragmentMeatBinding> {
 
+    private List<Button> buttons9a;
+    private List<Button> buttons9b;
+    private List<Button> buttons9c;
+    private List<Button> buttons9d;
     private String q9a, q9b, q9c, q9d;
 
     @Override
     protected void setupClickListeners() {
-        binding.q9aOption1.setOnClickListener(this::handleButtonClick);
-        binding.q9aOption2.setOnClickListener(this::handleButtonClick);
-        binding.q9aOption3.setOnClickListener(this::handleButtonClick);
-        binding.q9aOption4.setOnClickListener(this::handleButtonClick);
-        binding.q9bOption1.setOnClickListener(this::handleButtonClick);
-        binding.q9bOption2.setOnClickListener(this::handleButtonClick);
-        binding.q9bOption3.setOnClickListener(this::handleButtonClick);
-        binding.q9bOption4.setOnClickListener(this::handleButtonClick);
-        binding.q9cOption1.setOnClickListener(this::handleButtonClick);
-        binding.q9cOption2.setOnClickListener(this::handleButtonClick);
-        binding.q9cOption3.setOnClickListener(this::handleButtonClick);
-        binding.q9cOption4.setOnClickListener(this::handleButtonClick);
-        binding.q9dOption1.setOnClickListener(this::handleButtonClick);
-        binding.q9dOption2.setOnClickListener(this::handleButtonClick);
-        binding.q9dOption3.setOnClickListener(this::handleButtonClick);
-        binding.q9dOption4.setOnClickListener(this::handleButtonClick);
+        buttons9a = Arrays.asList(binding.q9aOption1, binding.q9aOption2, binding.q9aOption3, binding.q9aOption4);
+        buttons9b = Arrays.asList(binding.q9bOption1, binding.q9bOption2, binding.q9bOption3, binding.q9bOption4);
+        buttons9c = Arrays.asList(binding.q9cOption1, binding.q9cOption2, binding.q9cOption3, binding.q9cOption4);
+        buttons9d = Arrays.asList(binding.q9dOption1, binding.q9dOption2, binding.q9dOption3, binding.q9dOption4);
+
+        for (Button button : buttons9a) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons9b) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons9c) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
+        for (Button button : buttons9d) {
+            button.setOnClickListener(this::handleButtonClick);
+        }
         binding.back.setOnClickListener(this::handleButtonClick);
         binding.next.setOnClickListener(this::handleButtonClick);
     }
@@ -47,11 +52,6 @@ public class MeatFragment extends BaseFormFragment<FragmentMeatBinding> {
 
     @Override
     protected void handleOptionButtonClick(Button clickedButton) {
-        List<Button> buttons9a = Arrays.asList(binding.q9aOption1, binding.q9aOption2, binding.q9aOption3, binding.q9aOption4);
-        List<Button> buttons9b = Arrays.asList(binding.q9bOption1, binding.q9bOption2, binding.q9bOption3, binding.q9bOption4);
-        List<Button> buttons9c = Arrays.asList(binding.q9cOption1, binding.q9cOption2, binding.q9cOption3, binding.q9cOption4);
-        List<Button> buttons9d = Arrays.asList(binding.q9dOption1, binding.q9dOption2, binding.q9dOption3, binding.q9dOption4);
-
         if (buttons9a.contains(clickedButton)) {
             setButtons(buttons9a, clickedButton);
             q9a = clickedButton.getText().toString();

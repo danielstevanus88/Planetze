@@ -13,6 +13,7 @@ public class LoginManager implements Contract.Model{
     private static User currentUser;
     private LoginManager(){
         mAuth = FirebaseAuth.getInstance();
+
     }
 
     public static LoginManager getInstance(){
@@ -23,10 +24,20 @@ public class LoginManager implements Contract.Model{
         return loginManager;
     }
 
-    public Task<AuthResult> login(String email, String password){
+    @Override
+    public Task<AuthResult> login(String email, String password) {
         return mAuth.signInWithEmailAndPassword(email, password);
     }
 
+    @Override
+    public boolean isUserVerified() {
+        return getCurrentFirebaseUser().isEmailVerified();
+    }
+
+    @Override
+    public void sendVerificationEmail(){
+        getCurrentFirebaseUser().sendEmailVerification();
+    }
     public Task<AuthResult> register(String email, String password){
         return mAuth.createUserWithEmailAndPassword(email, password);
     }
@@ -37,13 +48,17 @@ public class LoginManager implements Contract.Model{
 
     public void logout(){
         mAuth.signOut();
+        currentUser = null;
     }
-
     public String getCurrentUserUid(){
         return mAuth.getUid();
     }
 
     public static void setCurrentUser(User user){
+        // Will be called only when user logged in successfully
+        if(currentUser == null) {
+            UserDatabaseManager.setListenerToUser(user);
+        }
         currentUser = user;
     }
 

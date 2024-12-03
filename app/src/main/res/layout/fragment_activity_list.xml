@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingTop="64dp"
+    android:paddingBottom="64dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/FormContainer">
+
+                <LinearLayout style="@style/FormBox">
+
+                    <TextView
+                        style="@style/Header1"
+                        android:text="@string/transportation" />
+
+                    <View style="@style/FormLine" />
+
+                    <Button
+                        android:id="@+id/t1"
+                        style="@style/FormOption"
+                        android:text="@string/drive_personal_vehicle" />
+
+                    <Button
+                        android:id="@+id/t2"
+                        style="@style/FormOption"
+                        android:text="@string/take_public_transportation" />
+
+                    <Button
+                        android:id="@+id/t3"
+                        style="@style/FormOption"
+                        android:text="@string/cycling_or_walking" />
+
+                    <Button
+                        android:id="@+id/t4"
+                        style="@style/FormOption"
+                        android:text="@string/flight" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/FormBox">
+
+                    <TextView
+                        style="@style/Header1"
+                        android:text="@string/food" />
+
+                    <View style="@style/FormLine" />
+
+                    <Button
+                        android:id="@+id/f1"
+                        style="@style/FormOption"
+                        android:text="@string/meal" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/FormBox">
+
+                    <TextView
+                        style="@style/Header1"
+                        android:text="@string/consumption" />
+
+                    <View style="@style/FormLine" />
+
+                    <Button
+                        android:id="@+id/c1"
+                        style="@style/FormOption"
+                        android:text="@string/buy_new_clothes" />
+
+                    <Button
+                        android:id="@+id/c2"
+                        style="@style/FormOption"
+                        android:text="@string/buy_electronics" />
+
+                    <Button
+                        android:id="@+id/c3"
+                        style="@style/FormOption"
+                        android:text="@string/other_purchases" />
+
+                    <Button
+                        android:id="@+id/c4"
+                        style="@style/FormOption"
+                        android:text="@string/energy_bills" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

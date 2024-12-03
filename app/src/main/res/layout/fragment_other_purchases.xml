@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingTop="64dp"
+    android:paddingBottom="64dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/FormContainer">
+
+            <LinearLayout style="@style/FormBox">
+
+                <TextView
+                    style="@style/Header1"
+                    android:text="@string/other_purchases" />
+
+                <View style="@style/FormLine" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/type_of_purchase" />
+
+                <EditText
+                    android:id="@+id/type"
+                    style="@style/Input"
+                    android:hint="@string/type_of_purchase" />
+
+                <TextView
+                    style="@style/Header2"
+                    android:text="@string/number_of_the_purchases" />
+
+                <EditText
+                    android:id="@+id/num"
+                    style="@style/Input"
+                    android:hint="@string/number_of_the_purchases" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"></Space>
+
+            <LinearLayout style="@style/FormNav">
+
+                <Button
+                    android:id="@+id/submit"
+                    style="@style/FormButton"
+                    android:text="@string/add_activity" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
