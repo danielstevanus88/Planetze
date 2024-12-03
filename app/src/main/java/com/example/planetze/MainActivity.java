@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupTopBanner() {
+        binding.backButton.setOnClickListener(v -> {
+            navController.navigateUp();
+        });
+
         binding.profileButton.setOnClickListener(v -> {
             navController.navigate(R.id.navigation_profile);
         });
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.pageTitle.setText(getResources().getString(R.string.eco_tracker));
             } else if (destination.getId() == R.id.eco_gauge) {
                 binding.pageTitle.setText(getResources().getString(R.string.eco_gauge));
-                } else if (destination.getId() == R.id.eco_balance) {
+            } else if (destination.getId() == R.id.eco_balance) {
                 binding.pageTitle.setText(getResources().getString(R.string.eco_balance));
             } else if (destination.getId() == R.id.navigation_profile) {
                 binding.pageTitle.setText(getResources().getString(R.string.profile));

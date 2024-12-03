@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+    </style>
+
     <style name="FormContainer" parent="TextAppearance.AppCompat">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -185,7 +190,18 @@
         <item name="android:background">#00FFFFFF</item>
     </style>
 
-
+    <style name="SectionTitle" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">@color/alternativeDarkColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
 
     <style name="AddButton" parent="TextAppearance.AppCompat">
         <item name="android:layout_width">56dp</item>

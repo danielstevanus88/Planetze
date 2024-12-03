@@ -35,17 +35,9 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        style="@style/SectionTitle"
                         android:layout_height="53dp"
-                        android:layout_gravity="start"
-                        android:fontFamily="@font/poppins_semi_bold"
-                        android:gravity="bottom"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/daily_co2e_emissions"
-                        android:textColor="@color/alternativeDarkColor"
-                        android:textSize="20sp" />
+                        android:text="@string/daily_co2e_emissions" />
 
                     <View style="@style/FormLine" />
 
@@ -138,16 +130,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:gravity="bottom"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/activity_management"
-                    android:textColor="@color/alternativeDarkColor"
-                    android:textSize="20sp" />
+                    style="@style/SectionTitle"
+                    android:text="@string/activity_management" />
 
                 <View style="@style/FormLine" />
 
@@ -307,16 +291,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:gravity="bottom"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/habit_suggestions"
-                    android:textColor="@color/alternativeDarkColor"
-                    android:textSize="20sp" />
+                    style="@style/SectionTitle"
+                    android:text="@string/habit_suggestions" />
 
                 <View style="@style/FormLine" />
 
