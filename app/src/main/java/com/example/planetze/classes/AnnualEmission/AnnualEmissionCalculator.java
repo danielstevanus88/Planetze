@@ -193,7 +193,6 @@ public class AnnualEmissionCalculator {
 
         return result;
 
-
     }
 
     public static double getTotalEmission(User user){

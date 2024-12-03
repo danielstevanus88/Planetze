@@ -114,7 +114,7 @@ public class EcoGaugeFragment extends Fragment {
             // Correct for negative days or months
             if (startDate.getDay() <= 0) {
                 startDate.setMonth(startDate.getMonth() - 1);
-                startDate.setDay(getDaysInMonth(startDate.getMonth(), startDate.getYear()) + startDate.getDay());
+                startDate.setDay(Date.getDaysInMonth(startDate.getMonth(), startDate.getYear()) + startDate.getDay());
             }
             if (startDate.getMonth() <= 0) {
                 startDate.setYear(startDate.getYear() - 1);
@@ -128,7 +128,7 @@ public class EcoGaugeFragment extends Fragment {
             // Filter activities within the selected range
             HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, startDate, today);
 
-            displayBarChart(calculateEmissionsByCategory(filteredActivities));
+            displayBarChart(ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -195,51 +195,7 @@ public class EcoGaugeFragment extends Fragment {
 
 
 
-    private HashMap<String, Double> calculateEmissionsByCategory(HashMap<Date, List<DailyActivity>> dailyActivities) {
 
-        // Initialize category totals
-        double transportation = 0;
-        double foodConsumption = 0;
-        double consumptionAndShopping = 0;
 
-        // Check if the input map is not null
-        if (dailyActivities != null) {
-            // Loop through the entries in the HashMap
-            for (HashMap.Entry<Date, List<DailyActivity>> entry : dailyActivities.entrySet()) {
-                List<DailyActivity> activities = entry.getValue(); // Get the list of DailyActivity for the current date
 
-                // Loop through each activity in the list
-                for (DailyActivity activity : activities) {
-                    // Categorize and sum up emissions
-                    switch (activity.getCategoryName()) {
-                        case "Transportation":
-                            transportation += activity.getEmission();
-                            break;
-                        case "Food":
-                            foodConsumption += activity.getEmission();
-                            break;
-                        case "Consumption":
-                            consumptionAndShopping += activity.getEmission();
-                            break;
-                    }
-                }
-            }
-        }
-
-        // Create the resulting map with calculated emissions by category
-        HashMap<String, Double> emissionByCategory = new HashMap<>();
-        emissionByCategory.put("Transportation", transportation);
-        emissionByCategory.put("Food", foodConsumption);
-        emissionByCategory.put("Consumption", consumptionAndShopping);
-
-        return emissionByCategory;
-    }
-
-    private int getDaysInMonth(int month, int year) {
-        // Return the number of days in the specified month and year
-        if (month == 2) { // February
-            return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
-        }
-        return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
-    }
 }
