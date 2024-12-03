@@ -1,7 +1,5 @@
 package com.example.planetze.classes;
 
-import android.text.Editable;
-
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.EcoTracker.Habit.Habit;
@@ -9,8 +7,6 @@ import com.example.planetze.classes.EcoTracker.Habit.Habit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.HashSet;
-import java.util.UUID;
 
 public class User {
     public String uid;
@@ -21,7 +17,7 @@ public class User {
     public String country;
     public HashMap<String, List<DailyActivity>> activities;
 
-    private UserDatabaseManager userDatabaseManager;
+    private UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
     public double carbonCredits;
 
     public User(String uid, String name, String email){
@@ -31,6 +27,7 @@ public class User {
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
 
+        this.carbonCredits = 0;
         this.userDatabaseManager = UserDatabaseManager.getInstance();
         this.habit = new HashMap<String, List<String>>();
 
@@ -115,6 +112,16 @@ public class User {
         userDatabaseManager.add(this);
     }
 
+    public void changeName(String name) {
+        this.name = name;
+        userDatabaseManager.add(this);
+    }
+
+    public void changeCarbonCredits(double carbonCredits) {
+        this.carbonCredits = carbonCredits;
+        userDatabaseManager.add(this);
+    }
+
     public HashMap<String, List<String>> getHabit(){
         return this.habit;
     }
@@ -139,13 +146,8 @@ public class User {
         return questionnaireAnswers;
     }
 
-    public void setName(String name) {
-        this.name = name;
-        userDatabaseManager.add(this);
-    }
 
-    public void setCarbonCredits(double carbonCredits) {
-        this.carbonCredits = carbonCredits;
-//        userDatabaseManager.add(this);
+    public String getCountry(){
+        return  this.country;
     }
 }

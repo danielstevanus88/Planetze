@@ -56,8 +56,8 @@ public class LoginManager implements Contract.Model{
 
     public static void setCurrentUser(User user){
         // Will be called only when user logged in successfully
-        if(currentUser == null) {
-            UserDatabaseManager.setListenerToUser(user);
+        if(currentUser != null) {
+//            UserDatabaseManager.setListenerToUser(user);
         }
         currentUser = user;
     }

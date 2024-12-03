@@ -127,7 +127,7 @@
                 <Button
                     android:id="@+id/q21_option4"
                     style="@style/FormOption"
-                    android:text="@string/alway"/>
+                    android:text="@string/always"/>
 
             </LinearLayout>
 

@@ -1,22 +1,16 @@
 package com.example.planetze.ui.profile;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -106,7 +100,7 @@ public class ProfileFragment extends Fragment {
                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                user.setName(editTextName.getText().toString());
+                                user.changeName(editTextName.getText().toString());
                                 Toast.makeText(getActivity(), "Successfully changed name to" + editTextName.getText().toString(), Toast.LENGTH_SHORT).show();
                             }
                         });

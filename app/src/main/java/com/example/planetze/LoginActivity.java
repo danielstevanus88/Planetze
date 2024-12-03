@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     private void redirectToMainActivity(User user) {
 
         if(!user.hasFilledQuestionnaires()) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, FormActivity.class);
             startActivity(intent);
             finish();
         } else {

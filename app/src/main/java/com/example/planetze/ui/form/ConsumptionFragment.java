@@ -3,6 +3,7 @@ package com.example.planetze.ui.form;
 import android.content.Intent;
 import android.widget.Button;
 
+import com.example.planetze.FormResultActivity;
 import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.databinding.FragmentConsumptionBinding;
@@ -53,9 +54,7 @@ public class ConsumptionFragment extends BaseFormFragment<FragmentConsumptionBin
         currentUser.addQuestionnaireAnswer("q20", Arrays.asList(options3).indexOf(q20));
         currentUser.addQuestionnaireAnswer("q21", Arrays.asList(options4).indexOf(q21));
 
-        databaseManager.add(currentUser);
-
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), FormResultActivity.class);
         startActivity(intent);
     }
 

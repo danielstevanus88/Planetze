@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GlobalAverages {
-    private static String[] countries;
+    private static String [] countries;
     private static double[] averages;
+
 
     public static String[] getCountries() {
         return countries;
@@ -62,5 +63,16 @@ public class GlobalAverages {
 
         GlobalAverages.setCountries(countriesList.toArray(new String[0]));
         GlobalAverages.setAverages(averagesList.stream().mapToDouble(Double::doubleValue).toArray());
+    }
+
+    public static double getAverageOfCountry(String countryToFind){
+        int index = 0;
+        for(String country: countries){
+            if(country.contains(countryToFind))
+                break;
+            index++;
+        }
+
+        return averages[index];
     }
 }

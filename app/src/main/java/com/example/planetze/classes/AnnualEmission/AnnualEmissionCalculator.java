@@ -5,7 +5,7 @@ import com.example.planetze.classes.User;
 import java.util.HashMap;
 
 public class AnnualEmissionCalculator {
-    public double getTransportationResult(User user){
+    public static double getTransportationResult(User user){
         HashMap<String, Integer> answers = user.getQuestionnaireAnswers();
 
         // Emission Factor for {-, Gasoline, Diesel, Hybrid, Electric, I don't know}
@@ -24,14 +24,15 @@ public class AnnualEmissionCalculator {
         };
 
         // Emission for short haul flight
-        double [] emissionShortHaul = {0, 225, 600, 1200, 1800};
+        double [] emissionShortHaul = {0, 0, 225, 600, 1200, 1800};
 
         // Emission for long haul flight
-        double [] emissionLongHaul = {0, 825, 2200, 4400, 6600};
+        double [] emissionLongHaul = {0, 0, 825, 2200, 4400, 6600};
 
         double result = 0;
 
-        if(answers.get("q1") == 1){ // Yes: use car
+
+        if(answers.get("q1") != null && answers.get("q1") == 1){ // Yes: use car
             result += emissionFactor[answers.get("q2")] * kilometerDriven[answers.get("q3")];
         }
 
@@ -42,7 +43,7 @@ public class AnnualEmissionCalculator {
         return result;
     }
 
-    public double getFoodResult(User user){
+    public static double getFoodResult(User user){
         HashMap<String, Integer> answers = user.getQuestionnaireAnswers();
 
         // Emission for Vegan
@@ -80,14 +81,14 @@ public class AnnualEmissionCalculator {
         return result;
     }
 
-    public double getConsumptionResult(User user){
+    public static double getConsumptionResult(User user){
         HashMap<String, Integer> answers = user.getQuestionnaireAnswers();
 
         // Emission for Clothes
         double [] emissionClothes = {0, 360, 120, 100, 5};
 
         // Reduction for Second Hand
-        double [] reductionSecondHand = {0, 0.5, 0.7};
+        double [] reductionSecondHand = {0, 0.5, 0.7, 0};
 
         // Emission for Electronic Devices
         double [] emissionElectronic = {0, 0, 300, 600, 900, 1200};
@@ -116,13 +117,13 @@ public class AnnualEmissionCalculator {
         result *= reductionSecondHand[answers.get("q19")];
         result += emissionElectronic[answers.get("q20")];
 
-        result -= reductionRecycleDependOnClothes[answers.get("q18")][answers.get("q21")];
+        result -= reductionRecycleDependOnClothes[answers.get("q18")][0];
         result -= reductionRecycleDependOnDevice[answers.get("q20")][answers.get("q21")];
 
         return result;
     }
 
-    public double getHousingResult(User user){
+    public static double getHousingResult(User user){
         double result = 0;
         HashMap<String, Integer> answers = user.getQuestionnaireAnswers();
         int houseType = answers.get("q11");
@@ -190,7 +191,7 @@ public class AnnualEmissionCalculator {
 
         result += arrayForCalculation[energyBill][occupants][energyType];
 
-        return result;
+        return Math.max(result, 0);
 
 
     }
