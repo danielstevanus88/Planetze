@@ -24,79 +24,22 @@ public class ActivityListFragment extends Fragment {
         binding = FragmentActivityListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.navigation_home);
-            }
-        });
-
-        binding.t1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.drive_personal_vehicle);
-            }
-        });
-        binding.t2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.take_public_transportation);
-            }
-        });
-        binding.t3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.cycling_or_walking);
-            }
-        });
-        binding.t4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.flight);
-            }
-        });
-        binding.f1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.meal);
-            }
-        });
-        binding.c1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.buy_new_clothes);
-            }
-        });
-        binding.c2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.buy_electronics);
-            }
-        });
-        binding.c3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.other_purchases);
-            }
-        });
-        binding.c4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.energy_bills);
-            }
-        });
+        binding.t1.setOnClickListener(v -> navigateToFragment(R.id.drive_personal_vehicle));
+        binding.t2.setOnClickListener(v -> navigateToFragment(R.id.take_public_transportation));
+        binding.t3.setOnClickListener(v -> navigateToFragment(R.id.cycling_or_walking));
+        binding.t4.setOnClickListener(v -> navigateToFragment(R.id.flight));
+        binding.f1.setOnClickListener(v -> navigateToFragment(R.id.meal));
+        binding.c1.setOnClickListener(v -> navigateToFragment(R.id.buy_new_clothes));
+        binding.c2.setOnClickListener(v -> navigateToFragment(R.id.buy_electronics));
+        binding.c3.setOnClickListener(v -> navigateToFragment(R.id.other_purchases));
+        binding.c4.setOnClickListener(v -> navigateToFragment(R.id.energy_bills));
 
         return view;
     }
 
+    private void navigateToFragment(int fragmentId) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.eco_tracker_navigation);
+        navController.navigate(fragmentId);
+    }
 }

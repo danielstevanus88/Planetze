@@ -5,20 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.example.planetze.classes.LoginManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.planetze.classes.LoginManager;
 import com.example.planetze.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private LoginManager loginManager;
+    private NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,29 +37,70 @@ public class MainActivity extends AppCompatActivity {
             // Save the current date as the last launch date
             preferences.edit().putString("lastLaunchDate", currentDate).apply();
         }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = getNavController();
-        NavigationUI.setupWithNavController(binding.navView, navController);
-
+        // Initialize LoginManager
         loginManager = LoginManager.getInstance();
 
+        // Set up navigation
+        navController = getNavController();
+        NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Handle top banner
+        setupTopBanner();
+
+        // Handle bottom navigation
+        setupBottomNavigation();
     }
 
     private NavController getNavController() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
-        if (!(fragment instanceof NavHostFragment)) {
-            throw new IllegalStateException("Activity " + this
-                    + " does not have a NavHostFragment");
+        try {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+            if (!(fragment instanceof NavHostFragment)) {
+                throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
+            }
+            return ((NavHostFragment) fragment).getNavController();
+        } catch (IllegalStateException e) {
+            // Handle the error gracefully, e.g., log the error and finish the activity
+            return null;
         }
-        return ((NavHostFragment) fragment).getNavController();
+    }
+
+    private void setupTopBanner() {
+        binding.profileButton.setOnClickListener(v -> {
+            navController.navigate(R.id.navigation_profile);
+        });
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.eco_tracker) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_tracker));
+            } else if (destination.getId() == R.id.eco_gauge) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_gauge));
+                } else if (destination.getId() == R.id.eco_balance) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_balance));
+            } else if (destination.getId() == R.id.navigation_profile) {
+                binding.pageTitle.setText(getResources().getString(R.string.profile));
+            }
+        });
+    }
+
+    private void setupBottomNavigation() {
+        binding.navView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.eco_tracker) {
+                if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == R.id.eco_tracker) {
+                    // Already on eco_tracker, do nothing
+                    return true;
+                } else {
+                    // Navigate to eco_tracker
+                    navController.navigate(R.id.eco_tracker);
+                    return true;
+                }
+            }
+            // ... handle other bottom navigation items ...
+            return NavigationUI.onNavDestinationSelected(item, navController);
+        });
     }
 
     @Override
@@ -97,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         if (false)
             super.onBackPressed();
     }
+
     private void showDailyPopup() {
         // Create and display an AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

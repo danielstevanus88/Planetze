@@ -1,6 +1,5 @@
 package com.example.planetze.ui.eco_tracker;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.planetze.MainActivity;
+import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
-import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
-import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,9 +25,8 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
     private FragmentTakePublicTransportationBinding binding;
     private List<Button> buttons;
     private String type;
-    private double hour;
+    private int hour;
 
-    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,13 +38,6 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
         binding.back.setOnClickListener(this::handleBackButtonClick);
 
         binding.submit.setOnClickListener(this::handleNextButtonClick);
-
-        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
-            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
-
-            binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
-            type = editDailyActivity.getType();
-        }
 
         return view;
     }
@@ -69,23 +60,20 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            hour = Double.parseDouble(binding.hour.getText().toString());
+            hour = Integer.parseInt(binding.hour.getText().toString());
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         }
         if (hour <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = ShowActivityFragment.getCurrentSelectedDate();
+            Date date = Date.today();
             TakePublicTransportation activity = new TakePublicTransportation(type, hour);
             currentUser.addActivity(date, activity);
+            databaseManager.add(currentUser);
 
-            if(editDailyActivity != null){
-                currentUser.removeActivity(editDailyActivity.getUuid());
-            }
-
-            handleBackButtonClick(view);
-            handleBackButtonClick(view);
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.eco_tracker);
         }
     }
 }

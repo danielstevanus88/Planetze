@@ -1,6 +1,5 @@
 package com.example.planetze.ui.eco_tracker;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +9,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.planetze.MainActivity;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.DieselCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.ElectricCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.GasolineCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CarType.HybridCar;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.DrivePersonalVehicle;
-import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentDrivePersonalVehicleBinding;
-import com.example.planetze.ui.eco_tracker.main.ShowActivityFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +32,6 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
     private int type;
     private DrivePersonalVehicle activity;
 
-    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,22 +40,11 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
 
         setOnClickListeners();
 
-        if (currentUser.getQuestionnaireAnswers().containsKey("q2")
-                && currentUser.getQuestionnaireAnswers().get("q2") >= 1
-                && currentUser.getQuestionnaireAnswers().get("q2") <= 4) {
+        if (currentUser.questionnaireAnswers.containsKey("q2")
+                && currentUser.questionnaireAnswers.get("q2") >= 1
+                && currentUser.questionnaireAnswers.get("q2") <= 4) {
 
-            int originalOption = currentUser.getQuestionnaireAnswers().get("q2");
-            buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
-            buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
-            type = originalOption;
-        }
-
-        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
-            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
-
-            binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
-
-            int originalOption = editDailyActivity.getCar().getCarTypeId();
+            int originalOption = currentUser.questionnaireAnswers.get("q2");
             buttons.get(originalOption - 1).setBackgroundResource(R.drawable.clicked_button);
             buttons.get(originalOption - 1).setTextColor(getResources().getColor(R.color.white));
             type = originalOption;
@@ -114,16 +100,13 @@ public class DrivePersonalVehicleFragment extends BaseActivityFragment {
                     activity = new DrivePersonalVehicle(distance, new ElectricCar());
                     break;
             }
-            Date date = ShowActivityFragment.getCurrentSelectedDate();
+            Date date = Date.today();
             currentUser.addActivity(date, activity);
-            if(editDailyActivity != null){
-                currentUser.removeActivity(editDailyActivity.getUuid());
-            }
-
             currentUser.addQuestionnaireAnswer("q2", type);
+            databaseManager.add(currentUser);
 
-            handleBackButtonClick(view);
-            handleBackButtonClick(view);
+            NavController navController = NavHostFragment.findNavController(this);
+            navController.navigate(R.id.eco_tracker);
         }
     }
 }

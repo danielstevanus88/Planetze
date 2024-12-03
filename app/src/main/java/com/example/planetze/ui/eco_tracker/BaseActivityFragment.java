@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.DatabaseManager;
@@ -28,6 +30,7 @@ public abstract class BaseActivityFragment extends Fragment {
     }
 
     protected void handleBackButtonClick(View view) {
-        getParentFragmentManager().popBackStack();
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.navigateUp();
     }
 }
