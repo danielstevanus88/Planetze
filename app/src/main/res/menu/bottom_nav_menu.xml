@@ -16,9 +16,4 @@
         android:icon="@drawable/eco_balance"
         android:title="@string/eco_balance" />
 
-    <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/planetze_use"
-        android:title="Profile" />
-
 </menu>

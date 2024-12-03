@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private LoginManager loginManager;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,49 +37,70 @@ public class MainActivity extends AppCompatActivity {
             // Save the current date as the last launch date
             preferences.edit().putString("lastLaunchDate", currentDate).apply();
         }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        NavController navController = getNavController();
+        // Initialize LoginManager
+        loginManager = LoginManager.getInstance();
+
+        // Set up navigation
+        navController = getNavController();
+        NavigationUI.setupWithNavController(binding.navView, navController);
+
+        // Handle top banner
+        setupTopBanner();
+
+        // Handle bottom navigation
+        setupBottomNavigation();
+    }
+
+    private NavController getNavController() {
+        try {
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+            if (!(fragment instanceof NavHostFragment)) {
+                throw new IllegalStateException("Activity " + this + " does not have a NavHostFragment");
+            }
+            return ((NavHostFragment) fragment).getNavController();
+        } catch (IllegalStateException e) {
+            // Handle the error gracefully, e.g., log the error and finish the activity
+            return null;
+        }
+    }
+
+    private void setupTopBanner() {
+        binding.profileButton.setOnClickListener(v -> {
+            navController.navigate(R.id.navigation_profile);
+        });
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.eco_tracker) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_tracker));
+            } else if (destination.getId() == R.id.eco_gauge) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_gauge));
+                } else if (destination.getId() == R.id.eco_balance) {
+                binding.pageTitle.setText(getResources().getString(R.string.eco_balance));
+            } else if (destination.getId() == R.id.navigation_profile) {
+                binding.pageTitle.setText(getResources().getString(R.string.profile));
+            }
+        });
+    }
+
+    private void setupBottomNavigation() {
         binding.navView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.eco_tracker) {
-                // Check if already on eco_tracker or its nested fragments
-                if (navController.getCurrentDestination() != null &&
-                        (navController.getCurrentDestination().getId() == R.id.eco_tracker ||
-                                navController.getCurrentDestination().getId() == R.id.activity_list ||
-                                navController.getCurrentDestination().getId() == R.id.drive_personal_vehicle ||
-                                navController.getCurrentDestination().getId() == R.id.take_public_transportation ||
-                                navController.getCurrentDestination().getId() == R.id.cycling_or_walking ||
-                                navController.getCurrentDestination().getId() == R.id.flight ||
-                                navController.getCurrentDestination().getId() == R.id.meal ||
-                                navController.getCurrentDestination().getId() == R.id.buy_new_clothes ||
-                                navController.getCurrentDestination().getId() == R.id.buy_electronics ||
-                                navController.getCurrentDestination().getId() == R.id.other_purchases ||
-                                navController.getCurrentDestination().getId() == R.id.energy_bills
-                        )) {
-                    // Already on eco_tracker or its nested fragments, pop back stack
-                    navController.popBackStack(R.id.eco_tracker, false);
+                if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == R.id.eco_tracker) {
+                    // Already on eco_tracker, do nothing
+                    return true;
                 } else {
                     // Navigate to eco_tracker
                     navController.navigate(R.id.eco_tracker);
+                    return true;
                 }
-                return true; // Indicate that the event was handled
             }
             // ... handle other bottom navigation items ...
             return NavigationUI.onNavDestinationSelected(item, navController);
         });
-
-        loginManager = LoginManager.getInstance();
-
-    }
-
-    private NavController getNavController() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
-        if (!(fragment instanceof NavHostFragment)) {
-            throw new IllegalStateException("Activity " + this
-                    + " does not have a NavHostFragment");
-        }
-        return ((NavHostFragment) fragment).getNavController();
     }
 
     @Override

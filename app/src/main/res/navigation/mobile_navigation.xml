@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    android:label="hi"
+    android:label="Main Screen"
     app:startDestination="@+id/eco_tracker">
 
     <fragment
