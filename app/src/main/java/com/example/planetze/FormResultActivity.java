@@ -12,7 +12,7 @@ import com.example.planetze.classes.User;
 
 import java.util.HashMap;
 
-public class FormResultActivity extends AppCompatActivity {
+public class  FormResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
