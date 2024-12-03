@@ -13,14 +13,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyClothes;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentBuyNewClothesBinding;
+import com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment;
 
 public class BuyNewClothesFragment extends BaseActivityFragment {
 
     private FragmentBuyNewClothesBinding binding;
     private int num;
 
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,8 +31,19 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
         View view = binding.getRoot();
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.input.setText(String.valueOf(editDailyActivity.getNumberOfPurchase()));
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
+        }
 
         return view;
     }
@@ -43,13 +57,15 @@ public class BuyNewClothesFragment extends BaseActivityFragment {
         if (num <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of clothes", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = EcoTrackerFragment.getCurrentSelectedDate();
             BuyClothes activity = new BuyClothes(num);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
+
+            navigateToMain();
         }
     }
 

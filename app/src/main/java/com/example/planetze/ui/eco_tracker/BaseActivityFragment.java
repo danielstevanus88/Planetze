@@ -33,4 +33,11 @@ public abstract class BaseActivityFragment extends Fragment {
         NavController navController = NavHostFragment.findNavController(this);
         navController.navigateUp();
     }
+
+    protected void navigateToMain(){
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.navigate(R.id.eco_tracker);
+    }
+
+
 }

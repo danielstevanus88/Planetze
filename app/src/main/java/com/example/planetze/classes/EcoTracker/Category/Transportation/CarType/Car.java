@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 
 import com.example.planetze.classes.EcoTracker.EcoTrackerEmissionConstant;
 
-public class Car{
+import java.io.Serializable;
+
+public class Car implements Serializable {
     public double emissionPerKilometer;
     public String displayCar;
     public int carTypeId;
