@@ -13,14 +13,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentCyclingOrWalkingBinding;
+import com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment;
 
 public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
     private FragmentCyclingOrWalkingBinding binding;
     private double distance;
 
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,9 +31,14 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
         View view = binding.getRoot();
 
         binding.back.setOnClickListener(this::handleBackButtonClick);
-
         binding.submit.setOnClickListener(this::handleNextButtonClick);
 
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+
+            binding.distance.setText(String.valueOf(editDailyActivity.getDistance()));
+        }
         return view;
     }
 
@@ -43,11 +51,13 @@ public class CyclingOrWalkingFragment extends BaseActivityFragment {
         if (distance <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = EcoTrackerFragment.getCurrentSelectedDate();
             CyclingOrWalking activity = new CyclingOrWalking(distance);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
             NavController navController = NavHostFragment.findNavController(this);
             navController.navigate(R.id.eco_tracker);
         }
