@@ -137,6 +137,8 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
 
     private void showActivitiesOnDate(Date selectedDate, Context context) {
         if (selectedDate == null) return;
+
+        setPieChart();
         LinearLayout layoutTransportation = view.findViewById(R.id.LayoutTransportation);
         LinearLayout layoutFood = view.findViewById(R.id.LayoutFood);
         LinearLayout layoutConsumption = view.findViewById(R.id.LayoutConsumption);

@@ -5,6 +5,7 @@ eazegraph = "1.2.2"
 glideVersion = "4.15.1"
 coreSplashscreen = "1.2.0-alpha02"
 firebaseBomVersion = "33.6.0"
+graphviewVersion = "4.2.2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -44,6 +45,7 @@ github-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glid
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compilerVersion" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+jjoe64-graphview = { module = "com.jjoe64:graphview", version.ref = "graphviewVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

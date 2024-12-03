@@ -1,11 +1,16 @@
 package com.example.planetze.ui.eco_gauge;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +31,19 @@ import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +56,8 @@ public class EcoGaugeFragment extends Fragment {
     private Button calculateButton;
     private BarChart emissionsBarChart; // BarChart instance
 
+
+    private LineChart lineChart;
     private String selectedTimePeriod = "Daily"; // Default selection
 
     public EcoGaugeFragment() {
@@ -54,7 +68,6 @@ public class EcoGaugeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_eco_gauge, container, false);
-
         return inflater.inflate(R.layout.fragment_eco_gauge, container, false);
     }
 
@@ -64,8 +77,9 @@ public class EcoGaugeFragment extends Fragment {
 
         // Initialize views
         timePeriodSpinner = view.findViewById(R.id.time_period_spinner);
-        calculateButton = view.findViewById(R.id.calculate_button);
         emissionsBarChart = view.findViewById(R.id.emissions_bar_chart);
+
+        lineChart = view.findViewById(R.id.emissionLineChart);
 
         // Set up the spinner
         String[] timePeriods = {"Daily", "Weekly", "Monthly", "Yearly"};
@@ -78,6 +92,7 @@ public class EcoGaugeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedTimePeriod = parent.getItemAtPosition(position).toString();
+                calculateEmissions();
             }
 
             @Override
@@ -86,8 +101,8 @@ public class EcoGaugeFragment extends Fragment {
             }
         });
 
-        // Handle Calculate button click
-        calculateButton.setOnClickListener(v -> calculateEmissions());
+
+
     }
 
 
@@ -114,7 +129,7 @@ public class EcoGaugeFragment extends Fragment {
             // Correct for negative days or months
             if (startDate.getDay() <= 0) {
                 startDate.setMonth(startDate.getMonth() - 1);
-                startDate.setDay(getDaysInMonth(startDate.getMonth(), startDate.getYear()) + startDate.getDay());
+                startDate.setDay(Date.getDaysInMonth(startDate.getMonth(), startDate.getYear()) + startDate.getDay());
             }
             if (startDate.getMonth() <= 0) {
                 startDate.setYear(startDate.getYear() - 1);
@@ -128,12 +143,16 @@ public class EcoGaugeFragment extends Fragment {
             // Filter activities within the selected range
             HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, startDate, today);
 
-            displayBarChart(calculateEmissionsByCategory(filteredActivities));
-
+            displayBarChart(ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities));
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getContext(), "Error calculating emissions", Toast.LENGTH_SHORT).show();
         }
+
+
+        lineChart.setTouchEnabled(true);
+        lineChart.setPinchZoom(true);
+        displayLineChart();
     }
 
     private void displayBarChart(HashMap<String, Double> activities) {
@@ -193,53 +212,129 @@ public class EcoGaugeFragment extends Fragment {
     }
 
 
+    private void displayLineChart(){
+        User user = LoginManager.getCurrentUser();
+        HashMap<Date, List<DailyActivity>> activities = ActivitiesConverter.getActivitiesWithClassDate(user.getActivities());
+        // Case for Daily
+        // Show the past 4 days emission
+        ArrayList<Entry> valuesForTransportation = new ArrayList<>();
+        ArrayList<Entry> valuesForFood = new ArrayList<>();
+        ArrayList<Entry> valuesForConsumption = new ArrayList<>();
 
+        int i = 0;
 
-    private HashMap<String, Double> calculateEmissionsByCategory(HashMap<Date, List<DailyActivity>> dailyActivities) {
+        if(selectedTimePeriod.equals("Weekly")){
+            for (Date dateIterate = Date.today().getFourWeekBefore(); dateIterate.compareTo(Date.today()) < 0; i++, dateIterate = dateIterate.getOneWeekAfter()) {
+                HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, dateIterate, dateIterate.getOneWeekAfter().getOneDayBefore());
+                HashMap<String, Double> emissionsByCategory = ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities);
+                valuesForTransportation.add(new Entry(i, (float) ((double) emissionsByCategory.get("Transportation"))));
+                valuesForFood.add(new Entry(i, (float) ((double) emissionsByCategory.get("Food"))));
+                valuesForConsumption.add(new Entry(i, (float) ((double) emissionsByCategory.get("Consumption"))));
+            }
+        } else if (selectedTimePeriod.equals("Monthly")){
+            for (Date dateIterate = Date.today().getTwelveMonthBefore(); dateIterate.compareTo(Date.today()) < 0; i++, dateIterate = dateIterate.getOneMonthAfter()) {
+                HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, dateIterate, dateIterate.getOneMonthAfter().getOneDayBefore());
+                HashMap<String, Double> emissionsByCategory = ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities);
+                valuesForTransportation.add(new Entry(i, (float) ((double) emissionsByCategory.get("Transportation"))));
+                valuesForFood.add(new Entry(i, (float) ((double) emissionsByCategory.get("Food"))));
+                valuesForConsumption.add(new Entry(i, (float) ((double) emissionsByCategory.get("Consumption"))));
 
-        // Initialize category totals
-        double transportation = 0;
-        double foodConsumption = 0;
-        double consumptionAndShopping = 0;
-
-        // Check if the input map is not null
-        if (dailyActivities != null) {
-            // Loop through the entries in the HashMap
-            for (HashMap.Entry<Date, List<DailyActivity>> entry : dailyActivities.entrySet()) {
-                List<DailyActivity> activities = entry.getValue(); // Get the list of DailyActivity for the current date
-
-                // Loop through each activity in the list
-                for (DailyActivity activity : activities) {
-                    // Categorize and sum up emissions
-                    switch (activity.getCategoryName()) {
-                        case "Transportation":
-                            transportation += activity.getEmission();
-                            break;
-                        case "Food":
-                            foodConsumption += activity.getEmission();
-                            break;
-                        case "Consumption":
-                            consumptionAndShopping += activity.getEmission();
-                            break;
-                    }
-                }
+                Log.d("Datess:", dateIterate.toString());
+            }
+        } else if(selectedTimePeriod.equals("Yearly")){
+            for (Date dateIterate = Date.today().getSixYearsBefore(); dateIterate.compareTo(Date.today()) < 0; i++, dateIterate = dateIterate.getOneYearAfter()) {
+                HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, dateIterate, dateIterate.getOneYearAfter().getOneDayBefore());
+                HashMap<String, Double> emissionsByCategory = ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities);
+                valuesForTransportation.add(new Entry(i, (float) ((double) emissionsByCategory.get("Transportation"))));
+                valuesForFood.add(new Entry(i, (float) ((double) emissionsByCategory.get("Food"))));
+                valuesForConsumption.add(new Entry(i, (float) ((double) emissionsByCategory.get("Consumption"))));
+            }
+        } else {
+            for (Date dateIterate = Date.today().getAWeekBefore(); dateIterate.compareTo(Date.today()) <= 0; i++, dateIterate = dateIterate.getOneDayAfter()) {
+                HashMap<Date, List<DailyActivity>> filteredActivities = ActivitiesFilter.filterActivitiesByRangeOfDate(activities, dateIterate, dateIterate);
+                HashMap<String, Double> emissionsByCategory = ActivitiesCalculator.calculateEmissionsByCategory(filteredActivities);
+                valuesForTransportation.add(new Entry(i, (float) ((double) emissionsByCategory.get("Transportation"))));
+                valuesForFood.add(new Entry(i, (float) ((double) emissionsByCategory.get("Food"))));
+                valuesForConsumption.add(new Entry(i, (float) ((double) emissionsByCategory.get("Consumption"))));
             }
         }
 
-        // Create the resulting map with calculated emissions by category
-        HashMap<String, Double> emissionByCategory = new HashMap<>();
-        emissionByCategory.put("Transportation", transportation);
-        emissionByCategory.put("Food", foodConsumption);
-        emissionByCategory.put("Consumption", consumptionAndShopping);
 
-        return emissionByCategory;
+
+        LineDataSet setTransportation;
+        LineDataSet setFood;
+        LineDataSet setConsumption;
+
+            setTransportation = new LineDataSet(valuesForTransportation, "Transportation");
+            setTransportation.setDrawIcons(false);
+            setTransportation.enableDashedLine(10f, 5f, 0f);
+            setTransportation.enableDashedHighlightLine(10f, 5f, 0f);
+            setTransportation.setColor(Color.RED);
+            setTransportation.setCircleColor(Color.RED);
+            setTransportation.setLineWidth(1f);
+            setTransportation.setCircleRadius(3f);
+            setTransportation.setDrawCircleHole(false);
+            setTransportation.setValueTextSize(9f);
+            setTransportation.setDrawFilled(true);
+            setTransportation.setFormLineWidth(1f);
+            setTransportation.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+            setTransportation.setFormSize(15.f);
+            setTransportation.setFillColor(Color.RED);
+//
+            setFood = new LineDataSet(valuesForFood, "Food");
+            setFood.setDrawIcons(false);
+            setFood.enableDashedLine(10f, 5f, 0f);
+            setFood.enableDashedHighlightLine(10f, 5f, 0f);
+            setFood.setColor(0xFFFFAA00);
+            setFood.setCircleColor(0xFFFFAA00);
+            setFood.setLineWidth(1f);
+            setFood.setCircleRadius(3f);
+            setFood.setDrawCircleHole(false);
+            setFood.setValueTextSize(9f);
+            setFood.setDrawFilled(true);
+            setFood.setFormLineWidth(1f);
+            setFood.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+            setFood.setFormSize(15.f);
+            setFood.setFillColor(0xFFFFAA00);
+
+            setConsumption = new LineDataSet(valuesForConsumption, "Consumption");
+            setConsumption.setDrawIcons(false);
+            setConsumption.enableDashedLine(10f, 5f, 0f);
+            setConsumption.enableDashedHighlightLine(10f, 5f, 0f);
+            setConsumption.setColor(0xFF009999);
+            setConsumption.setCircleColor(0xFF009999);
+            setConsumption.setLineWidth(1f);
+            setConsumption.setCircleRadius(3f);
+            setConsumption.setDrawCircleHole(false);
+            setConsumption.setValueTextSize(9f);
+            setConsumption.setDrawFilled(true);
+            setConsumption.setFormLineWidth(1f);
+            setConsumption.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+            setConsumption.setFormSize(15.f);
+            setConsumption.setFillColor(0xFF009999);
+
+
+            ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+            dataSets.add(setTransportation);
+            dataSets.add(setFood);
+            dataSets.add(setConsumption);
+            LineData data = new LineData(dataSets);
+if(lineChart.getData() != null) {
+
+    lineChart.clear();
+}
+            lineChart.setData(data);
+            lineChart.animateY(1500);
+            lineChart.invalidate();
+
+
+
+
     }
 
-    private int getDaysInMonth(int month, int year) {
-        // Return the number of days in the specified month and year
-        if (month == 2) { // February
-            return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
-        }
-        return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
-    }
+
+
+
+
+
 }
