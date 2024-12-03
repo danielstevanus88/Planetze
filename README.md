@@ -32,16 +32,6 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 **Eco Gauge**: A visual representation of progress toward carbon reduction goals, motivating users wit clear, tangible results.  
 **Eco Balance**: Provides the users with the ability to offset their carbon emissions.
 
-### App Preview:
-![Splash Screen](docs/splash_screen.png)
-![Welcome Page](docs/login_option.png)
-![Login Page](docs/login.png)
-![Register Page](docs/register.png)
-![Eco Tracker Screen]()
-![Eco Gauge Screen]()
-![Eco Balance Screen]()
-<!-- TODO -->
-
 ## Installation
 
 ### Prerequisites:
