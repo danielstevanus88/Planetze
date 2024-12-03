@@ -35,7 +35,7 @@ public class User {
 
     public User(){
         this.name = "";
-        this.email = "a@gmail.com";
+        this.email = "";
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
         this.habit = new HashMap<>();

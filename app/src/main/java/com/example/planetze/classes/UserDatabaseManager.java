@@ -63,7 +63,7 @@ public class UserDatabaseManager implements DatabaseManager<User>{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("Updated", "user changed");
                 if(!listeners.isEmpty()) {
-//                    LoginManager.setCurrentUser(snapshot.getValue(User.class));
+                    LoginManager.setCurrentUser(snapshot.getValue(User.class));
                     for (FirebaseListenerDailyActivity listener : listeners) {
 
 

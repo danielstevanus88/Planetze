@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.planetze.FormActivity;
 import com.example.planetze.R;
+import com.example.planetze.classes.AnnualEmission.AnnualEmissionCalculator;
 import com.example.planetze.classes.DatabaseManager;
 import com.example.planetze.classes.EcoTracker.ActivitiesCalculator;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
@@ -87,7 +88,9 @@ public class ProfileFragment extends Fragment {
 
         editTextName.setText(StringHandler.limitString(user.getName(), ProfileConstants.MAX_LENGTH_NAME));
         editTextGmail.setText(StringHandler.limitEmail(user.getEmail(), ProfileConstants.MAX_LENGTH_EMAIL));
-        editTextAnnual.setText(String.valueOf(ActivitiesCalculator.calculateTotalEmission(ActivitiesConverter.getActivitiesWithClassDate(user.getActivities()))));
+
+        String displayEmission = String.format("%.2f", AnnualEmissionCalculator.getTotalEmission(user)) + "kg";
+        editTextAnnual.setText(displayEmission);
         editTextCarbonCredit.setText(String.valueOf(user.getCarbonCredits()));
 
         editTextName.setOnEditorActionListener((v, actionId, event) -> {

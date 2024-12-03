@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.planetze.classes.LoginManager;
+import com.example.planetze.classes.UserDatabaseManager;
 import com.example.planetze.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize LoginManager
         loginManager = LoginManager.getInstance();
+        UserDatabaseManager.setListenerToUser(LoginManager.getCurrentUser());
 
         // Set up navigation
         navController = getNavController();

@@ -191,9 +191,13 @@ public class AnnualEmissionCalculator {
 
         result += arrayForCalculation[energyBill][occupants][energyType];
 
-        return Math.max(result, 0);
+        return result;
 
 
+    }
+
+    public static double getTotalEmission(User user){
+        return(double) (getHousingResult(user) + getConsumptionResult(user) + getTransportationResult(user) + getFoodResult(user));
     }
 
 }

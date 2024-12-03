@@ -16,7 +16,7 @@ public class StringHandler {
 
     public static String limitEmail(String email, int maxLength){
         String [] email_domain = email.split("@");
-        return limitString(email_domain[0], maxLength) + email_domain[1];
+        return limitString(email_domain[0], maxLength) + "@" + email_domain[1];
     }
 
     @SuppressLint("DefaultLocale")
