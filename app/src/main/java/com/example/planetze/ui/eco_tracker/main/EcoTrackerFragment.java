@@ -273,9 +273,9 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
 
     @Override
     public void update() {
+        activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
 
         showActivitiesOnDate(currentSelectedDate, getActivity());
-
         setPieChart();
     }
 

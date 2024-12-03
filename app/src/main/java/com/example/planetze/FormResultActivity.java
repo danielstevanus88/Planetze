@@ -96,7 +96,7 @@ public class  FormResultActivity extends AppCompatActivity {
         entries.add(new PieEntry(transportation, "Transportation"));
         entries.add(new PieEntry(foodConsumption, "Food Consumption"));
         entries.add(new PieEntry(consumptionAndShopping, "Consumption and Shopping"));
-        entries.add(new PieEntry(housing, "Housing"));
+        entries.add(new PieEntry(Math.max(housing, 0), "Housing"));
 
         PieDataSet dataSet = new PieDataSet(entries, "Daily CO2e Emissions");
         dataSet.setColors(
