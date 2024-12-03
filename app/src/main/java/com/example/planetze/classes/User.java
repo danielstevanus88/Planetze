@@ -37,6 +37,8 @@ public class User {
     }
 
     public User(){
+        this.name = "";
+        this.email = "a@gmail.com";
         this.questionnaireAnswers = new HashMap<>();
         this.activities = new HashMap<>();
         this.habit = new HashMap<>();
@@ -139,5 +141,10 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+        userDatabaseManager.add(this);
+    }
+
+    public void setCarbonCredits(int carbonCredits) {
+        this.carbonCredits = carbonCredits;
     }
 }

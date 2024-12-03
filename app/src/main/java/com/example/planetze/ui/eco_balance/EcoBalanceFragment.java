@@ -55,6 +55,8 @@ public class EcoBalanceFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    double carbonCreditsToCheckout;
+
     public EcoBalanceFragment() {
         // Required empty public constructor
     }
@@ -209,8 +211,8 @@ public class EcoBalanceFragment extends Fragment {
                 }
                 // Called when the text is changing
                 // Called when the text is changing
-                priceToPay = Double.parseDouble(String.valueOf(editTextAmount.getText()));
-                String creditsString = String.valueOf(Double.parseDouble(String.valueOf(editTextAmount.getText()))  * project.getCarbonCredits() / project.getPrice()) + " carbon credits";
+                carbonCreditsToCheckout = Double.parseDouble(String.valueOf(editTextAmount.getText())) * project.getCarbonCredits() / project.getPrice();
+                String creditsString = String.valueOf(carbonCreditsToCheckout) + " carbon credits";
                 textCredits.setText(creditsString);
                 googlePayButton.setEnabled(true);
             }
@@ -256,7 +258,7 @@ public class EcoBalanceFragment extends Fragment {
             final JSONObject info = paymentMethodData.getJSONObject("info");
             final String billingName = info.getJSONObject("billingAddress").getString("name");
             Toast.makeText(
-                    getActivity(), "Payment",
+                    getActivity(), "Payment Success",
                     Toast.LENGTH_LONG).show();
 
             // Logging token string.
