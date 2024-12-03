@@ -79,9 +79,18 @@ public class LoginActivity extends AppCompatActivity implements IOnSelectionList
     }
 
     private void redirectToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        User user = LoginManager.getCurrentUser();
+        if(!user.hasFilledQuestionnaires()){
+
+            Intent intent = new Intent(this, FormActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     // Display the login fragment inside VerticalLayout

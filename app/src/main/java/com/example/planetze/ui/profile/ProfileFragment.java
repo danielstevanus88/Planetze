@@ -141,7 +141,6 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FormActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
         return view;
