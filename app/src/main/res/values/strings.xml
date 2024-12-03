@@ -254,6 +254,6 @@
     <string name="select_a_project">Select A Project</string>
     <string name="breakdown_by_category">Breakdown By Category</string>
     <string name="housing">Housing</string>
-    <string name="annual_carbon_emission_are">Your annual CO2 Emission are</string>
+    <string name="annual_carbon_emission">Your Annual CO2e Emission is</string>
 
 </resources>
