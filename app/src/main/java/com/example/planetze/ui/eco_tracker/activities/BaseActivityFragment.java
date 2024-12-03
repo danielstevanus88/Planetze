@@ -26,4 +26,15 @@ public abstract class BaseActivityFragment extends Fragment {
         clicked.setTextColor(getResources().getColor(R.color.white));
     }
 
+    protected void handleBackButtonClick(View view) {
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.navigateUp();
+    }
+
+    protected void navigateToMain(){
+        NavController navController = NavHostFragment.findNavController(this);
+        navController.navigate(R.id.eco_tracker);
+    }
+
+
 }

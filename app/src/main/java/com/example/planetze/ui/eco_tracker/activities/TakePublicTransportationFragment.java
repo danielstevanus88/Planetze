@@ -14,8 +14,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
+import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
+import com.example.planetze.ui.eco_tracker.main.EcoTrackerFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +27,8 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
     private FragmentTakePublicTransportationBinding binding;
     private List<Button> buttons;
     private String type;
-    private int hour;
-
+    private double hour;
+    private DailyActivity editDailyActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +38,20 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
         setOnClickListeners();
 
         binding.submit.setOnClickListener(this::handleNextButtonClick);
+
+        if (getArguments() != null && getArguments().get("dailyActivity") != null) {
+            editDailyActivity = (DailyActivity) getArguments().get("dailyActivity");
+            binding.hour.setText(String.valueOf(editDailyActivity.getHour()));
+            type = editDailyActivity.getType();
+
+            binding.back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigateToMain();
+                }
+            });
+        }
+
 
         return view;
     }
@@ -58,20 +74,23 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            hour = Integer.parseInt(binding.hour.getText().toString());
+            hour = Double.parseDouble(binding.hour.getText().toString());
         } catch (Exception e) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         }
         if (hour <= 0) {
             Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
         } else {
-            Date date = Date.today();
+            Date date = EcoTrackerFragment.getCurrentSelectedDate();
             TakePublicTransportation activity = new TakePublicTransportation(type, hour);
             currentUser.addActivity(date, activity);
-            databaseManager.add(currentUser);
 
-            NavController navController = NavHostFragment.findNavController(this);
-            navController.navigate(R.id.eco_tracker);
+            if(editDailyActivity != null){
+                currentUser.removeActivity(editDailyActivity.getUuid());
+            }
+
+
+            navigateToMain();
         }
     }
 }

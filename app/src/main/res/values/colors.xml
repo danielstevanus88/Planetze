@@ -10,6 +10,7 @@
     <color name="accentColor">#d8dbe2</color>
     <color name="darkTextColor">#373f51</color>
     <color name="alternativeDarkColor">#1b1b1e</color>
+    <color name="chartBackground">#FFFFFF</color> <!-- White -->
 
 <!--    Variance colors from primary and secondary      -->
     <color name="primary1">#46B3B3</color>

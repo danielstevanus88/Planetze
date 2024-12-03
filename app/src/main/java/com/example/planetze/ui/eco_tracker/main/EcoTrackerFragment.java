@@ -2,8 +2,6 @@ package com.example.planetze.ui.eco_tracker.main;
 
 import static com.example.planetze.classes.EcoTracker.ActivitiesCalculator.calculateTotalEmission;
 import static com.example.planetze.classes.EcoTracker.ActivitiesFilter.filterActivitiesByRangeOfDate;
-import static com.example.planetze.classes.EcoTracker.Date.today;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -30,8 +28,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.planetze.R;
 import com.example.planetze.classes.EcoTracker.ActivitiesConverter;
 import com.example.planetze.classes.EcoTracker.ActivitiesFilter;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
 import com.example.planetze.classes.EcoTracker.DailyActivity;
 import com.example.planetze.classes.EcoTracker.Date;
 import com.example.planetze.classes.FirebaseListenerDailyActivity;
@@ -58,10 +54,11 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
     private FragmentEcoTrackerBinding binding;
     private PieChart pieChart;
     private View view;
-    private Date currentSelectedDate;
+    private static Date currentSelectedDate = Date.today();
 
     public EcoTrackerFragment() {
         // Required empty public constructor
+        Log.d("today","lah");
     }
 
     @Override
@@ -90,10 +87,10 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
 
         LinearLayout buttonPickADate = view.findViewById(R.id.buttonPickDate);
         EditText textPickADate = view.findViewById(R.id.editTextDate);
-        textPickADate.setText(today().toString());
+        textPickADate.setText(currentSelectedDate.toString());
         textPickADate.setKeyListener(null);
 
-        this.currentSelectedDate = Date.today();
+
         buttonPickADate.setOnClickListener(event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -107,7 +104,7 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
                         Date selectedDate = new Date(selectedDay, selectedMonth + 1, selectedYear);
                         textPickADate.setText(selectedDate.toString());
                         Toast.makeText(getActivity(), "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
-                        this.currentSelectedDate = selectedDate;
+                        currentSelectedDate = selectedDate;
                         showActivitiesOnDate(selectedDate, getActivity());
                     },
                     year, month, day);
@@ -131,15 +128,8 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         });
 
 
-        User currentUser = LoginManager.getCurrentUser();
-        // TODO: REMOVE THIS
-        currentUser.addActivity(new Date(15, 11, 2024), new TakePublicTransportation("aa", 10));
-        currentUser.addActivity(new Date(30, 11, 2024), new CyclingOrWalking(10));
 
-
-        UserDatabaseManager userDatabaseManager = UserDatabaseManager.getInstance();
-        userDatabaseManager.add(currentUser);
-        showActivitiesOnDate(Date.today(), getActivity());
+        showActivitiesOnDate(currentSelectedDate, getActivity());
 
         return this.view;
     }
@@ -204,7 +194,7 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
     }
 
     private double getTotal() {
-        return calculateTotalEmission(filterActivitiesByRangeOfDate(activities, today(), today()));
+        return calculateTotalEmission(filterActivitiesByRangeOfDate(activities, currentSelectedDate, currentSelectedDate));
     }
 
     @SuppressLint("DefaultLocale")
@@ -214,7 +204,7 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         float foodConsumption = 0f;
         float consumptionAndShopping = 0f;
 
-        List<DailyActivity> dailyActivities = activities.get(this.currentSelectedDate);
+        List<DailyActivity> dailyActivities = activities.get(currentSelectedDate);
         if (dailyActivities != null) {
             for (DailyActivity activity : dailyActivities) {
                 switch (activity.getCategoryName()) {
@@ -260,7 +250,7 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
 
-        pieChart.setCenterText(String.format("%.2f", getTotal()) + " kg");
+        pieChart.setCenterText(String.format("%.2f", foodConsumption + transportation + consumptionAndShopping) + " kg");
         pieChart.setCenterTextSize(22f);
         pieChart.setCenterTextColor(getResources().getColor(R.color.alternativeDarkColor));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -276,13 +266,30 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         pieChart.invalidate(); // Refresh the chart
     }
 
+    public static Date getCurrentSelectedDate(){
+        return currentSelectedDate;
+    }
+
 
     @Override
     public void update() {
-//        Log.d("Hi", "update: " + (this.currentSelectedDate == null? "a" : this.currentSelectedDate.toString()) );
-        this.activities = ActivitiesConverter.getActivitiesWithClassDate(LoginManager.getCurrentUser().getActivities());
+
+        showActivitiesOnDate(currentSelectedDate, getActivity());
+
         setPieChart();
-        showActivitiesOnDate(this.currentSelectedDate, getActivity());
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserDatabaseManager.subscribeAsDailyActivityListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UserDatabaseManager.unsubscribeAsDailyActivityListener(this);
     }
 
 

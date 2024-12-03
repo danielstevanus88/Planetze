@@ -23,7 +23,7 @@ import com.example.planetze.classes.LoginManager;
 import com.example.planetze.classes.User;
 
 public class ViewGenerator {
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "DefaultLocale", "SetTextI18n"})
     public static CardView createDailyActivityCardView(View view, DailyActivity activity, Context context) {
         // Create CardView
         CardView cardView = (CardView) LayoutInflater.from(context).inflate(R.layout.card_view, null);
@@ -34,7 +34,7 @@ public class ViewGenerator {
         TextView editTextView = cardView.findViewById(R.id.edit_activity);
 
         titleTextView.setText(activity.toString());
-        co2TextView.setText(activity.getEmission() + "kg CO2");
+        co2TextView.setText(StringHandler.limitDecimal(activity.getEmission(), 2)  + "kg CO2");
 
         setOnClickListenerForDelete(activity, deleteImageView, context);
 
