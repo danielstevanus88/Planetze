@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,19 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
-import com.example.planetze.classes.EcoTracker.Category.Consumption.BuyOthers;
+import com.example.planetze.classes.EcoTracker.Category.Transportation.CyclingOrWalking;
 import com.example.planetze.classes.EcoTracker.Date;
-import com.example.planetze.databinding.FragmentOtherPurchasesBinding;
+import com.example.planetze.databinding.FragmentCyclingOrWalkingBinding;
 
-public class OtherPurchasesFragment extends BaseActivityFragment {
+public class CyclingOrWalkingFragment extends BaseActivityFragment {
 
-    private FragmentOtherPurchasesBinding binding;
-    private String type;
-    private int num;
+    private FragmentCyclingOrWalkingBinding binding;
+    private double distance;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentOtherPurchasesBinding.inflate(inflater, container, false);
+        binding = FragmentCyclingOrWalkingBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         binding.submit.setOnClickListener(this::handleNextButtonClick);
@@ -35,20 +34,15 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            num = Integer.parseInt(binding.num.getText().toString());
+            distance = Double.parseDouble(binding.distance.getText().toString());
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid number of purchases", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
         }
-        try {
-            type = binding.type.getText().toString();
-        } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid type of purchase", Toast.LENGTH_SHORT).show();
-        }
-        if (num <= 0) {
-            Toast.makeText(getActivity(), "Please enter a valid number of purchases", Toast.LENGTH_SHORT).show();
+        if (distance <= 0) {
+            Toast.makeText(getActivity(), "Please enter a valid distance", Toast.LENGTH_SHORT).show();
         } else {
             Date date = Date.today();
-            BuyOthers activity = new BuyOthers(type, num);
+            CyclingOrWalking activity = new CyclingOrWalking(distance);
             currentUser.addActivity(date, activity);
             databaseManager.add(currentUser);
 
@@ -56,5 +50,4 @@ public class OtherPurchasesFragment extends BaseActivityFragment {
             navController.navigate(R.id.eco_tracker);
         }
     }
-
 }

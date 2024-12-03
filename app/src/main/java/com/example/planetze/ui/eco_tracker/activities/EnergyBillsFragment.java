@@ -1,4 +1,4 @@
-package com.example.planetze.ui.eco_tracker;
+package com.example.planetze.ui.eco_tracker.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,24 +13,24 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.planetze.R;
-import com.example.planetze.classes.EcoTracker.Category.Transportation.TakePublicTransportation;
+import com.example.planetze.classes.EcoTracker.Category.Consumption.EnergyBill;
 import com.example.planetze.classes.EcoTracker.Date;
-import com.example.planetze.databinding.FragmentTakePublicTransportationBinding;
+import com.example.planetze.databinding.FragmentEnergyBillsBinding;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class TakePublicTransportationFragment extends BaseActivityFragment {
+public class EnergyBillsFragment extends BaseActivityFragment {
 
-    private FragmentTakePublicTransportationBinding binding;
+    private FragmentEnergyBillsBinding binding;
     private List<Button> buttons;
     private String type;
-    private int hour;
+    private double amount;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentTakePublicTransportationBinding.inflate(inflater, container, false);
+        binding = FragmentEnergyBillsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         setOnClickListeners();
@@ -58,15 +58,15 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
 
     private void handleNextButtonClick(View view) {
         try {
-            hour = Integer.parseInt(binding.hour.getText().toString());
+            amount = Double.parseDouble(binding.amount.getText().toString());
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please enter a valid bill amount", Toast.LENGTH_SHORT).show();
         }
-        if (hour <= 0) {
-            Toast.makeText(getActivity(), "Please enter a valid number of hours", Toast.LENGTH_SHORT).show();
+        if (amount <= 0) {
+            Toast.makeText(getActivity(), "Please enter a valid bill amount", Toast.LENGTH_SHORT).show();
         } else {
             Date date = Date.today();
-            TakePublicTransportation activity = new TakePublicTransportation(type, hour);
+            EnergyBill activity = new EnergyBill(type, amount);
             currentUser.addActivity(date, activity);
             databaseManager.add(currentUser);
 
@@ -74,4 +74,5 @@ public class TakePublicTransportationFragment extends BaseActivityFragment {
             navController.navigate(R.id.eco_tracker);
         }
     }
+
 }
