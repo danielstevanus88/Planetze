@@ -13,8 +13,7 @@ public class EnergyBill extends ActivityConsumption {
         this.type = type;
         this.amount = amount;
         this.displayText = type + " energy bill (" + amount + ")";
-        // TODO: calculate emission
-        this.emission = 0;
+        this.emission = amount * EcoTrackerEmissionConstant.ENERGY_BILL;
         this.typeId = EcoTrackerActivityConstant.ID_ENERGY_BILL;
 
     }

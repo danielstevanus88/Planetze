@@ -23,4 +23,9 @@ public class EcoTrackerEmissionConstant {
     public static final double BUY_ELECTRONICS_EMISSION_PER_PURCHASE = 300;
     public static final double BUY_OTHER_EMISSION_PER_PURCHASE = 20; // Average
 
+
+    // Energy Bill
+
+    public static final double ENERGY_BILL = 0.8;
+
 }

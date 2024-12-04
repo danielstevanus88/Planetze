@@ -67,5 +67,24 @@ public class ActivitiesCalculator {
 
         return emissionByCategory;
     }
-    
+
+    public static int getCountOfActivitiesWithType(HashMap<Date, List<DailyActivity>> dailyActivities, int typeId){
+
+        int count = 0;
+        if (dailyActivities != null) {
+            // Loop through the entries in the HashMap
+            for (HashMap.Entry<Date, List<DailyActivity>> entry : dailyActivities.entrySet()) {
+                List<DailyActivity> activities = entry.getValue(); // Get the list of DailyActivity for the current date
+
+                // Loop through each activity in the list
+                for (DailyActivity activity : activities) {
+                    if(activity.getTypeId() == typeId){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
 }
