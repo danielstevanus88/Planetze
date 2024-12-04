@@ -37,7 +37,17 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 
 The following assumptions are made for using and building Planetze:
 
-<!-- TODO -->
+- Annual Carbon Footprint Calculation:
+  - For questions 14 and 16, selecting the option "other" is calculated the same as selecting "electricity".
+- Daily Activity CO2e Emissions Calculation:
+  - For take public transportation activities, the daily CO2e emissions is calculated as 1.3 kg per hour, response from ChatGPT.
+  - For cycling or walking activities, the daily CO2e emissions is 0kg.
+  - For drive personal vehicle activities, the daily CO2e emissions is calculated based on Annual Carbon Footprint constants.
+  - For flight activities, the daily CO2e emissions is calculated the same as public transportation.
+  - For activities in the Food Category, the daily CO2e emissions per serving is calculated based on Annual Carbon Footprint constants. (i.e. `CO2e Emissions Daily(kg)/365`)
+  - For the buy clothes activities, the daily CO2e emissions is calculated as 6.75 kg per cloth, searched on Google.
+  - For the buy electronics activities, the daily CO2e emissions is calculated as 300 kg per device based on Annual Carbon Footprint constants.
+  - For the other purchase activities, the daily CO2e emissions is calculated as 20 kg per item, response from ChatGPT.
 
 ## Installation
 
