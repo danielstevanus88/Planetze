@@ -125,10 +125,10 @@ public class  FormResultActivity extends AppCompatActivity {
     public void setPieChart(){
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        entries.add(new PieEntry(transportation, "Transportation"));
-        entries.add(new PieEntry(foodConsumption, "Food Consumption"));
-        entries.add(new PieEntry(consumptionAndShopping, "Consumption and Shopping"));
-        entries.add(new PieEntry(Math.max(housing, 0), "Housing"));
+        entries.add(new PieEntry(transportation/1000, "Transportation"));
+        entries.add(new PieEntry(foodConsumption/1000, "Food Consumption"));
+        entries.add(new PieEntry(consumptionAndShopping/1000, "Consumption and Shopping"));
+        entries.add(new PieEntry(Math.max(housing/1000, 0), "Housing"));
 
         PieDataSet dataSet = new PieDataSet(entries, "Daily CO2e Emissions");
         dataSet.setColors(
@@ -156,7 +156,7 @@ public class  FormResultActivity extends AppCompatActivity {
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
 
-        pieChart.setCenterText(String.format("%.2f", total) + " kg");
+        pieChart.setCenterText(String.format("%.2f", total/1000) + " tons");
         pieChart.setCenterTextSize(22f);
         pieChart.setCenterTextColor(getResources().getColor(R.color.alternativeDarkColor));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
