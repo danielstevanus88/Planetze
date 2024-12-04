@@ -31,7 +31,7 @@ public class ViewGenerator {
         TextView titleTextView = cardView.findViewById(R.id.activity_title);
         TextView co2TextView = cardView.findViewById(R.id.activity_co2);
         ImageView deleteImageView = cardView.findViewById(R.id.delete_activity);
-        TextView editTextView = cardView.findViewById(R.id.edit_activity);
+        ImageView editTextView = cardView.findViewById(R.id.edit_activity);
 
         titleTextView.setText(activity.toString());
         co2TextView.setText(StringHandler.limitDecimal(activity.getEmission(), 2)  + "kg CO2");

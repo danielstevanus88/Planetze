@@ -90,7 +90,6 @@ public class EcoTrackerFragment extends Fragment implements FirebaseListenerDail
         textPickADate.setText(currentSelectedDate.toString());
         textPickADate.setKeyListener(null);
 
-
         buttonPickADate.setOnClickListener(event -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
