@@ -191,8 +191,6 @@ public class Date implements Comparable<Date>{
         return ret;
     }
 
-
-
     public Date getOneMonthAfter(){
         int dayInMonth = getDaysInMonth(this.month, this.year);
         Date ret = this;
@@ -200,10 +198,6 @@ public class Date implements Comparable<Date>{
             ret = ret.getOneDayAfter();
         }
         return ret;
-    }
-
-    public Date getOneYearBefore(){
-        return this.getTwelveMonthBefore();
     }
 
     public Date getOneYearAfter(){
@@ -217,6 +211,12 @@ public class Date implements Comparable<Date>{
         }
         return ret;
     }
+
+    public Date getFirstDayOfTheMonth(){
+        return new Date(1, this.month, this.year);
+    }
+
+
 
 
 
