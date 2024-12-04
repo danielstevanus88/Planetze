@@ -77,12 +77,22 @@ public class  FormResultActivity extends AppCompatActivity {
 
         TextView textPercentage = findViewById(R.id.textPercentage);
         String country = user.getCountry();
+        double ratio = total/GlobalAverages.getAverageOfCountry(country)/1000 * 100;
         String percentage = String.format("%.1f", total/GlobalAverages.getAverageOfCountry(country)/1000 * 100);
-        String displayPercentage = percentage + "%";
+        TextView textCountry = findViewById(R.id.textCountry);
+        String suffix = "";
+        if (ratio > 100) {
+            ratio -= 100;
+            suffix = "more";
+        } else {
+            ratio = 100 - ratio;
+            suffix = "less";
+        }
+        String displayPercentage =String.format("%.1f", ratio) + "%";
         textPercentage.setText(displayPercentage);
 
-        TextView textCountry = findViewById(R.id.textCountry);
-        String displayCountry = "of the average in " + country;
+
+        String displayCountry =  suffix + " than the average in " + country;
         textCountry.setText(displayCountry);
 
 
