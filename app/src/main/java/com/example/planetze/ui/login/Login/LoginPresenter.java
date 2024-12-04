@@ -4,7 +4,7 @@ import com.example.planetze.classes.LoginManager;
 
 public class LoginPresenter implements Contract.Presenter{
 
-    Contract.Model model;
+    Contract.Model  model;
     Contract.View view;
     public LoginPresenter(Contract.Model model, Contract.View view){
         this.model = model;

@@ -27,6 +27,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,18 +75,48 @@ public class  FormResultActivity extends AppCompatActivity {
             }
         });
 
+        // Initialize GlobalAverages for this activity
         GlobalAverages.initialize(this);
 
         TextView textPercentage = findViewById(R.id.textPercentage);
-        String country = user.getCountry();
-        String percentage = String.format("%.1f", total/GlobalAverages.getAverageOfCountry(country)/1000 * 100);
-        String displayPercentage = percentage + "%";
-        textPercentage.setText(displayPercentage);
-
         TextView textCountry = findViewById(R.id.textCountry);
-        String displayCountry = "of the average in " + country;
+        TextView textGlobalTarget = findViewById(R.id.textGlobalTarget);
+        String country = user.getCountry();
+
+        // Formula to ocunt ratio in percent
+        double ratioLocal = total / GlobalAverages.getAverageOfCountry(country)/1000 * 100;
+
+        // Setup suffix "more" or "less"
+        String suffixLocal = "";
+        if (ratioLocal > 100) {
+            ratioLocal -= 100;
+            suffixLocal = "more";
+        } else {
+            ratioLocal = 100 - ratioLocal;
+            suffixLocal = "less";
+        }
+        String displayPercentageLocal = String.format("%.1f", ratioLocal) + "%";
+        textPercentage.setText(displayPercentageLocal);
+
+
+        String displayCountry =  suffixLocal + " than the average in " + country;
         textCountry.setText(displayCountry);
 
+
+        double ratioGlobal = total / 2000 * 100;
+
+        // Setup suffix "more" or "less"
+        String suffixGlobal = "";
+        if (ratioGlobal > 100) {
+            ratioGlobal -= 100;
+            suffixGlobal = " more";
+        } else {
+            ratioGlobal = 100 - ratioGlobal;
+            suffixGlobal = " less";
+        }
+        String displayPercentageGlobal = String.format("%.1f", ratioGlobal) + "%";
+        String displayTextGlobal = "and is " + displayPercentageGlobal + suffixGlobal + " than the global targets for reducing climate changes.";
+        textGlobalTarget.setText(displayTextGlobal);
 
 
     }

@@ -61,6 +61,13 @@
                     android:text="more than the average in Albania"
                     android:textAlignment="center" />
 
+                <TextView
+                    android:id="@+id/textGlobalTarget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="from "
+                    android:textAlignment="center" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
