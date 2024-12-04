@@ -57,8 +57,8 @@ The following assumptions are made for using and building Planetze:
 ### Post-Installation:
 - Log in with your credentials or create a new account.
 - To quickly explore the app’s features, you can use the following demo account:
-  - **Email:** `alatgt88@gmail.com`
-  - **Password:** `abcdef`
+  - **Email**: `alatgt88@gmail.com`
+  - **Password**: `abcdef`
 - Explore the app and its features!
 
 ## Dependencies
@@ -162,4 +162,6 @@ For major changes, please open an issue first to discuss what you'd like to chan
 
 ## Acknowledgments
 - This is a grouped project for CSCB07H3.
+- **GitHub Repository**: [Planetze on GitHub](https://github.com/danielstevanus88/Planetze)
+- **Jira Board**: [Planetze on Jira](https://planetze.atlassian.net/jira/software/projects/PLAN/boards/1/backlog)
 - Contributors: [@Daniel Stevanus](https://github.com/danielstevanus88), [@Muxun Zhang](https://github.com/muxunzzz), [@Tommy Wang](https://github.com/Grimshock1015), [@Helena Zhao](https://github.com/HelenaZhao05), [@Rizky Rajendra Ananta Dewa](https://github.com/RRDewa).
