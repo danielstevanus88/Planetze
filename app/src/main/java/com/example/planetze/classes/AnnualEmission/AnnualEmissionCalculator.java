@@ -133,6 +133,9 @@ public class AnnualEmissionCalculator {
         int energyBill = answers.get("q15");
         int heatWaterEnergy = answers.get("q16");
         int useReuseableEnergy = answers.get("q17");
+        if(energyType == 6) {
+            energyType = 2;
+        }
 
         if(houseType == 5) {
             // Other house type calculations is considered the same as townhouse
