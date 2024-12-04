@@ -85,7 +85,6 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
                                 Toast.makeText(holder.itemView.getContext(), "Added habit: " + selectedHabit.getName(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(holder.itemView.getContext(), MainActivity.class);
                                 holder.itemView.getContext().startActivity(intent);
-                                ((Activity) holder.itemView.getContext()).finish();  // Close the current activity
                             } else {
                                 // Inform user if habit already exists
                                 Toast.makeText(holder.itemView.getContext(), "You have already selected this habit", Toast.LENGTH_SHORT).show();
