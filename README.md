@@ -49,7 +49,7 @@ The following assumptions are made for using and building Planetze:
   - For the buy clothes activities, the daily CO2e emissions is calculated as 6.75 kg per cloth, searched on Google.
   - For the buy electronics activities, the daily CO2e emissions is calculated as 300 kg per device based on Annual Carbon Footprint constants.
   - For the other purchase activities, the daily CO2e emissions is calculated as 20 kg per item, response from ChatGPT.
-  - For the energy bill activities, the monthly CO2e emissions is calculated as 0.8 kg per CAD, response from ChatGPT.  
+  - For the energy bill activities, the monthly CO2e emissions is calculated as 0.8 kg per CAD.  
     (i.e. `Total Daily Emissions = Kilowatthour of electricity per CAD * Average emissions factor`, where `Kilowatthour of electricity per CAD = 6.67 kWh/CAD` and `Average emissions factor = 120 g CO2/kWh`)
 
 ## Installation
