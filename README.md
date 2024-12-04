@@ -8,6 +8,7 @@ It provides real-time carbon footprint calculations, visual dashboards, and comp
 - [Description](#description)
 - [Project Overview](#project-overview)
   - [Key Features](#key-features)
+- [Assumptions](#assumptions)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Building from Source](#building-from-source)
@@ -15,6 +16,7 @@ It provides real-time carbon footprint calculations, visual dashboards, and comp
 - [Dependencies](#dependencies)
 - [Folder Structure](#folder-structure)
   - [Key Directories and Files](#key-directories-and-files)
+- [Future Roadmap](#future-roadmap)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
@@ -30,6 +32,12 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 **Eco Tracker**: Tracks users' carbon emissions based on their daily activities.  
 **Eco Gauge**: A visual representation of progress toward carbon reduction goals, motivating users wit clear, tangible results.  
 **Eco Balance**: Provides the users with the ability to offset their carbon emissions.
+
+## Assumptions
+
+The following assumptions are made for using and building Planetze:
+
+<!-- TODO -->
 
 ## Installation
 
@@ -48,6 +56,9 @@ Users can adopt eco-friendly habits, and contribute to certified carbon offset p
 
 ### Post-Installation:
 - Log in with your credentials or create a new account.
+- To quickly explore the app’s features, you can use the following demo account:
+  - **Email:** `alatgt88@gmail.com`
+  - **Password:** `abcdef`
 - Explore the app and its features!
 
 ## Dependencies
@@ -125,6 +136,15 @@ Planetze/
 - **`gradle/`**: Gradle wrapper files and dependency version management.
 - **`build.gradle.kts`**: Kotlin-based Gradle build configuration for the project.
 - **`README.md`**: Main project documentation.
+
+## Future Roadmap
+
+Here are some planned features and improvements for upcoming releases of Planetze:
+
+- **Eco Hub**: A resource center with educational content, and sustainability tips to help users stay informed and engaged.
+- **Eco Agent**: It's an easy-to-navigate chat interface where the user can interact with the AI conversationally.
+
+If you’d like to suggest a new feature or contribute to an existing one, feel free to open an [issue](https://github.com/danielstevanus88/Planetze/issues) or submit a pull request!
 
 ## Technologies Used
 - **Java**: For Android app development.
