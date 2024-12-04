@@ -55,8 +55,8 @@ The following assumptions are made for using and building Planetze:
 ## Installation
 
 ### Prerequisites:
-- Android device running Android 5.0 (Lollipop) or higher.
-- Android Studio if you want to build the app from source.
+- Android Studio to build the app from source.
+- (Optional) Android device running Android 5.0 (Lollipop) or higher. 
 
 ### Building from Source:
 1. Clone the repository:
